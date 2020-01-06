@@ -1,8 +1,0 @@
-com/swnat/controller/RecordControllerTest.class
-com/swnat/controller/LoginControllerTest.class
-com/swnat/controller/InterviewControllerTest.class
-com/swnat/controller/UserControllerTest.class
-com/swnat/controller/CandidateControllerTest.class
-com/swnat/controller/ChallengeControllerTest.class
-com/swnat/processes/InterviewWorkflowIntegrationTest.class
-com/swnat/TestUtils.class
