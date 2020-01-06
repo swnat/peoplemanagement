@@ -1,0 +1,35 @@
+{
+    "key": "create-interview-form",
+    "name": "create-interview-form",
+    "fields": [
+        {
+            "id": "dayoftheinterview",
+            "name": "dayoftheinterview",
+            "type": "date",
+            "required": true,
+            "placeholder": "Day of the Interview"
+        },
+        {
+            "id": "comment",
+            "name": "comment",
+            "type": "multi-line-text",
+            "required": false,
+            "placeholder": "Comment"
+        },
+        {
+            "id": "participants",
+            "name": "participants",
+            "type": "people",
+            "required": true,
+            "placeholder": "Participants"
+        },
+        {
+            "id": "type_interview",
+            "name": "type_interview",
+            "type": "text",
+            "required": false,
+            "placeholder": "type_interview"
+        }                  
+    ],
+	"outcomes": []
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="interview-process" name="interview-process" isExecutable="true">
+    <documentation>interview-process</documentation>
+    <startEvent id="start" name="start" flowable:formFieldValidation="true"></startEvent>
+    <adHocSubProcess id="interview" name="Interview Process" cancelRemainingInstances="true" ordering="Parallel">
+      <userTask id="create-interview" name="Create Interview" flowable:formKey="create-interview-form" flowable:formFieldValidation="true"></userTask>
+    </adHocSubProcess>
+    <sequenceFlow id="sid-5C1CF590-4BB7-4EF0-AA27-DC81334A73D0" sourceRef="start" targetRef="interview"></sequenceFlow>
+    <endEvent id="end" name="end"></endEvent>
+    <sequenceFlow id="sid-4188276E-347F-4EEA-AA50-9B1F6B07A2A7" sourceRef="interview" targetRef="end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_interview-process">
+    <bpmndi:BPMNPlane bpmnElement="interview-process" id="BPMNPlane_interview-process">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="30.0" width="30.0" x="150.00000000000003" y="88.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="interview" id="BPMNShape_interview">
+        <omgdc:Bounds height="165.99999999999997" width="235.99999999999997" x="240.00000000000003" y="20.000000000000004"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="create-interview" id="BPMNShape_create-interview">
+        <omgdc:Bounds height="71.99999999999999" width="82.0" x="300.00000000000006" y="60.000000000000014"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="28.0" width="28.0" x="538.5555476229868" y="89.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-4188276E-347F-4EEA-AA50-9B1F6B07A2A7" id="BPMNEdge_sid-4188276E-347F-4EEA-AA50-9B1F6B07A2A7">
+        <omgdi:waypoint x="475.95000000000005" y="103.0"></omgdi:waypoint>
+        <omgdi:waypoint x="538.5555476229868" y="103.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5C1CF590-4BB7-4EF0-AA27-DC81334A73D0" id="BPMNEdge_sid-5C1CF590-4BB7-4EF0-AA27-DC81334A73D0">
+        <omgdi:waypoint x="179.94999950928081" y="102.99999999999999"></omgdi:waypoint>
+        <omgdi:waypoint x="240.00000000000003" y="102.99999999999999"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

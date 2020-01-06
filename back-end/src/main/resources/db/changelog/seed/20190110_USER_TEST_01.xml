@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="luis@softwarenatura.com" id="seed_user_01">
+
+        <insert tableName="user" schemaName="management">
+            <column name="name" value="Luis"/>
+            <column name="lastname" value="Perez"/>
+            <column name="email" value="luis@softwarenatura.com"/>
+            <column name="rol" value="user3"/>
+            <column name="password" value="$2a$12$X3LlQDHcSjd8gS8XwjmaseDcfBhxvxWteO98bKeeO56spSIPo5e5O"/>
+        </insert>
+        <insert tableName="user" schemaName="management">
+            <column name="name" value="Andrea"/>
+            <column name="lastname" value="Cisnero"/>
+            <column name="email" value="andrea@softwarenatura.com"/>
+            <column name="rol" value="user2"/>
+            <column name="password" value="$2a$12$X3LlQDHcSjd8gS8XwjmaseDcfBhxvxWteO98bKeeO56spSIPo5e5O"/>
+        </insert>
+        <insert tableName="user" schemaName="management">
+            <column name="name" value="Juan José"/>
+            <column name="lastname" value="Mongelós"/>
+            <column name="email" value="jjmongelos@softwarenatura.com"/>
+            <column name="rol" value="user1"/>
+            <column name="password" value="$2a$12$X3LlQDHcSjd8gS8XwjmaseDcfBhxvxWteO98bKeeO56spSIPo5e5O"/>
+        </insert>
+        <insert tableName="user" schemaName="management">
+            <column name="name" value="Elena"/>
+            <column name="lastname" value="Coronel"/>
+            <column name="email" value="elena@softwarenatura.com"/>
+            <column name="rol" value="user1"/>
+            <column name="password" value="$2a$12$X3LlQDHcSjd8gS8XwjmaseDcfBhxvxWteO98bKeeO56spSIPo5e5O"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

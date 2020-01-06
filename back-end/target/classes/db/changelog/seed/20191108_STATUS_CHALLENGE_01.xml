@@ -1,0 +1,25 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="sofia@softwarenatura.com" id="seed_status_challenge_01">
+        <insert tableName="status_challenge" schemaName="management">
+            <column name="id" value="1"/>
+            <column name="name" value="NOT SENT"/>
+        </insert>
+        <insert tableName="status_challenge" schemaName="management">
+            <column name="id" value="2"/>
+            <column name="name" value="SENT"/>
+        </insert>
+        <insert tableName="status_challenge" schemaName="management">
+            <column name="id" value="3"/>
+            <column name="name" value="IN REVIEW"/>
+        </insert>
+        <insert tableName="status_challenge" schemaName="management">
+            <column name="id" value="4"/>
+            <column name="name" value="REVIEWED"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

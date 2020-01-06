@@ -1,0 +1,63 @@
+<div class="col-md-12">
+  <form [formGroup]="challengeForm" id="challengeForm">
+    <div class="row">
+      <div class="col-md-3">
+        <label class="margin-left text">Date Sent:</label>
+      </div>
+      <div class=" date-picker-width">
+        <ejs-datepicker #ejDatePicker id="dayOfSent" format='yyyy-MM-dd' formControlName="dayOfSent" name="dayOfSent" >
+        </ejs-datepicker>
+      </div>
+      <div class="col-md-3">
+        <label class="margin-left text">Date Expected:</label>
+      </div>
+      <div class=" date-picker-width">
+        <ejs-datepicker #ejDatePicker id="dayOfExpected" format='yyyy-MM-dd' formControlName="dayOfExpected"
+          name="dayOfExpected">
+        </ejs-datepicker>
+      </div>
+    </div>
+    <label class="margin-left text">Reviewer:</label>
+
+    <div class="comment-width">
+      <input type="text" formControlName="reviewer" placeholder="Add a Reviewer" class="form-control margin-left"
+        maxlength="90" />
+    </div>
+
+    <label class="margin-left text">Link Challenge:</label>
+    <div class="comment-width">
+      <input type="text" formControlName="linkChallenge" placeholder="Add a link" class="form-control margin-left"
+        maxlength="90" />
+    </div>
+
+    <label class="margin-left text">Status Challenge</label>
+    <div class="form-group margin-left comment-width">
+      <select class="custom-select" name="statusChallenge" id="statusChallenge" formControlName="statusChallenge" [(ngModel)] = "opcionChallenge">
+        <option [ngValue]="status.id" *ngFor="let status of statusChallengeList">
+          {{status?.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="margin-left text" for="comment">Comment</label>
+      <textarea class="form-control margin-left comment-width" formControlName="comment" rows="3"
+        [ngClass]="{ 'is-invalid': submitted && f.comment.errors }" placeholder="Write your comment here..."
+        [maxlength]="300"></textarea>
+      <div *ngIf="submitted && f.comment.errors" class="invalid-feedback margin-left">
+        <div *ngIf="submitted && f.comment.errors?.maxlength">
+          Comment must have less than 300 characters
+        </div>
+        <div *ngIf="submitted && f.comment.errors?.pattern">
+          Comment has to be only characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <button  type="submit"  (click)="onSubmit()" class="btn btn-pm">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+

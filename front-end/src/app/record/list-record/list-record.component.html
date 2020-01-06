@@ -1,0 +1,58 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="card card-signin">
+
+    <div class="col-12 title form-group form-title">
+      <div class="row col-12 position">
+        <div class="col-md-6">
+          <label class="text-title">View a record of Candidates</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="starter-template position">
+      <div class="form-group">
+        <div class="col-md-12">
+          <table class="table custab"  *ngIf = "list_records?.length > 0 ; else elseBlock">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="row">Name</th>
+                <th scope="row">Time Stamp</th>
+                <th scope="row">User</th>
+                <th scope="row">Process</th>
+                <th scope="row">Action</th>
+                <th scope="row"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-template ngFor let-item [ngForOf]="list_records" let-i="index">
+                <tr>
+                  <td>{{item?.candidateName}}</td>
+                  <td>{{item?.timeStampString}}</td>
+                  <td>{{item?.userName}}</td>
+                  <td>{{item?.process}}</td>
+                  <td>{{item?.action}}</td>
+                  <td><button type="button" class="btn btn-primary" (click)="collapse(i)">Details</button></td>
+                </tr>
+                <tr *ngIf="item?.collapse">
+                  <td colspan="6">
+                    <ul class="list-group" *ngFor="let m of item.details | keyvalue">
+                      <li class="list-group-item"><strong>{{m.key}}: </strong>{{m.value}}</li>
+                    </ul>
+                  </td>
+                </tr>
+              </ng-template>
+          </table>
+          <ng-template #elseBlock>
+            <label class="form-control"> No items to display! </label>
+          </ng-template>
+          <div class="justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="5"
+              [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

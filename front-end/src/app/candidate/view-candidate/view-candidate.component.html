@@ -1,0 +1,28 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="col-12 title form-title">
+    <label style="padding-left: 20px;">Profile Candidate</label>
+  </div>
+
+  <div class="candidate-form">
+    <app-data-candidate [candidateId]="candidateId" (showChallenge)= 'showChallengeAccordion($event)' (showInterview)='showInterviewAccordion($event)'></app-data-candidate>
+  </div>
+  
+  <!--CHALLENGE FORM-->
+  <a class="btn btn-pm" data-toggle="collapse" id="collapseChallengeButton" href="#collapseChallenge" role="button" aria-expanded="false"
+  aria-controls="collapseChallege">Challenge</a>
+  <div class="collapse show" id="collapseChallenge">
+    <div class="card card-body">
+      <app-add-challenge [candidateId]="candidateId"></app-add-challenge>
+    </div>
+  </div>
+  <!--INTERVIEW FORM-->
+  <a class="btn btn-pm" data-toggle="collapse" id="collapseInterviewButton" href="#collapseInterview" role="button" aria-expanded="false"
+    aria-controls="collapseInterview">Interviews</a>
+
+  <div class="collapse show" id="collapseInterview">
+    <div class="card card-body">
+      <app-list-interview [candidateId]="candidateId"></app-list-interview>
+    </div>
+  </div>
+</div>

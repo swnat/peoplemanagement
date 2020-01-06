@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
+@import '../node_modules/ngx-toastr/toastr.css';
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
+
+.card-signin {
+    border: 0;
+   /* border-radius: 1rem;*/
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+body {
+    background: #e4e5e6;  
+    /*
+    background: -moz-linear-gradient(left, #f3c5bd 0%, #e86c57 0%, #7b1a52 0%, #db1943 54%, #ea5a18 100%); 
+    background: -webkit-linear-gradient(left, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
+    background: linear-gradient(to right, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
+    */
+    transition-delay: 2s;
+    height: 100vh;
+    margin: 0;
+}
+
+.container{
+  
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+  
+}
+.center{
+    text-align:center;
+}
+
+.aligner {
+    /*display: flex;
+    align-items: center;*/
+    justify-content: center;
+    height: 100%;
+}
+  
+.aligner-item {
+    max-width: 50%;
+}
+
+
+

@@ -1,0 +1,11 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="sofia@softwarenatura.com" id="ppl_candidate_ac_001">
+        <addColumn tableName="candidate" schemaName="management">
+            <column name="process_challenge_status" type="VARCHAR(60)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

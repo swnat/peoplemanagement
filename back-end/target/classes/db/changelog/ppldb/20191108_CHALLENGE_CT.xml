@@ -1,0 +1,53 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    
+    <changeSet author="sofia@softwarenatura.com" id="ppl_challenge_ct_001">
+
+        <createTable tableName="challenge" schemaName="management">
+                <column name="id" type="BIGINT" autoIncrement="true">
+                    <constraints nullable="false" primaryKey="true"/>
+                </column>
+
+                <column name="comment" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+
+                <column name="reviewer" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+
+                <column name="link_challenge" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+
+                <column name="task_id" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+
+                <column name="day_of_sent" type="DATE">
+                    <constraints nullable="false"/>
+                </column>
+
+                <column name="day_of_expected" type="DATE">
+                    <constraints nullable="false"/>
+                </column>
+                
+                <column name="finish_process" type="BOOLEAN" defaultValue="False">
+                    <constraints nullable="false" />
+                </column>
+                <column name="status_challenge_id" type="BIGINT">
+                    <constraints nullable="false" 
+                    foreignKeyName="fk_challenge_status_challenge"
+                    references="management.status_challenge(id)"/>
+                </column>
+                <column name="candidate_id" type="BIGINT">
+                    <constraints nullable="false" 
+                    foreignKeyName="fk_challenge_candidate"
+                    references="management.candidate(id)"/>
+                </column>
+                
+            </createTable>
+    </changeSet>
+</databaseChangeLog>

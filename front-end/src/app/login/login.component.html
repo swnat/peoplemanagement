@@ -1,0 +1,51 @@
+<div class="body_login">
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+          <div class="card-header">
+            <h3>Sign In</h3>
+            <!--<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>-->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" id= "loginForm" (ngSubmit)="submitLogin()">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user whitecolor"></i></span>
+                </div>
+                <input type="text" formControlName="email" class="form-control" placeholder="email" >
+                <span id= "hint-email"  class="text-danger" *ngIf="submitted && f.email.errors?.required">Email is required</span>
+
+              </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key whitecolor"></i></span>
+                </div>
+                <input type="password" formControlName="password" class="form-control" placeholder="password">
+                <span id= "hint-pass" class="text-danger" *ngIf="submitted && f.password.errors?.required">Password is required</span>
+
+              </div>
+              <div class="row align-items-center remember">
+                <input type="checkbox">Remember Me
+              </div>
+              <div class="form-group">
+                <button type="submit" id="login-form"
+                  class="btn float-right login_btn">Login</button>
+              </div>
+            </form>
+          </div>
+          <!--<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+      </div>-->
+      </div>
+    </div>
+  </div>
+</div>

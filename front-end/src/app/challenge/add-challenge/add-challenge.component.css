@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .position{
+    float: right;
+    width:95%;
+    margin: 0 auto;
+  }
+  /*For the title of forms*/
+  .form-title{
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    height: 40px;
+    background: #882960;
+    border-radius: 0px 0px 0px 0;
+    color: #ffffff;
+    padding-left: 35px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+      
+  }
+  
+  
+  /* Button cancel */
+  
+  .margin-left {
+    margin-left: 20px;
+  }
+
+  .btn-pm{
+    float: right;
+    color: white;
+    background-color: #882960;
+    width: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    
+    }
+    
+    .btn-pm:hover{
+    color: #882960;
+    border-color: #882960;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+    }
+  /*Day interview style*/
+  .day-int-alert {
+    color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      margin-left: 20px;
+      width: 100%;
+  }
+  
+  /*btn add participants*/
+  
+  
+  /*comment*/
+  .comment-width {
+    width: 94%;
+  }
+  
+  /*day picker*/
+  .date-picker-width {
+    width: 20%;
+  }
+  
+  .invalid-feedback-custom {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+  
+  .text{
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,68 @@
+<!--FORM-->
+<div class="col-md-12">
+  <form>
+    <div class="row">
+      <div class="col-md-9">
+        <label class="text">Interviews</label>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-11 padding-left">
+        <select class="custom-select" name="statusCandidateSelect" [(ngModel)]="statusCandidateSelect"
+          [ngClass]="{ 'is-invalid': submitted }">
+          <option [ngValue]="null" disabled selected>Select an interview</option>
+          <option *ngFor="let status of statusCandidate" [ngValue]="status">{{status?.name}}
+          </option>
+        </select>
+        <div *ngIf="submitted " class="invalid-feedback">
+          Please select one interview
+        </div>
+      </div>
+      <button id="add-interview" alt="addinterview" title="Add Interview" style="padding-top: 0px;"
+        type="button" class="btn" (click)="toAddInterview(statusCandidateSelect)" [disabled]="isDisabled">
+          <i style="color: black;" class="fas fa-plus-circle fa-2x"></i>
+      </button>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-11 padding-left">
+      <table class="table table-striped custab" *ngIf="list_interview?.length > 0 ; else elseBlock">
+        <tr>
+          <th scope="row">Interviews</th>
+          <th scope="row">Date of the Interview</th>
+          <th scope="row">Comments</th>
+          <th scope="row">Actions</th>
+        </tr>
+        <tr *ngFor="let item of list_interview">
+          <td>{{item.statusCandidate.name}}</td>
+          <td>{{item.dayOfInterview | date:'yyy-MM-dd'}} </td>
+          <td>{{item.comment}} </td>
+          <td>
+            <div class="col-md-12 align-center">
+                <button alt="edit" title="Edit" id="edit-interview"
+                type="button" class="btn" (click)="toEditInterview(item.id)" [disabled]="item.finishProcess">
+                  <i style="color: black;" class="fas fa-pen fa-2x"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <ng-template #elseBlock>
+        <label class="form-control"> This candidate doesn't have interviews </label>
+      </ng-template>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="list_interview?.length > 0" class="row">
+      <div class="col-md-8 ">
+        <button class="btn btn-pm" id="buttonfinish" (click)="onOpenDialog($event); isFinish = false;"
+          [disabled]="isFinish">Finish all interviews</button>
+        <ejs-dialog id='dialog' #ejDialog header='Are you sure ...? '
+          content='If you finish the process you wont be able to add or edit' [target]='targetElement' width='300px'
+          [buttons]='buttons' [visible]='hidden'>
+        </ejs-dialog>
+      </div>
+    </div>
+  </form>
+</div>

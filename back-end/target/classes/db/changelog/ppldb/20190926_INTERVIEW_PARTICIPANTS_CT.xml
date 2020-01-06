@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    
+    <changeSet author="adan@softwarenatura.com" id="ppl_participants_ct_001">
+
+        <createTable tableName="interview_participants" schemaName="management">
+                <column name="participant" type="VARCHAR">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="interview_id" type="BIGINT">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+    </changeSet>
+</databaseChangeLog>

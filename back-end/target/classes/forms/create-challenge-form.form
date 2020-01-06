@@ -1,0 +1,49 @@
+{
+    "key": "create-challenge-form",
+    "name": "create-challenge-form",
+    "fields": [
+        {
+            "id": "dayofsent",
+            "name": "dayofsent",
+            "type": "date",
+            "required": true,
+            "placeholder": "Day of the sent challenge"
+        },
+        {
+            "id": "dayofexpected",
+            "name": "dayofexpected",
+            "type": "date",
+            "required": false,
+            "placeholder": "Day expected to receive the challenge"
+        },
+        {
+            "id": "comment",
+            "name": "comment",
+            "type": "multi-line-text",
+            "required": false,
+            "placeholder": "Comment"
+        },
+        {
+            "id": "reviewer",
+            "name": "reviewer",
+            "type": "text",
+            "required": true,
+            "placeholder": "Reviewer"
+        },
+        {
+            "id": "linkchallenge",
+            "name": "linkchallenge",
+            "type": "text",
+            "required": false,
+            "placeholder": "Link challenge"
+        },
+        {
+            "id": "statuschallenge",
+            "name": "statuschallenge",
+            "type": "text",
+            "required": false,
+            "placeholder": "Status of challenge"
+        }                  
+    ],
+	"outcomes": []
+}

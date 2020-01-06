@@ -1,0 +1,144 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #container-popup{
+    visibility: hidden;
+  }
+  #dialog-container {
+    display: block;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    width: 150%;
+    /* semi-transparent black  */
+    
+  }
+  #loader {
+    color: #008cff;
+    height: 40px;
+    left: 45%;
+    position: relative;
+    top: 45%;
+    width: 30%;
+  }
+  .aligner-right {
+    float: right;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 0px;
+    width: 100%;
+  }
+  
+  .aligner {
+    display: flex;
+    align-items: center;        
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .aligner-item {
+    max-width: 50%;
+  }
+  
+  .position{
+    float: right;
+    width: 95%;
+    margin: 0 auto;
+  }
+  .position-search{
+    width: 95%;
+    padding-left: 25px;
+  }
+  .position-info{
+    padding-left: 10px;
+  }
+  .text-title{
+    text-align:left;
+    width: 95%;
+    padding: 1px;
+    
+  }
+  .text-subtitle{
+    text-align:left;
+    width: 95%;
+    padding-top: 5px;
+  }
+  .text{
+    font-weight: bold;
+  }
+  /*For the title of forms*/
+  .form-title{
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    height: 40px;
+    background: #882960;
+    border-radius: 0px 0px 0px 0;
+    color: #ffffff;
+    padding-left: 0px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+      
+  }
+  .input:disabled {
+    color: #aaa;
+  }
+  /*For the second title of forms*/
+  .form-subtitle{
+    width: 100%;
+    justify-content: left;
+    height: 40px;
+    font-weight: bold;
+    background: #bbb8b9 ;
+    border-radius: 0px 0px 0px 0;
+    text-align: left;
+    color: #161616;
+    padding-left: 30px;
+  }
+  
+  /*Button edit*/
+  .btn-edit{
+    width: 25px;
+    height: 25px;
+    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
+  }  
+  /*Button icon*/
+  .btn-icon{
+    width: 15px;
+    height: 20px;
+    align-content: center;
+    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
+  }
+  .btn-add{
+    width: 35px;
+    padding-top: 5px;
+    height: 35px;
+    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
+  }
+  .justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .thead-dark th{color:#fff;background-color:#7b1a52;border-color:#c7c8c9}
+
+  .row-search {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+  
+  @import "../node_modules/@syncfusion/ej2/material.css";
+  
+  
