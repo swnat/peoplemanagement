@@ -1,0 +1,50 @@
+<div class="col-12 title form-subtitle form-group row-search">
+    <div *ngIf="showFilter" class="form-group position-search">
+        <ejs-multiselect id='localData' name='name' [fields]='filteringFields' [allowFiltering]='true'
+          [dataSource]='rowItems.content' (filtering)='onFiltering($event)' (select)='onSelect($event)'
+          (removed)='onRemoved($event)'
+          placeholder='Introduce a name of Candidate to search'></ejs-multiselect>
+    </div>
+
+    <!--<button id="add-candidate" alt="addCandidate" title="Add Candidate" 
+    type="button" class="btn btn-add" (click)="toViewCandidateAdd()">
+      <i style="color: black;" class="fas fa-plus-circle fa-2x"></i>
+  </button>-->
+</div>
+
+
+<div class="starter-template position">
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-striped custab" *ngIf="rowItems?.content?.length > 0 ; else elseBlock">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="row" *ngFor="let column of rowSettings;">{{column.label}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of rowItems?.content">
+                        <td *ngFor="let column of rowSettings">
+                            <div *ngIf="column.isAction; else elseBlock">
+                                <button type="button" class="btn btn-primary" (click)="item[column.key].action()">
+                                    {{item[column.key]?.actionName}}
+                                </button>
+                            </div>
+                            <ng-template #elseBlock>
+                                <div [innerHTML]="item[column.key] | safeHtml"></div>
+                            </ng-template>
+                        </td>
+                    <tr>
+                </tbody>
+            </table>
+            <ng-template #elseBlock>
+                <label class="form-control"> No records to show </label>
+            </ng-template>
+            <div *ngIf="showPagination" class="justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="5"
+                    [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+            </div>
+
+        </div>
+    </div>
+</div>

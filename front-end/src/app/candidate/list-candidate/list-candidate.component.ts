@@ -6,88 +6,66 @@ import { FilteringEventArgs, SelectEventArgs, RemoveEventArgs } from '@syncfusio
 import { EmitType } from '@syncfusion/ej2-base';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
+import { ResponseList } from 'src/app/models/responseList';
+import { RowSetting } from 'src/app/models/row-setting';
+import { Interview } from 'src/app/models/interview';
+import { DataRequest } from 'src/app/models/data-request';
 
 @Component({
   selector: 'app-list-candidate',
   templateUrl: './list-candidate.component.html',
   styleUrls: ['./list-candidate.component.css'],
+  styles: ['.doesntinterviewId { padding-left: 40px;}'],
   providers: [NgbPaginationConfig]
 })
 export class ListCandidateComponent implements OnInit {
-  list_candidates: Candidate[] = [];
-  list_candidateSelected: Candidate[] = [];
-  totalItems: any;
-  itemsPerPage: number = 5;
-  page: any = 1;
-  previousPage: any;
-  showPagination: boolean;
-  public placeholder: string = 'Introduce a name of Candidate to search';
-  public fields: Object = { text: 'nameCandidate', value: 'nameCandidate' };
+  rowItems: ResponseList = { content: [], totalCount: 0 };
+  rowSettings: RowSetting[] = [{
+    label: 'Candidate',
+    key: 'nameCandidate'
+  }, {
+    label: 'Interviews',
+    key: 'interviewsFormat'
+  }, {
+    label: 'Interviews Status',
+    key: 'interviewStatus'
+  }, {
+    label: 'Challenge Status',
+    key: 'process_challenge_status'
+  }, {
+    label: 'Details',
+    isAction: true,
+    key: 'details'
+  }];
+  filteringFields: Object = { text: 'nameCandidate', value: 'nameCandidate' };
 
-  constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) {}
+  constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.loadData();
     console.log('Entro en list candidate');
-    this.page = 1;
-    this.previousPage = 1;
-    
+    this.getAllCandidates({ filter: null, page: 0, size: 5 });
   }
 
-  //Bind the filter event
-  public onFiltering: EmitType<object> = (e: FilteringEventArgs) => {
-    // load overall data when search key empty.
-    if (e.text == '') {
-      //here have to show all the candidate
-      if(this.list_candidateSelected.length > 0) {
-        this.list_candidates = this.list_candidateSelected;
-      }else{      
-        this.loadData();
-      }
-
-      return;
-    }
-    // restrict the remote request until search key contains 3 characters.
-    if (e.text.length > 2) {
-      this.getAllCandidates(e.text, 0, 1000);
-    }
-  };
-
-  //Bind the filter event
-  public onSelect: EmitType<object> = (e: SelectEventArgs) => {
-    var index = this.list_candidateSelected.findIndex(c => c.id === e.itemData['id']);
-    if(index === -1) {
-      this.list_candidates.forEach(c =>{
-        if(c.id === e.itemData['id']) {
-          this.list_candidateSelected.push(c);
-        }
-      });
-    }
-
-    this.list_candidates = this.list_candidateSelected;
-  };
-  //implement the close button
-  public onRemoved: EmitType<object> = (e: RemoveEventArgs) => {
-    this.list_candidateSelected = this.list_candidateSelected.filter(c => c.id !== e.itemData['id']);
-
-    if(this.list_candidates.length === 1) {
-      this.loadData();
-    }else{
-      this.list_candidates = this.list_candidates.filter(c => c.id !== e.itemData['id']);
-    }
-  }
-
-  getAllCandidates(filter:string, page:number, itemsPerPage:number) {
+  public getAllCandidates(request: DataRequest): void {
     console.log("probando getAllcandidate");
-    this.candidateService.getAllCandidates(filter, page, itemsPerPage).subscribe(data => {
-      if ((!data && !data.content) || (data && data.content && data.content.length == 0)) {
-        this.list_candidates = [];
-        this.showPagination = false;
-      }else {
-        this.list_candidates = <Candidate[]>data.content;
-        this.totalItems = data.totalCount;
-        this.itemsPerPage = 5;
-        this.showPagination = true;
+    this.candidateService.getAllCandidates(request.filter, request.page, request.size).subscribe(data => {
+      this.rowItems = data;
+      for (let j = 0; j < data.content.length; j++) {
+        if (data.content[j]['interviews'].length > 0) {
+          data.content[j]['interviewsFormat'] =
+            '<ul style="list-style-type:none;"><li>' +
+            data.content[j]['interviews'].reduce(
+              (a, b, i) => i == 0 ? b.statusCandidate.name : a +
+                '</li><li>' +
+                b.statusCandidate.name, '') +
+            '</li></ul>';
+        } else {
+          data.content[j]['interviewsFormat'] = "<div style='padding-left: 40px;'>This candidate doesn't have interviews</div>";
+        }
+        data.content[j]['details'] = {
+          action: () => this.router.navigate(['candidate/data/' + data.content[j]['id']]),
+          actionName: 'Edit'
+        };
       }
     },
       error => {
@@ -98,21 +76,5 @@ export class ListCandidateComponent implements OnInit {
 
   toViewCandidateAdd() {
     this.router.navigate(['candidate/data/']);
-  }
-
-  toViewCandidateEdit(candidateId:number) {
-    this.router.navigate(['candidate/data/'+candidateId]);
-  }
-
-  loadData() {
-    this.getAllCandidates(null, this.page-1, this.itemsPerPage);
-    
-    console.log(this.getAllCandidates(null, this.page-1, this.itemsPerPage));
-  }
-  loadPage(page: number) {
-    if (page !== this.previousPage) {
-      this.previousPage = page;
-      this.loadData();
-    }
   }
 }

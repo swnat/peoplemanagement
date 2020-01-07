@@ -9,68 +9,13 @@
         </div>
       </div>
     </div>
-
-    <div class="col-12 title form-subtitle form-group row-search">
-          <div class="form-group position-search"> 
-                <ejs-multiselect id='localData' name='name' [fields]='fields' [allowFiltering]='true'
-                [dataSource]='list_candidates' (filtering)='onFiltering($event)' (select)='onSelect($event)'
-                (removed)='onRemoved($event)'
-                [placeholder]='placeholder'></ejs-multiselect>
-          </div>
-
-          <button id="add-candidate" alt="addCandidate" title="Add Candidate" 
-          type="button" class="btn btn-add" (click)="toViewCandidateAdd()">
-            <i style="color: black;" class="fas fa-plus-circle fa-2x"></i>
-        </button>
-    </div>
-
-    <div class="starter-template position">
-      <div class="form-group">
-        <div class="col-md-12">
-          <table class="table table-striped custab"  *ngIf = "list_candidates?.length > 0 ; else elseBlock">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="row">Candidate</th>
-                <th scope="row">Interviews</th>
-                <th scope="row">Interviews Status</th>
-                <th scope="row">Challenge Status</th>
-                <th scope="row">Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of list_candidates">
-                <td>{{item?.nameCandidate}}</td>
-                <td>
-                  <select class="custom-select" name="interviewsSelect" [(ngModel)]="interviewsSelect">
-                    <option [ngValue]="nul" disabled selected>{{item?.interviews?.length}}</option>
-                    <option *ngFor="let element of item?.interviews" [ngValue]="nul" disabled selected>
-                      {{element?.statusCandidate.name}}
-                    </option>
-                  </select>
-                </td>
-                <td>{{item?.interviewStatus}}</td>
-                <td>{{item?.process_challenge_status}}</td>
-                <td style="padding-top: 0px;">
-                  <div class="col-md-12 align-center">
-                    <button id="list-candidate" alt="view" title="view"
-                    type="button" class="btn" (click)="toViewCandidateEdit(item.id)">
-                      <i style="color: black;" class="fas fa-eye fa-2x"></i>
-                  </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <ng-template #elseBlock>
-            <label class="form-control"> It has no registered candidates! </label>
-          </ng-template>
-          <div class="justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="5"
-              [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
-          </div>
-         
-        </div>
-      </div>
+    <app-data-table [rowItems]="rowItems" [rowSettings]="rowSettings" [showFilter]="true" [showPagination]="true"
+      [filteringFields]='filteringFields' (getAllData)="getAllCandidates($event)"></app-data-table>
+    <div class="col-12">
+      <button id="add-candidate" alt="addCandidate" title="Add Candidate" type="button" style="margin: 10 10 10 10"
+        class="btn btn-primary float-right btn-lg" (click)="toViewCandidateAdd()">
+        Add
+      </button>
     </div>
   </div>
 </div>
