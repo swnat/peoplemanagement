@@ -169,7 +169,30 @@
     display: flex;
     flex-wrap: wrap;
 }
-
+.btn-pm{
+  float: right;
+  color: white;
+  background-color: #882960;
+  width: 100px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  
+  }
+  
+  .btn-pm:hover{
+  color: #882960;
+  border-color: #882960;
+  border-width: 1px;
+  border-style: solid;
+  background-color: white;
+  }
+/*Change color of pagination component*/
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  background-color: #7b1a52;
+  border-color: #7b1a52;
+}
   
   @import "../node_modules/@syncfusion/ej2/material.css";
   
