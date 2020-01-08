@@ -6,7 +6,7 @@ import { Challenge } from 'src/app/models/challenge';
 import { StatusChallenge } from 'src/app/models/status-challenge';
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
 import { ChallengeService } from 'src/app/service/challenge.service';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { StatusChallengeService } from 'src/app/service/status-challenge.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateService } from 'src/app/service/candidate.service';

@@ -10,7 +10,7 @@ import { InterviewWorkflowService } from 'src/app/service/interview-workflow.ser
 import { InterviewWorkflow } from 'src/app/models/interview-workflow';
 import { DatePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { StatusCandidateService } from 'src/app/service/status-candidate.service';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
 import { InterviewForm, Action } from 'src/app/models/interview-form';
 import { StorageService } from 'src/app/service/storage.service';

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 ////// Testing Vars //////
 let activatedRoute: ActivatedRouteStub;

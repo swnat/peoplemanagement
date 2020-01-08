@@ -5,7 +5,7 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FilteringEventArgs, SelectEventArgs, RemoveEventArgs } from '@syncfusion/ej2-angular-dropdowns';
 import { EmitType } from '@syncfusion/ej2-base';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 
 @Component({
   selector: 'app-list-record',

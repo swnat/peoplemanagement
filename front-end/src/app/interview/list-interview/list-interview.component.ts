@@ -9,7 +9,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InterviewWorkflowService } from 'src/app/service/interview-workflow.service';
 import { Approval } from 'src/app/models/approval';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/models/user';

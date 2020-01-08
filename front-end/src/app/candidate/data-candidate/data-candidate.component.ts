@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CandidateService } from 'src/app/service/candidate.service';
 import { Candidate } from 'src/app/models/candidate';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import { Router } from '@angular/router';
 

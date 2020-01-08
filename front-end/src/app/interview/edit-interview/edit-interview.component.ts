@@ -11,7 +11,7 @@ import { InterviewWorkflow } from 'src/app/models/interview-workflow';
 import { CandidateService } from 'src/app/service/candidate.service';
 import { StatusCandidateService } from 'src/app/service/status-candidate.service';
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { InterviewForm, Action } from 'src/app/models/interview-form';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
