@@ -29,7 +29,7 @@
     
 }
 
-.btn-pm{
+.candidate-btn-pm{
     float: right;
     color: white;
     background-color: #882960;
@@ -40,7 +40,7 @@
     
     }
     
-    .btn-pm:hover{
+    .candidate-btn-pm:hover{
     color: #882960;
     border-color: #882960;
     border-width: 1px;

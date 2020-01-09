@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="col-12 title form-title-pm">
+    User
+  </div>
+  <div class="form-pm">
+    <form [formGroup]="dataUserForm" id="dataUserForm" (ngSubmit)="onSubmit()">
+
+      <div class=" form-group">
+        <label for="inputName">Name:</label>
+        <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Name">
+        <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Name is required</span>
+        <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
+        <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100
+          characters</span>
+      </div>
+
+      <div class="form-group">
+        <label for="inputLastname">Last Name:</label>
+        <input type="text" formControlName="lastname" class="form-control" id="inputLastname" placeholder="Last Name">
+        <span class="text-danger" *ngIf="submitted && f.lastname.errors?.required">Last Name is required</span>
+        <span class="text-danger" *ngIf="submitted && f.lastname.errors?.pattern">Last Name have to be only
+          letters</span>
+        <span class="text-danger" *ngIf="submitted && f.lastname.errors?.maxlength">Last Name must have less than 100
+          characters</span>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number:</label>
+        <input type="text" formControlName="phoneNumber" class="form-control" id="inputPhoneNumber"
+          placeholder="Phone Number">
+      </div>
+
+      <div class="from-group">
+        <label for="selectRol">Role:</label>
+        <select class="custom-select" formControlName="rol" id="selectRol">
+          <option value="user1">Manager</option>
+          <option value="user2">Admin</option>
+          <option value="">Colaborator</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail">Email:</label>
+        <input type="email" formControlName="email" class="form-control" id="inputEmail" placeholder="Mail">
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-pm">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

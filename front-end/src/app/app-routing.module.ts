@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthorizatedGuard } from './shared/auth/authorizated.guard';
 import { NoLoginGuard } from './shared/auth/no-login.guard';
 import { ConstructionSiteComponent } from './construction-site/construction-site.component';
-
+import { DataUserComponent } from './user/data-user/data-user.component';
 
 
 const routes: Routes = [
@@ -51,7 +51,9 @@ const routes: Routes = [
           path: 'user',
           canActivateChild: [AuthorizatedGuard],
           children: [
-            { path: 'data/:id', component: ViewUserComponent , canActivateChild: [AuthorizatedGuard]}
+            { path: 'data/:id', component: ViewUserComponent , canActivateChild: [AuthorizatedGuard]},
+            { path: 'add', component: DataUserComponent , canActivateChild: [AuthorizatedGuard]},
+            { path: 'edit/:id', component: DataUserComponent , canActivateChild: [AuthorizatedGuard]}
           ]
         }
 

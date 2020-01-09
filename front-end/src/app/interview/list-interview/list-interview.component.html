@@ -55,8 +55,8 @@
     </div>
     <br>
     <div *ngIf="list_interview?.length > 0" class="row">
-      <div class="col-md-8 ">
-        <button class="btn btn-pm" id="buttonfinish" (click)="onOpenDialog($event); isFinish = false;"
+      <div class="col-md-12 ">
+        <button class="btn interview-btn-pm" id="buttonfinish" (click)="onOpenDialog($event); isFinish = false;"
           [disabled]="isFinish">Finish all interviews</button>
         <ejs-dialog id='dialog' #ejDialog header='Are you sure ...? '
           content='If you finish the process you wont be able to add or edit' [target]='targetElement' width='300px'
