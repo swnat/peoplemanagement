@@ -18,7 +18,7 @@
   max-width: 50%;
 }
 /* Button */
-.btn-pm{
+.interview-btn-pm{
   float: right;
   color: white;
   background-color: #882960;
@@ -29,7 +29,7 @@
   
   }
   
-  .btn-pm:hover{
+  .interview-btn-pm:hover{
   color: #882960;
   border-color: #882960;
   border-width: 1px;

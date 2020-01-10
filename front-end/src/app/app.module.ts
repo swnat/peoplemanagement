@@ -26,6 +26,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConstructionSiteComponent } from './construction-site/construction-site.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
 import { SafeHtmlPipe } from './shared/safe-html-pipe/safe-html';
+import { DataUserComponent } from './user/data-user/data-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -51,7 +52,8 @@ const routes: Routes = [
     LoginComponent,
     ConstructionSiteComponent,
     DataTableComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    DataUserComponent
   ],
   providers: [
     NgbActiveModal 

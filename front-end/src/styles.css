@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '../node_modules/ngx-toastr/toastr.css';
 @import '../node_modules/ngx-toastr/toastr.css';
 @import '../node_modules/@syncfusion/ej2-base/styles/material.css';
@@ -11,50 +12,96 @@
 @import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
-
 .card-signin {
     border: 0;
-   /* border-radius: 1rem;*/
+    /* border-radius: 1rem;*/
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 body {
-    background: #e4e5e6;  
+    background: #e4e5e6;
     /*
-    background: -moz-linear-gradient(left, #f3c5bd 0%, #e86c57 0%, #7b1a52 0%, #db1943 54%, #ea5a18 100%); 
-    background: -webkit-linear-gradient(left, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
-    background: linear-gradient(to right, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
-    */
+background: -moz-linear-gradient(left, #f3c5bd 0%, #e86c57 0%, #7b1a52 0%, #db1943 54%, #ea5a18 100%); 
+background: -webkit-linear-gradient(left, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
+background: linear-gradient(to right, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
+*/
     transition-delay: 2s;
     height: 100vh;
     margin: 0;
 }
 
-.container{
-  
+.container {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 5%;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
-  
+    background: #ffffff;
+    padding: 0 0 0 0;
 }
-.center{
-    text-align:center;
+
+.center {
+    text-align: center;
 }
 
 .aligner {
     /*display: flex;
-    align-items: center;*/
+align-items: center;*/
     justify-content: center;
     height: 100%;
 }
-  
+
 .aligner-item {
     max-width: 50%;
 }
 
+.form-pm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    padding-left: 55px;
+    padding-top: 15px;
+    padding-right: 10px;
+}
 
+.form-title-pm {
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    height: 40px;
+    background: #882960;
+    border-radius: 0px 0px 0px 0;
+    color: #ffffff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+}
 
+.btn-pm {
+    float: right;
+    color: white;
+    background-color: #882960;
+    width: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+}
+
+.btn-pm:hover {
+    color: #882960;
+    border-color: #882960;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+}

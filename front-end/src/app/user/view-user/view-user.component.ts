@@ -10,7 +10,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-user.component.css']
 })
 export class ViewUserComponent implements OnInit {
-  user: User;
+  user: User= {
+    name: "",
+    lastname: "",
+    email: "",
+    active: true,
+    rol: "",
+    phoneNumber: "",
+    idUser: 0,
+};
   rol_name: String;
 
   constructor(private userService: UserService,

@@ -6,6 +6,7 @@ import { JwtService } from '../service/jwt.service';
 import { StorageService } from '../service/storage.service';
 import { LoginObject } from '../models/login';
 import { Session } from '../models/session';
+import { NotificationService } from '../shared/notification-service/notification.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private storageService: StorageService,
               private router: Router,
-              private jwt: JwtService) { }
+              private jwt: JwtService,
+              private notificationService: NotificationService) { }
 
 
   /**
@@ -58,7 +60,8 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(new LoginObject(this.loginForm.value)).subscribe(
         data => this.correctLogin(data),
         error => {
-          this.error = error;
+          console.log('Error Login', error);
+          this.notificationService.showError('The username and password you entered do not match our records.', 'Please check and try again.');
         }
       )
     }
