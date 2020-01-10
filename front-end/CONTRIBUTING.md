@@ -50,6 +50,8 @@ Start reading our code and you'll get the hang of it.
 * For tests we use Jasmine and Karma. Please include unit test for any new code. When you send a pull request, we will love you forever if you include more test coverage.
 * Ensure the test suite passes.
 * Make sure your code lints.
+* We use *Code Smaller*: it is the essence behind Continuous Delivery. You slice your own work into small, deployable chunks representing representing two days of work or less and we can be deploying these small pieces of progress individually to production servers.
+* We recommend the use of *git rebase*.
 ***
 ### Did you fix whitespace, format code, or make a purely cosmetic patch?
 Changes that are cosmetic in nature and do not add anything substantial to the stability, functionality, or testability of People Management will generally not be accepted.

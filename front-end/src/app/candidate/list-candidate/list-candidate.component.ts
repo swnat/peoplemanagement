@@ -42,18 +42,17 @@ export class ListCandidateComponent implements OnInit {
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    console.log('Entro en list candidate');
     this.getAllCandidates({ filter: null, page: 0, size: 5 });
   }
 
   public getAllCandidates(request: DataRequest): void {
-    console.log("probando getAllcandidate");
+    
     this.candidateService.getAllCandidates(request.filter, request.page, request.size).subscribe(data => {
       this.rowItems = data;
       for (let j = 0; j < data.content.length; j++) {
         if (data.content[j]['interviews'].length > 0) {
           data.content[j]['interviewsFormat'] =
-            '<ul style="list-style-type:none;"><li>' +
+            '<ul style="list-style-type:none; padding-left: 0px;"><li>' +
             data.content[j]['interviews'].reduce(
               (a, b, i) => i == 0 ? b.statusCandidate.name : a +
                 '</li><li>' +

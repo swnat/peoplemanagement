@@ -87,7 +87,6 @@
     color: white;
   }
   .position{
-    float: right;
     width: 95%;
     margin: 0 auto;
   }
@@ -174,7 +173,19 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
   background-color: #7b1a52;
   border-color: #7b1a52;
 }
-  
+
+.btn-pm2 {
+  color: white;
+  background-color: #882960;
+  width: 100px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+
   
   @import "../node_modules/@syncfusion/ej2/material.css";
   
