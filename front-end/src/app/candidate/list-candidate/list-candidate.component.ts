@@ -59,7 +59,7 @@ export class ListCandidateComponent implements OnInit {
                 b.statusCandidate.name, '') +
             '</li></ul>';
         } else {
-          data.content[j]['interviewsFormat'] = "<div style='padding-left: 40px;'>This candidate doesn't have interviews</div>";
+          data.content[j]['interviewsFormat'] = '<div style="list-style-type:none; padding-left: 0px;">This candidate does not have interviews</div>'
         }
         data.content[j]['details'] = {
           action: () => this.router.navigate(['candidate/data/' + data.content[j]['id']]),
