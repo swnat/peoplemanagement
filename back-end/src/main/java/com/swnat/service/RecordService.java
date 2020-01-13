@@ -46,8 +46,9 @@ public class RecordService {
 
             Long candidate_id = 0L;
             if(processInstance.getProcessVariables().get("candidate_id") != null)
-                Long.valueOf(processInstance.getProcessVariables().get("candidate_id").toString());
-
+                candidate_id = Long.valueOf(processInstance.getProcessVariables().get("candidate_id").toString());
+            else 
+                continue;
             Candidate candidate =  candidateRepository.getOne(candidate_id);
             recordWFDTO.setCandidateName(candidate.getName() +" "+candidate.getLastName());
             if(processInstance.getProcessDefinitionKey().equals(this.INTERVIEW_PROCESS_KEY)){
