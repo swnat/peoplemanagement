@@ -24,9 +24,9 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of rowItems?.content">
-                        <td *ngFor="let column of rowSettings">
+                        <td *ngFor="let column of rowSettings" >
                             <div *ngIf="column.isAction; else elseBlock">
-                                <button type="button" class="btn btn-pm" (click)="item[column.key].action()">
+                                <button type="button" class="btn btn-pm2" (click)="item[column.key].action()">
                                     {{item[column.key]?.actionName}}
                                 </button>
                             </div>

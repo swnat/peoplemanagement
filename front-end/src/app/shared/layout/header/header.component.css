@@ -8,4 +8,8 @@
     color:white;
        
   }
+
+a.title:hover, a.title:active {
+    text-decoration: underline;
+}
   

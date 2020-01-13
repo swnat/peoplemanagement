@@ -184,6 +184,7 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
   background-color: #7b1a52;
   border-color: #7b1a52;
 }
+
   
   @import "../node_modules/@syncfusion/ej2/material.css";
   

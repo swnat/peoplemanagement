@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">People Management</a>
+  <a class="navbar-brand title" href="#">People Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
     <ul class="navbar-nav mr-auto" >
       <li class="nav-item active" *ngIf="user?.rol == 'user1'">
-        <a class="nav-link" [routerLink]="['/candidate']" >List Candidate <span class="sr-only">(current)</span></a>
+        <a class="nav-link title" [routerLink]="['/candidate']" >Candidates list <span class="sr-only">(current)</span></a>
       </li>
       <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Candidate</a>
