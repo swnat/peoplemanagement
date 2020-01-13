@@ -53,9 +53,9 @@ public class RecordService {
             recordWFDTO.setCandidateName(candidate.getName() +" "+candidate.getLastName());
             if(processInstance.getProcessDefinitionKey().equals(this.INTERVIEW_PROCESS_KEY)){
                 if(processInstance.getProcessVariables().get("type_interview") != null)
-                    recordWFDTO.setUserName(processInstance.getProcessVariables().get("type_interview").toString());
+                    recordWFDTO.setProcess(processInstance.getProcessVariables().get("type_interview").toString());
                 else
-                    recordWFDTO.setUserName("");
+                    recordWFDTO.setProcess("");
             } else if(processInstance.getProcessDefinitionKey().equals(this.CHALLENGE_PROCESS_KEY)){
                 recordWFDTO.setProcess("Challenge");
             }
