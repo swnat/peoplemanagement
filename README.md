@@ -14,4 +14,8 @@ First, you need to clone the project and follow steps for installation.\
 ## Contributing
 To contribute please read the CONTRIBUTING file of each project.
 
+[CONTRIBUTING Front end project](https://github.com/swnat/peoplemanagement/blob/master/front-end/CONTRIBUTING.md)\
+[CONTRIBUTING Back end project](https://github.com/swnat/peoplemanagement/blob/master/back-end/CONTRIBUTING.md)
+
+
 
