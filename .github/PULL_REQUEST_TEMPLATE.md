@@ -1,5 +1,5 @@
 ## Do you have any tests?
-- [ ] Si
+- [ ] Yes
 - [ ] No
 
 ## Solution description
