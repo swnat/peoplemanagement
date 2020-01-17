@@ -80,4 +80,15 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/candidate']);
   }
   get f() { return this.loginForm.controls; }
+
+  
+  /*Add*/
+  get emailPlaceholder() {
+    return this.f.email.value == ''; 
+  }
+
+  get passwordPlaceholder(){
+    return this.f.password.value == '';
+  }
+
 }

@@ -1,14 +1,54 @@
+
+<!--LOGIN responsive improvement-->
+<div class="body_login">
+  <div class="login-container">
+      <section>
+        <img id="img-icon" src="../../assets/images/profile_pic.svg">
+        <h2>Welcome</h2>
+      </section>
+      <form [formGroup]="loginForm" id= "loginForm" (ngSubmit)="submitLogin()">
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h5 *ngIf="emailPlaceholder">Email</h5>
+              <input type="text" formControlName="email" class="form-control">
+            </div>
+          </div>
+          <span id= "hint-email"  class="text-danger" *ngIf="submitted && f.email.errors?.required">Email is required</span>
+          <div class="input-div two">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div>
+              <h5 *ngIf="passwordPlaceholder">Password</h5>
+              <input type="password" formControlName="password" class="form-control">
+            </div>
+          </div>
+          <span id= "hint-pass" class="text-danger" *ngIf="submitted && f.password.errors?.required">Password is required</span> 
+          <div class="check">
+            <input id="remenber" type="checkbox">
+            <label for="remenber">Remember me</label>
+          </div>
+          <button type="submit" id="login-form" class="btn">Login</button>
+      </form>
+  </div>
+</div>
+
+
+<!--
 <div class="body_login">
   <div class="container_login">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
           <div class="card-header">
             <h3>Sign In</h3>
-            <!--<div class="d-flex justify-content-end social_icon">
+            <div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
 					<span><i class="fab fa-twitter-square"></i></span>
-				</div>-->
+				</div>
           </div>
           <div class="card-body">
             <form [formGroup]="loginForm" id= "loginForm" (ngSubmit)="submitLogin()">
@@ -37,15 +77,15 @@
               </div>
             </form>
           </div>
-          <!--<div class="card-footer">
+          <div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="#">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
 					<a href="#">Forgot your password?</a>
 				</div>
-      </div>-->
+      </div>
       </div>
     </div>
   </div>
-</div>
+</div>-->

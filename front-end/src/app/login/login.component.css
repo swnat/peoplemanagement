@@ -2,13 +2,19 @@
 
 .body_login{
     background-image: url("src/assets/images/background_login.jpg");
-    margin-top: -5%;
+    /*margin-top: -5%;  
+    comment on this style so that the background takes the whole screen*/
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
+    /*add display flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.container{
+
+/*.container{
     height: 100%;
     align-content: center;
 }
@@ -93,4 +99,135 @@ margin-left: 4px;
     height: 100%;
     margin-top: 5%;
     align-content: center;
+}*/
+
+
+/*new styles for login*/
+
+.login-container{
+    width: 600px;
+    height: auto;
+    border-radius: 2%;
+    background-color: rgba(63, 91, 157, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+section{
+    width: 100%;
+    background-color: #7b1a52;
+    height: 20%;
+    border-radius: 2% 2% 0 0;
+    /*display: flex;
+    flex-direction: column;
+    align-self: center;*/
+}
+
+ section #img-icon{
+    margin-top: 5px; 
+    width: 110px;
+    margin-left: calc(50% - 55px);
+}
+
+section h2 {
+    text-align: center;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-size: 2.9rem;
+    color: #ffffff;
+}
+
+.input-div{
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.input-div.one{
+    margin-top: 6px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
+
+.input-div.two{
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i i{
+    color: #d9d9d9;
+}
+
+.input-div > div{
+    position: relative;
+    height: 45px;
+}
+
+.input-div > div h5{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+input[type="text"], input[type="password"]{
+    position: absolute;
+    top: 0;
+    width: 90%;
+    left: 0;
+    border: none;
+    outline: none;
+    background: none;
+    font-size:  1.2rem;
+    padding: 0.5rem 0.7rem;
+    color: #fff;
+}
+
+.check{
+    margin: 15px 0 0 5px;
+}
+
+.check input[type="checkbox"]{
+    margin-left: 5px;
+    margin-top: 30px;
+}
+
+.check label{
+    margin-left: 5px;
+    color: #fff;
+}
+
+.btn{
+    display: block;
+    margin-top: 25px;
+    border-radius: 25px;
+    background-color: #7b1a52;
+    color: #fff;
+    width: 90%;
+    height: 5%;
+    margin-left: 30px;
+    border: none;
+    outline: none;
+}
+
+.btn:hover{
+    border: 2px solid #7b1a52;
+    background-color: #fff;
+    color: #7b1a52;
+}
+
+ span{
+    margin-left: 52px;
 }
