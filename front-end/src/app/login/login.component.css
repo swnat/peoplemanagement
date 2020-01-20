@@ -220,12 +220,11 @@ input[type="text"], input[type="password"]{
     width: 90%;
     height: 5%;
     margin-left: 30px;
-    border: none;
+    border: 2px solid #7b1a52;
     outline: none;
 }
 
 .btn:hover{
-    border: 2px solid #7b1a52;
     background-color: #fff;
     color: #7b1a52;
 }
