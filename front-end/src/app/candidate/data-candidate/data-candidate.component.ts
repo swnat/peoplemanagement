@@ -46,7 +46,7 @@ export class DataCandidateComponent implements OnInit {
       lastName: candidate.lastName,
       phoneNumber: candidate.phoneNumber,
       university: candidate.university,
-      age: candidate.age,
+      dateOfBirth: candidate.dateOfBirth,
       resumeDrive: candidate.resumeDrive,
       resumeDriveElumen: candidate.resumeDriveElumen,
       statusCandidateByElumen: candidate.statusCandidateByElumen,
@@ -67,7 +67,7 @@ export class DataCandidateComponent implements OnInit {
       lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]),//only letters
-      age: new FormControl(''),
+      dateOfBirth: new FormControl(''),
       resumeDrive: new FormControl('', ),
       resumeDriveElumen: new FormControl(''),
       statusCandidateByElumen: new FormControl(''),

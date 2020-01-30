@@ -11,9 +11,13 @@
         <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100
           characters</span>
       </div>
-      <label for="inputAge" class="col-sm-2 col-form-label text-label">Age:</label>
+      <label for="inputDateBirth" class="col-sm-2 col-form-label text-label">Date of birth:</label>
       <div class="col-sm-4">
-        <input type="number" formControlName="age" class="form-control input-field" id="inputAge" placeholder="Age">
+        <div class=" date-picker-width">
+          <ejs-datepicker #ejDatePicker id="dateOfBirth" format='yyyy-MM-dd' formControlName="dateOfBirth"
+            name="dateOfBirth">
+          </ejs-datepicker>
+        </div>
       </div>
 
     </div>
