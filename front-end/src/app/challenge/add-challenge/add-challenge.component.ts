@@ -142,15 +142,16 @@ export class AddChallengeComponent implements OnInit {
   public onSubmit() {
     this.submitted = true;
     this.candidate = this.candidateService.getCandidateSelected();
-    //variables of current date, sending date and expected date
-    var currentDay= new Date();
+    //variables of sending date and expected date
     var sentDay= new Date();
     var expectedDay= new Date();
     sentDay=this.challengeForm.value.dayOfSent;
     expectedDay=this.challengeForm.value.dayOfExpected;
+
     console.log('Challenge candidate id nuevo',JSON.stringify(this.candidate));
     this.setStatusChallenge();
     this.challengeForm.controls['candidate'].setValue(this.candidate);
+    //start and end date validation
     if(this.datePipe.transform(sentDay, 'yyyy-MM-dd')>this.datePipe.transform(expectedDay, 'yyyy-MM-dd')){
       this.notificationService.showError(this.candidate.nameCandidate, 'Date sent is greater than expected date');
       return;
@@ -159,14 +160,6 @@ export class AddChallengeComponent implements OnInit {
       if (this.challengeForm.invalid) {
         return;
       } else {
-        if(this.datePipe.transform(currentDay, 'yyyy-MM-dd')>this.datePipe.transform(sentDay, 'yyyy-MM-dd')){
-          this.notificationService.showError(this.candidate.nameCandidate, 'Date sent is lower than current date');
-          return;
-        }
-        if(this.datePipe.transform(expectedDay, 'yyyy-MM-dd')<this.datePipe.transform(currentDay, 'yyyy-MM-dd')){
-          this.notificationService.showError(this.candidate.nameCandidate, 'Expected date is lower than current date');
-          return;
-        }
         this.candidateId= this.candidate.id;
         //this.challengeForm.controls['candidate'].setValue(this.candidate);
         this.startProcessChallenge();
