@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     private storageService: StorageService,
     private authenticationService: AuthenticationService,
     private userService: UserService) { }
-
+ 
   ngOnInit() {
   
 
