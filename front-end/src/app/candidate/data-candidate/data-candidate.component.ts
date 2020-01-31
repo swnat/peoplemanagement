@@ -47,10 +47,10 @@ export class DataCandidateComponent implements OnInit {
       phoneNumber: candidate.phoneNumber,
       university: candidate.university,
       age: candidate.age,
-      resumeDrive: candidate.resumeDrive,
-      resumeDriveElumen: candidate.resumeDriveElumen,
-      statusCandidateByElumen: candidate.statusCandidateByElumen,
-      commentByElumen: candidate.commentByElumen,
+     resumeUrl: candidate.resumeUrl,
+      filesUrl: candidate.filesUrl,
+      decision: candidate.decision,
+      comments: candidate.comments,
       interviewStatus: candidate.interviewStatus,
       processChallengeStatus: candidate.process_challenge_status,
       id: candidate.id
@@ -68,10 +68,10 @@ export class DataCandidateComponent implements OnInit {
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]),//only letters
       age: new FormControl(''),
-      resumeDrive: new FormControl('', ),
-      resumeDriveElumen: new FormControl(''),
-      statusCandidateByElumen: new FormControl(''),
-      commentByElumen: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
+      resumeUrl: new FormControl('', ),
+      filesUrl: new FormControl(''),
+      decision: new FormControl(''),
+      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
       interviewStatus: new FormControl('PENDING'),
       process_challenge_status: new FormControl('PENDING')
     });
@@ -106,7 +106,7 @@ export class DataCandidateComponent implements OnInit {
         this.candidateService.addCandidate(this.dataCandidateForm.value).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
-          
+
           this.candidateId = this.candidate.id;
         }, error => {
           console.log('Error to save the candidate', error);
