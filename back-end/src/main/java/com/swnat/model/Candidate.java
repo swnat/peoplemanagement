@@ -40,9 +40,6 @@ public class Candidate implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "age")
-    private Integer age;
-
     @Column(name = "university")
     private String university;
 
@@ -151,14 +148,6 @@ public class Candidate implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getUniversity() {
