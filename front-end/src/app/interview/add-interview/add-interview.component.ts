@@ -62,6 +62,7 @@ export class AddInterviewComponent implements OnInit {
     this.getCandidate();
     this.setStatusCandidate();
     this.validateDayOfInterview();
+    window.scrollTo(0, 0); // scroll to top
   }
 
   validateDayOfInterview() {
