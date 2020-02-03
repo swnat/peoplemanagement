@@ -23,7 +23,7 @@ describe('ListCandidateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListCandidateComponent);
     component = fixture.componentInstance;
-    localStorage.setItem('statusCandidate', JSON.stringify('{"id":4,"name":"Interview Team eLumen"}'));
+    localStorage.setItem('statusCandidate', JSON.stringify('{"id":4,"name":"Interview Team"}'));
     fixture.detectChanges();
   });
 
