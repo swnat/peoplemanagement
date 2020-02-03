@@ -1,169 +1,71 @@
-
-
 .container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 5%;
-  width: 100%;
+  margin-top: calc(56px + 1rem);
   font-family: 'Montserrat', sans-serif;
 }
-#container-popup{
-  visibility: hidden;
-}
-#dialog-container {
-  display: block;
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  width: 150%;
-  /* semi-transparent black  */
-}  
 
-  /*Button icon*/
-.btn-icon{
-  width: 20px;
-  height: 20px;
-    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
-}  
-  /* Button cancel */
-  .btn-cancel{
-    float: right;
-    color: white;
-    background-color: #533848;
-    width: 100px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 15px;
-    text-align: center;
-    
-    }
-    
-    .btn-cancel:hover{
-    color: #533848;
-    border-color: #533848;
-    border-width: 1px;
-    border-style: solid;
-    background-color: white;
-    }
-/* Button */
-.btn-pm{
-  float: right;
+
+.form-title {
+  background: #882960;
+}
+
+.form-title span {
+  color: white;
+  text-transform: uppercase;
+}
+
+.form-subtitle {
+  background: #c0bebc;
+}
+
+.form-subtitle span {
+  color: black;
+}
+
+.form-title, .form-subtitle {
+  padding: .5rem 1rem .5rem 1rem;
+}
+
+
+.form-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+.btn {
+  text-transform: uppercase;
+}
+
+.ok-btn {
   color: white;
   background-color: #882960;
-  width: 100px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 15px;
-  text-align: center;
-  
-  }
-  
-  .btn-pm:hover{
+}
+
+.not-ok-btn {
+  color: white;
+  background-color: #533848;
+}
+
+.ok-btn:hover {
   color: #882960;
-  border-color: #882960;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid #882960;
   background-color: white;
-  }
+}
 
-/*For the title of forms*/
-.form-title{
+.not-ok-btn:hover {
+  color: #533848;
+  border: 1px solid #533848;
+  background-color: white;
+}
+
+#add-btn {
   width: 100%;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  height: 40px;
-  background: #882960;
-  border-radius: 0px 0px 0px 0;
-  color: #ffffff;
-  padding-left: 0px;
-  padding-top: 5px;
-  text-transform: uppercase;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-    
-}
-/*For the second title of forms*/
-.form-subtitle{
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  height: 40px;
-  font-weight: bold;
-  background: #c0bebc;
-  border-radius: 0px 0px 0px 0;
-  text-align: left;
-  color: #161616;
 }
 
-  /*comment*/
-.comment-width {
-  width: 94%;
+#save-btn, #cancel-btn {
+  width: 6rem;
 }
 
-/*day picker*/
-.date-picker-width {
-  width: 20%;
+td {
+  vertical-align: middle;
 }
-
-.margin-left {
-  margin-left: 20px;
-}
-
-
-/*Day interview style*/
-.day-int-alert {
-  color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    width: 100%;
-}
-
-  /*CALENDAR CSS*/
-  .app-top {
-      margin: 0 0 3em;
-  }
-    
-  .app-calendar {
-      margin: 0 auto;
-      max-width: 900px;
-  }
-  #control_wrapper {
-      max-width: 800px;
-      margin: 3px;
-      padding-top: 5px;
-  }
-  #header {
-      text-align:center;
-  }
-  .shadow-textarea textarea.form-control::placeholder {
-      font-weight: 300;
-  }
-  .shadow-textarea textarea.form-control {
-      padding-left: 0.8rem;
-  }
-  .page-wrapper {
-      padding-bottom: 100px;
-      height: calc(500vh - 200px); 
-      position: relative;
-      overflow: auto;
-  }
-  .container-fluid {
-      padding: 25px;
-  }
-  .card {
-      margin-bottom: 30px;   
-  }
-
-  .text{
-    font-weight: bold;
-  }
-  
-  .invalid-feedback-custom {
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
-  }
