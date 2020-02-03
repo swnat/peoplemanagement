@@ -43,23 +43,23 @@
           placeholder="University">
       </div>
 
-      <label for="resumeDriveElumen" class="col-sm-2 col-form-label text-label">Link Resume (eLumen):</label>
+      <label for="filesUrl" class="col-sm-2 col-form-label text-label">Additional Files:</label>
       <div class="col-sm-4">
-        <input type="text" formControlName="resumeDriveElumen" class="form-control input-field" id="resumeDriveElumen"
-          placeholder="Link Resume for eLumen">
+        <input type="text" formControlName="filesUrl" class="form-control input-field" id="filesUrl"
+          placeholder="https://">
       </div>
 
     </div>
 
     <div class="from-group row">
-      <label for="inputLinkResume" class="col-sm-2 col-form-label text-label">Link Resume:</label>
+      <label for="inputLinkResume" class="col-sm-2 col-form-label text-label">Resume:</label>
       <div class="col-sm-4">
         <input type="text" formControlName="resumeDrive" class="form-control input-field" id="inputLinkResume"
-          placeholder="Link Resume">
+          placeholder="https://">
       </div>
-      <label for="statusCandidateByElumen" class="col-sm-2 col-form-label text-label">Status by eLumen:</label>
+      <label for="decision" class="col-sm-2 col-form-label text-label">Decision:</label>
       <div class="col-sm-4">
-        <select class="custom-select" formControlName="statusCandidateByElumen" id="statusCandidateByElumen">
+        <select class="custom-select" formControlName="decision" id="decision">
           <option value="Approved">Approved</option>
           <option value="Rejected">Rejected</option>
         </select>
@@ -73,9 +73,9 @@
         <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Mail">
       </div>
 
-      <label for="commentByElumen" class="col-sm-2 col-form-label text-label">Comment by eLumen:</label>
+      <label for="comments" class="col-sm-2 col-form-label text-label">Comments:</label>
       <div class="col-sm-4">
-        <textarea id="commentByElumen" class="form-control" formControlName="commentByElumen"></textarea>
+        <textarea id="comments" class="form-control" formControlName="comments"></textarea>
       </div>
 
     </div>

@@ -17,6 +17,7 @@ import { Approval } from 'src/app/models/approval';
 import { User } from 'src/app/models/user';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-challenge',
@@ -55,7 +56,8 @@ export class AddChallengeComponent implements OnInit {
     private userService: UserService,
     private candidateService: CandidateService,
     private challengeWFService: ChallengeWorkflowService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -140,9 +142,20 @@ export class AddChallengeComponent implements OnInit {
   public onSubmit() {
     this.submitted = true;
     this.candidate = this.candidateService.getCandidateSelected();
+    //variables of sending date and expected date
+    var sentDay= new Date();
+    var expectedDay= new Date();
+    sentDay=this.challengeForm.value.dayOfSent;
+    expectedDay=this.challengeForm.value.dayOfExpected;
+
     console.log('Challenge candidate id nuevo',JSON.stringify(this.candidate));
     this.setStatusChallenge();
     this.challengeForm.controls['candidate'].setValue(this.candidate);
+    //start and end date validation
+    if(this.datePipe.transform(sentDay, 'yyyy-MM-dd')>this.datePipe.transform(expectedDay, 'yyyy-MM-dd')){
+      this.notificationService.showError(this.candidate.nameCandidate, 'Date sent is greater than expected date');
+      return;
+    }
     if (this.isNew) {
       if (this.challengeForm.invalid) {
         return;
