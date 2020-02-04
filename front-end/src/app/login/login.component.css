@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 .body_login{
-    background-image: url("src/assets/images/background_login.jpg");
+    background-image: url(https://images.pexels.com/photos/2867015/pexels-photo-2867015.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     /*margin-top: -5%;  
     comment on this style so that the background takes the whole screen*/
     background-size: cover;
@@ -107,29 +107,29 @@ margin-left: 4px;
 /*new styles for login*/
 
 .login-container{
-    width: 600px;
+    width: 450px;
     height: auto;
     border-radius: 2%;
-    background-color: rgba(63, 91, 157, 0.6);
+    box-shadow: 0px 8px 16px Opx rgba(0, 0, 0, 0.9);
+    background: linear-gradient(top, #3c3c3c 0%, #222222 100%);
+    background: -webkit-linear-gradient(top, #3c3c3c 0%, #222222 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 section{
+    margin-bottom: auto;
     width: 100%;
-    background-color: #7b1a52;
-    height: 20%;
+    background-color: hsla(0, 0%, 67%, 0.74);
+    height: 24%;
     border-radius: 2% 2% 0 0;
-    /*display: flex;
-    flex-direction: column;
-    align-self: center;*/
 }
 
- section #img-icon{
-    margin-top: 5px; 
-    width: 110px;
-    margin-left: calc(50% - 55px);
+section #img-icon{
+    margin: 1rem 25% 1rem;
+    width: 50%;
+    height: 60px;
 }
 
 section h2 {
@@ -149,14 +149,13 @@ section h2 {
 }
 
 .input-div.one{
-    margin-top: 6px;
+    margin-top: 8px;
     margin-left: 5px;
     margin-bottom: 4px;
 }
 
 .input-div.two{
-    margin-bottom: 4px;
-    margin-left: 4px;
+    margin: 8px 0px 4px 5px;
 }
 
 .i{
@@ -215,13 +214,13 @@ input[type="text"], input[type="password"]{
     display: block;
     margin-top: 25px;
     border-radius: 25px;
-    background-color: #7b1a52;
+    background-color: hsla(0, 0%, 67%, 0.74);
     color: #fff;
     box-sizing: border-box;
     width: calc(100% - 60px);
     height: 5%;
     margin-left: 30px;
-    border: 2px solid #7b1a52;
+    border: 2px solid hsla(0, 0%, 67%, 0.74);
     outline: none;
 }
 
