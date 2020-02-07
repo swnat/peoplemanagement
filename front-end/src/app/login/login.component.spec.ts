@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { AuthenticationService } from '../service/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 
 class MockError{
   public error: {code: number, message: string};
@@ -29,7 +29,8 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule, 
-        BrowserAnimationsModule, 
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(), 
         ReactiveFormsModule, 
         HttpClientModule, 
         RouterTestingModule.withRoutes([{path:'login',component:LoginComponent},
@@ -69,7 +70,7 @@ describe('LoginComponent', () => {
       setTimeout(()=>{fixture.detectChanges();
       TestBed.get(Router).url;
       expect(component.submitted).toBeTruthy();
-      expect(TestBed.get(Router).url).toBe('/');
+      expect(TestBed.get(Router).url).toBe('/login');
     })
     })
   }));

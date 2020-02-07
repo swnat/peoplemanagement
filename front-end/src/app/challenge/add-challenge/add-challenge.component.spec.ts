@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 describe('AddChallengeComponent', () => {
   let component: AddChallengeComponent;
@@ -17,7 +18,7 @@ describe('AddChallengeComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ AddChallengeComponent, HeaderComponent, DatePickerComponent ],
-      providers: [ToastrService]
+      providers: [ToastrService, DatePipe]
     })
     .compileComponents();
   }));
@@ -26,6 +27,8 @@ describe('AddChallengeComponent', () => {
     fixture = TestBed.createComponent(AddChallengeComponent);
     component = fixture.componentInstance;
     localStorage.setItem('statusChallenge', JSON.stringify('{"id":2,"name":"SENT"}'));
+    localStorage.setItem('currentUser', JSON.stringify('{"id":4, "rol": "user1"}'));
+    localStorage.setItem('user', '2');
     fixture.detectChanges();
   });
 

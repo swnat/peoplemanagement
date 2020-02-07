@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataCandidateComponent } from './data-candidate.component';
+import {DataCandidateComponent } from 'src/app/candidate/data-candidate/data-candidate.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';

@@ -27,7 +27,7 @@ describe('AddInterviewComponent', () => {
     fixture = TestBed.createComponent(AddInterviewComponent);
     component = fixture.componentInstance;
     localStorage.setItem('statusCandidate', JSON.stringify('{"id":4,"name":"Interview Team"}'));
-
+    localStorage.setItem('currentUser', JSON.stringify('{"id":4, "rol": "user1"}'));
     fixture.detectChanges();
   });
 
@@ -41,7 +41,7 @@ describe('AddInterviewComponent', () => {
     expect(component.interviewForm.valid).toBeFalsy();
     //invalid form cannot click in the button save
     spyOn(component, 'onSubmit');
-    let bt = fixture.debugElement.query(By.css('.btn-pm')).nativeElement;
+    let bt = fixture.debugElement.query(By.css('#add-btn')).nativeElement;
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));
