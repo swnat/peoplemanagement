@@ -18,12 +18,12 @@ let page: Page;
 
 ////// Tests //////
 const firstUser: User = {
-    name: "",
-    lastname: "",
-    email: "",
+    name: 'Elena',
+    lastname: 'Coronel',
+    email: 'elena@softwarenatura.com',
     active: true,
-    rol: "",
-    phoneNumber: "",
+    rol: 'user1',
+    phoneNumber: '',
     idUser: 4,
 };
 
@@ -51,7 +51,7 @@ describe('ViewUserComponent', () => {
 
         beforeEach(async(() => {
             expectedUser = firstUser;
-            rol_name = '';
+            rol_name = 'Manager';
             activatedRoute.setParamMap({ id: expectedUser.idUser });
             localStorage.setItem('currentUser', JSON.stringify({ "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0Iiwic2NvcGVzIjoidXNlcjEiLCJpYXQiOjE1NzY1ODUzMjEsImV4cCI6MTU4MTYzMzMyMX0.xBqWVdg7W8rqT7dHihiUqstQq6p3bJzhPJS7N1hE5GQR3rh6UTYxbLv1F9Zbex1_Q6mEuJR579G8uoNkHEL7WQ", "tokenType": "Bearer", "id": "4", "rol": "user1" }));
             createComponent();
