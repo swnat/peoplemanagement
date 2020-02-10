@@ -51,7 +51,7 @@ describe('ListInterviewComponent', () => {
       setTimeout(()=>{fixture.detectChanges();
       TestBed.get(Router).url;
       expect(component.submitted).toBeTruthy();
-      expect(TestBed.get(Router).url).toBe('/interview/add');
+      expect(TestBed.get(Router).url).toBe('/interview/add-interview/');
     })
     })
     
