@@ -26,6 +26,8 @@
     "@syncfusion/ej2-angular-dropdowns": "^17.3.21",
     "@syncfusion/ej2-angular-popups": "^17.3.16",
     "core-js": "^2.5.4",
+    "husky": "^4.2.1",
+    "jwt-decode": "^2.2.0",
     "ng-bootstrap-modal": "^1.1.19",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.3.3",
@@ -53,5 +55,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "ng lint pm-ui"
+    }
   }
 }
