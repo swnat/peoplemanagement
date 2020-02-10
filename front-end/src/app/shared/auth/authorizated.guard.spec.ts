@@ -1,11 +1,14 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { AuthorizatedGuard } from './authorizated.guard';
+import { RouterTestingModule } from '@angular/router/testing';
+
 
 describe('AuthorizatedGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthorizatedGuard]
+      providers: [AuthorizatedGuard],
+      imports: [RouterTestingModule]
     });
   });
 

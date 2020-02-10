@@ -4,6 +4,8 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/models/user';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 
 @Component({
