@@ -1,71 +1,67 @@
-.container {
-  margin-top: calc(56px + 1rem);
-  font-family: 'Montserrat', sans-serif;
-}
+  .container {
+    margin-top: calc(56px + 1rem);
+    font-family: 'Montserrat', sans-serif;
+  }
 
+  .form-title {
+    background: #882960;
+  }
 
-.form-title {
-  background: #882960;
-}
+  .form-title span {
+    color: white;
+    text-transform: uppercase;
+  }
 
-.form-title span {
-  color: white;
-  text-transform: uppercase;
-}
+  .form-subtitle {
+    background: #c0bebc;
+  }
 
-.form-subtitle {
-  background: #c0bebc;
-}
+  .form-subtitle span {
+    color: black;
+  }
 
-.form-subtitle span {
-  color: black;
-}
+  .form-title, .form-subtitle {
+    padding: .5rem 1rem .5rem 1rem;
+  }
 
-.form-title, .form-subtitle {
-  padding: .5rem 1rem .5rem 1rem;
-}
+  .form-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .btn {
+    text-transform: uppercase;
+  }
 
+  .ok-btn {
+    color: white;
+    background-color: #882960;
+  }
 
-.form-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+  .not-ok-btn {
+    color: white;
+    background-color: #533848;
+  }
 
+  .ok-btn:hover {
+    color: #882960;
+    border: 1px solid #882960;
+    background-color: white;
+  }
 
-.btn {
-  text-transform: uppercase;
-}
+  .not-ok-btn:hover {
+    color: #533848;
+    border: 1px solid #533848;
+    background-color: white;
+  }
 
-.ok-btn {
-  color: white;
-  background-color: #882960;
-}
+  #add-btn {
+    width: 100%;
+  }
 
-.not-ok-btn {
-  color: white;
-  background-color: #533848;
-}
+  #save-btn, #cancel-btn {
+    width: 6rem;
+  }
 
-.ok-btn:hover {
-  color: #882960;
-  border: 1px solid #882960;
-  background-color: white;
-}
-
-.not-ok-btn:hover {
-  color: #533848;
-  border: 1px solid #533848;
-  background-color: white;
-}
-
-#add-btn {
-  width: 100%;
-}
-
-#save-btn, #cancel-btn {
-  width: 6rem;
-}
-
-td {
-  vertical-align: middle;
-}
+  td {
+    vertical-align: middle;
+  }

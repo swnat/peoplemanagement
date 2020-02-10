@@ -12,7 +12,7 @@ export class NoLoginGuard implements CanActivate {
     private storageService: StorageService) { }
 
     /**
-     * Autoriza el acceso a rutas específicas.
+     * It authorizes access to specific routes.
      * @param next {ActivatedRouteSnapshot} 
      * @param state {RouterStateSnapshot} 
      */
