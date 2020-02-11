@@ -1,7 +1,5 @@
 <div class="container">
-  <!-- <app-header></app-header> # sibling components don't have this line -->
   <div class="card card-signin">
-
     <div class="form-title">
       <span class="font-weight-bold">Candidate: {{candidate?.name +' '+candidate?.lastName}}</span>
     </div>
@@ -11,15 +9,12 @@
     </div>
 
     <div class="form-container mt-3">
-
       <form [formGroup]="interviewForm" id="interviewForm" (ngSubmit)="onSubmit()">
-
         <!-- DATE -->
         <div class="row form-group">
           <div class="col-12 col-md-3">
             <label class="font-weight-bold">Interview Date</label>
           </div>
-
           <div class="col-12 col-md-4">
             <ejs-datepicker #ejDatePicker id="dayOfInterview" format='yyyy-MM-dd' formControlName="dayOfInterview"
               name="dayOfInterview" [placeholder]="'Select a day'" (blur)="onFocusOut()" (change)="onChange($event)">
@@ -42,7 +37,6 @@
         <!--PARTICIPANTS-->
         <div class="form-group">
           <label for="participants" class="font-weight-bold">Participants</label>
-
           <div class="row">
             <div class="col-12 col-md-9 mb-3">
               <input type="text" formControlName="addParticipant" placeholder="Add Participants" class="form-control"
@@ -71,9 +65,7 @@
           <button id="save-btn" type="submit" class="btn ok-btn font-weight-bold">Save</button>
           <button id="cancel-btn" (click)="cancelInterview()" type="button" class="btn not-ok-btn font-weight-bold ml-3">Cancel</button>
         </div>
-
       </form>
-
     </div>
   </div>
 </div>

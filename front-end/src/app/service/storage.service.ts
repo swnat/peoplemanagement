@@ -96,7 +96,7 @@ export class StorageService {
   /**
    *  isAuthenticated method.
    * 
-   * Verifica si la sesión está autorizada.
+   *  Check if the session is authorized
    * @return {boolean}
    */
   isAuthenticated(): boolean {

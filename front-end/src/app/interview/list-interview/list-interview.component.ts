@@ -43,7 +43,6 @@ export class ListInterviewComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    //const id = +this.route.snapshot.paramMap.get('id');
     console.log('ListInterview', this.candidateId);
     if(this.candidateId !== 0) {
      

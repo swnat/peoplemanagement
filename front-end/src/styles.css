@@ -14,18 +14,12 @@
 @import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
 .card-signin {
     border: 0;
-    /* border-radius: 1rem;*/
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 body {
     background: #e4e5e6;
-    /*
-background: -moz-linear-gradient(left, #f3c5bd 0%, #e86c57 0%, #7b1a52 0%, #db1943 54%, #ea5a18 100%); 
-background: -webkit-linear-gradient(left, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
-background: linear-gradient(to right, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 54%,#ea5a18 100%); 
-*/
     transition-delay: 2s;
     height: 100vh;
     margin: 0;
@@ -47,8 +41,6 @@ background: linear-gradient(to right, #f3c5bd 0%,#e86c57 0%,#7b1a52 0%,#db1943 5
 }
 
 .aligner {
-    /*display: flex;
-align-items: center;*/
     justify-content: center;
     height: 100%;
 }
