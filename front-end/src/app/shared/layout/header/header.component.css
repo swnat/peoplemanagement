@@ -1,59 +1,59 @@
-.user{
-    text-align: center;
-}
-/*.btn-logout{
-    width: 35px;
-    height: 35px;
-    padding-top: 5px;
-    color:white;
-       
-}*/
-/*i.fas.fa-sign-out-alt.fa-2x.logo-sign-out{
-    padding-left: 68px;
-}*/
-.side-icon{
-    display: flex;
-}
+    .user{
+        text-align: center;
+    }
 
-a.nav-link.user-profile{
-    width: 200px;
-}
-a{
-    display: flex;
-    text-decoration: none;
-}
-a.nav-link.user-name{
-    right: 12px;
+    .side-icon{
+        display: flex;
+    }
 
-}
-.navbar-expand-md .navbar-nav .nav-link {
-    padding-left: .3rem;
-}
-li.nav-item.active.user-profile{
-    width: 80px;
-    display: inline-flex;
-    
-}
-li.nav-item.active.logo-sign-out{
-    width: 80px;
-    display: inline-flex;
-}
+    a.nav-link.user-profile{
+        width: 200px;
+    }
 
-a.nav-link.title.account{
-    width: 70px;
+    a{
+        display: flex;
+        text-decoration: none;
+    }
 
-}
+    a.nav-link.user-name{
+        right: 12px;
+        padding-right: 4px;
+    }
 
-a.nav-link.title{
-    color:white;
-    width: 200px;
-    
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding-left: .3rem;
+    }
 
-}
-a.title:hover, a.title:active {
-    text-decoration: none;
-}
+    li.nav-item.active{
+        padding-right: 7px;
+    }
 
-@import "../node_modules/@syncfusion/ej2/material.css";
+    li.nav-item.active.user-profile{
+        width: 80px;
+        display: inline-flex; 
+    }
+
+    li.nav-item.active.logo-sign-out{
+        width: 80px;
+        display: inline-flex;
+    }
+
+    a.nav-link.title.account{
+        width: 70px;
+    }
+
+    a.nav-link.title{
+        color:white;
+    }
+
+    div#navbarsExampleDefault.navbar-collapse.collapse{
+        padding-right: 10px;
+    }
+
+    a.title:hover, a.title:active {
+        text-decoration: none;
+    }
+
+    @import "../node_modules/@syncfusion/ej2/material.css";
 
   

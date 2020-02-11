@@ -1,4 +1,4 @@
-.candidate-form {
+  .candidate-form {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -11,25 +11,24 @@
     padding-right: 10px;;
   }
 /*For the title of forms*/
-.form-title{
-  width: 100%;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  height: 40px;
-  background: #882960;
-  border-radius: 0px 0px 0px 0;
-  color: #ffffff;
-  padding-left: 35px;
-  padding-top: 5px;
-  text-transform: uppercase;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-    
-}
+  .form-title{
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    height: 40px;
+    background: #882960;
+    border-radius: 0px 0px 0px 0;
+    color: #ffffff;
+    padding-left: 35px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-.candidate-btn-pm{
+  .candidate-btn-pm{
     float: right;
     color: white;
     background-color: #882960;
@@ -37,13 +36,12 @@
     font-size: 15px;
     text-align: center;
     font-weight: bold;
+  }
     
-    }
-    
-    .candidate-btn-pm:hover{
+  .candidate-btn-pm:hover{
     color: #882960;
     border-color: #882960;
     border-width: 1px;
     border-style: solid;
     background-color: white;
-    }
+  }

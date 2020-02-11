@@ -67,6 +67,4 @@ describe('DataCandidateComponent', () => {
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));
 
-
-  
 });

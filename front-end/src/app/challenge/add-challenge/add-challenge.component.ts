@@ -117,7 +117,6 @@ export class AddChallengeComponent implements OnInit {
 
   challengeSaved(challengeSaved: Challenge) {
     console.log('Challenge saved '+ challengeSaved);
-    //this.challengeForm.reset();
     this.showInterview.emit(true);
     this.notificationService.showSuccess(this.candidate.nameCandidate, 'Challenge created succesfully.');
   }
@@ -161,7 +160,6 @@ export class AddChallengeComponent implements OnInit {
         return;
       } else {
         this.candidateId= this.candidate.id;
-        //this.challengeForm.controls['candidate'].setValue(this.candidate);
         this.startProcessChallenge();
       }
     } else {
@@ -169,7 +167,6 @@ export class AddChallengeComponent implements OnInit {
       if(this.challengeForm.invalid){
         return;
       }else{
-        //this.challengeForm.controls['candidate'].setValue(this.candidate);
         this.startProcessEditChallenge();
       }
     }
@@ -243,7 +240,6 @@ export class AddChallengeComponent implements OnInit {
         data.linkChallenge, data.taskId, data.reviewer, this.user.name, this.candidateId, Action.ADD);
       console.log("Crear Challenge:", this.challengeForm.value);
       this.challengeWFService.completeTaskWithForm(challengeForm).subscribe();
-
       this.challengeSaved(data);
     }, error => {
       console.log('Error start process Challenge', error);
@@ -280,7 +276,4 @@ export class AddChallengeComponent implements OnInit {
       this.formObject.validate("dayOfSent");
     this.formObject.validate("dayOfExpected")
   }
-
-
-
 }

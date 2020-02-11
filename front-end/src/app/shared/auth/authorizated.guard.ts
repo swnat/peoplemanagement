@@ -31,7 +31,7 @@ canActivate() {
  * It allows access to the Scrum Master and the Administrator to certain daughter routes.
  */
 canActivateChild(){
-  // logeado y es administrador o scrum master entonces devuelve true 
+  // Logged in and is an administrator or scrum master then returns true 
   console.log("Esta autenticado: ", this.storageService.isAuthenticated());
   console.log("Su rol es: ", this.storageService.getCurrentRol())
   if (this.storageService.isAuthenticated() && (this.storageService.getCurrentRol() == 'user1')) {

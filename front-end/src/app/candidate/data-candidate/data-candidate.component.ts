@@ -79,8 +79,6 @@ export class DataCandidateComponent implements OnInit {
 
   candidateSaved(candidateSaved: Candidate) {
     console.log('Candidate created ', candidateSaved);
-    //this.interviewForm.reset(); ask to the team
-    //this.backToList(this.candidate.id); where should to go ??
     this.showChallenge.emit(true);
     //save the candidate Id
     this.candidateService.candidateSelected = candidateSaved;
@@ -88,9 +86,7 @@ export class DataCandidateComponent implements OnInit {
   }
 
   candidateEdit(candidateEdited: Candidate) {
-    console.log('Candidate edited ', candidateEdited);
-    //.interviewForm.reset();
-    //this.backToList(this.candidate.id);
+    console.log('Candidate edited ', candidateEdited);;
     this.showChallenge.emit(true);
     this.candidateService.candidateSelected = candidateEdited;
     this.notificationService.showSuccess(candidateEdited.name, 'Interview edited succesfully.');
@@ -118,8 +114,7 @@ export class DataCandidateComponent implements OnInit {
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
           this.candidate = this.candidateService.getCandidateSelected();
-          //localStorage.setItem('candidateId', this.candidate.id.toString());
-          //this.router.navigate(['candidate/data/']);
+          
         }, error => {
           console.log('Error to edit the candidate', error);
           this.notificationService.showError('Occur an error when edit data of the candidate', 'Error edit Candidate');

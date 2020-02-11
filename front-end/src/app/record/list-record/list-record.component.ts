@@ -20,7 +20,6 @@ export class ListRecordComponent implements OnInit {
   page: number = 1;
   previousPage: any;
   showPagination: boolean;
-  //public fields: Object = { text: 'nameCandidate', value: 'nameCandidate' };
 
   constructor(private recordService: RecordService, private router: Router, private notificationService: NotificationService) {}
 
@@ -64,9 +63,6 @@ export class ListRecordComponent implements OnInit {
 
   collapse(index: number){
     //debugger;
-    /*for(let i=0; i < this.list_records.length;i++){
-        this.list_records[index].collapse = false;      
-    }*/
     this.list_records[index].collapse = !this.list_records[index].collapse;
   }
 }

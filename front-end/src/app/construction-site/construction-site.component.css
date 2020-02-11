@@ -1,13 +1,10 @@
-.imagen{
+  .imagen{
     width: 70%;
     height: 90%;
-
-
-  
   } 
 
-.container_construction{
+  .container_construction{
     height: 100%;
     margin-top: 5%;
     text-align: center;
-}
+  }

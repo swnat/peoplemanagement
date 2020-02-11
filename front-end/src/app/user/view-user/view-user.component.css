@@ -1,4 +1,4 @@
-.user-form {
+  .user-form {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -8,28 +8,27 @@
     border-radius: .25rem;
     padding-left: 55px;
     padding-top: 15px;
-    padding-right: 10px;;
+    padding-right: 10px;
   }
-/*For the title of forms*/
-.form-title{
-  width: 100%;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  height: 40px;
-  background: #882960;
-  border-radius: 0px 0px 0px 0;
-  color: #ffffff;
-  padding-left: 35px;
-  padding-top: 5px;
-  text-transform: uppercase;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-    
-}
+  /*For the title of forms*/
+  .form-title{
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    height: 40px;
+    background: #882960;
+    border-radius: 0px 0px 0px 0;
+    color: #ffffff;
+    padding-left: 35px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;   
+  }
 
-.btn-pm{
+  .btn-pm{
     float: right;
     color: white;
     background-color: #882960;
@@ -37,21 +36,20 @@
     font-size: 15px;
     text-align: center;
     font-weight: bold;
+  }
     
-    }
-    
-    .btn-pm:hover{
+  .btn-pm:hover{
     color: #882960;
     border-color: #882960;
     border-width: 1px;
     border-style: solid;
     background-color: white;
-    }
+  }
 
-    h6 {
+  h6 {
       padding-top: calc(.375rem + 1px);
       padding-bottom: calc(.375rem + 1px);
       margin-bottom: 0;
       font-size: inherit;
       line-height: 1.5;
-    }
+  }

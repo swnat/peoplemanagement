@@ -1,4 +1,3 @@
-
   #container-popup{
     visibility: hidden;
   }
@@ -8,8 +7,6 @@
     margin: 0;
     overflow: hidden;
     width: 150%;
-    /* semi-transparent black  */
-    
   }
   #loader {
     color: #008cff;
@@ -54,10 +51,12 @@
     margin-top: 0px;
     background-color: #7b1a52; 
   }
+
   .btn-signup:hover{
-    background-color:rgb(153, 56, 129); /* Green */
+    background-color:rgb(153, 56, 129);
     color: white;
   }
+
   .btn-form {
     float: right;
     font-weight: 700;
@@ -73,28 +72,34 @@
     margin-top: 0px;
     background-color: #7b1a52; 
   }
+
   .btn-form:hover{
-    background-color: rgb(160, 61, 135); /* Green */
+    background-color: rgb(160, 61, 135);
     color: white;
   }
+
   .position{
     float: right;
     width: 95%;
     margin: 0 auto;
   }
+
   .position-search{
     width: 95%;
     padding-left: 25px;
   }
+
   .position-info{
     padding-left: 10px;
   }
+
   .text-title{
     text-align:left;
     width: 95%;
     padding: 1px;
     
   }
+
   .text-subtitle{
     text-align:left;
     width: 95%;
@@ -118,9 +123,9 @@
     text-transform: uppercase;
     font-size: 15px;
     text-align: center;
-    font-weight: bold;
-      
+    font-weight: bold;    
   }
+
   .input:disabled {
     color: #aaa;
   }
@@ -141,49 +146,53 @@
   .btn-icon{
     width: 15px;
     height: 20px;
-    align-content: center;
-    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
+    align-content: center;    
   }
+
   .btn-add{
     width: 35px;
     padding-top: 5px;
     height: 35px;
-    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
   }
+
   .justify-content-center {
     display: flex !important;
     justify-content: center !important;
   }
-  .thead-dark th{color:#fff;background-color:#7b1a52;border-color:#c7c8c9}
+
+  .thead-dark th{
+    color:#fff;
+    background-color:#7b1a52;
+    border-color:#c7c8c9
+  }
 
   .row-search {
     display: flex;
     flex-wrap: wrap;
-}
-.btn-pm{
-  float: right;
-  color: white;
-  background-color: #882960;
-  width: 100px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 15px;
-  text-align: center;
-  
+  }
+  .btn-pm{
+    float: right;
+    color: white;
+    background-color: #882960;
+    width: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;  
   }
   
   .btn-pm:hover{
-  color: #882960;
-  border-color: #882960;
-  border-width: 1px;
-  border-style: solid;
-  background-color: white;
+    color: #882960;
+    border-color: #882960;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
   }
 /*Change color of pagination component*/
-ngb-pagination ::ng-deep .page-item.active .page-link {
-  background-color: #7b1a52;
-  border-color: #7b1a52;
-}
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    background-color: #7b1a52;
+    border-color: #7b1a52;
+  }
 
   
   @import "../node_modules/@syncfusion/ej2/material.css";
