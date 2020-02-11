@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+
 describe('DataCandidateComponent', () => {
   let component: DataCandidateComponent;
   let fixture: ComponentFixture<DataCandidateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,BrowserAnimationsModule, ToastrModule.forRoot()],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule],
       declarations: [ DataCandidateComponent, HeaderComponent],
       providers: [ToastrService]
     })
