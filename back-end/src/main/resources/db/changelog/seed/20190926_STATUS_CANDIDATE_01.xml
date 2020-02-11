@@ -13,10 +13,6 @@
             <column name="name" value="Interview Team"/>
         </insert>
         <insert tableName="status_candidate" schemaName="management">
-            <column name="id" value="3"/>
-            <column name="name" value="Interview Team eLumen"/>
-        </insert>
-        <insert tableName="status_candidate" schemaName="management">
             <column name="id" value="4"/>
             <column name="name" value="Interview CEO"/>
         </insert>

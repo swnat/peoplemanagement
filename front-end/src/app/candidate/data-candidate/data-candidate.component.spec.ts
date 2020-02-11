@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DataCandidateComponent } from './data-candidate.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -42,6 +41,4 @@ describe('DataCandidateComponent', () => {
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));
-
-  
 });

@@ -18,11 +18,4 @@ export class AuthenticationService {
   login(loginObj: LoginObject): Observable<Session> {
     return this.http.post<Session>(environment.apiUrl+this.basePath + 'login', loginObj);
   }
-
-  /*logout(): Observable<Boolean> {
-    return this.http.post<Boolean>(this.basePath + 'logout', {});
-  }*/
-
-
-  
 }

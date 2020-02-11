@@ -28,11 +28,11 @@ public class Candidate implements Serializable {
 
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
-    @Column(name = "resume_drive")
-    private String resumeDrive;
+    @Column(name = "resume_url")
+    private String resumeUrl;
 
-    @Column(name = "resume_drive_elumen")
-    private String resumeDriveElumen;    
+    @Column(name = "files_url")
+    private String filesUrl;    
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -40,20 +40,17 @@ public class Candidate implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "age")
-    private Integer age;
-
     @Column(name = "university")
     private String university;
 
     @Column(name = "interview_status")
     private String interviewStatus;
 
-    @Column(name = "status_elumen")
-    private String statusByElumen;
+    @Column(name = "decision")
+    private String decision;
 
-    @Column(name = "comment_elumen")
-    private String commentByElumen;
+    @Column(name = "comments")
+    private String comments;
 
     @Column(name = "process_challenge_status")
     private String process_challenge_status;
@@ -121,20 +118,20 @@ public class Candidate implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getResumeDrive() {
-        return resumeDrive;
+    public String getResumeUrl() {
+        return resumeUrl;
     }
 
-    public void setResumeDrive(String resumeDrive) {
-        this.resumeDrive = resumeDrive;
+    public void setResumeUrl(String resumeUrl) {
+        this.resumeUrl= resumeUrl;
     }
 
-    public String getResumeDriveElumen() {
-        return resumeDriveElumen;
+    public String getFilesUrl() {
+        return filesUrl;
     }
 
-    public void setResumeDriveElumen(String resumeDriveElumen) {
-        this.resumeDriveElumen = resumeDriveElumen;
+    public void setFileUrl(String filesUrl) {
+        this.filesUrl = filesUrl;
     }
 
     public String getPhoneNumber() {
@@ -153,14 +150,6 @@ public class Candidate implements Serializable {
         this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public String getUniversity() {
         return university;
     }
@@ -177,20 +166,20 @@ public class Candidate implements Serializable {
         this.interviewStatus = interviewStatus;
     }
 
-    public String getStatusByElumen() {
-        return statusByElumen;
+    public String getDecision() {
+        return decision;
     }
 
-    public void setStatusByElumen(String statusByElumen) {
-        this.statusByElumen = statusByElumen;
+    public void setDecision(String decision) {
+        this.decision= decision;
     }
 
-    public String getCommentByElumen() {
-        return commentByElumen;
+    public String getComments() {
+        return comments;
     }
 
-    public void setCommentByElumen(String commentByElumen) {
-        this.commentByElumen = commentByElumen;
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     public String getProcess_challenge_status() {

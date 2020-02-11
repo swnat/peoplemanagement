@@ -67,7 +67,7 @@ export class EditInterviewComponent implements OnInit {
     this.getCandidate();
     this.getStatusCandidate();
 
-    //this.validateDayOfInterview()
+    window.scrollTo(0, 0); // scroll to top
   }
 
   validateDayOfInterview() {

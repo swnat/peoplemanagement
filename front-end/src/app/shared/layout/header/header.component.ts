@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     private storageService: StorageService,
     private authenticationService: AuthenticationService,
     private userService: UserService) { }
-
+ 
   ngOnInit() {
   
 
@@ -45,10 +45,5 @@ export class HeaderComponent implements OnInit {
   public logout(): void {
     this.storageService.logout(); 
   } 
-  
-  /*public logout(): void {
-  this.authenticationService.logout().subscribe(
-    response => { if (response) { this.storageService.logout(); } }
-  );*/
 }
 

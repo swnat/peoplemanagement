@@ -8,8 +8,8 @@ export class Candidate {
         public lastName: string,
         public idNumber:string,
         public dateOfBirth: Date,
-        public resumeDrive: string,
-        public resumeDriveElumen: string,
+        public resumeUrl: string,
+        public filesUrl: string,
         public phoneNumber: string,
         public email: string,
         public age:number,
@@ -17,8 +17,8 @@ export class Candidate {
         public interviewStatus: string,
         public process_challenge_status: string,
         public nameCandidate:string,
-        public statusCandidateByElumen:string,
-        public commentByElumen:string,
+        public decision:string,
+        public comments:string,
         public interviews: Array<Interview>,
         public challenge: Array<Challenge>
         ){}

@@ -15,11 +15,9 @@
             <column name="phone_number" value="0984 236 958"/>
             <column name="interview_status" value="PENDING"/>
             <column name="resume_drive" value="www.google.com"/>
-            <column name="age" value="1" />
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="mariaperez@gmail.com"/>
             <column name="id" value= "2"/>
@@ -32,7 +30,6 @@
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="arielgonzalez@gmail.com"/>
             <column name="id" value= "3"/>
@@ -45,7 +42,6 @@
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="sandramariño@gmail.com"/>
             <column name="id" value= "4"/>
@@ -58,7 +54,6 @@
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="eduardodelgado@gmail.com"/>
             <column name="id" value= "5"/>
@@ -72,7 +67,6 @@
 
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "6"/>
@@ -85,7 +79,6 @@
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "7"/>
@@ -98,7 +91,6 @@
         </insert>  
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "8"/>
@@ -111,7 +103,6 @@
         </insert>
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "9"/>
@@ -124,7 +115,6 @@
         </insert> 
 
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "10"/>
@@ -136,7 +126,6 @@
             <column name="resume_drive" value="www.google.com"/>
         </insert>
         <insert tableName="candidate" schemaName="management">
-            <column name="age" value="1" />
             <column name="date_of_birth" value="2019-10-24T13:43:14.479Z"/>
             <column name="email" value="martasanchez@gmail.com"/>
             <column name="id" value= "11"/>

@@ -46,11 +46,11 @@ export class DataCandidateComponent implements OnInit {
       lastName: candidate.lastName,
       phoneNumber: candidate.phoneNumber,
       university: candidate.university,
-      age: candidate.age,
-      resumeDrive: candidate.resumeDrive,
-      resumeDriveElumen: candidate.resumeDriveElumen,
-      statusCandidateByElumen: candidate.statusCandidateByElumen,
-      commentByElumen: candidate.commentByElumen,
+      dateOfBirth: candidate.dateOfBirth,
+      resumeUrl: candidate.resumeUrl,
+      filesUrl: candidate.filesUrl,
+      decision: candidate.decision,
+      comments: candidate.comments,
       interviewStatus: candidate.interviewStatus,
       processChallengeStatus: candidate.process_challenge_status,
       id: candidate.id
@@ -67,11 +67,11 @@ export class DataCandidateComponent implements OnInit {
       lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]),//only letters
-      age: new FormControl(''),
-      resumeDrive: new FormControl('', ),
-      resumeDriveElumen: new FormControl(''),
-      statusCandidateByElumen: new FormControl(''),
-      commentByElumen: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
+      dateOfBirth: new FormControl(''),      
+      resumeUrl: new FormControl('', ),
+      filesUrl: new FormControl(''),
+      decision: new FormControl(''),
+      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
       interviewStatus: new FormControl('PENDING'),
       process_challenge_status: new FormControl('PENDING')
     });
@@ -79,8 +79,6 @@ export class DataCandidateComponent implements OnInit {
 
   candidateSaved(candidateSaved: Candidate) {
     console.log('Candidate created ', candidateSaved);
-    //this.interviewForm.reset(); ask to the team
-    //this.backToList(this.candidate.id); where should to go ??
     this.showChallenge.emit(true);
     //save the candidate Id
     this.candidateService.candidateSelected = candidateSaved;
@@ -88,9 +86,7 @@ export class DataCandidateComponent implements OnInit {
   }
 
   candidateEdit(candidateEdited: Candidate) {
-    console.log('Candidate edited ', candidateEdited);
-    //.interviewForm.reset();
-    //this.backToList(this.candidate.id);
+    console.log('Candidate edited ', candidateEdited);;
     this.showChallenge.emit(true);
     this.candidateService.candidateSelected = candidateEdited;
     this.notificationService.showSuccess(candidateEdited.name, 'Interview edited succesfully.');
@@ -106,7 +102,7 @@ export class DataCandidateComponent implements OnInit {
         this.candidateService.addCandidate(this.dataCandidateForm.value).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
-          
+
           this.candidateId = this.candidate.id;
         }, error => {
           console.log('Error to save the candidate', error);
@@ -118,8 +114,7 @@ export class DataCandidateComponent implements OnInit {
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
           this.candidate = this.candidateService.getCandidateSelected();
-          //localStorage.setItem('candidateId', this.candidate.id.toString());
-          //this.router.navigate(['candidate/data/']);
+          
         }, error => {
           console.log('Error to edit the candidate', error);
           this.notificationService.showError('Occur an error when edit data of the candidate', 'Error edit Candidate');
