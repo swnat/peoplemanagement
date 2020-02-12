@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ListCandidateComponent } from './list-candidate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +16,8 @@ describe('ListCandidateComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule, ToastrModule.forRoot()],
       declarations: [ ListCandidateComponent, HeaderComponent ],
-      providers: [ToastrService]
+      providers: [ToastrService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

@@ -16,6 +16,12 @@ describe('EditInterviewComponent', () => {
   let fixture: ComponentFixture<EditInterviewComponent>;
   let id: number = 1;
 
+  beforeAll(() => {
+    localStorage.setItem('statusChallenge', JSON.stringify({ id: 2, name: "SENT" }));
+    localStorage.setItem('currentUser', JSON.stringify({ id: 4, rol: "user1" }));
+    localStorage.setItem('user', '2');
+  });
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, BrowserAnimationsModule, HttpClientModule, RouterTestingModule.withRoutes(
@@ -49,22 +55,24 @@ describe('EditInterviewComponent', () => {
     expect(component.interviewEditForm.valid).toBeFalsy();
   });
 
-  //should invalidate put numbers in the field comment
-  it('should invalidate put numbers in the field comment', async(() => {
-    let comment = fixture.debugElement.query(By.css('#comment')).nativeElement;
-    comment.value = '12345';
-    fixture.componentInstance.f.comment.setValue('112334');
-    fixture.componentInstance.submitted = true;
+  // * Obs.: the field comment should accept number characters
 
-    comment.dispatchEvent(new Event('textarea'));
-    fixture.debugElement.query(By.css('#add-interview')).nativeElement.click();
+  // should warning when put numbers in the field participant
+  it('should warning when put numbers in the field participant', async(() => {
+    let participant = fixture.debugElement.query(By.css('#participant')).nativeElement;
+    participant.value = '12345';
+    fixture.componentInstance.f.addParticipant.setValue('12345');
+    // fixture.componentInstance.submitted = true;
+
+    participant.dispatchEvent(new Event('input'));
+    // fixture.debugElement.query(By.css('#add-btn')).nativeElement.click();
     fixture.detectChanges();
     const dom = fixture.debugElement;
     console.info('dom' + fixture.componentInstance.f.comment);
 
-    const hint = dom.query(By.css('#only-letter-comment'));
+    const hint = dom.query(By.css('#participant-only-characters'));
     console.info('foo' + hint);
 
-    expect(hint.nativeElement.innerText).toMatch('Comment has to be only characters');
+    expect(hint.nativeElement.innerText).toMatch('Participant has to be only characters');
   }));
 });

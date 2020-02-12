@@ -18,12 +18,12 @@ let page: Page;
 
 ////// Tests //////
 const firstUser: User = {
-    name: "Elena",
-    lastname: "Coronel",
-    email: "elena@softwarenatura.com",
+    name: 'Elena',
+    lastname: 'Coronel',
+    email: 'elena@softwarenatura.com',
     active: true,
-    rol: "user1",
-    phoneNumber: "+595983554227",
+    rol: 'user1',
+    phoneNumber: '',
     idUser: 4,
 };
 

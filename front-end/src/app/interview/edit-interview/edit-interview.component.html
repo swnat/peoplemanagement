@@ -59,14 +59,16 @@
 
           <div class="row">
             <div class="col-12 col-md-9 mb-3">
-              <input type="text" formControlName="addParticipant" placeholder="Add Participants"
+              <input id="participant" type="text" formControlName="addParticipant" placeholder="Add Participants"
                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f.participants.errors }" />
               <div *ngIf="submitted && f.participants.errors?.required">
                 <span class="text-danger">Please add a participant</span>
               </div>
               <div *ngIf="!submitted && f.addParticipant.errors">
                 <span *ngIf="f.addParticipant.errors?.maxlength" class="text-danger">Participant must have less than 90 characters</span>
-                <span *ngIf="f.addParticipant.errors?.pattern" class="text-danger">Participant has to be only characters</span>
+                <span id="participant-only-characters" *ngIf="f.addParticipant.errors?.pattern" class="text-danger">
+                  Participant has to be only characters
+                </span>
               </div>
             </div>
             <div class="col-5 col-md-3">
