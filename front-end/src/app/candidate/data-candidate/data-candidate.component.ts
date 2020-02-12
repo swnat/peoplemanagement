@@ -116,7 +116,7 @@ export class DataCandidateComponent implements OnInit {
           this.candidate = this.candidateService.getCandidateSelected();
           
         }, error => {
-          console.log('Error to edit the candidate', error);;
+          console.log('Error to edit the candidate', error);
           this.notificationService.showError('Occur an error when edit data of the candidate', 'Error edit Candidate');
         });
       }
