@@ -102,7 +102,7 @@ export class EditInterviewComponent implements OnInit {
   initializeForm(){
     this.interviewEditForm = this.formBuilder.group({
       id: new FormControl(''),
-      comment: new FormControl('', [Validators.maxLength(300)]),//only letters
+      comment: new FormControl('',  [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
       dayOfInterview: new FormControl('', [Validators.required]),
       candidate: new FormControl(),
       taskId: new FormControl(),
@@ -140,8 +140,10 @@ export class EditInterviewComponent implements OnInit {
 
   addParticipants() {
     this.submitted = false;
-    this.listParticipants.push(this.interviewEditForm.controls['addParticipant'].value);
-    this.interviewEditForm.controls['addParticipant'].setValue('');
+    if (this.interviewEditForm.controls['addParticipant'].errors == null) {
+      this.listParticipants.push(this.interviewEditForm.controls['addParticipant'].value);
+      this.interviewEditForm.controls['addParticipant'].setValue('');
+    }
   }
 
   removeParticipants(i:number){
