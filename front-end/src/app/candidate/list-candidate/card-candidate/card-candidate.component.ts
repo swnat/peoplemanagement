@@ -27,8 +27,9 @@ export class CardCandidateComponent implements OnInit {
 
   // should return a string no longer than 16 characters
   get candidateName(): string {
+    const MAX = 17;
     let name: string = this.candidate ? `${this.candidate.name} ${this.candidate.lastName}`.trim() : '-';
-    if (name.length > 16) name = `name.substr(0, 13)...`;
+    if (name.length > MAX) name = `${name.substr(0, MAX - 3)}...`;
     return name;
   }
 
