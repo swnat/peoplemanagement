@@ -1,13 +1,13 @@
 <div class="container">
-    <div class="col-12 title form-title-pm">
-        Candidates List
-      </div>
-    <app-data-table [rowItems]="rowItems" [rowSettings]="rowSettings" [showFilter]="true" [showPagination]="true" [filteringFields]='filteringFields' (getAllData)="getAllCandidates($event)"></app-data-table>
-    <div class="col-12 position">
+  <div class="card-deck">
+    <div class="col-12 title form-title-pm">Candidates List</div>
+      <app-card-candidate *ngFor = "let item of rowItems?.content" [candidate]="item" [rowItems]="rowItems" [rowSettings]="rowSettings" [showFilter]="true" [showPagination]="true" [filteringFields]='filteringFields' (getAllData)="getAllCandidates($event)"></app-card-candidate>
+      <div class="col-12 position">
         <button id="add-candidate" alt="addCandidate" title="Add Candidate" type="button" style="margin: 10 10 10 10" class="btn btn-pm float-right btn-lg" (click)="toViewCandidateAdd()">
-        Add
-      </button>
+          Add
+        </button>
     </div>
+  </div>  
 </div>
 
-<app-card-candidate [candidate]="null"></app-card-candidate>
+<!--<app-card-candidate ngfor ></app-card-candidate>-->
