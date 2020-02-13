@@ -1,8 +1,16 @@
 <div class="card">
   <img class="card-img-top" src="assets/images/p1.jpeg" alt="Card image cap">
+  <h5>{{ candidateName }}</h5>
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="status">
+      <span class="text-uppercase">{{ statusChallenge.replace('_', ' ') }}</span>
+      <img [src]="'assets/images/progress_bars/' + statusChallenge + '.png'">
+      <span>Challenge</span>
+    </div>
+    <div class="status">
+      <span class="text-uppercase">{{ statusInterview.replace('_', ' ') }}</span>
+      <img [src]="'assets/images/progress_bars/' + statusInterview + '.png'">
+      <span>Interviews</span>
+    </div>
   </div>
 </div>

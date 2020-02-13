@@ -1,10 +1,26 @@
-.card {
-  
+h5 {
+  margin-top: 1rem;
+  text-align: center;
 }
 
-img {
+.card-img-top {
   width: 10rem;
   border-radius: 5rem;
   margin-top: 1rem;
   margin-left: auto; margin-right: auto;
+}
+
+.status span {
+  display: block;
+  text-align: center;
+}
+
+.status img {
+  display: block;
+  width: 8rem;
+  margin-left: auto; margin-right: auto;
+}
+
+.status:nth-child(2) {
+  margin-top: 1rem;
 }

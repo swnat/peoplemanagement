@@ -16,4 +16,17 @@ export class CardCandidateComponent implements OnInit {
     console.log(this.candidate);
   }
 
+  /* should return a string no longer than 15 characters */
+  get candidateName(): string {
+    return 'Juan Pérez ...';
+  }
+
+  get statusChallenge(): string {
+    return 'completed';
+  }
+
+  get statusInterview(): string {
+    return 'in_process';
+  }
+
 }
