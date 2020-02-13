@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class CardCandidateComponent implements OnInit {
 
   @Input() candidate: Candidate = null;
+  hover: boolean = false; // true when the cursor is over the component
 
   constructor(private router: Router) { }
 
@@ -24,7 +25,7 @@ export class CardCandidateComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
-  /* should return a string no longer than 16 characters */
+  // should return a string no longer than 16 characters
   get candidateName(): string {
     let name: string = this.candidate ? `${this.candidate.name} ${this.candidate.lastName}`.trim() : '-';
     if (name.length > 16) name = `name.substr(0, 13)...`;
