@@ -1,3 +1,7 @@
+.card {
+  cursor: pointer;
+}
+
 h5 {
   margin-top: 1rem;
   text-align: center;
