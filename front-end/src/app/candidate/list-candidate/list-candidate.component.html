@@ -1,25 +1,32 @@
 <div class="container mb-4">
 
-  <div class="col-12 title form-title-pm">Candidates List</div>
+  <!-- <div class="col-12 title form-title-pm">Candidates List</div> -->
 
   <div class="list-container px-4 pt-4">
 
-    <!-- Place for the search here -->
+    <div class="list-container-header">
+      <div class="float-left">
+        <!-- Place for the search here -->
+        SEARCH
+      </div>
 
-    <div class="row">
+      <button id="add-btn" alt="addCandidate" title="Add Candidate" type="button"
+        class=" float-right btn btn-primary font-weight-bold"
+        (click)="toViewCandidateAdd()">Add</button>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row mt-4">
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
         <app-card-candidate [candidate]="item"></app-card-candidate>
       </div>
     </div>
 
-    <div id="list-container-footer">
-      <ngb-pagination class="float-left" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
+    <div class=" d-flex justify-content-center" id="list-container-footer">
+      <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
         [(page)]="page" [maxSize]="1" [rotate]="true" [boundaryLinks]="true"
         (pageChange)="loadPage($event)"></ngb-pagination>
-    
-      <button id="add-btn" alt="addCandidate" title="Add Candidate" type="button"
-        class="btn btn-primary float-right btn px-5 mt-0 mb-3 font-weight-bold" (click)="toViewCandidateAdd()">Add
-      </button>
     </div>
 
   </div>
