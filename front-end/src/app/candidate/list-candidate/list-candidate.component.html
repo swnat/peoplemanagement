@@ -7,13 +7,13 @@
     <!-- Place for the search here -->
 
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of rowItems?.content">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
         <app-card-candidate [candidate]="item"></app-card-candidate>
       </div>
     </div>
 
     <div class="d-flex justify-content-between">
-      <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="12"
+      <ngb-pagination [collectionSize]="candidates.totalCount" [pageSize]="pageSize" [(page)]="page"
         [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
     
       <button id="add-btn" alt="addCandidate" title="Add Candidate" type="button"
