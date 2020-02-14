@@ -8,6 +8,7 @@ h5 {
 }
 
 .card-img-top {
+  height: 10rem;
   width: 10rem;
   border-radius: 5rem;
   margin-top: 1rem;

@@ -1,4 +1,8 @@
-  #container-popup{
+.container{
+  margin-top: calc(56px + 1rem * 1.5); /* $spacer = 1rem */
+}
+
+#container-popup{
     visibility: hidden;
   }
   #dialog-container {
@@ -16,6 +20,19 @@
     top: 45%;
     width: 30%;
   }
+
+  .list-container{
+    background: lightgray;
+  }
+
+  #add-btn{
+    background-color: #882960;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: white;
+    text-transform: uppercase;
+  }
+
   .aligner-right {
     float: right;
     font-weight: 700;
@@ -187,6 +204,18 @@
     border-width: 1px;
     border-style: solid;
     background-color: white;
+  }
+
+  .card-deck{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div.row.row-cols-4{
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 /*Change color of pagination component*/
   ngb-pagination ::ng-deep .page-item.active .page-link {

@@ -42,7 +42,8 @@ export class ListCandidateComponent implements OnInit {
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.getAllCandidates({ filter: null, page: 0, size: 5 });
+    window.scrollTo(0,0);
+    this.getAllCandidates({ filter: null, page: 0, size:8 });
   }
 
   public getAllCandidates(request: DataRequest): void {
