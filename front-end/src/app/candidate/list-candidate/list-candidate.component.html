@@ -12,12 +12,13 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-between">
-      <ngb-pagination [collectionSize]="candidates.totalCount" [pageSize]="pageSize" [(page)]="page"
-        [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+    <div id="list-container-footer">
+      <ngb-pagination class="float-left" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
+        [(page)]="page" [maxSize]="1" [rotate]="true" [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"></ngb-pagination>
     
       <button id="add-btn" alt="addCandidate" title="Add Candidate" type="button"
-        class="btn px-5 mt-0 mb-3 font-weight-bold" (click)="toViewCandidateAdd()">Add
+        class="btn btn-primary float-right btn px-5 mt-0 mb-3 font-weight-bold" (click)="toViewCandidateAdd()">Add
       </button>
     </div>
 

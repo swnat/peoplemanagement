@@ -15,34 +15,16 @@ import { DataRequest } from 'src/app/models/data-request';
   providers: [NgbPaginationConfig]
 })
 export class ListCandidateComponent implements OnInit {
-  /*rowSettings: RowSetting[] = [{
-    label: 'Candidate',
-    key: 'nameCandidate'
-  }, {
-    label: 'Interviews',
-    key: 'interviewsFormat'
-  }, {
-    label: 'Interviews Status',
-    key: 'interviewStatus'
-  }, {
-    label: 'Challenge Status',
-    key: 'process_challenge_status'
-  }, {
-    label: 'Details',
-    isAction: true,
-    key: 'details'
-  }];*/
   // filteringFields: Object = { text: 'nameCandidate', value: 'nameCandidate' };
 
   candidates: ResponseList = { content: [], totalCount: 0 };
   // pagination specific attributes
   page = 1;
-  pageSize = 1;
+  pageSize = 8;
 
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    window.scrollTo(0,0);
     this.getAllCandidates({ filter: null, page: 0, size: this.pageSize });
   }
 

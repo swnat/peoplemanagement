@@ -2,36 +2,49 @@
   margin-top: calc(56px + 1rem * 1.5); /* $spacer = 1rem */
 }
 
+.list-container{
+  background: lightgray;
+}
+
+#add-btn{
+  background-color: #882960;
+  border-color: #882960;
+  text-transform: uppercase;
+}
+
+#list-container-footer {
+  width: 100%;
+}
+
+/* Change color of pagination component */
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  background-color: #7b1a52;
+  border-color: #7b1a52;
+}
+
+/* BELOW CODE PROBABLY IRRELEVANT */
+
+
+
 #container-popup{
-    visibility: hidden;
-  }
-  #dialog-container {
-    display: block;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    width: 150%;
-  }
-  #loader {
-    color: #008cff;
-    height: 40px;
-    left: 45%;
-    position: relative;
-    top: 45%;
-    width: 30%;
-  }
+  visibility: hidden;
+}
+#dialog-container {
+  display: block;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 150%;
+}
+#loader {
+  color: #008cff;
+  height: 40px;
+  left: 45%;
+  position: relative;
+  top: 45%;
+  width: 30%;
+}
 
-  .list-container{
-    background: lightgray;
-  }
-
-  #add-btn{
-    background-color: #882960;
-    font-size: 1rem;
-    line-height: 1rem;
-    color: white;
-    text-transform: uppercase;
-  }
 
   .aligner-right {
     float: right;
@@ -216,11 +229,6 @@
     margin-top: 5rem;
     margin-left: auto;
     margin-right: auto;
-  }
-/*Change color of pagination component*/
-  ngb-pagination ::ng-deep .page-item.active .page-link {
-    background-color: #7b1a52;
-    border-color: #7b1a52;
   }
 
   
