@@ -6,11 +6,13 @@ import { NotificationService } from 'src/app/shared/notification-service/notific
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-data-candidate',
   templateUrl: './data-candidate.component.html',
   styleUrls: ['./data-candidate.component.css']
 })
+
 export class DataCandidateComponent implements OnInit {
   dataCandidateForm: FormGroup;
   submitted: boolean = false;
@@ -18,6 +20,12 @@ export class DataCandidateComponent implements OnInit {
   candidate: Candidate;
   isNew = true;
   @Output() showChallenge = new EventEmitter();
+  //Variable image
+  imageUrl: string = "/assets/images/page-under-construction-icon.png";
+  fileUpload: File = null;
+  nameButton: string = "Add Photo";
+  activeRemove: boolean = false;
+  imageBinary: string;
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router,) { }
@@ -55,6 +63,9 @@ export class DataCandidateComponent implements OnInit {
       processChallengeStatus: candidate.process_challenge_status,
       id: candidate.id
     });
+    this.imageUrl = candidate.profileImage;
+    this.nameButton = "Change Photo";
+    this.activeRemove = true;
   }
 
   get f() { return this.dataCandidateForm.controls; }
@@ -99,7 +110,7 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.candidateService.addCandidate(this.dataCandidateForm.value).subscribe(data => {
+        this.candidateService.addCandidate(this.dataCandidateForm.value, this.imageBinary).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
 
@@ -122,4 +133,38 @@ export class DataCandidateComponent implements OnInit {
       }
     }
   }
+
+  //Added method for uploading candidate's profile photo
+  imageLoading(file: FileList){
+    let buttonAdd: string = "Add Photo";
+
+    if ( this.nameButton == buttonAdd || this.nameButton == "Change Photo" ){
+      //Image file
+      this.fileUpload = file.item(0);
+
+      //Show image preview
+      let reader = new FileReader();
+      reader.onload = (event: any) =>{
+        this.imageUrl = event.target.result;
+        this.imageBinary = event.target.result;
+      }
+
+      
+      reader.readAsDataURL(this.fileUpload);
+      this.nameButton = "Change Photo";
+      this.activeRemove = true;
+    }else{
+
+      this.imageUrl = "/assets/images/page-under-construction-icon.png";
+      this.nameButton = buttonAdd;
+    }
+    
+  }
+
+  deleteButton(){
+    this.activeRemove = false;
+    this.imageUrl = "/assets/images/page-under-construction-icon.png";
+    this.nameButton = "Add Photo";
+  }
+
 }
