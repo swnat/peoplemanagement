@@ -21,7 +21,7 @@ export class DataCandidateComponent implements OnInit {
   isNew = true;
   @Output() showChallenge = new EventEmitter();
   //Variable image
-  imageUrl: string = "/assets/images/page-under-construction-icon.png";
+  imageUrl: string = "/assets/images/default.png";
   fileUpload: File = null;
   nameButton: string = "Add Photo";
   activeRemove: boolean = false;
@@ -63,9 +63,13 @@ export class DataCandidateComponent implements OnInit {
       processChallengeStatus: candidate.process_challenge_status,
       id: candidate.id
     });
-    this.imageUrl = candidate.profileImage;
-    this.nameButton = "Change Photo";
-    this.activeRemove = true;
+    //load user profile picture
+    if ( candidate.profileImage != null ){
+      this.imageUrl = candidate.profileImage;
+      this.nameButton = "Change Photo";
+      this.activeRemove = true;
+    }
+    
   }
 
   get f() { return this.dataCandidateForm.controls; }
@@ -120,7 +124,7 @@ export class DataCandidateComponent implements OnInit {
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
       }else{
-        this.candidateService.editCandidate(this.dataCandidateForm.value).subscribe(data => {
+        this.candidateService.editCandidate(this.dataCandidateForm.value, this.imageBinary).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
@@ -155,7 +159,7 @@ export class DataCandidateComponent implements OnInit {
       this.activeRemove = true;
     }else{
 
-      this.imageUrl = "/assets/images/page-under-construction-icon.png";
+      this.imageUrl = "/assets/images/default.png";
       this.nameButton = buttonAdd;
     }
     
@@ -163,7 +167,7 @@ export class DataCandidateComponent implements OnInit {
 
   deleteButton(){
     this.activeRemove = false;
-    this.imageUrl = "/assets/images/page-under-construction-icon.png";
+    this.imageUrl = "/assets/images/default.png";
     this.nameButton = "Add Photo";
   }
 
