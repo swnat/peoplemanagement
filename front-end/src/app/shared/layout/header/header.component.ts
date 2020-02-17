@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit {
     private storageService: StorageService,
     private authenticationService: AuthenticationService,
     private userService: UserService) { }
- 
+
+    toggled = false;
+
   ngOnInit() {
   
 
@@ -47,5 +49,10 @@ export class HeaderComponent implements OnInit {
   public logout(): void {
     this.storageService.logout(); 
   } 
+
+  toggle() {
+    this.toggled = !this.toggled;
+  }
+
 }
 

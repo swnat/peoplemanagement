@@ -1,59 +1,72 @@
-    .user{
-        text-align: center;
-    }
+#profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+}
 
-    .side-icon{
-        display: flex;
-    }
+#id-nav {
+  background-color: white;
+  height: 70px;
+}
 
-    a.nav-link.user-profile{
-        width: 200px;
-    }
+body {
+  overflow-x: hidden;
+}
 
-    a{
-        display: flex;
-        text-decoration: none;
-    }
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  background: #00417c;
+}
 
-    a.nav-link.user-name{
-        right: 12px;
-        padding-right: 4px;
-    }
+#items-nav ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: #fff;
+  font-weight: 500;
+}
 
-    .navbar-expand-md .navbar-nav .nav-link {
-        padding-left: .3rem;
-    }
+#items-nav ul li a:hover {
+  color: #00417c;
+  background: #fff;
+}
 
-    li.nav-item.active{
-        padding-right: 7px;
-    }
+#items-van a, a:hover a:focus{
+  transition: all 0.3;
+}
 
-    li.nav-item.active.user-profile{
-        width: 80px;
-        display: inline-flex; 
-    }
+#items-nav{
+  padding-top: 60px;
+}
 
-    li.nav-item.active.logo-sign-out{
-        width: 80px;
-        display: inline-flex;
-    }
+#sidebar-wrapper .navbar {
+  width: 15rem;
+}
 
-    a.nav-link.title.account{
-        width: 70px;
-    }
+#page-content-wrapper {
+  min-width: 100vw;
+}
 
-    a.nav-link.title{
-        color:white;
-    }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
 
-    div#navbarsExampleDefault.navbar-collapse.collapse{
-        padding-right: 10px;
-    }
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: -15rem;
+  }
 
-    a.title:hover, a.title:active {
-        text-decoration: none;
-    }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
 
-    @import "../node_modules/@syncfusion/ej2/material.css";
-
-  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+}
