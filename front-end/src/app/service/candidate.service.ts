@@ -17,7 +17,8 @@ export class CandidateService {
     return this.httpClient.get<Candidate>(environment.apiUrl+this.basePath+id);
   }
 
-  addCandidate(candidate: Candidate) {
+  addCandidate(candidate: Candidate, image: string) {
+    candidate.profileImage = image;
     return this.httpClient.post<Candidate>(environment.apiUrl+this.basePath,candidate);
   }
 
