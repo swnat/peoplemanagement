@@ -1,18 +1,22 @@
 <div class="container mb-4">
 
-  <!-- <div class="col-12 title form-title-pm">Candidates List</div> -->
-
   <div class="list-container px-4 pt-4">
 
     <div class="list-container-header">
       <div class="float-left">
-        <!-- Place for the search here -->
-        SEARCH
+        <form class="form-inline my-2 my-lg-0 pt-3 pb-2 px-3">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
 
-      <button id="add-btn" alt="addCandidate" title="Add Candidate" type="button"
-        class=" float-right btn btn-primary font-weight-bold"
-        (click)="toViewCandidateAdd()">Add</button>
+      <div class="float-right">
+        <a class="nav-link title" (click)="toViewCandidateAdd()" 
+          [routerLink]="''">
+          <i style="color: #2a9c5e" class="fas fa-user-plus fa-3x"></i>
+        </a> 
+      </div>
+
     </div>
 
     <div class="clearfix"></div>
