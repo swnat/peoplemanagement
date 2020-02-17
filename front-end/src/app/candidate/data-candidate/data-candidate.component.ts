@@ -25,7 +25,7 @@ export class DataCandidateComponent implements OnInit {
   fileUpload: File = null;
   nameButton: string = "Add Photo";
   activeRemove: boolean = false;
-  imageBinary: string;
+  imageBinary: string = null;
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router,) { }
