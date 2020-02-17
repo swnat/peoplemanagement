@@ -18,10 +18,22 @@
 
 /* Change color of pagination component */
 ngb-pagination ::ng-deep .page-item.active .page-link {
-  background-color: #7b1a52;
-  border-color: #7b1a52;
+  background-color: #3498db;
+  border-color:#3498db;
+  color:white;
 }
 
+.btn-outline-success{
+  color: #3498db;
+  border-color: #3498db;
+}
+
+
+.btn-outline-success:hover{
+  color: white;
+  background-color: #3498db;
+  border-color: #3498db;
+}
 /* BELOW CODE PROBABLY IRRELEVANT */
 
 
