@@ -35,8 +35,6 @@
             <column name="interview_status" type="VARCHAR" defaultValue="PENDING">
                 <constraints nullable="false"/>
             </column>
-            <column name="profile_image" type="VARCHAR">
-            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
