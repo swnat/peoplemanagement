@@ -5,7 +5,7 @@
       <div class="card-body text-center">
         <label class="image-upload-container btn btn-primary">
           <span>{{ nameButton }}</span>
-          <input #imageInput type="file" accept="image/*" (change)="imageLoading($event.target.files)">
+          <input #imageInput type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
         </label>
         <button *ngIf="activeRemove" (click)="deleteButton()" class="btn btn-danger">Remove Photo</button>
       </div>
