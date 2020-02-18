@@ -8,6 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { CandidateService } from '../../service/candidate.service';
+import { mockProvider, mockCandidate } from 'src/testing/mock-provider';
+import { when, anyNumber } from 'ts-mockito';
+import { of } from 'rxjs';
+
+/* El objetivo de este test suite es introducir los mocks de datos
+   con la librería de ts-mockito */
 
 describe('DataCandidateComponent', () => {
   let component: DataCandidateComponent;
@@ -15,9 +22,14 @@ describe('DataCandidateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule ],
+      imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule, BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule ],
       declarations: [ DataCandidateComponent, HeaderComponent ],
-      providers: [ToastrService]
+      providers: [
+        ToastrService,
+        mockProvider(CandidateService, m => {
+          when(m.getCandidate(anyNumber())).thenReturn(of(mockCandidate));
+        })
+      ]
     })
     .compileComponents();
   }));
@@ -25,13 +37,22 @@ describe('DataCandidateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DataCandidateComponent);
     component = fixture.componentInstance;
-    
-
+    component.candidateId = 1; // set input
     fixture.detectChanges();
   });
 
-  it('Data Form must be valid', () => {
-    expect(component.dataCandidateForm.valid).toBeFalsy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should show candidate data', () => {
+    // const el: HTMLElement = fixture.nativeElement;
+    expect(fixture.debugElement.query(By.css('#inputName')).nativeElement.value).toContain('Juan');
+    expect(fixture.debugElement.query(By.css('#inputLastName')).nativeElement.value).toContain('Pérez');
+  });
+
+  it('data form should be valid', () => {
+    expect(component.dataCandidateForm.valid).toBeTruthy();
   });
 
   it('if the required fields are not completed, it cannot be saved', async(()=>{
