@@ -6,11 +6,15 @@
 
 #id-nav {
   background-color: white;
-  height: 70px;
+  height: 65px;
 }
 
 body {
   overflow-x: hidden;
+}
+
+#sidebar-wrapper .sidebar-head {
+  padding: 50px 60px;
 }
 
 #sidebar-wrapper {
@@ -28,7 +32,7 @@ body {
   font-size: 1.1em;
   display: block;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #items-nav ul li a:hover {
@@ -38,10 +42,6 @@ body {
 
 #items-van a, a:hover a:focus{
   transition: all 0.3;
-}
-
-#items-nav{
-  padding-top: 60px;
 }
 
 #sidebar-wrapper .navbar {
@@ -58,7 +58,7 @@ body {
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
-    margin-left: -15rem;
+    margin-left: 0;
   }
 
   #page-content-wrapper {
@@ -67,6 +67,6 @@ body {
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
+    margin-left: -15rem;
   }
 }
