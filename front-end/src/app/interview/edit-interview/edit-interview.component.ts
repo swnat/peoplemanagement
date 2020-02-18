@@ -102,7 +102,7 @@ export class EditInterviewComponent implements OnInit {
   initializeForm(){
     this.interviewEditForm = this.formBuilder.group({
       id: new FormControl(''),
-      comment: new FormControl('',  [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
+      comment: new FormControl('', [Validators.maxLength(300)]),//only letters
       dayOfInterview: new FormControl('', [Validators.required]),
       candidate: new FormControl(),
       taskId: new FormControl(),
