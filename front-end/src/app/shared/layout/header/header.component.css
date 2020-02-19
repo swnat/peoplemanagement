@@ -13,10 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-#sidebar-wrapper .sidebar-head {
-  padding: 50px 60px;
-}
-
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -27,11 +23,24 @@ body {
   background: #00417c;
 }
 
+#sidebar-wrapper .sidebar-head {
+  padding: 50px 60px;
+}
+
+#sidebar-wrapper .navbar {
+  width: 15rem;
+}
+
+#items-nav{
+  padding: 0px;
+  display: block;
+}
+
 #items-nav ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
-  color: #fff;
+  color: white;
   font-weight: 600;
 }
 
@@ -40,12 +49,13 @@ body {
   background: #fff;
 }
 
-#items-van a, a:hover a:focus{
-  transition: all 0.3;
+.item-active{
+  color: #00417c !important;
+  background: #fff;
 }
 
-#sidebar-wrapper .navbar {
-  width: 15rem;
+#items-van a, a:hover, a:focus{
+  transition: all 0.3;
 }
 
 #page-content-wrapper {

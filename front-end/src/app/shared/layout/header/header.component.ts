@@ -53,6 +53,5 @@ export class HeaderComponent implements OnInit {
   toggle() {
     this.toggled = !this.toggled;
   }
-
 }
 

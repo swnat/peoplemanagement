@@ -1,17 +1,17 @@
 <div class="d-flex" id="wrapper" [ngClass]="toggled ? 'toggled' : ''">
-  
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
     <div class="sidebar-head">
       <img src="../../../../assets/images/LOGO-1.png" width="120">
     </div>
-    <nav class="navbar d-flex justify-content-center" id="items-nav">
-      <ul class="navbar-nav flex-column text-center">
+    <nav class="navbar" id="items-nav">
+      <ul class="navbar-nav flex-column text-left">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="''" >HOME</a>
+          <a class="nav-link" [routerLink]="''" routerLinkActive="item-active" [routerLinkActiveOptions]="{exact:
+            true}">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/candidate']">CANDIDATES LIST <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/candidate']" routerLinkActive="item-active">CANDIDATES LIST <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()" [routerLink]="''">LOGOUT</a>
@@ -31,7 +31,7 @@
       </a>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <button class="nav-link btn" [routerLink]="['/user/data', user?.idUser]">
+            <button class="nav-link btn p-0" [routerLink]="['/user/data', user?.idUser]">
               <img id="profile" src="../../../../assets/images/default.png" width="105">
             </button>
           </li>
