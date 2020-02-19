@@ -3,7 +3,6 @@ import { DataCandidateComponent } from './data-candidate.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +10,9 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { CandidateService } from '../../service/candidate.service';
 import { mockProvider, mockCandidate } from 'src/testing/mock-provider';
 import { when, anyNumber } from 'ts-mockito';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import {mock, instance, verify} from 'ts-mockito';
+import { Candidate } from 'src/app/models/candidate';
 
 /* El objetivo de este test suite es introducir los mocks de datos
    con la librería de ts-mockito */
@@ -19,6 +20,7 @@ import { of } from 'rxjs';
 describe('DataCandidateComponent', () => {
   let component: DataCandidateComponent;
   let fixture: ComponentFixture<DataCandidateComponent>;
+  let mockedService: CandidateService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,6 +30,7 @@ describe('DataCandidateComponent', () => {
         ToastrService,
         mockProvider(CandidateService, m => {
           when(m.getCandidate(anyNumber())).thenReturn(of(mockCandidate));
+          mockedService=m;
         })
       ]
     })
@@ -86,6 +89,10 @@ describe('DataCandidateComponent', () => {
     let bt = fixture.debugElement.query(By.css('.btn-pm')).nativeElement;
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
+  }));
+
+  it('service call verification', async(()=>{
+    verify(mockedService.getCandidate(anyNumber())).once();
   }));
 
 });
