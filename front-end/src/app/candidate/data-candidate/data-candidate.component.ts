@@ -68,6 +68,7 @@ export class DataCandidateComponent implements OnInit {
       this.imageUrl = candidate.profileImage;
       this.nameButton = "Change Photo";
       this.activeRemove = true;
+      this.imageBinary = candidate.profileImage;
     }
     
   }
@@ -169,6 +170,7 @@ export class DataCandidateComponent implements OnInit {
     this.activeRemove = false;
     this.imageUrl = "/assets/images/default.png";
     this.nameButton = "Add Photo";
+    this.imageBinary = null;
   }
 
 }
