@@ -26,32 +26,40 @@ export class HeaderComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userService: UserService) { }
 
-    toggled = false;
+  toggled = false;
 
   ngOnInit() {
-  
+
 
     this.userService.getUser(this.storageService.getCurrentId()).subscribe(
       data => {
         this.user = data;
-        
-        console.log('Candidate data',data);
-        if (data.rol== 'user1') {
+
+        console.log('Candidate data', data);
+        if (data.rol == 'user1') {
           this.rol_name = 'Manager';
         } else if (data.rol == 'user2') {
           this.rol_name = 'Admin';
         } else {
           this.rol_name = 'Colaborator';
-        }  
+        }
       });
   }
 
   public logout(): void {
-    this.storageService.logout(); 
-  } 
+    this.storageService.logout();
+  }
 
   toggle() {
     this.toggled = !this.toggled;
+  }
+
+  /* Add function to the sidebar menu items to automatically 
+  hide when clicking on a screen smaller than 450px*/
+  sidebar_hide() {
+    if (screen.width <= 450) {
+      this.toggle();
+    }
   }
 }
 

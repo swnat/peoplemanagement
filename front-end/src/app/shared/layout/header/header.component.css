@@ -31,7 +31,7 @@ body {
   width: 15rem;
 }
 
-#items-nav{
+#items-nav {
   padding: 0px;
   display: block;
 }
@@ -49,12 +49,14 @@ body {
   background: #fff;
 }
 
-.item-active{
+.item-active {
   color: #00417c !important;
   background: #fff;
 }
 
-#items-van a, a:hover, a:focus{
+#items-van a,
+a:hover,
+a:focus {
   transition: all 0.3;
 }
 
