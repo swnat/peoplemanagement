@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class CardCandidateComponent implements OnInit {
 
   @Input() candidate: Candidate = null;
-  hover: boolean = false; // true when the cursor is over the component
 
   constructor(private router: Router) { }
 
