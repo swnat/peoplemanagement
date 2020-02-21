@@ -51,3 +51,12 @@
   .input-field{
     height: 30px;
   }
+
+  /*ADD*/
+  input[type="file"]{
+    display: none;
+  }
+
+  .image-upload-container{
+    cursor: pointer;
+  }

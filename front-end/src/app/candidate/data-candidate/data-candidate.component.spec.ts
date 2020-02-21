@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { DataCandidateComponent } from './data-candidate.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -25,8 +25,6 @@ describe('DataCandidateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DataCandidateComponent);
     component = fixture.componentInstance;
-    
-
     fixture.detectChanges();
   });
 
@@ -66,5 +64,9 @@ describe('DataCandidateComponent', () => {
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));
+
+  it('Test whether the default image loads at the start of a new candidate', () =>{
+    expect(component.imageUrl).toContain('/assets/images/default.png');
+  });
 
 });
