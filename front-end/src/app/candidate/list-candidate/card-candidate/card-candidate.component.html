@@ -1,5 +1,5 @@
 <div class="card" (click)="onClick()">
-  <img class="card-img-top" [src]="'assets/images/default.png'" alt="candidate profile image">
+  <img class="card-img-top" [src]="candidate.profileImage || 'assets/images/default.png'" alt="candidate profile image">
   <h5>{{ candidateName }}</h5>
   <div class="card-body">
     <div class="status">
