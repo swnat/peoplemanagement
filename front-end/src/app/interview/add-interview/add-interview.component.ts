@@ -92,7 +92,7 @@ export class AddInterviewComponent implements OnInit {
 
   initializeForm() {
     this.interviewForm = this.formBuilder.group({
-      comment: new FormControl('', [Validators.maxLength(300)]),//only letters
+      comment: new FormControl('', [Validators.maxLength(300)]),
       dayOfInterview: new FormControl('', [Validators.required]),
       candidate: new FormControl(),
       taskId: new FormControl(),

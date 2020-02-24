@@ -20,6 +20,7 @@ export class Candidate {
         public decision:string,
         public comments:string,
         public interviews: Array<Interview>,
-        public challenge: Array<Challenge>
+        public challenge: Array<Challenge>,
+        public profileImage: string
         ){}
 }

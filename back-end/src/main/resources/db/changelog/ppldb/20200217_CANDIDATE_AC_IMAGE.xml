@@ -1,0 +1,12 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="Ivan Vera(Pasante)" id="ppl_candidate_ac_002">
+        <addColumn tableName="candidate" schemaName="management">
+            <column name="profile_image" type="VARCHAR"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

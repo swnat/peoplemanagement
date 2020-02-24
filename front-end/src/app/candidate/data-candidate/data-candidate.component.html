@@ -1,94 +1,94 @@
-<div class="col-md-12 position">
-  <form [formGroup]="dataCandidateForm" id="dataCandidateForm" (ngSubmit)="onSubmit()">
-    <div class=" form-group row">
-      <label for="inputName" class="col-sm-2 col-form-label text-label">Name:</label>
-      <div class="col-sm-4">
-        <input type="text" formControlName="name" class="form-control input-field" id="inputName" placeholder="Name">
-
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Name is required</span>
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100
-          characters</span>
+<div class="row">
+  <div class="col-md-2">
+    <div class="card mt-3" style="width: 14rem;">
+      <img [src]="imageUrl" class="card-img-top img-thumbnail" alt="Loading...">
+      <div class="card-body text-center">
+        <label class="image-upload-container btn btn-primary">
+          <span>{{ nameButton }}</span>
+          <input #imageInput type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
+        </label>
+        <button *ngIf="activeRemove" (click)="deleteButton()" class="btn btn-danger">Remove Photo</button>
       </div>
-      <label for="inputDateBirth" class="col-sm-2 col-form-label text-label">Date of birth:</label>
-      <div class="col-sm-4">
-        <div class=" date-picker-width">
-          <ejs-datepicker #ejDatePicker id="dateOfBirth" format='yyyy-MM-dd' formControlName="dateOfBirth"
-            name="dateOfBirth">
-          </ejs-datepicker>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <form [formGroup]="dataCandidateForm" id="dataCandidateForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 offset-sm-1 col-form-label text-label">Name:</label>
+        <div class="col-sm-3">
+          <input type="text" formControlName="name" class="form-control input-field" id="inputName" placeholder="Name">
+
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Name is required</span>
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100
+          characters</span>
         </div>
-      </div>
-
-    </div>
-
-    <div class=" form-group row">
-      <label for="inputLastName" class="col-sm-2 col-form-label text-label">Last Name:</label>
-      <div class="col-sm-4">
-        <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
-          placeholder="Last Name">
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
-        <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100
-          characters</span>
-      </div>
-
-      <label for="inputPhoneNumber" class="col-sm-2 col-form-label text-label">Phone Number:</label>
-      <div class="col-sm-4">
-        <input type="text" formControlName="phoneNumber" class="form-control input-field" id="inputPhoneNumber"
-          placeholder="Phone Number">
-      </div>
-    </div>
-
-
-    <div class="form-group row">
-      <label for="inputUniversity" class="col-sm-2 col-form-label text-label">University:</label>
-      <div class="col-sm-4">
-        <input type="text" formControlName="university" class="form-control input-field" id="inputUniversity"
-          placeholder="University">
-      </div>
-
-      <label for="filesUrl" class="col-sm-2 col-form-label text-label">Additional Files:</label>
-      <div class="col-sm-4">
+        <label for="inputDateBirth" class="col-sm-3 col-form-label text-label">Date of birth:</label>
+        <div class="col-sm-3">
+          <div class=" date-picker-width">
+            <ejs-datepicker #ejDatePicker id="dateOfBirth" format='yyyy-MM-dd' formControlName="dateOfBirth"
+              name="dateOfBirth">
+            </ejs-datepicker>
+          </div>
+        </div>
+        <label for="inputLastName" class="col-sm-2 offset-sm-1 col-form-label text-label">Last Name:</label>
+        <div class="col-sm-3">
+          <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
+            placeholder="Last Name">
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
+          <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100
+            characters</span>
+        </div>
+        <label for="inputPhoneNumber" class="col-sm-3 col-form-label text-label">Phone Number:</label>
+        <div class="col-sm-3">
+          <input type="text" formControlName="phoneNumber" class="form-control input-field" id="inputPhoneNumber"
+            placeholder="Phone Number">
+        </div>
+        <label for="inputLinkResume" class="col-sm-2 offset-sm-1 col-form-label text-label">Resume:</label>
+        <div class="col-sm-3">
+          <input type="text" formControlName="resumeUrl" class="form-control input-field" id="inputLinkResume"
+            placeholder="https://">
+        </div> 
+        <label for="filesUrl" class="col-sm-3 col-form-label text-label">Additional Files:</label>
+        <div class="col-sm-3">
         <input type="text" formControlName="filesUrl" class="form-control input-field" id="filesUrl"
           placeholder="https://">
+        </div>
       </div>
-
-    </div>
-
-    <div class="from-group row">
-      <label for="inputLinkResume" class="col-sm-2 col-form-label text-label">Resume:</label>
-      <div class="col-sm-4">
-        <input type="text" formControlName="resumeUrl" class="form-control input-field" id="inputLinkResume"
-          placeholder="https://">
+      <div class="form-group row">
+        <label for="inputUniversity" class="col-sm-2 offset-sm-1 col-form-label text-label">University:</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="university" class="form-control input-field" id="inputUniversity"
+            placeholder="University">
+        </div>
       </div>
-      <label for="decision" class="col-sm-2 col-form-label text-label">Decision:</label>
-      <div class="col-sm-4">
-        <select class="custom-select" formControlName="decision" id="decision">
-          <option value="Approved">Approved</option>
-          <option value="Rejected">Rejected</option>
-        </select>
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 offset-sm-1 col-form-label text-label">Email:</label>
+        <div class="col-sm-9">
+          <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Mail">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="decision" class="col-sm-2 offset-sm-1 col-form-label text-label">Decision:</label>
+        <div class="col-sm-9">
+          <select class="custom-select" formControlName="decision" id="decision">
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
       </div>
-
-    </div>
-
-    <div class="form-group row">
-      <label for="inputEmail" class="col-sm-2 col-form-label text-label">Email:</label>
-      <div class="col-sm-4">
-        <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Mail">
+      <div class="form-group row">
+        <label for="comments" class="col-sm-2 offset-sm-1 col-form-label text-label">Comments:</label>
+        <div class="col-sm-9">
+          <textarea id="comments" class="form-control" formControlName="comments"></textarea>
+        </div>
       </div>
-
-      <label for="comments" class="col-sm-2 col-form-label text-label">Comments:</label>
-      <div class="col-sm-4">
-        <textarea id="comments" class="form-control" formControlName="comments"></textarea>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-pm">Save</button>
+        </div>
       </div>
-
-    </div>
-
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-pm">Save</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

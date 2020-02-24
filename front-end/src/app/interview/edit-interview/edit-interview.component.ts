@@ -140,8 +140,10 @@ export class EditInterviewComponent implements OnInit {
 
   addParticipants() {
     this.submitted = false;
-    this.listParticipants.push(this.interviewEditForm.controls['addParticipant'].value);
-    this.interviewEditForm.controls['addParticipant'].setValue('');
+    if (this.interviewEditForm.controls['addParticipant'].errors == null) {
+      this.listParticipants.push(this.interviewEditForm.controls['addParticipant'].value);
+      this.interviewEditForm.controls['addParticipant'].setValue('');
+    }
   }
 
   removeParticipants(i:number){
