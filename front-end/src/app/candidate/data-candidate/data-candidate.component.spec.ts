@@ -1,3 +1,4 @@
+import { CandidateService } from 'src/app/service/candidate.service';
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { DataCandidateComponent } from './data-candidate.component';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
@@ -69,4 +70,8 @@ describe('DataCandidateComponent', () => {
     expect(component.imageUrl).toContain('/assets/images/default.png');
   });
 
+  it('the imageBinary at startup must be null', () => {
+    expect(component.imageBinary).toBeNull()
+  });
 });
+
