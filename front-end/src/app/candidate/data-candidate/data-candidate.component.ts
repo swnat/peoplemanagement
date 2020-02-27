@@ -15,20 +15,20 @@ import { Router } from '@angular/router';
 
 export class DataCandidateComponent implements OnInit {
   dataCandidateForm: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   @Input() candidateId: number;
   candidate: Candidate;
   isNew = true;
   @Output() showChallenge = new EventEmitter();
-  //Variable image
-  imageUrl: string = "/assets/images/default.png";
+  // Variable image
+  imageUrl = '/assets/images/default.png';
   fileUpload: File = null;
-  nameButton: string = "Add Photo";
-  activeRemove: boolean = false;
+  nameButton = 'Add Photo';
+  activeRemove = false;
   imageBinary: string = null;
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
-    private notificationService: NotificationService, private router: Router,) { }
+    private notificationService: NotificationService, private router: Router, ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -63,14 +63,14 @@ export class DataCandidateComponent implements OnInit {
       processChallengeStatus: candidate.process_challenge_status,
       id: candidate.id
     });
-    //load user profile picture
-    if ( candidate.profileImage != null ){
+    // load user profile picture
+    if ( candidate.profileImage != null ) {
       this.imageUrl = candidate.profileImage;
-      this.nameButton = "Change Photo";
+      this.nameButton = 'Change Photo';
       this.activeRemove = true;
       this.imageBinary = candidate.profileImage;
     }
-    
+
   }
 
   get f() { return this.dataCandidateForm.controls; }
@@ -78,16 +78,18 @@ export class DataCandidateComponent implements OnInit {
   initializeForm() {
     this.dataCandidateForm = this.formBuilder.group({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
+        Validators.maxLength(100), Validators.required]), // only letters
       email: new FormControl(''),
-      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
+        Validators.maxLength(100), Validators.required]), // only letters
       phoneNumber: new FormControl(''),
-      university: new FormControl('', [Validators.maxLength(100)]),//only letters
-      dateOfBirth: new FormControl(''),      
+      university: new FormControl('', [Validators.maxLength(100)]), // only letters
+      dateOfBirth: new FormControl(''),
       resumeUrl: new FormControl('', ),
       filesUrl: new FormControl(''),
       decision: new FormControl(''),
-      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
+      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]), // only letters
       interviewStatus: new FormControl('PENDING'),
       process_challenge_status: new FormControl('PENDING')
     });
@@ -96,13 +98,13 @@ export class DataCandidateComponent implements OnInit {
   candidateSaved(candidateSaved: Candidate) {
     console.log('Candidate created ', candidateSaved);
     this.showChallenge.emit(true);
-    //save the candidate Id
+    // save the candidate Id
     this.candidateService.candidateSelected = candidateSaved;
     this.notificationService.showSuccess(candidateSaved.name, 'Candidate created succesfully.');
   }
 
   candidateEdit(candidateEdited: Candidate) {
-    console.log('Candidate edited ', candidateEdited);;
+    console.log('Candidate edited ', candidateEdited);
     this.showChallenge.emit(true);
     this.candidateService.candidateSelected = candidateEdited;
     this.notificationService.showSuccess(candidateEdited.name, 'Interview edited succesfully.');
@@ -124,13 +126,13 @@ export class DataCandidateComponent implements OnInit {
           console.log('Error to save the candidate', error);
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
-      }else{
+      } else {
         this.candidateService.editCandidate(this.dataCandidateForm.value, this.imageBinary).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
           this.candidate = this.candidateService.getCandidateSelected();
-          
+
         }, error => {
           console.log('Error to edit the candidate', error);
           this.notificationService.showError('Occur an error when edit data of the candidate', 'Error edit Candidate');
@@ -139,37 +141,37 @@ export class DataCandidateComponent implements OnInit {
     }
   }
 
-  //Added method for uploading candidate's profile photo
-  imageLoading(file: FileList){
-    let buttonAdd: string = "Add Photo";
+  // Added method for uploading candidate's profile photo
+  imageLoading(file: FileList) {
+    const buttonAdd = 'Add Photo';
 
-    if ( this.nameButton == buttonAdd || this.nameButton == "Change Photo" ){
-      //Image file
+    if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
+      // Image file
       this.fileUpload = file.item(0);
 
-      //Show image preview
-      let reader = new FileReader();
-      reader.onload = (event: any) =>{
+      // Show image preview
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
         this.imageBinary = event.target.result;
-      }
+      };
 
-      
+
       reader.readAsDataURL(this.fileUpload);
-      this.nameButton = "Change Photo";
+      this.nameButton = 'Change Photo';
       this.activeRemove = true;
-    }else{
+    } else {
 
-      this.imageUrl = "/assets/images/default.png";
+      this.imageUrl = '/assets/images/default.png';
       this.nameButton = buttonAdd;
     }
-    
+
   }
 
-  deleteButton(){
+  deleteButton() {
     this.activeRemove = false;
-    this.imageUrl = "/assets/images/default.png";
-    this.nameButton = "Add Photo";
+    this.imageUrl = '/assets/images/default.png';
+    this.nameButton = 'Add Photo';
     this.imageBinary = null;
   }
 

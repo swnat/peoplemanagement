@@ -28,14 +28,14 @@ export class ListCandidateComponent implements OnInit {
     this.getAllCandidates({ filter: null, page: 0, size: this.pageSize });
   }
 
-  public loadPage(page: number){ 
+  public loadPage(page: number) {
     this.getAllCandidates({ filter: null, page: page - 1, size: this.pageSize });
   }
 
   public getAllCandidates(request: DataRequest): void {
     this.candidateService.getAllCandidates(request.filter, request.page, request.size).subscribe(data => {
       this.candidates = data;
-      window.scrollTo(0,0); 
+      window.scrollTo(0, 0);
     },
     error => {
       console.log('Error getAllCandidates', error);

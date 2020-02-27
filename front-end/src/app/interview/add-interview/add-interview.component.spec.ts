@@ -24,6 +24,9 @@ describe('AddInterviewComponent', () => {
   let component: AddInterviewComponent;
   let fixture: ComponentFixture<AddInterviewComponent>;
   let expectedUser: User;
+  // localstorage variables
+  const varStorage1 = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0Iiwic2NvcGVzIjoidXNlcjEiLCJpYXQiOjE1NzY1ODUzMjEsImV4cCI6MTU4MTYzMzMyMX0';
+  const varStorage2 = '.xBqWVdg7W8rqT7dHihiUqstQq6p3bJzhPJS7N1hE5GQR3rh6UTYxbLv1F9Zbex1_Q6mEuJR579G8uoNkHEL7WQ';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -39,7 +42,8 @@ describe('AddInterviewComponent', () => {
     fixture = TestBed.createComponent(AddInterviewComponent);
     component = fixture.componentInstance;
     localStorage.setItem('statusCandidate', JSON.stringify('{"id":4,"name":"Interview Team"}'));
-    localStorage.setItem('currentUser', JSON.stringify({ "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0Iiwic2NvcGVzIjoidXNlcjEiLCJpYXQiOjE1NzY1ODUzMjEsImV4cCI6MTU4MTYzMzMyMX0.xBqWVdg7W8rqT7dHihiUqstQq6p3bJzhPJS7N1hE5GQR3rh6UTYxbLv1F9Zbex1_Q6mEuJR579G8uoNkHEL7WQ", "tokenType": "Bearer", "id": "4", "rol": "user1" }));
+    localStorage.setItem('currentUser', JSON.stringify({ 'accessToken':
+      varStorage1 + varStorage2, 'tokenType': 'Bearer', 'id': '4', 'rol': 'user1' }));
     fixture.detectChanges();
   });
 
@@ -47,13 +51,13 @@ describe('AddInterviewComponent', () => {
     expect(component.interviewForm.valid).toBeFalsy();
   });
 
-  it('if the required fields are not completed, it cannot be saved', async(()=>{
+  it('if the required fields are not completed, it cannot be saved', async(() => {
     component.interviewForm.controls['dayOfInterview'].setValue('');
     fixture.detectChanges();
     expect(component.interviewForm.valid).toBeFalsy();
-    //invalid form cannot click in the button save
+    // invalid form cannot click in the button save
     spyOn(component, 'onSubmit');
-    let bt = fixture.debugElement.query(By.css('#save-btn')).nativeElement;
+    const bt = fixture.debugElement.query(By.css('#save-btn')).nativeElement;
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));

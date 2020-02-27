@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DataUserComponent implements OnInit {
   dataUserForm: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   userId: Number;
   user: User;
 
@@ -24,15 +24,18 @@ export class DataUserComponent implements OnInit {
   ngOnInit(): void {
     this.dataUserForm = this.formBuilder.group({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
+       Validators.maxLength(100), Validators.required]), // only letters
       email: new FormControl(''),
-      lastname: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      lastname: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
+       Validators.maxLength(100), Validators.required]), // only letters
       phoneNumber: new FormControl(''),
       rol: new FormControl('user1')
     });
 
     this.route.paramMap.subscribe(pmap => {
       if (pmap.get('id')) {
+        // tslint:disable-next-line: no-construct
         this.userId = new Number(pmap.get('id'));
         this.userService.getUser(this.userId.valueOf()).subscribe(data => {
           this.user = data;

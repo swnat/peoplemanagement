@@ -7,7 +7,7 @@ describe('ChallengeWorkflowService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterModule, HttpClientModule]
   }));
-  
+
   it('should be created', () => {
     const service: ChallengeWorkflowService = TestBed.get(ChallengeWorkflowService);
     expect(service).toBeTruthy();

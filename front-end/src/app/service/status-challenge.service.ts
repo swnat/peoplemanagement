@@ -8,15 +8,15 @@ import { StatusChallenge } from '../models/status-challenge';
   providedIn: 'root'
 })
 export class StatusChallengeService {
-  private basePath: string = '/api/v1/challenge/status-challenge';
   constructor(private httpClient: HttpClient) { }
+  private basePath = '/api/v1/challenge/status-challenge';
+  statusChallengeSelected;
 
   getStatusChallenge(): Observable<Array<StatusChallenge>> {
-    return this.httpClient.get<Array<StatusChallenge>>(environment.apiUrl+this.basePath);
+    return this.httpClient.get<Array<StatusChallenge>>(environment.apiUrl + this.basePath);
   }
 
   getStatusChallengeSelected() {
     return this.statusChallengeSelected;
   }
-  statusChallengeSelected;
 }

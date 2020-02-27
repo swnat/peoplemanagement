@@ -15,9 +15,9 @@ import { NotificationService } from 'src/app/shared/notification-service/notific
 })
 export class ListRecordComponent implements OnInit {
   list_records: Record[] = [];
-  totalItems: number = 0;
-  itemsPerPage: number = 5;
-  page: number = 1;
+  totalItems = 0;
+  itemsPerPage = 5;
+  page = 1;
   previousPage: any;
   showPagination: boolean;
 
@@ -28,16 +28,16 @@ export class ListRecordComponent implements OnInit {
     console.log('Entro en list candidate');
     this.page = 1;
     this.previousPage = 1;
-    
+
   }
 
-  getAllRecord(page:number, itemsPerPage:number) {
-    console.log("probando getAllcandidate");
+  getAllRecord(page: number, itemsPerPage: number) {
+    console.log('probando getAllcandidate');
     this.recordService.getAllRecord(page, itemsPerPage).subscribe(data => {
-      if ((!data && !data.content) || (data && data.content && data.content.length == 0)) {
+      if ((!data && !data.content) || (data && data.content && data.content.length === 0)) {
         this.list_records = [];
         this.showPagination = false;
-      }else {
+      } else {
         this.list_records = <Record[]>data.content;
         this.totalItems = data.totalCount;
         this.itemsPerPage = 5;
@@ -52,7 +52,7 @@ export class ListRecordComponent implements OnInit {
 
 
   loadData() {
-    this.getAllRecord(this.page-1, this.itemsPerPage);
+    this.getAllRecord(this.page - 1, this.itemsPerPage);
   }
   loadPage(page: number) {
     if (page !== this.previousPage) {
@@ -61,8 +61,8 @@ export class ListRecordComponent implements OnInit {
     }
   }
 
-  collapse(index: number){
-    //debugger;
+  collapse(index: number) {
+    // debugger;
     this.list_records[index].collapse = !this.list_records[index].collapse;
   }
 }

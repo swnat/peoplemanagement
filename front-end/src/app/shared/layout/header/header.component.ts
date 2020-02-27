@@ -15,7 +15,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 })
 export class HeaderComponent implements OnInit {
   /**
-   * Manejo de la Sesión 
+   * Manejo de la Sesión
    * @param storageService Mantiene la sesión almacenada para que sea persistente
    * @param authenticationService Para hacer el logout
    */
@@ -36,9 +36,9 @@ export class HeaderComponent implements OnInit {
         this.user = data;
 
         console.log('Candidate data', data);
-        if (data.rol == 'user1') {
+        if (data.rol === 'user1') {
           this.rol_name = 'Manager';
-        } else if (data.rol == 'user2') {
+        } else if (data.rol === 'user2') {
           this.rol_name = 'Admin';
         } else {
           this.rol_name = 'Colaborator';
@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
     this.toggled = !this.toggled;
   }
 
-  /* Add function to the sidebar menu items to automatically 
+  /* Add function to the sidebar menu items to automatically
   hide when clicking on a screen smaller than 450px*/
   sidebar_hide() {
     if (screen.width <= 450) {
