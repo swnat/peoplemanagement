@@ -3,12 +3,12 @@
   <div class="list-container px-4 pt-4">
 
     <div class="list-container-header">
-      <!--<div class="float-left">
-        <form class="form-inline my-2 my-lg-0 pt-2 pb-2 px-3">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <div class="float-left">
+        <form class="form-inline my-2 my-lg-0 pt-2 pb-2 px-1" (submit)="filterCandidate()">
+          <input class="form-control mr-sm-2" name="filterText" [(ngModel)]="filterText" type="search" placeholder="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-      </div>-->
+      </div>
 
       <div class="float-right">
         <a (click)="toViewCandidateAdd()" [routerLink]="''" title="Add Candidate">

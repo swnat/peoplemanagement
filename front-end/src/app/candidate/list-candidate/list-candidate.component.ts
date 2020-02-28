@@ -5,7 +5,6 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { ResponseList } from 'src/app/models/responseList';
-// import { RowSetting } from 'src/app/models/row-setting';
 import { DataRequest } from 'src/app/models/data-request';
 
 @Component({
@@ -15,21 +14,21 @@ import { DataRequest } from 'src/app/models/data-request';
   providers: [NgbPaginationConfig]
 })
 export class ListCandidateComponent implements OnInit {
-  // filteringFields: Object = { text: 'nameCandidate', value: 'nameCandidate' };
-
   candidates: ResponseList = { content: [], totalCount: 0 };
   // pagination specific attributes
   page = 1;
   pageSize = 8;
+  // filter candidate
+  filterText = '';
 
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.getAllCandidates({ filter: null, page: 0, size: this.pageSize });
+    this.getAllCandidates({ filter: this.filterText, page: 0, size: this.pageSize });
   }
 
   public loadPage(page: number){ 
-    this.getAllCandidates({ filter: null, page: page - 1, size: this.pageSize });
+    this.getAllCandidates({ filter: this.filterText, page: page - 1, size: this.pageSize });
   }
 
   public getAllCandidates(request: DataRequest): void {
@@ -45,5 +44,10 @@ export class ListCandidateComponent implements OnInit {
 
   toViewCandidateAdd() {
     this.router.navigate(['candidate/data/']);
+  }
+
+  filterCandidate() {
+    this.getAllCandidates({ filter: this.filterText, page: 0, size: this.pageSize });
+    this.page = 1;
   }
 }
