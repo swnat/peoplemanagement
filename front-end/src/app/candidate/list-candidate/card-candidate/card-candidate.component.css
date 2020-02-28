@@ -1,6 +1,7 @@
 .card {
   cursor: pointer;
   border-color: white;
+  border-radius: 10px;
 }
 
 .card:hover {
