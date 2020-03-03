@@ -3,19 +3,21 @@
   <div class="list-container px-4 pt-4">
 
     <div class="list-container-header">
-      <div class="float-left">
-        <form class="form-inline my-2 my-lg-0 pt-2 pb-2 px-1" (submit)="filterCandidate()">
-          <input class="form-control mr-sm-2" name="filterText" [(ngModel)]="filterText" type="search" placeholder="Candidate name">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      <div class="float-left mr-4">
+        <form class="form-inline" (submit)="filterCandidate()">
+          <input class="form-control mr-2" name="filterText" [(ngModel)]="filterText" type="search" placeholder="Candidate Name">
+          <button class="btn btn-primary" type="submit">Search</button>
         </form>
       </div>
 
       <div class="float-left">
-        <label for="select-sortby">Sort By:</label>
-        <select id="select-sortby" [(ngModel)]="sortBy" (change)="changeSortBy()">
-          <option value="LAST_MODIFIED" selected>Last Modified</option>
-          <option value="LAST_NAME">Last Name</option>
-        </select>
+        <form class="form-inline">
+          <label for="select-sortby" class="mr-2">Sort By:</label>
+          <select id="select-sortby" name="sortBy" [(ngModel)]="sortBy" (change)="changeSortBy()" class="form-control">
+            <option [ngValue]="'LAST_MODIFIED'">Last Modified</option>
+            <option [ngValue]="'LAST_NAME'">Last Name</option>
+          </select>
+        </form>
       </div>
 
       <div class="float-right">
@@ -23,7 +25,6 @@
           <i style="color: #3498db" class="fas fa-user-plus fa-3x"></i>
         </a> 
       </div>
-
     </div>
 
     <div class="clearfix"></div>

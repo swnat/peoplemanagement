@@ -22,7 +22,7 @@ export class ListCandidateComponent implements OnInit {
 
   // filter candidate
   filterText = '';
-  sortBy = 'LAST_MODIFIED'
+  sortBy = 'LAST_MODIFIED'; // default last modified
 
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
