@@ -1,59 +1,84 @@
-    .user{
-        text-align: center;
-    }
+#profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+}
 
-    .side-icon{
-        display: flex;
-    }
+#id-nav {
+  background-color: white;
+  height: 65px;
+}
 
-    a.nav-link.user-profile{
-        width: 200px;
-    }
+body {
+  overflow-x: hidden;
+}
 
-    a{
-        display: flex;
-        text-decoration: none;
-    }
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  background: #00417c;
+}
 
-    a.nav-link.user-name{
-        right: 12px;
-        padding-right: 4px;
-    }
+#sidebar-wrapper .sidebar-head {
+  padding: 50px 60px;
+}
 
-    .navbar-expand-md .navbar-nav .nav-link {
-        padding-left: .3rem;
-    }
+#sidebar-wrapper .navbar {
+  width: 15rem;
+}
 
-    li.nav-item.active{
-        padding-right: 7px;
-    }
+#items-nav {
+  padding: 0px;
+  display: block;
+}
 
-    li.nav-item.active.user-profile{
-        width: 80px;
-        display: inline-flex; 
-    }
+#items-nav ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: white;
+  font-weight: 600;
+}
 
-    li.nav-item.active.logo-sign-out{
-        width: 80px;
-        display: inline-flex;
-    }
+#items-nav ul li a:hover {
+  color: #00417c;
+  background: #fff;
+}
 
-    a.nav-link.title.account{
-        width: 70px;
-    }
+.item-active {
+  color: #00417c !important;
+  background: #fff;
+}
 
-    a.nav-link.title{
-        color:white;
-    }
+#items-van a,
+a:hover,
+a:focus {
+  transition: all 0.3;
+}
 
-    div#navbarsExampleDefault.navbar-collapse.collapse{
-        padding-right: 10px;
-    }
+#page-content-wrapper {
+  min-width: 100vw;
+}
 
-    a.title:hover, a.title:active {
-        text-decoration: none;
-    }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
 
-    @import "../node_modules/@syncfusion/ej2/material.css";
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
 
-  
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}

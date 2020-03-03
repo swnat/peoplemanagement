@@ -1,11 +1,37 @@
-<div class="container">
-    <div class="col-12 title form-title-pm">
-        Candidates List
+<div class="container mb-4">
+
+  <div class="list-container px-4 pt-4">
+
+    <div class="list-container-header">
+      <!--<div class="float-left">
+        <form class="form-inline my-2 my-lg-0 pt-2 pb-2 px-3">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>-->
+
+      <div class="float-right">
+        <a (click)="toViewCandidateAdd()" [routerLink]="''" title="Add Candidate">
+          <i style="color: #3498db" class="fas fa-user-plus fa-3x"></i>
+        </a> 
       </div>
-    <app-data-table [rowItems]="rowItems" [rowSettings]="rowSettings" [showFilter]="true" [showPagination]="true" [filteringFields]='filteringFields' (getAllData)="getAllCandidates($event)"></app-data-table>
-    <div class="col-12 position">
-        <button id="add-candidate" alt="addCandidate" title="Add Candidate" type="button" style="margin: 10 10 10 10" class="btn btn-pm float-right btn-lg" (click)="toViewCandidateAdd()">
-        Add
-      </button>
+
     </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
+        <app-card-candidate [candidate]="item"></app-card-candidate>
+      </div>
+    </div>
+
+    <div class=" d-flex justify-content-center" id="list-container-footer">
+      <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
+        [(page)]="page" [maxSize]="1" [rotate]="true" [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"></ngb-pagination>
+    </div>
+
+  </div>
+
 </div>
