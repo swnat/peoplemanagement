@@ -15,11 +15,14 @@ import { DataRequest } from 'src/app/models/data-request';
 })
 export class ListCandidateComponent implements OnInit {
   candidates: ResponseList = { content: [], totalCount: 0 };
+
   // pagination specific attributes
   page = 1;
   pageSize = 8;
+
   // filter candidate
   filterText = '';
+  sortBy = 'LAST_MODIFIED'
 
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
@@ -32,7 +35,7 @@ export class ListCandidateComponent implements OnInit {
   }
 
   public getAllCandidates(request: DataRequest): void {
-    this.candidateService.getAllCandidates(request.filter, request.page, request.size).subscribe(data => {
+    this.candidateService.getAllCandidates(request.filter, request.page, request.size, this.sortBy).subscribe(data => {
       this.candidates = data;
       window.scrollTo(0,0); 
     },
@@ -50,4 +53,10 @@ export class ListCandidateComponent implements OnInit {
     this.getAllCandidates({ filter: this.filterText, page: 0, size: this.pageSize });
     this.page = 1;
   }
+
+  changeSortBy() {
+    this.getAllCandidates({ filter: this.filterText, page: 0, size: this.pageSize });
+    this.page = 1;
+  }
+
 }
