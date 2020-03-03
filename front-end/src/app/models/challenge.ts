@@ -7,11 +7,11 @@ export class Challenge {
         public comment: string,
         public dayOfSent: string,
         public dayOfExpected: string,
-        public linkChallenge:string,
+        public linkChallenge: string,
         public statusChallenge: StatusChallenge,
         public candidate: any,
         public taskId: string,
         public reviewer: string,
-        public isfinishProcess:string
+        public isfinishProcess: string
     ) {}
 }

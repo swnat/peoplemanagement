@@ -9,9 +9,9 @@ export class ChallengeForm {
         public linkChallenge: string,
         public taskId: string,
         public reviewer: string,
-        public userAssignee:String, 
-        public candidateId:number,
-        public action:Action){}
+        public userAssignee: String,
+        public candidateId: number,
+        public action: Action) {}
 }
 
 export enum Action {ADD, EDIT}

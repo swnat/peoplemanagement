@@ -20,7 +20,7 @@ export class CardCandidateComponent implements OnInit {
   // go to candidate profile page
   onClick() {
     let url = '/candidate/data/';
-    if (this.candidate) url += this.candidate.id;
+    if (this.candidate) { url += this.candidate.id; }
     this.router.navigateByUrl(url);
   }
 
@@ -28,23 +28,23 @@ export class CardCandidateComponent implements OnInit {
   get candidateName(): string {
     const MAX = 17;
     let name: string = this.candidate ? `${this.candidate.name} ${this.candidate.lastName}`.trim() : '-';
-    if (name.length > MAX) name = `${name.substr(0, MAX - 3)}...`;
+    if (name.length > MAX) { name = `${name.substr(0, MAX - 3)}...`; }
     return name;
   }
 
   get statusChallenge(): string {
     const stch = this.candidate ? this.candidate.process_challenge_status : '';
-    if (stch.match(/pending/i)) return 'pending';
-    if (stch.match(/pro/i)) return 'in_process';
-    if (stch.match(/completed/i)) return 'completed';
+    if (stch.match(/pending/i)) { return 'pending'; }
+    if (stch.match(/pro/i)) { return 'in_process'; }
+    if (stch.match(/completed/i)) { return 'completed'; }
     return 'undefined';
   }
 
   get statusInterview(): string {
     const stint = this.candidate ? this.candidate.interviewStatus : '';
-    if (stint.match(/pending/i)) return 'pending';
-    if (stint.match(/pro/i)) return 'in_process';
-    if (stint.match(/completed/i)) return 'completed';
+    if (stint.match(/pending/i)) { return 'pending'; }
+    if (stint.match(/pro/i)) { return 'in_process'; }
+    if (stint.match(/completed/i)) { return 'completed'; }
     return 'undefined';
   }
 
