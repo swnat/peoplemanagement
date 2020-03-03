@@ -18,11 +18,15 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
 
-    @ApiOperation(value = "Get list of candidates", notes = "Get list of candidates by filtering with a text and returning paginated.")
+    @ApiOperation(
+        value = "Get list of candidates",
+        notes = "Get list of candidates by filtering with a text and returning paginated and sort by")
     @GetMapping("/")
-    public PaginationResponse<Candidate> getAllCandidate(@RequestParam(value = "filter", required = false) String filter, @RequestParam("page") int page, @RequestParam("size") int size) {
-        //System.out.println("lista de candidatos");
-        return candidateService.findByFilter(filter, page, size);
+    public PaginationResponse<Candidate> getAllCandidate(
+            @RequestParam(value = "filter", required = false) String filter,
+            @RequestParam("page") int page, @RequestParam("size") int size,
+            @RequestParam("sortby") String sortBy) {
+        return candidateService.findByFilter(filter, page, size, sortBy);
     }
 
     @ApiOperation(value = "Create a candidate", notes = "Create a new candidate.")
