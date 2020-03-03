@@ -20,6 +20,8 @@ services:
     ports:
       - "4200:4200"
     image: front
+    volumes:
+      - ../front-end:/people-management
     depends_on:
       - back-end
   
