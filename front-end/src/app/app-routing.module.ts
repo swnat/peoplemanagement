@@ -18,7 +18,7 @@ import { DataUserComponent } from './user/data-user/data-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'construction', component: ConstructionSiteComponent }, 
+  { path: 'construction', component: ConstructionSiteComponent },
   { path: '', component: HomeComponent, canActivate: [ AuthorizatedGuard ], children:
       [
         {
@@ -40,7 +40,7 @@ const routes: Routes = [
           path: 'candidate',
           canActivateChild: [AuthorizatedGuard],
           children: [
-                       
+
             { path: 'data', component: ViewCandidateComponent , canActivateChild: [AuthorizatedGuard]},
             { path: 'data/:id', component: ViewCandidateComponent , canActivateChild: [AuthorizatedGuard]},
             { path: '', component: ListCandidateComponent, canActivateChild: [AuthorizatedGuard] },

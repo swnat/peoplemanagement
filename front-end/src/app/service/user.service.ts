@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private basePath: string = "/api/v1/user/";
+  private basePath = '/api/v1/user/';
   constructor(private httpClient: HttpClient) { }
   getUser(id: number) {
     return this.httpClient.get<User>(environment.apiUrl + this.basePath + id);
@@ -16,7 +16,7 @@ export class UserService {
 
   addUser(user: User): Observable<User> {
     return new Observable((observer) => {
-      observer.error("Error2");
+      observer.error('Error2');
       user.idUser = 9999999;
       observer.next(user);
       observer.complete();

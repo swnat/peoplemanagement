@@ -13,18 +13,26 @@ import { ResponseList } from 'src/app/models/responseList';
   providers: [NgbPaginationConfig]
 })
 export class DataTableComponent {
+  // tslint:disable-next-line: no-input-rename
   @Input('rowItems') rowItems: ResponseList = { content: [], totalCount: 0 };
+  // tslint:disable-next-line: no-input-rename
   @Input('rowSettings') rowSettings: RowSetting[] = [];
-  @Input('showFilter') showFilter: boolean = false;
-  @Input('showPagination') showPagination: boolean = false;
+  // tslint:disable-next-line: no-input-rename
+  @Input('showFilter') showFilter = false;
+  // tslint:disable-next-line: no-input-rename
+  @Input('showPagination') showPagination = false;
+  // tslint:disable-next-line: no-input-rename
   @Input('filteringFields') filteringFields: Object;
+  // tslint:disable-next-line: no-output-rename
   @Output('getAllData') getAllData = new EventEmitter();
-  @Input('itemsPerPage') itemsPerPage: number = 5;
+  // tslint:disable-next-line: no-input-rename
+  @Input('itemsPerPage') itemsPerPage = 5;
   totalItems: any;
   page: any = 1;
 
+  // tslint:disable-next-line: use-life-cycle-interface
   ngOnChanges(changes: SimpleChanges) {
-    let rowItems: ResponseList = changes.rowItems.currentValue;
+    const rowItems: ResponseList = changes.rowItems.currentValue;
     if (!rowItems && !rowItems.content) {
       this.rowItems = { content: [], totalCount: 0 };
     } else {
@@ -33,18 +41,18 @@ export class DataTableComponent {
   }
 
   public onFiltering: EmitType<object> = (e: FilteringEventArgs) => {
-    if (e.text == '') {
+    if (e.text === '') {
       this.loadPage(null);
       return;
     }
     if (e.text.length > 2) {
-      this.getAllData.emit({ filter: e.text, page: 0, size: 1000 })
+      this.getAllData.emit({ filter: e.text, page: 0, size: 1000 });
     }
-  };
+  }
 
   public onSelect: EmitType<object> = (e: SelectEventArgs) => {
     this.rowItems.content = this.rowItems.content.filter(c => c['id'] === e.itemData['id']);
-  };
+  }
 
 
   public onRemoved: EmitType<object> = (e: RemoveEventArgs) => {
@@ -52,7 +60,7 @@ export class DataTableComponent {
   }
 
   loadPage(page: number) {
-    this.getAllData.emit({ filter: null, page: this.page - 1, size: this.itemsPerPage })
+    this.getAllData.emit({ filter: null, page: this.page - 1, size: this.itemsPerPage });
   }
 
 }

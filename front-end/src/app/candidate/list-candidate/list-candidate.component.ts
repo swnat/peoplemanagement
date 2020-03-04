@@ -37,7 +37,7 @@ export class ListCandidateComponent implements OnInit {
   public getAllCandidates(request: DataRequest): void {
     this.candidateService.getAllCandidates(request.filter, request.page, request.size, this.sortBy).subscribe(data => {
       this.candidates = data;
-      window.scrollTo(0,0); 
+      window.scrollTo(0, 0);
     },
     error => {
       console.log('Error getAllCandidates', error);
