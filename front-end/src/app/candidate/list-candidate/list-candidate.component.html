@@ -10,28 +10,25 @@
         </form>
       </div>-->
 
+
+
       <div class="float-right">
-        <a (click)="toViewCandidateAdd()" [routerLink]="''" title="Add Candidate">
-          <i style="color: #3498db" class="fas fa-user-plus fa-3x"></i>
-        </a> 
+        <button class="btn btn-primary btn-lg" type="submit" (click)="toViewCandidateAdd()" [routerLink]="''">
+        + Add Candidate
+        </button>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
+          <app-card-candidate [candidate]="item"></app-card-candidate>
+        </div>
       </div>
 
-    </div>
-
-    <div class="clearfix"></div>
-
-    <div class="row mt-4">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
-        <app-card-candidate [candidate]="item"></app-card-candidate>
+      <div class=" d-flex justify-content-center" id="list-container-footer">
+        <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize" [(page)]="page"
+          [maxSize]="1" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
       </div>
-    </div>
 
-    <div class=" d-flex justify-content-center" id="list-container-footer">
-      <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
-        [(page)]="page" [maxSize]="1" [rotate]="true" [boundaryLinks]="true"
-        (pageChange)="loadPage($event)"></ngb-pagination>
     </div>
 
   </div>
-
-</div>
