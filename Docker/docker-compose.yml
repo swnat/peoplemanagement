@@ -33,5 +33,7 @@ services:
       - "8080:8080"
     network_mode: "host"
     image: ppl-server
+    volumes: 
+      - ../back-end:/back-end
     depends_on:
       - postgres
