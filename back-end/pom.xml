@@ -122,23 +122,6 @@
                     <!--<jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005</jvmArguments>-->
                 </configuration>
             </plugin>
-            <!-- Add plugin docker -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.2.2</version>
-                <configuration>
-                    <imageName>${project.artifactId}</imageName>
-                    <dockerDirectory>.</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath></targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalname}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
