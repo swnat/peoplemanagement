@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {Candidate} from '../models/candidate';
-import {environment} from '../../environments/environment';
+import { Candidate } from '../models/candidate';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseList } from '../models/responseList';
 
@@ -28,16 +28,18 @@ export class CandidateService {
     return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidate.id, candidate);
   }
 
-  getAllCandidates(nameCandidate: string, page: number, itemsPerPage: number): Observable<ResponseList> {
+  getAllCandidates(nameCandidate:string, page:number, itemsPerPage: number, sortBy: string): Observable<ResponseList> {
     let params = new HttpParams();
-    if (nameCandidate) {
-      params = params.append('filter', nameCandidate);
+    if(nameCandidate) {
+      params = params.append('filter', nameCandidate); 
     }
 
-    params = params.append('size', itemsPerPage.toString());
+    params = params.append('size', itemsPerPage.toString()); 
     params = params.append('page', page.toString());
+    params = params.append('sortby', sortBy);
     return this.httpClient.get<ResponseList>(environment.apiUrl + this.basePath, {params});
   }
+  
   getCandidateSelected() {
     return this.candidateSelected;
   }

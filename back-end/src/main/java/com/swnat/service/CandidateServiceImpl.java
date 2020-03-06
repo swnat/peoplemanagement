@@ -41,9 +41,14 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
     }
 
     @Override
-    public PaginationResponse<Candidate> findByFilter(String filter, int page, int size) {
+    public PaginationResponse<Candidate> findByFilter(String filter, int page, int size, String sortBy) {
         Page<Candidate> searchResult;
-        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("lastName"));
+
+        Sort sortByQuery = Sort.by(Sort.Direction.DESC, "modifiedTimestamp"); // default LAST_MODIFIED
+        if (sortBy.equals("LAST_NAME")) {
+            sortByQuery = Sort.by(Sort.Direction.ASC, "lastName");
+        }
+        PageRequest pageRequest = PageRequest.of(page, size, sortByQuery);
 
         if (filter == null || filter.isEmpty()) {
             searchResult = candidateRepository.findAll(pageRequest);
@@ -51,7 +56,8 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
             searchResult = candidateRepository.findAllByNameContainsOrLastNameContains(filter.toUpperCase(), filter, pageRequest);
         }
 
-        List<Candidate> candidates = searchResult.getContent().stream().sorted(Comparator.comparing(Candidate::getLastName)).collect(Collectors.toList());//order by last name
+        // List<Candidate> candidates = searchResult.getContent().stream().sorted(Comparator.comparing(Candidate::getLastName)).collect(Collectors.toList());//order by last name
+        List<Candidate> candidates = searchResult.getContent().stream().collect(Collectors.toList());
         candidates.forEach(c->  c.setNameCandidate(c.getName() +" "+c.getLastName()));//set name and lastName for candidate
 
         PaginationResponse<Candidate> response = new PaginationResponse<>();
