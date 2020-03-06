@@ -21,7 +21,7 @@ services:
       - "4200:4200"
     image: front
     volumes:
-      - ../front-end:/people-management
+      - ../front-end:/front-end
     depends_on:
       - back-end
   
