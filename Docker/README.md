@@ -4,7 +4,8 @@ If you do not have Docker installed, please visit the [Docker documentation](htt
 
 ## Building the image of people-management
 Note:
-Before building the images turn off your postgresql service with the following command ```bash
+Before building the images turn off your postgresql service with the following command:
+```bash
 sudo service postgresql stop
 ```
 
