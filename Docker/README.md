@@ -11,6 +11,7 @@ sudo service postgresql stop
 
 To build the full image of the project go to the Docker directory and run:
 ```bash
+sudo docker-compose build
 sudo docker-compose up
 ```
 
