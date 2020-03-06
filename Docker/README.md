@@ -3,6 +3,11 @@ The purpose of this is to deploy the entire project on a docker image, so that o
 If you do not have Docker installed, please visit the [Docker documentation](https://docs.docker.com/) and follow the steps for installation. 
 
 ## Building the image of people-management
+Note:
+Before building the images turn off your postgresql service with the following command ```bash
+sudo service postgresql stop
+```
+
 To build the full image of the project go to the Docker directory and run:
 ```bash
 sudo docker-compose up
