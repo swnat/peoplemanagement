@@ -16,7 +16,8 @@ describe('DataCandidateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,
+        BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule],
       declarations: [ DataCandidateComponent, HeaderComponent],
       providers: [ToastrService]
     })
@@ -26,7 +27,7 @@ describe('DataCandidateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DataCandidateComponent);
     component = fixture.componentInstance;
-    
+
 
     fixture.detectChanges();
   });
@@ -34,16 +35,16 @@ describe('DataCandidateComponent', () => {
   it('Data Form must be valid', () => {
     expect(component.dataCandidateForm.valid).toBeFalsy();
   });
-  it('if the required fields are not completed, it cannot be saved', async(()=>{
+  it('if the required fields are not completed, it cannot be saved', async(() => {
     component.dataCandidateForm.controls['name'].setValue('');
     fixture.detectChanges();
     expect(component.dataCandidateForm.valid).toBeFalsy();
-    //invalid form cannot click in the button save
+    // invalid form cannot click in the button save
     spyOn(component, 'onSubmit');
-    let bt = fixture.debugElement.query(By.css('.btn-pm')).nativeElement;
+    const bt = fixture.debugElement.query(By.css('.btn-pm')).nativeElement;
     bt.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1);
   }));
 
-  
+
 });

@@ -21,6 +21,16 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./list-interview.component.css']
 })
 export class ListInterviewComponent implements OnInit {
+
+  constructor(
+    private candidateService: CandidateService,
+    private statusCandidateService: StatusCandidateService,
+    private router: Router,
+    private storageService: StorageService,
+    private userService: UserService,
+    private interviewWFService: InterviewWorkflowService,
+    private notificationService: NotificationService,
+    private route: ActivatedRoute) { }
   list_interview: Array<Interview>;
   candidate: Candidate;
   statusCandidate: StatusCandidate[];
@@ -28,24 +38,21 @@ export class ListInterviewComponent implements OnInit {
   isDisabled: boolean;
   isFinish: boolean;
   clicked = false;
-  submitted: boolean = false;
-  @Input() candidateId:number;
+  submitted = false;
+  @Input() candidateId: number;
   user: User;
+  /* POPUP */
+  @ViewChild('ejDialog') ejDialog: DialogComponent;
+  // Create element reference for dialog target element.
+  @ViewChild('container', { read: ElementRef }) container: ElementRef;
+  // The Dialog shows within the target element.
+  public targetElement: HTMLElement;
 
-  constructor(
-    private candidateService: CandidateService, 
-    private statusCandidateService: StatusCandidateService, 
-    private router: Router,
-    private storageService: StorageService,
-    private userService: UserService,
-    private interviewWFService: InterviewWorkflowService, 
-    private notificationService: NotificationService,
-    private route: ActivatedRoute) { }
 
   ngOnInit() {
     console.log('ListInterview', this.candidateId);
-    if(this.candidateId !== 0) {
-     
+    if (this.candidateId !== 0) {
+
       this.getInterviewByCandidate(this.candidateId);
 
     }
@@ -55,12 +62,6 @@ export class ListInterviewComponent implements OnInit {
       });
     this.getStatusCandidate();
   }
-  /* POPUP */
-  @ViewChild('ejDialog') ejDialog: DialogComponent;
-  // Create element reference for dialog target element.
-  @ViewChild('container', { read: ElementRef }) container: ElementRef;
-  // The Dialog shows within the target element.
-  public targetElement: HTMLElement;
 
   // Initialize the Dialog component's target element.
   public initilaizeTarget: EmitType<object> = () => {
@@ -68,14 +69,14 @@ export class ListInterviewComponent implements OnInit {
   }
 
   // Hide the Dialog when click the footer button.
-  public hideDialog: EmitType<object> = (s:any) => {
-    const approval= new Approval(null,  this.user.name, this.candidate.id.toString(), null);//define the user !!!
+  public hideDialog: EmitType<object> = (s: any) => {
+    const approval = new Approval(null,  this.user.name, this.candidate.id.toString(), null); // define the user !!!
 
-    if(s === "OK") {
+    if (s === 'OK') {
       this.interviewWFService.completeProcess(approval).subscribe(
         data => {
           this.finishProcessSuccess(data);
-          this.getInterviewByCandidate(this.candidate.id);//new
+          this.getInterviewByCandidate(this.candidate.id); // new
         },
         error => this.finishProcessError(error)
       );
@@ -84,19 +85,9 @@ export class ListInterviewComponent implements OnInit {
     this.ejDialog.hide();
   }
 
-  finishProcessSuccess(data: boolean) {
-    this.isFinish= !data;
-    console.log('Interviews process ended successfully', data);
-    this.notificationService.showSuccess(this.candidate.name + ' ' + this.candidate.lastName, 'The interviews process ended successfully');
-  }
-
-  finishProcessError(error) {
-    console.log('Interviews process ended has erros', error);
-    this.notificationService.showError(this.candidate.name + ' ' + this.candidate.lastName, 'Error occurred at the end of the interview process');
-  }
-
-  // Enables the footer buttons
-  public buttons: Object = [
+   // Enables the footer buttons
+   // tslint:disable-next-line: member-ordering
+   public buttons: Object = [
     {
       'click': this.hideDialog.bind(this, 'OK'),
       // Accessing button component properties by buttonModel property
@@ -114,8 +105,20 @@ export class ListInterviewComponent implements OnInit {
     }
   ];
 
+  finishProcessSuccess(data: boolean) {
+    this.isFinish = !data;
+    console.log('Interviews process ended successfully', data);
+    this.notificationService.showSuccess(this.candidate.name + ' ' + this.candidate.lastName, 'The interviews process ended successfully');
+  }
+
+  finishProcessError(error) {
+    console.log('Interviews process ended has erros', error);
+    this.notificationService.showError(this.candidate.name + ' ' + this.candidate.lastName,
+     'Error occurred at the end of the interview process');
+  }
+
   // Sample level code to handle the button click action
-  public onOpenDialog = function(even: any):void {
+  public onOpenDialog = function(even: any): void {
     // Call the show method to open the Dialog
     this.ejDialog.show();
   };
@@ -130,14 +133,14 @@ export class ListInterviewComponent implements OnInit {
   }
 
   toAddInterview(statusCandidate: StatusCandidate) {
-    //get the candidateId
+    // get the candidateId
     this.candidate = this.candidateService.getCandidateSelected();
-    if(statusCandidate) {
+    if (statusCandidate) {
       this.statusCandidateService.statusCandidateSelected = statusCandidate;
       localStorage.setItem('candidateId', this.candidate.id.toString());
-      
+
       this.router.navigate(['interview/add/']);
-    }else{
+    } else {
       this.notificationService.showInfo('Select an Interview', '');
     }
 
@@ -145,11 +148,11 @@ export class ListInterviewComponent implements OnInit {
 
   toEditInterview(id: number) {
     localStorage.setItem('candidateId', this.candidate.id.toString());
-    this.router.navigate(['interview/edit/'+id]);
+    this.router.navigate(['interview/edit/' + id]);
   }
 
   /** GET AN ARRAY OF ALL INTERVIEW ABOUT ONE CANDIDATE
-  *@param list_interview
+  *@param list_interview get list interview
   */
   getInterviewByCandidate(id: number) {
     this.candidateService.getCandidate(id).subscribe(data => {
@@ -159,7 +162,7 @@ export class ListInterviewComponent implements OnInit {
       this.setFinishProcessByCandidate();
 
       data.interviews.length > 2 ?
-      this.isDisabled = true : 
+      this.isDisabled = true :
       this.isDisabled = false;
     },
     error => {

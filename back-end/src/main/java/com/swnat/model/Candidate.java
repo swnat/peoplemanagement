@@ -59,6 +59,9 @@ public class Candidate implements Serializable {
     @Column(name = "profile_image")
     private String profileImage;
 
+    @Column(name = "modified_timestamp")
+    private Date modifiedTimestamp;
+
     @Transient
     private String nameCandidate;
 
@@ -224,6 +227,16 @@ public class Candidate implements Serializable {
 
     public void setProfileImage(String profileImage ){
         this.profileImage = profileImage;
+    }
+
+    public Date getModifiedTimestamp() {
+        return this.modifiedTimestamp;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void setModifiedTimestamp() {
+        this.modifiedTimestamp = new Date();
     }
 }
 

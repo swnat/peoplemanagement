@@ -14,11 +14,11 @@ import { By } from '@angular/platform-browser';
 describe('EditInterviewComponent', () => {
   let component: EditInterviewComponent;
   let fixture: ComponentFixture<EditInterviewComponent>;
-  let id: number = 1;
+  const id = 1;
 
   beforeAll(() => {
-    localStorage.setItem('statusChallenge', JSON.stringify({ id: 2, name: "SENT" }));
-    localStorage.setItem('currentUser', JSON.stringify({ id: 4, rol: "user1" }));
+    localStorage.setItem('statusChallenge', JSON.stringify({ id: 2, name: 'SENT' }));
+    localStorage.setItem('currentUser', JSON.stringify({ id: 4, rol: 'user1' }));
     localStorage.setItem('user', '2');
   });
 
@@ -30,7 +30,7 @@ describe('EditInterviewComponent', () => {
         { path: '**', redirectTo: 'edit/' + id, pathMatch: 'full' }]
       ), ToastrModule.forRoot()],
       declarations: [EditInterviewComponent, HeaderComponent, DatePickerComponent],
-      providers: [ToastrService,]
+      providers: [ToastrService, ]
     })
       .compileComponents();
   }));
@@ -59,19 +59,15 @@ describe('EditInterviewComponent', () => {
 
   // should warning when put numbers in the field participant
   it('should warning when put numbers in the field participant', async(() => {
-    let participant = fixture.debugElement.query(By.css('#participant')).nativeElement;
+    const participant = fixture.debugElement.query(By.css('#participant')).nativeElement;
     participant.value = '12345';
     fixture.componentInstance.f.addParticipant.setValue('12345');
-    // fixture.componentInstance.submitted = true;
 
     participant.dispatchEvent(new Event('input'));
-    // fixture.debugElement.query(By.css('#add-btn')).nativeElement.click();
     fixture.detectChanges();
     const dom = fixture.debugElement;
-    console.info('dom' + fixture.componentInstance.f.comment);
 
     const hint = dom.query(By.css('#participant-only-characters'));
-    console.info('foo' + hint);
 
     expect(hint.nativeElement.innerText).toMatch('Participant has to be only characters');
   }));

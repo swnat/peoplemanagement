@@ -10,9 +10,10 @@ public interface CandidateService extends IGenericService<Candidate, Long> {
      * @param filter
      * @param page
      * @param size
+     * @param sortBy
      * @return
      */
-    PaginationResponse<Candidate> findByFilter(String filter, int page, int size);
+    PaginationResponse<Candidate> findByFilter(String filter, int page, int size, String sortBy);
 
     Candidate getOne(Long id);
 
