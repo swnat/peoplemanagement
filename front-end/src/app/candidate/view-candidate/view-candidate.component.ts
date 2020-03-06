@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-candidate.component.css']
 })
 export class ViewCandidateComponent implements OnInit {
-  candidateId : number;
+  candidateId: number;
   showInterview = false;
-  showChallenge =false;
+  showChallenge = false;
   collapseValue: string;
 
   constructor(private route: ActivatedRoute) { }
@@ -19,7 +19,7 @@ export class ViewCandidateComponent implements OnInit {
     console.log('showInterviewAccordion', showInterview);
     this.showInterview = showInterview;
   }
-  
+
   showChallengeAccordion(showChallenge) {
     console.log('showChallengeAccordion', showChallenge);
     this.showChallenge = showChallenge;

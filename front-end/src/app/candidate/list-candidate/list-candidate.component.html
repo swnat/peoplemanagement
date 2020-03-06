@@ -1,37 +1,44 @@
-<div class="container mb-4">
+<div class="container">
 
-  <div class="list-container px-4 pt-4">
+  <div class="list-container px-4">
 
     <div class="list-container-header">
-      <!--<div class="float-left">
-        <form class="form-inline my-2 my-lg-0 pt-2 pb-2 px-3">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div class="float-left mr-3">
+        <form class="form-inline" (submit)="filterCandidate()">
+          <input class="form-control mr-2 mb-2" name="filterText" [(ngModel)]="filterText" type="search" placeholder="Candidate Name">
+          <button class="btn btn-primary mr-2 mb-2" type="submit">Search</button>
         </form>
-      </div>-->
+      </div>
+
+      <div class="float-left">
+        <form class="form-inline">
+          <label for="select-sortby" class="mr-2">Sort By:</label>
+          <select id="select-sortby" name="sortBy" [(ngModel)]="sortBy" (change)="changeSortBy()" class="form-control">
+            <option [ngValue]="'LAST_MODIFIED'">Last Modified</option>
+            <option [ngValue]="'LAST_NAME'">Last Name</option>
+          </select>
+        </form>
+      </div>
 
       <div class="float-right">
-        <a (click)="toViewCandidateAdd()" [routerLink]="''" title="Add Candidate">
-          <i style="color: #3498db" class="fas fa-user-plus fa-3x"></i>
-        </a> 
+        <button class="btn btn-primary btn-lg" type="submit" (click)="toViewCandidateAdd()" [routerLink]="''">
+        + Add Candidate
+        </button>
       </div>
 
-    </div>
+      <div class="clearfix"></div>
 
-    <div class="clearfix"></div>
-
-    <div class="row mt-4">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
-        <app-card-candidate [candidate]="item"></app-card-candidate>
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
+          <app-card-candidate [candidate]="item"></app-card-candidate>
+        </div>
       </div>
-    </div>
 
-    <div class=" d-flex justify-content-center" id="list-container-footer">
-      <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize"
-        [(page)]="page" [maxSize]="1" [rotate]="true" [boundaryLinks]="true"
-        (pageChange)="loadPage($event)"></ngb-pagination>
+      <div class=" d-flex justify-content-center" id="list-container-footer">
+        <ngb-pagination class="" [collectionSize]="candidates.totalCount" [pageSize]="pageSize" [(page)]="page"
+          [maxSize]="1" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+      </div>
+
     </div>
 
   </div>
-
-</div>

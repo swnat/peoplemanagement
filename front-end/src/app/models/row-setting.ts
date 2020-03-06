@@ -1,5 +1,5 @@
 export class RowSetting {
     key: string;
-    isAction?: boolean = false;
+    isAction = false;
     label: string;
 }

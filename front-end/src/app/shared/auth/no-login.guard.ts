@@ -7,23 +7,23 @@ import { StorageService } from 'src/app/service/storage.service';
   providedIn: 'root'
 })
 export class NoLoginGuard implements CanActivate {
-  
+
   constructor(private router: Router,
     private storageService: StorageService) { }
 
     /**
      * It authorizes access to specific routes.
-     * @param next {ActivatedRouteSnapshot} 
-     * @param state {RouterStateSnapshot} 
+     * @param next ActivatedRouteSnapshot
+     * @param state RouterStateSnapshot
      */
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.storageService.isAuthenticated()){
+    if (this.storageService.isAuthenticated()) {
       this.router.navigate(['/']);
       return false;
     }
-    
+
     return true;
   }
 }

@@ -11,7 +11,7 @@ import { AddInterviewComponent } from './interview/add-interview/add-interview.c
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from './shared/layout/header/header.component';
-import {NgbPaginationModule, NgbAlertModule, NgbActiveModal,NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule, NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
 import { EditInterviewComponent } from './interview/edit-interview/edit-interview.component';
@@ -60,7 +60,7 @@ const routes: Routes = [
   ],
   providers: [
     NgbActiveModal,
-    DatePipe 
+    DatePipe
   ],
   imports: [
     BrowserModule,
@@ -69,16 +69,16 @@ const routes: Routes = [
     DatePickerModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbPaginationModule, NgbAlertModule,NgbModule,
+    NgbPaginationModule, NgbAlertModule, NgbModule,
     DialogModule,
     ToastrModule.forRoot({closeButton: true}),
     BrowserAnimationsModule,
     MultiSelectModule,
     RouterModule.forRoot(routes),
-    
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents:[]
+  entryComponents: []
 })
 export class AppModule { }

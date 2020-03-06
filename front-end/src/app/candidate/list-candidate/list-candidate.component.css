@@ -1,10 +1,10 @@
 .container{
-  margin-top: calc(56px + 1rem * 1.5); /* $spacer = 1rem */
+  margin-bottom: .5rem; /* overwrite because pagination has 1rem space */
 }
 
-.list-container{
+/*.list-container{
   background: lightgray;
-}
+}*/
 
 #add-btn{
   background-color: #882960;
