@@ -1,9 +1,9 @@
 FROM node:10.19-jessie
-RUN mkdir people-management
-WORKDIR /people-management
-COPY package*.json /people-management/
+RUN mkdir front-end
+WORKDIR /front-end
+COPY package*.json /front-end/
 RUN npm install 
-COPY . /people-management/
+COPY . /front-end/
 EXPOSE 4200
 CMD ["npm", "run", "prueba"]
 
