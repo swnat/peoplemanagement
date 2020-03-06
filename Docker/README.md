@@ -3,7 +3,7 @@ The purpose of this is to deploy the entire project on a docker image, so that o
 If you do not have Docker installed, please visit the [Docker documentation](https://docs.docker.com/) and follow the steps for installation. 
 
 ## Building the image of people-management
-Place yourself on the Docker route and execute the following:
+To build the full image of the project go to the Docker directory and run:
 ```bash
 sudo docker-compose up
 ```
@@ -21,7 +21,8 @@ sudo docker build -t BackEnd .
 sudo docker run -d -p 8080:8080 BackEnd
 ```
 
-```Note:
+```
+Note:
 In order to build the backend image it is recommended that the postgres image is built first, if this is not the case it is necessary to build the postgresql image manually.
 ```
 
