@@ -4,7 +4,7 @@
   border-radius: 70%;
 }
 
-#id-nav {
+#id-navbar {
   background-color: white;
   height: 65px;
 }
@@ -23,16 +23,20 @@ body {
   background: #00417c;
 }
 
-#sidebar-wrapper .sidebar-head {
-  padding: 50px 60px;
-}
-
 #sidebar-wrapper .navbar {
   width: 15rem;
+  /*Config: to keep the menu fixed in navigation*/
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 20px;
 }
 
+#sidebar-wrapper .navbar .navbar-brand {
+  padding: 50px 60px;
+} 
+
 #items-nav {
-  padding: 0px;
+  padding: 0px ;
   display: block;
 }
 
@@ -42,6 +46,7 @@ body {
   display: block;
   color: white;
   font-weight: 600;
+  transition: 0.3s;
 }
 
 #items-nav ul li a:hover {
