@@ -43,6 +43,9 @@ body {
   color: white;
   font-weight: 600;
 }
+ button{
+  float: right !important;
+}
 
 #items-nav ul li a:hover {
   color: #00417c;

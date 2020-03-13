@@ -1,0 +1,13 @@
+.card{
+    top: 8rem;
+    right: 5rem;
+    z-index: 100;  
+}
+
+li.nav-item{
+    list-style: none;
+}
+
+a{
+    color: black !important;
+}

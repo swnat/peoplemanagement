@@ -29,6 +29,7 @@ import { SafeHtmlPipe } from './shared/safe-html-pipe/safe-html';
 import { DataUserComponent } from './user/data-user/data-user.component';
 import { DatePipe } from '@angular/common';
 import { CardCandidateComponent } from './candidate/list-candidate/card-candidate/card-candidate.component';
+import { CardUserComponent } from './user/view-user/card-user/card-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -56,7 +57,8 @@ const routes: Routes = [
     DataTableComponent,
     SafeHtmlPipe,
     DataUserComponent,
-    CardCandidateComponent
+    CardCandidateComponent,
+    CardUserComponent
   ],
   providers: [
     NgbActiveModal,

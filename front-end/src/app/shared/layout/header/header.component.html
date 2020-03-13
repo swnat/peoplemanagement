@@ -15,9 +15,6 @@
           <a class="nav-link" (click)="sidebar_hide()" [routerLink]="['/candidate']"
             routerLinkActive="item-active">CANDIDATES LIST <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()" [routerLink]="''">LOGOUT</a>
-        </li>
       </ul>
     </nav>
   </div>
@@ -26,18 +23,24 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <nav id="id-nav" class="navbar navbar-expand">
-      <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
-        <button class="btn">
-          <i class="fas fa-bars"></i>
-        </button>
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <button class="nav-link btn p-0" [routerLink]="['/user/data', user?.idUser]">
-            <img id="profile" src="../../../../assets/images/default.png" width="105">
+        <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
+          <button class="btn">
+            <i class="fas fa-bars"></i>
           </button>
-        </li>
-      </ul>
+        </a>
+
+    <div class="">
+      <button class="nav-link btn p-0" type="button" data-toggle="collapse" data-target="#collapseCardUser" 
+        aria-expanded="false" aria-controls="collapseCardUser" 
+        [routerLink]="['/user/data', user?.idUser]">
+        <img id="profile" src="../../../../assets/images/default.png" width="105">
+      </button>
+    </div>
+
+    
+          <app-card-user class="collapse" id="collapseCardUser" (click)="logout()"></app-card-user>
+  
+
     </nav>
     <div class="container-fluid">
       <router-outlet></router-outlet>
