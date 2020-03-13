@@ -1,0 +1,39 @@
+# docker-compose.yml
+version: "3.7"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:9.6
+    restart: always
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+  
+  front-end:
+    build:
+      dockerfile: Dockerfile
+      context: ../front-end
+    ports:
+      - "4200:4200"
+    image: front
+    volumes:
+      - ../front-end:/front-end
+    depends_on:
+      - back-end
+  
+  back-end:
+    build:
+      dockerfile: Dockerfile
+      context: ../back-end
+    ports:
+      - "8080:8080"
+    network_mode: "host"
+    image: ppl-server
+    volumes: 
+      - ../back-end:/back-end
+    depends_on:
+      - postgres
