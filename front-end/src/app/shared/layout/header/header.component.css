@@ -6,7 +6,13 @@
 
 #id-navbar {
   background-color: white;
-  height: 65px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 15rem;
+  z-index: 1;
+  transition: 0.3s;
 }
 
 body {
@@ -73,6 +79,11 @@ a:focus {
   margin-left: 0;
 }
 
+.toggled-nav{
+  left: 0 !important;
+  transition: 0.3s;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
@@ -85,5 +96,15 @@ a:focus {
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
+  }
+}
+
+@media (max-width: 768px){
+  #id-navbar{
+    left: 0;
+  }
+
+  #sidebar-wrapper .navbar {
+    top: 50px;
   }
 }

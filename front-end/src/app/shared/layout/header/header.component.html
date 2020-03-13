@@ -23,7 +23,7 @@
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
-    <nav id="id-navbar" class="navbar navbar-expand">
+    <nav id="id-navbar" class="navbar navbar-expand" [ngClass]="toggled ? 'toggled-nav' : ''">
       <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
         <button class="btn">
           <i class="fas fa-bars"></i>
@@ -37,7 +37,7 @@
         </li>
       </ul>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid p-5">
       <router-outlet></router-outlet>
     </div>
   </div>
