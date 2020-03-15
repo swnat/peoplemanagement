@@ -43,9 +43,6 @@ body {
   color: white;
   font-weight: 600;
 }
- button{
-  float: right !important;
-}
 
 #items-nav ul li a:hover {
   color: #00417c;
@@ -85,3 +82,10 @@ a:focus {
     margin-left: -15rem;
   }
 }
+  /* */
+.card{
+  top: 7rem;
+  z-index: 100;
+}
+
+

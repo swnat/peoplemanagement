@@ -1,7 +1,8 @@
 .card{
     top: 8rem;
     right: 5rem;
-    z-index: 100;  
+    z-index: 100; 
+    overflow: hidden; 
 }
 
 li.nav-item{

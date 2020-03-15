@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
     private userService: UserService) { }
 
   toggled = false;
+  //
+  show = false;
+
 
   ngOnInit() {
 
@@ -60,6 +63,11 @@ export class HeaderComponent implements OnInit {
     if (screen.width <= 450) {
       this.toggle();
     }
+  }
+
+  // function
+  toggleUser() {
+   this.show = !this.show;
   }
 }
 

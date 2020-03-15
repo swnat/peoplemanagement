@@ -29,17 +29,28 @@
           </button>
         </a>
 
-    <div class="">
-      <button class="nav-link btn p-0" type="button" data-toggle="collapse" data-target="#collapseCardUser" 
-        aria-expanded="false" aria-controls="collapseCardUser" 
-        [routerLink]="['/user/data', user?.idUser]">
-        <img id="profile" src="../../../../assets/images/default.png" width="105">
-      </button>
-    </div>
+      <ul class="navbar-nav ml-auto" (click)="toggleUser()" id=toggleUser>
+        <li class="nav-item">
+          <a class="nav-link btn p-0">
+            <img id="profile" src="../../../../assets/images/default.png" width="105">
+          </a>
+        </li>
+      </ul>
 
-    
-          <app-card-user class="collapse" id="collapseCardUser" (click)="logout()"></app-card-user>
-  
+
+      <div class="card" *ngIf="show">
+        <div >
+          <a class="justify-content-center"  [routerLink]="['/user/data', user?.idUser]">
+            <img id="profile" src="../../../../assets/images/default.png" width="105">
+          </a>
+        </div>
+
+        <div class="text-center px-2 py-2">
+            <button class="btn btn-outline-secondary btn-sm " (click)="logout()" 
+              [routerLink]="''">LOGOUT
+            </button>
+        </div>
+      </div>
 
     </nav>
     <div class="container-fluid">
@@ -48,3 +59,5 @@
   </div>
   <!-- /#page-content-wrapper -->
 </div>
+
+<!---->
