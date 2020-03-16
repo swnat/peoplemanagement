@@ -91,6 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/user/**").permitAll()
                 .antMatchers("/api/v1/challenge/**").permitAll() //delete for the future
                 .antMatchers("/api/v1/record/**").permitAll()
+                .antMatchers("/api/v1/uploads/**").permitAll()
                 .anyRequest()
                 .authenticated();
 
