@@ -65,6 +65,7 @@
 
 #content {
   padding-top: 50px;
+  padding-right: 15rem;
 }
 
 .toggled-side {
@@ -77,6 +78,10 @@
 
 .toggled-nav {
   left: 0 !important;
+}
+
+.toggled-content{
+  padding-right: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -101,5 +106,10 @@
 
   .toggled-nav {
     left: 15rem !important;
+  }
+
+  /*Contenido movil*/
+  #content{
+    padding-right: 0;
   }
 }

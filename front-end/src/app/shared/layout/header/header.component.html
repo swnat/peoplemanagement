@@ -37,7 +37,7 @@
         </li>
       </ul>
     </nav>
-    <div class= "container" id="content">
+    <div class= "container" id="content" [ngClass]="toggled ? 'toggled-content' : ''">
       <router-outlet></router-outlet>
     </div>
   </div>
