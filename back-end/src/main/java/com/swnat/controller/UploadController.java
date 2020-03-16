@@ -1,13 +1,16 @@
 package com.swnat.controller;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,4 +46,11 @@ public class UploadController {
         return UPLOADED_FOLDER + sdf.format(timestamp) +file.getOriginalFilename();
     }
 
+    @GetMapping(value = "/{getImages}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getImageWithMediaType(@PathVariable("getImages") String image) throws IOException {
+        String path = File.separator + "com" + File.separator + "swnat" + File.separator + "profile_images" 
+        + File.separator + image ;
+        InputStream in = getClass().getResourceAsStream(path);
+        return IOUtils.toByteArray(in);
+    }
 }
