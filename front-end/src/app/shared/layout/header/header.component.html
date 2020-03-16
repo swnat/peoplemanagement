@@ -1,7 +1,7 @@
-<div class="d-flex" id="wrapper" [ngClass]="toggled ? 'toggled' : ''">
+<div class="d-flex" id="wrapper" [ngClass]="toggled ? 'toggled-side' : ''">
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
-      <nav class="navbar" id="items-nav">
+      <nav class="navbar" id="items-side">
         <a class="navbar-brand"><img src="../../../../assets/images/LOGO-1.png" width="120"></a>
         <ul class="navbar-nav flex-column text-left">
           <li class="nav-item">
@@ -22,7 +22,7 @@
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
-  <div id="page-content-wrapper">
+  <div id="page-content-wrapper" [ngClass]="toggled ? 'toggled-page' : ''">
     <nav id="id-navbar" class="navbar navbar-expand" [ngClass]="toggled ? 'toggled-nav' : ''">
       <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
         <button class="btn">
@@ -37,7 +37,7 @@
         </li>
       </ul>
     </nav>
-    <div class="container-fluid" id="content">
+    <div class= "container" id="content">
       <router-outlet></router-outlet>
     </div>
   </div>

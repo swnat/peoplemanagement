@@ -1,11 +1,11 @@
-#content{
-  margin-top: 6.5rem;
-}
-
 #profile {
   width: 50px;
   height: 50px;
   border-radius: 70%;
+}
+
+#wrapper{
+  overflow-x: hidden;
 }
 
 #id-navbar {
@@ -19,47 +19,24 @@
   transition: 0.3s;
 }
 
-body {
-  overflow-x: hidden;
-}
-
-#sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -15rem;
-  -webkit-transition: margin 0.25s ease-out;
-  -moz-transition: margin 0.25s ease-out;
-  -o-transition: margin 0.25s ease-out;
-  transition: margin 0.25s ease-out;
-  background: #00417c;
-}
-
-#sidebar-wrapper .navbar {
-  width: 15rem;
-  /*Config: to keep the menu fixed in navigation*/
-  position: -webkit-sticky; 
-  position: sticky;
-  top: 20px;
-}
-
 #sidebar-wrapper .navbar .navbar-brand {
   padding: 50px 60px;
 } 
 
-#items-nav {
+#items-side {
   padding: 0px ;
   display: block;
 }
 
-#items-nav ul li a {
+#items-side ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
   color: white;
   font-weight: 600;
-  transition: 0.3s;
 }
 
-#items-nav ul li a:hover {
+#items-side ul li a:hover {
   color: #00417c;
   background: #fff;
 }
@@ -69,46 +46,63 @@ body {
   background: #fff;
 }
 
-#items-van a,
+#items-side a,
 a:hover,
 a:focus {
   transition: all 0.3;
 }
 
-#page-content-wrapper {
-  min-width: 100vw;
+#sidebar-wrapper {
+  position: fixed;
+  z-index: 1;
+  width: 15rem;
+  min-height: 100vh;
+  background: #00417c;
 }
 
-#wrapper.toggled #sidebar-wrapper {
+#page-content-wrapper {
+  min-width: 100vw;
+  margin-left: 15rem;
+}
+
+#content{
+  padding-top:50px;
+}
+
+.toggled-side {
+  margin-left: -15rem !important;
+}
+
+.toogled-page {
   margin-left: 0;
 }
 
-.toggled-nav{
+.toggled-nav {
   left: 0 !important;
-  transition: 0.3s;
 }
 
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
+@media (max-width: 768px) {
+  #sidebar-wrapper{
     margin-left: -15rem;
   }
-}
-
-@media (max-width: 768px){
-  #id-navbar{
+  #id-navbar {
     left: 0;
   }
 
-  #sidebar-wrapper .navbar {
-    top: 50px;
+  #page-content-wrapper {
+    margin-left: 0;
   }
+
+  .toggled-side {
+    margin-left: 15rem !important;
+  }
+
+  .toogled-page {
+    margin-left: 15rem;
+  }
+
+  .toggled-nav {
+    left: 15rem !important;
+  }
+
 }

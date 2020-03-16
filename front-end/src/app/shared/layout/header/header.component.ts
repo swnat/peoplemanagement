@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit {
 
   toggle() {
     this.toggled = !this.toggled;
+    console.log(this.toggled)
   }
 
   /* Add function to the sidebar menu items to automatically
