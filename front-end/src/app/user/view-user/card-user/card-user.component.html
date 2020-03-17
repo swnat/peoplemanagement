@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-body">
+        <div class="text-center">
+          <a class="justify-content-center" [routerLink]="['/user/data', user?.idUser]">
+            <img id="profile" src="../../../../assets/images/default.png" width="105">
+          </a>
+        </div>
+    
+        <div class="text-center px-2">
+            <button class="btn btn-outline-secondary btn-sm " (click)="logout()" 
+              [routerLink]="''">Logout
+            </button>
+      </div>
+    </div>
+  </div>

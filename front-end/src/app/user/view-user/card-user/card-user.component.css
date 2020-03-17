@@ -1,8 +1,18 @@
 .card{
-    top: 8rem;
-    right: 5rem;
-    z-index: 100; 
-    overflow: hidden; 
+    position: absolute;
+    right: 1rem;
+    top: 5.5rem;
+    z-index: 100;
+    border-radius: .5rem;
+    -webkit-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+    -moz-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+    box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+}
+
+#profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
 }
 
 li.nav-item{
@@ -11,4 +21,12 @@ li.nav-item{
 
 a{
     color: black !important;
+}
+
+.btn-sm{
+    color: black;
+}
+
+.btn-outline-secondary{
+    border-color: black;
 }
