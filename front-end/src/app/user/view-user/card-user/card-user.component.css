@@ -4,9 +4,14 @@
     top: 5.5rem;
     z-index: 100;
     border-radius: .5rem;
-    -webkit-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
-    -moz-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
-    box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+    -moz-box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+    box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+}
+
+.card-body{
+    width: 183px;
+    height: 180px;
 }
 
 #profile {
@@ -23,10 +28,20 @@ a{
     color: black !important;
 }
 
+/*Buttons*/
 .btn-sm{
-    color: black;
+    color: 272a2e;
+    width: 106px;
+    height: 28px;
 }
 
 .btn-outline-secondary{
-    border-color: black;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    box-sizing: border-box;
+    border-radius: 6px;
+    transition: all 0.95s ease;
+}
+
+.btn-sm:hover{
+    background:#d5d5d5;
 }
