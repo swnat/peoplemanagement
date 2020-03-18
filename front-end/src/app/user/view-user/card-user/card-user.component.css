@@ -9,14 +9,9 @@
     box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
 }
 
-.card-body{
-    width: 183px;
-    height: 180px;
-}
-
 #profile {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 70%;
 }
 
@@ -30,8 +25,8 @@ a{
 
 /*Buttons*/
 .btn-sm{
-    color: 272a2e;
-    width: 106px;
+    color: #272a2e;
+    width:65px;
     height: 28px;
 }
 
@@ -43,5 +38,8 @@ a{
 }
 
 .btn-sm:hover{
-    background:#d5d5d5;
+    background:#e0dddd;
 }
+
+/**/  
+
