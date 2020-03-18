@@ -1,33 +1,29 @@
+  #separator{
+    margin-top: 2rem;
+  }
+  /*image*/
+  .circular--portrait {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .circular--portrait img {
+    width: 100%;
+    height: auto;
+  }
+
   .text-label{
     font-weight: bold;
     font-size: 15px;
   }
 
-  /* Button*/
-  .btn-save {
-    float: right;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 15px;
-    text-align: center;
-    color: #ffffff;
-    padding-top: 5px;
-    height: 30px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 2px;
-    background-color: #882960;
-  }
-
-  .btn-save:hover{
-    background-color:rgb(153, 56, 129); 
-    color: white;
-  } 
-
   .btn-pm{
     float: right;
     color: white;
-    background-color: #882960;
+    background-color: green;
     width: 100px;
     font-weight: 700;
     text-transform: uppercase;
@@ -49,14 +45,62 @@
   }
 
   .input-field{
-    height: 30px;
+    height: 40px;
   }
 
   /*ADD*/
-  input[type="file"]{
+  #imageInput{
     display: none;
   }
 
-  .image-upload-container{
+  .btn-photo{
+    margin-top: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    width: 135px;
+    height: 35px;
+    font-size: 15px;
+    background-color: hsla(209, 100%, 43%, 1);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #ffffff;
   }
+
+  .btn-photo:hover, .btn-remove:hover, #custom-button:hover{
+    border: 1px solid #ffffff;
+  }
+
+  .btn-remove{
+    margin-top: 0.4rem;
+    width: 135px;
+    height: 35px;
+    font-size: 15px;
+    background-color: hsla(356, 91%, 51%, 1);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+  }
+
+  .spacing-button{
+    margin-left: 1.9rem;
+  }
+
+  #custom-button{
+    cursor: pointer;
+    width: 135px;
+    height: 35px;
+    font-size: 15px;
+    background-color: hsla(209, 100%, 43%, 1);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+  }
+
+  #custom-text{
+    margin-left: 10px;
+  }
+
