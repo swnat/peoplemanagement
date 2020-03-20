@@ -52,5 +52,20 @@
       font-size: 0.6rem;
     }
   }
-  
-  
+
+  .btn-label{
+    display: inline-block;
+    border: 1px solid #000080;
+    width: 90px;
+    padding: 10px 0px;
+    text-align: center;
+  }
+
+  .btn-radio{
+    display: none;
+  }
+
+  .btn-radio:checked + .btn-label{
+    background: #609AB4;
+    color: #FFF;
+  }
