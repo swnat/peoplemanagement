@@ -78,14 +78,11 @@
       </div>
       <div class="row">
         <div class="col-sm-8 offset-sm-3">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary">
-              <input type="radio" value="Approved" formControlName="decision"> Approved
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" value="Rejected" formControlName="decision"> Rejected
-            </label>
-          </div>
+          <input type="radio" value="Approved" class="btn-radio" id="approved" formControlName="decision"> 
+          <label for="approved" aria-checked="true" class="btn-label">Approved</label>
+            
+          <input type="radio" value="Rejected" class="btn-radio" id="rejected" formControlName="decision"> 
+          <label for="rejected" class="btn-label">Rejected</label>   
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">
