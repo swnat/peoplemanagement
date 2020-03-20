@@ -1,63 +1,104 @@
-<div class="col-md-12">
+<div class="col-sm-12">
   <form [formGroup]="challengeForm" id="challengeForm">
-    <div class="row">
-      <div class="col-md-3">
-        <label class="margin-left text">Date Sent:</label>
+    <div class="form-group row mb-0" id="separator">
+      <div class="col-sm-3 offset-sm-3">
+        <label class="text-label">Date Sent</label>
       </div>
-      <div class=" date-picker-width">
+    </div>
+    <div class="row">
+      <div class="col-sm-3 offset-sm-3">
         <ejs-datepicker #ejDatePicker id="dayOfSent" format='yyyy-MM-dd' formControlName="dayOfSent" name="dayOfSent" >
         </ejs-datepicker>
       </div>
-      <div class="col-md-3">
-        <label class="margin-left text">Date Expected:</label>
+    </div>
+    <div class="form-group row mb-0" id="separator">
+      <div class="col-sm-2 offset-sm-3">
+        <label class="text-label">Date Expected</label>
       </div>
-      <div class=" date-picker-width">
+    </div>
+    <div class="row">
+      <div class="col-sm-3 offset-sm-3">
         <ejs-datepicker #ejDatePicker id="dayOfExpected" format='yyyy-MM-dd' formControlName="dayOfExpected"
           name="dayOfExpected">
         </ejs-datepicker>
       </div>
     </div>
-    <label class="margin-left text">Reviewer:</label>
-
-    <div class="comment-width">
-      <input type="text" formControlName="reviewer" placeholder="Add a Reviewer" class="form-control margin-left"
-        maxlength="90" />
+    <div class="from-group row mb-0" id="separator">
+      <div class="col-sm-3 offset-sm-3">
+        <label class="text-label">Reviewer</label>
+      </div>
     </div>
-
-    <label class="margin-left text">Link Challenge:</label>
-    <div class="comment-width">
-      <input type="text" formControlName="linkChallenge" placeholder="Add a link" class="form-control margin-left"
-        maxlength="90" />
+    <div class="row">
+      <div class="col-sm-5 offset-sm-3">
+        <input type="text-label" formControlName="reviewer" placeholder="Input Add a Reviewer" class="form-control"
+        maxlength="90"/>
+      </div>
     </div>
-
-    <label class="margin-left text">Status Challenge</label>
-    <div class="form-group margin-left comment-width">
-      <select class="custom-select" name="statusChallenge" id="statusChallenge" formControlName="statusChallenge" [(ngModel)] = "opcionChallenge">
-        <option [ngValue]="status.id" *ngFor="let status of statusChallengeList">
-          {{status?.name}}
-        </option>
-      </select>
+    <div class="form-group row mb-0" id="separator">
+      <div class="col-sm-3 offset-sm-3">
+        <label class="text-label">Link Challenge</label>
+      </div>
     </div>
-    <div class="form-group">
-      <label class="margin-left text" for="comment">Comment</label>
-      <textarea class="form-control margin-left comment-width" formControlName="comment" rows="3"
-        [ngClass]="{ 'is-invalid': submitted && f.comment.errors }" placeholder="Write your comment here..."
-        [maxlength]="300"></textarea>
-      <div *ngIf="submitted && f.comment.errors" class="invalid-feedback margin-left">
-        <div *ngIf="submitted && f.comment.errors?.maxlength">
-          Comment must have less than 300 characters
-        </div>
-        <div *ngIf="submitted && f.comment.errors?.pattern">
-          Comment has to be only characters
+    <div class="row">
+      <div class="col-sm-5 offset-sm-3">
+        <input type="text-label" formControlName="linkChallenge" placeholder="Input Add a link" class="form-control"
+        maxlength="90"/>
+      </div>
+    </div>
+    <div class="form-group row mb-0" id="separator">
+      <div class="col-sm-3 offset-sm-3">
+        <label class="text-label">Status Challenge</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 offset-sm-3">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary text-capitalize text-movil" *ngFor="let status of statusChallengeList">
+            <input type="radio" [value]="status.id" formControlName="statusChallenge">{{status?.name}}
+          </label>
         </div>
       </div>
     </div>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
+    <div class="form-group row mb-0" id="separator">
+      <div class="col-sm-3 offset-sm-3">
+        <label class="text-label" for="comment">Comment</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <textarea class="form-control comment-width" formControlName="comment" rows="10" cols="12" 
+        [ngClass]="{ 'is-invalid': submitted && f.comment.errors }" placeholder="Write your comment here..."
+        [maxlength]="300"></textarea>
+        <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+          <div *ngIf="submitted && f.comment.errors?.maxlength">
+            Comment must have less than 300 characters
+          </div>
+          <div *ngIf="submitted && f.comment.errors?.pattern">
+            Comment has to be only characters
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-sm-10">
         <button  type="submit"  (click)="onSubmit()" class="btn btn-pm">Save</button>
       </div>
     </div>
   </form>
 </div>
 
+<!--
+
+  
+    
+    <div class="form-group"comment-width">
+      <select class="custom-select" name="statusChallenge" id="statusChallenge" formControlName="statusChallenge">
+        <option [ngValue]="status.id" *ngFor="let status of statusChallengeList">
+          {{status?.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+    
+
+-->

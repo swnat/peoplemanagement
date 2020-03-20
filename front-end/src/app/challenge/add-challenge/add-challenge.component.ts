@@ -36,7 +36,6 @@ export class AddChallengeComponent implements OnInit {
   isFinish: boolean;
   clicked = false;
   taskId: string;
-  opcionChallenge: string;
   public targetElement: HTMLElement;
   submitted = false;
   @Input() candidateId: number;

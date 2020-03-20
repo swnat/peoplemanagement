@@ -1,115 +1,55 @@
-  .aligner-right {
-    float: right;
-    font-weight: 700;
-    font-size: 15px;
-    text-align: center;
-    padding-top: 0px;
-    width: 100%;
-  }
-
-  .aligner {
-    display: flex;
-    align-items: center;        
-    justify-content: center;
-    height: 100%;
-  }
-
-  .aligner-item {
-    max-width: 50%;
-  }
   /* Button */
   .interview-btn-pm{
     float: right;
     color: white;
-    background-color: #882960;
+    background-color: #73BB83;
+    width: auto;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 15px;
     text-align: center;
+    box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
     
   .interview-btn-pm:hover{
-    color: #882960;
-    border-color: #882960;
-    border-width: 1px;
-    border-style: solid;
-    background-color: white;
+    border: 1px solid #FFF;
   }
 
-  .position{
-    float: right;
-    width: 95%;
-    margin: 0 auto;
+  .text-label{
+    font-weight: normal;
+    font-size: 14px;
   }
 
-  .position-info{
-    padding-left: 10px;
+  .invalid-feedback {
+    font-size: 11px;
+    font-weight: lighter;
+    color: #FF0000;
   }
 
-  .text-title{
-    text-align:left;
-    width: 95%;
-    padding: 1px;
-    
-  }
-
-  .text-subtitle{
-    text-align:left;
-    width: 95%;
-    padding-top: 5px;
-  }
-
-  .text{
+  .btn-add{
+    cursor: pointer;
+    width: 135px;
+    height: 35px;
+   font-size: 15px;
+    background-color: #609AB4;
+    border-radius: 0.5rem;
     font-weight: bold;
-    padding-left: 20px;
-  }
-
-  .padding-left {
-    padding-left: 32px;
-  }
-  /*For the title of forms*/
-  .form-title{
-    width: 100%;
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    height: 80px;
-    font-size: 20px;
-    font-weight: bold;
-    background: #7b1a52 ;
-    border-radius: 0px 0px 0px 0;
-    text-align: center;
     color: #ffffff;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
 
-  .input:disabled {
-    color: #aaa;
-  }
-  
-  /*For the second title of forms*/
-  .form-subtitle{
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    height: 40px;
-    font-weight: bold;
-    background: #bbb8b9 ;
-    border-radius: 0px 0px 0px 0;
-    text-align: left;
-    color: #161616;
+  .title-bg{
+   background-color:  #609AB4;
+   color: #FFF;
   }
 
-  /*Button edit*/
-  .btn-edit{
-    width: 25px;
-    height: 25px;
-  }  
-  /*Button icon*/
-  .btn-icon{
-    width: 15px;
-    height: 20px;
-    align-content: center;
+  .btn-add:hover{
+    border: 1px solid #ffffff;
   }
 
-  @import "../node_modules/@syncfusion/ej2/material.css";
-
+  @media screen and ( max-width: 575px){
+    .movil{
+      margin-top: 1.2rem;
+    }
+  }

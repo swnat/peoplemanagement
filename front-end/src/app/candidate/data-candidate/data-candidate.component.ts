@@ -78,11 +78,9 @@ export class DataCandidateComponent implements OnInit {
   initializeForm() {
     this.dataCandidateForm = this.formBuilder.group({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
-        Validators.maxLength(100), Validators.required]), // only letters
+      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       email: new FormControl(''),
-      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
-        Validators.maxLength(100), Validators.required]), // only letters
+      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]), // only letters
       dateOfBirth: new FormControl(''),

@@ -2,40 +2,23 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: #ffffff;
+    background: #FFF;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-  }
-
-/*For the title of forms*/
-  .form-title{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2.9rem;
-    background: #00417c;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
   }
 
   .candidate-btn-pm{
     float: right;
     color: white;
-    background-color: #882960;
-    text-transform: uppercase;
-    font-size: 15px;
+    background-color: #00417c;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
-    font-weight: bold;
+    font-weight: lighter;
   }
     
   .candidate-btn-pm:hover{
-    color: #882960;
-    border-color: #882960;
-    border-width: 1px;
-    border-style: solid;
-    background-color: white;
+    border: 1px solid #FFF;
   }
