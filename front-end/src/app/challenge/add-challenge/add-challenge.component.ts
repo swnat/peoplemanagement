@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './add-challenge.component.html',
   styleUrls: ['./add-challenge.component.css']
 })
+
 export class AddChallengeComponent implements OnInit {
 
   @ViewChild('ejDatePicker') ejDatePicker: DatePickerComponent;

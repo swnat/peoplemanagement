@@ -172,5 +172,4 @@ export class DataCandidateComponent implements OnInit {
     this.nameButton = 'Add Photo';
     this.imageBinary = null;
   }
-
 }
