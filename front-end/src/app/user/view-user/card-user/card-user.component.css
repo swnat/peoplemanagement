@@ -32,6 +32,7 @@ a{
     color: #272a2e;
     width:65px;
     height: 28px;
+    line-height: normal;
 }
 
 .btn-outline-secondary{
