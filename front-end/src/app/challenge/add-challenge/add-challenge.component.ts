@@ -60,10 +60,6 @@ export class AddChallengeComponent implements OnInit {
     private datePipe: DatePipe) { }
 
   ngOnInit() {   
-    document.getElementById('#challengeForm').addEventListener('click', event =>{
-      event.preventDefault();
-    });
-
     this.initializeForm();
     this.getStatusChallenge();
     // Get the user login
