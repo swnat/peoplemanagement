@@ -74,13 +74,13 @@
                 </span>
               </div>
           </div>
-          <div class="col-sm-4 movil">
+          <div class="col-sm-5 movil">
             <button class="btn ok-btn-add" type="button" (click)="addParticipants()"
               [disabled]="f.addParticipant.value == ''">Add Participants</button>
           </div>
         </div>
         <div class="form-group row mt-4">
-          <div class="table-responsive-sm col-sm-5 offset-sm-2 mt-3">
+          <div class="table-responsive-sm col-sm-8 offset-sm-2 mt-3">
             <table class="table table-striped custab" *ngIf="listParticipants?.length > 0 ; else elseBlock">
               <thead class="text-center title-bg">
                 <tr>

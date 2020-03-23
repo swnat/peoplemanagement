@@ -53,3 +53,11 @@
       margin-top: 1.2rem;
     }
   }
+
+  @media screen and ( min-width: 576px ) and (max-width: 904px){
+    .movil-text{
+      font-size: 0.7rem !important;
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }

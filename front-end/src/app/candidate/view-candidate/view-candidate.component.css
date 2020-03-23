@@ -22,3 +22,11 @@
   .candidate-btn-pm:hover{
     border: 1px solid #FFF;
   }
+
+
+  @media screen and (max-width: 575px){
+    .responsive-movil{
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+  }
