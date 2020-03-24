@@ -30,13 +30,14 @@
     "husky": "^4.2.1",
     "jwt-decode": "^2.2.0",
     "ng-bootstrap-modal": "^1.1.19",
+    "ng-click-outside": "^6.0.0",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "~7.1.4",
     "@angular/compiler-cli": "~7.1.0",
     "@angular/language-service": "~7.1.0",
