@@ -21,8 +21,8 @@
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <nav id="id-nav" class="navbar navbar-expand">
+  <div id="page-content-wrapper" >
+    <nav id="id-nav" class="navbar navbar-expand" >
       
         <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
           <button class="btn">
@@ -30,21 +30,21 @@
           </button>
         </a>
       
-      <ul class="navbar-nav ml-auto" (click)="toggleUser()" id=toggleUser>
+      <ul class="navbar-nav ml-auto" (click)="toggleUserOpen()" >
         <li class="nav-item">
-          <a class="nav-link btn p-0">
+          <a class="nav-link btn p-0" (clickOutside)="toggleUserClose($event)">
             <img id="profile" src="../../../../assets/images/default.png" width="105">
           </a>
         </li>
       </ul>
 
-      <app-card-user *ngIf="show" ></app-card-user>
+      <app-card-user *ngIf="isCardOpen" ></app-card-user>
       
     </nav>  
 
 
-    <div class="container-fluid">
-      <router-outlet></router-outlet>
+    <div class="container-fluid" >
+      <router-outlet ></router-outlet>
       </div>
   <!-- /#page-content-wrapper -->
   </div>

@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  toggled = false; // sidebar attribute
+  isCardOpen = false; // user card attribute
 
-  toggled = false;
-  show = false; // user card attribute
+  constructor() {  }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  // this function performs the closing of the user's card
+  toggleUserClose(e: Event) {
+    this.isCardOpen = false;
+  }
+
+  // this function performs the opening of the user's card
+  toggleUserOpen() {
+    this.isCardOpen = !this.isCardOpen;
+  }
 
   toggle() {
     this.toggled = !this.toggled;
@@ -26,11 +34,6 @@ export class HeaderComponent implements OnInit {
     if (screen.width <= 450) {
       this.toggle();
     }
-  }
-
-  // this function performs the opening of the user's card
-  toggleUser() {
-   this.show = !this.show;
   }
 }
 
