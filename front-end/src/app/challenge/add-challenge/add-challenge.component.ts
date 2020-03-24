@@ -95,7 +95,8 @@ export class AddChallengeComponent implements OnInit {
       statusChallenge: challenge.statusChallenge.id,
       taskId: challenge.taskId,
       candidate: challenge.candidate,
-      isfinishProcess: challenge.isfinishProcess
+      isfinishProcess: challenge.isfinishProcess,
+      statusChallengeID: challenge.statusChallenge.id
     });
 
   }
@@ -111,7 +112,8 @@ export class AddChallengeComponent implements OnInit {
       statusChallenge: new FormControl(''),
       taskId: new FormControl(),
       candidate: new FormControl(),
-      isfinishProcess: new FormControl()
+      isfinishProcess: new FormControl(),
+      statusChallengeID: new FormControl('')
     });
   }
 
@@ -149,6 +151,7 @@ export class AddChallengeComponent implements OnInit {
 
     console.log('Challenge candidate id nuevo', JSON.stringify(this.candidate));
     this.setStatusChallenge();
+    this.challengeForm.removeControl('statusChallengeID');
     this.challengeForm.controls['candidate'].setValue(this.candidate);
     // start and end date validation
     if (this.datePipe.transform(sentDay, 'yyyy-MM-dd') > this.datePipe.transform(expectedDay, 'yyyy-MM-dd')) {
@@ -202,7 +205,7 @@ export class AddChallengeComponent implements OnInit {
 
     this.statusChallengeList.forEach(s => {
 
-      if (s.id === this.challengeForm.get('statusChallenge').value) {
+      if (s.id === this.challengeForm.get('statusChallengeID').value) {
         console.log('Guardar id:', s);
         this.challengeForm.controls['statusChallenge'].setValue(s);
       }
