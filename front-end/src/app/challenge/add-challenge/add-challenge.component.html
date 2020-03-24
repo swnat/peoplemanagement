@@ -52,9 +52,9 @@
     </div>
     <div class="row">
       <div class="col-sm-12 offset-sm-3 responsive-movil">
-        <div style="display: inline-block;" *ngFor="let status of statusChallengeList">
-          <input type="radio" [value]="status.id" class="btn-radio" [id]="status?.name" formControlName="statusChallenge">
-          <label [for]="status?.name" class="btn-label text-movil">{{status?.name}}</label>
+       <div style="display: inline-block;" *ngFor="let status of statusChallengeList">
+          <input type="radio" [value]="status.id" class="btn-radio" [id]="status?.name" formControlName="statusChallengeID"> 
+          <label [for]="status?.name" class="btn-label text-movil"> {{status?.name}}</label>
         </div>
       </div>
     </div>
