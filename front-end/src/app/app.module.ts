@@ -28,8 +28,9 @@ import { DataTableComponent } from './shared/data-table/data-table.component';
 import { SafeHtmlPipe } from './shared/safe-html-pipe/safe-html';
 import { DataUserComponent } from './user/data-user/data-user.component';
 import { DatePipe } from '@angular/common';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { CardCandidateComponent } from './candidate/list-candidate/card-candidate/card-candidate.component';
-import { CardUserComponent } from './user/view-user/card-user/card-user.component';
+import { CardUserComponent } from './user/card-user/card-user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -58,7 +59,7 @@ const routes: Routes = [
     SafeHtmlPipe,
     DataUserComponent,
     CardCandidateComponent,
-    CardUserComponent
+    CardUserComponent,
   ],
   providers: [
     NgbActiveModal,
@@ -77,6 +78,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MultiSelectModule,
     RouterModule.forRoot(routes),
+    ClickOutsideModule,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
