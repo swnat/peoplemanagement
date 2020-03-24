@@ -1,0 +1,40 @@
+<div class="card d-flex">
+    <div class="card-body d-flex">
+
+        <div class="float-left mr-3">
+            <a class="justify-content-center" [routerLink]="['/user/data', user?.idUser]">
+                <img class="mt-1 mb-1" id="profile" src="../../../../assets/images/default.png" 
+                width="105">
+            </a>
+
+            <div class="text-left mt-1">
+                <button class="btn btn-outline-secondary btn-sm " (click)="logout()" 
+                    [routerLink]="''">Logout
+                </button>
+            </div>
+
+        </div>
+
+        <div class="float-right">
+            <div class="">
+                <h6 class="nameId mb-0 py-1" style="font-size: 20px;">
+                    Welcome {{user.name}} {{user.lastname}}
+                </h6>
+            </div>
+
+            <div class="">
+                <div class="rol_name" style="color: #5f6368; font-size:16px;">
+                    Account {{rol_name}}
+                </div>
+            </div>
+
+            <div class="">
+                <div class="emailId" style="color: #5f6368; font-size:16px;">
+                    {{user.email}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
