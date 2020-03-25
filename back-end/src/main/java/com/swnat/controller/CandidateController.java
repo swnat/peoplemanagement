@@ -15,6 +15,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.nio.file.Files;
 
 
@@ -76,31 +79,35 @@ public class CandidateController {
     public String uploadImage(MultipartFile image) throws IOException {
         String directory = System.getProperty("user.dir") + File.separator + "src" 
         + File.separator + "main" + File.separator + "java" + File.separator + "com" + File.separator 
-        + "swnat" + File.separator + "profile_images";
+        + "swnat" + File.separator + "generic_files";
         Path mypath = Paths.get(directory);
         if ( !Files.exists(mypath) ){
             Files.createDirectory(mypath);
             System.out.println("Directory created");
         }
+
+        //Formatting the file names to be unique by adding date and time
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.from(Instant.now()));
+        //create filename from a format string
+        String name = String.format("file-%1$tY-%1$tm-%1$td-%1$tk-%1$tS-%1$tp-" + image.getOriginalFilename(), cal);
         
         StringBuilder builder = new StringBuilder();
         builder.append(directory);
         builder.append(File.separator);
-        builder.append(image.getOriginalFilename());
+        builder.append(name);
 
         byte [] filebytes = image.getBytes();
         Path path = Paths.get(builder.toString());
         Files.write(path, filebytes);
 
-        return "http://localhost:8080/api/v1/uploads/" + image.getOriginalFilename();
+        return name;
     }    
 
     public void removeImage(String urlImage){
-        String nameImage = urlImage.substring(37);
-        System.out.println(nameImage);
         String pathImage = System.getProperty("user.dir") + File.separator + "src" 
         + File.separator + "main" + File.separator + "java" + File.separator + "com" + File.separator 
-        + "swnat" + File.separator + "profile_images" + File.separator + nameImage;
+        + "swnat" + File.separator + "generic_files" + File.separator + urlImage;
 
         File fileImage = new File(pathImage);
         if ( !fileImage.exists()){

@@ -48,7 +48,7 @@ public class UploadController {
 
     @GetMapping(value = "/{getImages}", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getImageWithMediaType(@PathVariable("getImages") String image) throws IOException {
-        String path = File.separator + "com" + File.separator + "swnat" + File.separator + "profile_images" 
+        String path = File.separator + "com" + File.separator + "swnat" + File.separator + "generic_files" 
         + File.separator + image;
         InputStream in = getClass().getResourceAsStream(path);
         return IOUtils.toByteArray(in);
