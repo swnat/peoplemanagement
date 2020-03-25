@@ -5,6 +5,7 @@ import { Candidate } from 'src/app/models/candidate';
 import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -64,12 +65,8 @@ export class DataCandidateComponent implements OnInit {
       id: candidate.id,
       profileImage: candidate.profileImage,
     });
-    // load user profile picture
-    if ( candidate.profileImage != null ) {
-      this.imageUrl = candidate.profileImage;
-      this.nameButton = 'Change Photo';
-      this.activeRemove = true;
-    }
+
+    this.imageConstruction();
 
   }
 
@@ -183,4 +180,13 @@ export class DataCandidateComponent implements OnInit {
     this.fileUpload = null;
   }
 
+  // load user profile picture
+  imageConstruction(){
+    if ( this.dataCandidateForm.get('profileImage').value != null ) {
+      let basePath: string = "/api/v1/uploads/";
+      this.imageUrl = environment.apiUrl + basePath + this.dataCandidateForm.get('profileImage').value;
+      this.nameButton = 'Change Photo';
+      this.activeRemove = true;
+    }
+  }
 }
