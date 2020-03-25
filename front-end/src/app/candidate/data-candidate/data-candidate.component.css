@@ -45,7 +45,7 @@
     box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
     
-  .btn-pm:hover{
+  .btn-pm:hover, .btn-pm:focus{
     border: 2px solid #73BB83;
     background: #FFF;
     color: #73BB83;;
@@ -81,7 +81,7 @@
     box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
 
-  .btn-photo:hover, .btn-remove:hover, .custom-button:hover{
+  .btn-photo:hover, .btn-remove:hover, .custom-button:hover, .btn-photo:focus, .btn-remove:focus, .custom-button:focus{
     border: 2px solid #A9A9A9;
   }
 

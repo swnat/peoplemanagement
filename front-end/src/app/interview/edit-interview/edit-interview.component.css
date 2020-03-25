@@ -43,9 +43,8 @@
 
 .ok-btn {
   float: right;
-  color: white;
+  color: #FFF;
   background-color: #73BB83;
-  width: 100px;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 15px;
@@ -59,24 +58,24 @@
   background-color: #B46060;
   text-transform: uppercase;
   font-weight: 700;
-  color: #ffffff;
-  border: none;
+  color: #FFF;
+  text-align: center;
   box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
 }
 
-.not-ok-btn:hover{
+.not-ok-btn:hover, .not-ok-btn:focus{
   border: 2px solid #B46060;
   background: #FFF;
   color: #B46060;
 }
 
-.ok-btn:hover{
+.ok-btn:hover, .ok-btn:focus{
   border: 2px solid #73BB83;
   background: #FFF;
   color: #73BB83;
 }
 
-.ok-btn-add:hover {
+.ok-btn-add:hover, .ok-btn-add:focus{
   border: 2px solid #A9A9A9;
 }
 

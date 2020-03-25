@@ -11,10 +11,10 @@
     box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
     
-  .interview-btn-pm:hover{
+  .interview-btn-pm:hover, .interview-btn-pm:focus{
     border: 2px solid #73BB83;
     background: #FFF;
-    color: #73BB83;;
+    color: #73BB83;
   }
 
   .text-label{
@@ -44,7 +44,7 @@
    color: #FFF;
   }
 
-  .btn-add:hover{
+  .btn-add:hover, .btn-add:focus{
     border: 2px solid #A9A9A9;
   }
 
