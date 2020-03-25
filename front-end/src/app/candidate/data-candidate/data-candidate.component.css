@@ -103,7 +103,6 @@
   }
 
   .custom-button{
-    cursor: pointer;
     width: 135px;
     height: 35px;
     font-size: 15px;
@@ -111,7 +110,6 @@
     border-radius: 0.5rem;
     font-weight: bold;
     color: #ffffff;
-    border: none;
     box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
 
@@ -142,8 +140,9 @@
   }
 
   .btn-radio:checked + .btn-label{
-    background: #609AB4;
+    background: #609AB4;  
     color: #FFF;
+    transition: 0.5s;
   }
 
   @media screen and (min-width: 576px) and (max-width: 1100px){

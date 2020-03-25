@@ -74,4 +74,5 @@
   .btn-radio:checked + .btn-label{
     background: #609AB4;
     color: #FFF;
+    transition: 0.5s;
   }
