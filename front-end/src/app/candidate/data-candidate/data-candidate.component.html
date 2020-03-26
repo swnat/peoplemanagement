@@ -88,9 +88,9 @@
       </div>
       <div class="row">
         <div class="col-sm-9 offset-sm-2 devices-adaptacion" id="inputLinkResume">
-          <input type="file" accept=".pdf, .doc" id="readfile1" hidden>
-          <button type="button" class="btn custom-button">Select Resume</button>
-          <span class="custom-text">No file selected.</span>
+          <input #fileResume type="file" accept=".pdf, .doc, .docx" id="readfile1" hidden (change)="uploadFile($event)">
+          <button id="btn-resume" type="button" class="btn custom-button" (click)="fileResume.click()">Select Resume</button>
+          <span id="text-resume" class="custom-text">No file selected.</span>
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">

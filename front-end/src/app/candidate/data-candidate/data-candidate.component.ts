@@ -172,4 +172,12 @@ export class DataCandidateComponent implements OnInit {
     this.nameButton = 'Add Photo';
     this.imageBinary = null;
   }
+
+  uploadFile(event: any){
+    /*let readfilebtn = document.getElementById('readfile1');
+    let custombtn = document.getElementById('btn-resume');*/
+    let textresume = document.getElementById('text-resume');
+
+    textresume.innerHTML = event.target.files[0].name;
+  }
 }
