@@ -119,7 +119,6 @@ export class DataCandidateComponent implements OnInit {
         this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
         this.formCandidate.append('imageProfile', this.fileUpload);
         this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
-          console.log(data);
           this.candidate = data;
           this.candidateSaved(data);
 
