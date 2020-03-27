@@ -22,11 +22,13 @@ export class DataCandidateComponent implements OnInit {
   isNew = true;
   @Output() showChallenge = new EventEmitter();
   // Variable image
-  imageUrl = '/assets/images/default.png';
-  fileUpload: File = null;
+  imageUrl = '/assets/images/default.png'
   nameButton = 'Add Photo';
   activeRemove = false;
+  activeResume = false; activeFile = false;
   formCandidate: FormData;
+  //var file
+  listfile: File[] = [null, null, null];
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router, ) { }
@@ -81,13 +83,13 @@ export class DataCandidateComponent implements OnInit {
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]), // only letters
       dateOfBirth: new FormControl(''),
-      resumeUrl: new FormControl('', ),
+      resumeUrl: new FormControl(''),
       filesUrl: new FormControl(''),
       decision: new FormControl(''),
       comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]), // only letters
       interviewStatus: new FormControl('PENDING'),
       process_challenge_status: new FormControl('PENDING'),
-      profileImage: null
+      profileImage: new FormControl('')
     });
   }
 
@@ -113,25 +115,18 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.formCandidate = new FormData();
-        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
-        this.formCandidate.append('imageProfile', this.fileUpload);
-        this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
+        this.candidateService.addCandidate(this.dataCandidateForm.value, this.listfile).subscribe(data => {
           console.log(data);
           this.candidate = data;
           this.candidateSaved(data);
-
+          
           this.candidateId = this.candidate.id;
         }, error => {
           console.log('Error to save the candidate', error);
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
       } else {
-        this.formCandidate = new FormData();
-        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
-        this.formCandidate.append('imageProfile', this.fileUpload);
-        this.formCandidate.append('active',  this.activeRemove ? "true" : "false");
-        this.candidateService.editCandidate(this.formCandidate, this.dataCandidateForm.get('id').value).subscribe(data => {
+        this.candidateService.editCandidate(this.dataCandidateForm.value, this.listfile, this.activeRemove).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
@@ -151,7 +146,7 @@ export class DataCandidateComponent implements OnInit {
 
     if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
       // Image file
-      this.fileUpload = event.target.files[0];
+      this.listfile[0] = event.target.files[0];
 
       // Show image preview
       const reader = new FileReader();
@@ -160,7 +155,7 @@ export class DataCandidateComponent implements OnInit {
       };
 
 
-      reader.readAsDataURL(this.fileUpload);
+      reader.readAsDataURL(this.listfile[0]);
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     } else {
@@ -175,7 +170,7 @@ export class DataCandidateComponent implements OnInit {
     this.activeRemove = false;
     this.imageUrl = '/assets/images/default.png';
     this.nameButton = 'Add Photo';
-    this.fileUpload = null;
+    this.listfile[0] = null;
   }
 
   // load user profile picture
@@ -189,10 +184,19 @@ export class DataCandidateComponent implements OnInit {
   }
 
   uploadFile(event: any){
-    /*let readfilebtn = document.getElementById('readfile1');
-    let custombtn = document.getElementById('btn-resume');*/
-    let textresume = document.getElementById('text-resume');
-
-    textresume.innerHTML = event.target.files[0].name;
+    let valueId: string = event.target.id;
+    
+    if ( valueId == "resumeUrl"){
+      let textResume = document.getElementById('text-' + valueId);
+      textResume.innerHTML = event.target.files[0].name;
+      this.listfile[1] = event.target.files[0];
+      this.activeResume = true;
+    }
+    else if ( valueId == "fileUrl"){
+      let textfile = document.getElementById('text-' + valueId);
+      textfile.innerHTML = event.target.files[0].name;
+      this.listfile[2] = event.target.files[0];
+      this.activeFile = true;
+    }
   }
 }
