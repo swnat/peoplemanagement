@@ -139,7 +139,7 @@ export class ListInterviewComponent implements OnInit {
       this.statusCandidateService.statusCandidateSelected = statusCandidate;
       localStorage.setItem('candidateId', this.candidate.id.toString());
 
-      this.router.navigate(['interview/add/']);
+      this.router.navigate(['candidate/interview/add/']);
     } else {
       this.notificationService.showInfo('Select an Interview', '');
     }
@@ -148,7 +148,7 @@ export class ListInterviewComponent implements OnInit {
 
   toEditInterview(id: number) {
     localStorage.setItem('candidateId', this.candidate.id.toString());
-    this.router.navigate(['interview/edit/' + id]);
+    this.router.navigate(['candidate/interview/edit/' + id]);
   }
 
   /** GET AN ARRAY OF ALL INTERVIEW ABOUT ONE CANDIDATE
