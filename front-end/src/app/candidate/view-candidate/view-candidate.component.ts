@@ -27,5 +27,6 @@ export class ViewCandidateComponent implements OnInit {
 
   ngOnInit() {
     this.candidateId = +this.route.snapshot.paramMap.get('id');
+    window.scrollTo(0, 0);
   }
 }
