@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { CandidateService } from 'src/app/service/candidate.service';
+
 
 describe('DataCandidateComponent', () => {
   let component: DataCandidateComponent;
@@ -18,7 +20,7 @@ describe('DataCandidateComponent', () => {
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule,
         BrowserAnimationsModule, ToastrModule.forRoot(), DatePickerModule ],
       declarations: [ DataCandidateComponent, HeaderComponent ],
-      providers: [ToastrService]
+      providers: [ToastrService, CandidateService]
     })
     .compileComponents();
   }));
@@ -68,6 +70,19 @@ describe('DataCandidateComponent', () => {
 
   it('Test whether the default image loads at the start of a new candidate', () => {
     expect(component.imageUrl).toContain('/assets/images/default.png');
+  });
+  it('Valid candidate service', () => {
+    component.dataCandidateForm.controls['name'].setValue('Candidato');
+    component.dataCandidateForm.controls['lastName'].setValue('Apellido');
+    fixture.detectChanges();
+    expect(component.dataCandidateForm.valid).toBeTruthy();
+    const candidateService = fixture.debugElement.injector.get(CandidateService);
+    const persistSpy = spyOn(candidateService, 'addCandidate').and.callThrough(); // create spy
+    const bt = fixture.debugElement.query(By.css('.btn-pm')).nativeElement;
+    bt.click();
+    expect(candidateService.addCandidate).toHaveBeenCalled();
+
+
   });
 
 });
