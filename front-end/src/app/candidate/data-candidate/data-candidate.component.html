@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-sm-5 offset-sm-2 devices-adaptacion">
           <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
-            placeholder="Input Last Name">
+            placeholder="Last Name">
           <span class="text-eror" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
           <span class="text-eror" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
           <span class="text-eror" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100characters</span>
