@@ -1,9 +1,4 @@
-   /* .breadcrumb {
-        background: none;
-        font-size: 0.8em;
-        margin: 0;
-    }
-        
+   /* 
     span {
         color: rgb(201, 17, 17);
     }
@@ -29,5 +24,17 @@
         content: " ";
     }
 */
+.breadcrumb{
+    background-color: #e4e5e6 !important;
+}
 
-    
+.last a{
+    color: black;
+    pointer-events: none;
+
+}
+
+ol.breadcrumb{
+    margin-left: 2rem;
+}
+

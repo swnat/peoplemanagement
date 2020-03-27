@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {distinctUntilChanged, filter} from 'rxjs/operators';
 
-import { BreadCrumb } from 'src/app/models/breadcrumb';
+import { BreadCrumb } from 'src/app/interfaces/breadcrumb';
 
 
 @Component({
@@ -32,8 +32,7 @@ export class BreadcrumbsComponent implements OnInit {
    * @param breadcrumbs // saves the amount of labels
    */
 
-  buildBreadCrumb(route: ActivatedRoute, url: string = '',
-                  breadcrumbs: BreadCrumb[] = []): BreadCrumb[] {
+  buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadCrumb[] = []): BreadCrumb[] {
     //
     let label =
       route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb :
@@ -58,7 +57,6 @@ export class BreadcrumbsComponent implements OnInit {
       label: label,
       url: nextUrl
     };
-
     //
     const newBreadcrumbs = breadcrumb.label ? [...breadcrumbs, breadcrumb] : [...breadcrumbs];
     if (route.firstChild) {
@@ -68,5 +66,4 @@ export class BreadcrumbsComponent implements OnInit {
     }
     return newBreadcrumbs;
   }
-
 }
