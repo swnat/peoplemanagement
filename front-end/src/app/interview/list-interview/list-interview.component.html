@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-4 ml-2 movil-text">
       <button id="add-interview" alt="addinterview"
-      type="button" class="btn btn-add movil" (click)="toAddInterview(statusCandidateSelect)" [disabled]="isDisabled">
+      type="button" class="btn-add movil" (click)="toAddInterview(statusCandidateSelect)" [disabled]="isDisabled">
       Add Interview
       </button>
     </div>
@@ -42,7 +42,7 @@
             <td>
               <button alt="edit" title="Edit" id="edit-interview"
               type="button" class="btn" (click)="toEditInterview(item.id)" [disabled]="item.finishProcess">
-              <i style="color: black;" class="fas fa-pen fa-2x"></i>
+              <i style="color: black;" class="fas fa-pen fa-1x"></i>
               </button>
             </td>
           </tr>
@@ -58,7 +58,7 @@
   <div class="form-group row" *ngIf="list_interview?.length > 0"> 
     <br>
     <div class="col-sm-12">
-      <button class="btn interview-btn-pm" id="buttonfinish" (click)="onOpenDialog($event); isFinish = false;"
+      <button class="interview-btn-pm" id="buttonfinish" (click)="onOpenDialog($event); isFinish = false;"
         [disabled]="isFinish">Finish all interviews</button>
       <ejs-dialog id='dialog' #ejDialog header='Are you sure ...? '
         content='If you finish the process you wont be able to add or edit' [target]='targetElement' width='300px'

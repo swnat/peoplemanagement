@@ -75,7 +75,7 @@
               </div>
           </div>
           <div class="col-sm-5 movil">
-            <button class="btn ok-btn-add" type="button" (click)="addParticipants()"
+            <button class="ok-btn-add" type="button" (click)="addParticipants()"
               [disabled]="f.addParticipant.value == ''">Add Participants</button>
           </div>
         </div>
@@ -93,7 +93,7 @@
                   <td><span>{{item}}</span></td>
                   <td>
                     <button alt="remove" title="Remove" type="button" class="btn" (click)="removeParticipants(i)">
-                      <i class="fas fa-trash-alt fa-2x"></i>
+                      <i class="fas fa-trash-alt fa-1x"></i>
                     </button>
                   </td>
                 </tr>
@@ -104,8 +104,8 @@
         <!-- SAVE -->
         <div class="row">
           <div class="col-sm-11">
-            <button id="cancel-btn" (click)="cancelInterview()" type="button" class="btn not-ok-btn ml-3">Cancel</button>
-            <button id="save-btn" type="submit" class="btn ok-btn">Save</button>
+            <button id="cancel-btn" (click)="cancelInterview()" type="button" class="not-ok-btn ml-3">Cancel</button>
+            <button id="save-btn" type="submit" class="ok-btn">Save</button>
           </div>
         </div>
       </form>
