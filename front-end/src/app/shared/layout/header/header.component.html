@@ -29,17 +29,14 @@
             <i class="fas fa-bars"></i>
           </button>
         </a>
-      
-      <ul class="navbar-nav ml-auto" (click)="toggleUserOpen()" >
-        <li class="nav-item">
-          <a class="nav-link btn p-0" (clickOutside)="toggleUserClose($event)">
-            <img id="profile" src="../../../../assets/images/default.png" width="105">
-          </a>
-        </li>
-      </ul>
-
-      <app-card-user *ngIf="isCardOpen" ></app-card-user>
-      
+      <div class="navbar-nav ml-auto" (clickOutside)= "toggleUserClose($event)">
+          <li class="nav-item">
+            <a class="nav-link btn p-0" (click)="toggleUserOpen()">
+              <img id="profile" src="../../../../assets/images/default.png" width="105">
+            </a>
+          </li>
+        <app-card-user *ngIf="isCardOpen" [close_link]="'isCardOpen'"></app-card-user>
+      </div>      
     </nav>  
 
 

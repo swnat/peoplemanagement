@@ -1,8 +1,9 @@
-<div class="card d-flex">
+<div *ngIf="close_link" class="card d-flex">
     <div class="card-body d-flex">
 
         <div class="float-left mr-3">
-            <a class="justify-content-center" [routerLink]="['/user/data', user?.idUser]">
+            <a class="justify-content-center" [routerLink]="['/user/data', user?.idUser]" 
+                (click)="closeCardUser()">
                 <img class="mt-1 mb-1" id="profile" src="../../../../assets/images/default.png" 
                 width="105">
             </a>

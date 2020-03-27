@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StorageService } from 'src/app/service/storage.service';
@@ -34,6 +34,9 @@ export class CardUserComponent implements OnInit {
 
   rol_name_profile: String; // attribute card user profile
   user: User = new User();
+   /* attribute 'close_link' that closes the user card by clicking inside the card's user profile photo*/
+  @Input()  close_link: boolean;
+
   constructor(
     private storageService: StorageService,
     private userService: UserService,
@@ -96,6 +99,11 @@ export class CardUserComponent implements OnInit {
   // function logout
   public logout(): void {
     this.storageService.logout();
+  }
+
+  // function for close card user when go to another page
+  closeCardUser() {
+    this.close_link = false;
   }
 
 }
