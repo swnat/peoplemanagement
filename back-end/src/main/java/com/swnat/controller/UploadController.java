@@ -2,20 +2,27 @@ package com.swnat.controller;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/v1/uploads")
@@ -46,11 +53,29 @@ public class UploadController {
         return UPLOADED_FOLDER + sdf.format(timestamp) +file.getOriginalFilename();
     }
 
-    @GetMapping(value = "/{getImages}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getImageWithMediaType(@PathVariable("getImages") String image) throws IOException {
-        String path = File.separator + "com" + File.separator + "swnat" + File.separator + "generic_files" 
-        + File.separator + image;
-        InputStream in = getClass().getResourceAsStream(path);
-        return IOUtils.toByteArray(in);
+    @GetMapping("/{nameFile}")
+    public void downloadFile(HttpServletRequest request, HttpServletResponse response,
+    @PathVariable String nameFile) throws IOException {
+        
+        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" 
+        + File.separator + "java" + File.separator + "com" + File.separator + "swnat" + File.separator 
+        + "generic_files" + File.separator + nameFile;
+
+        File file = new File(path);
+        if ( file.exists()){
+
+            String filetype = URLConnection.guessContentTypeFromName(file.getName());
+            if ( filetype == null){
+                filetype = "application/octet-stream";
+            }
+
+            response.setContentType(filetype);
+            response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+
+            response.setContentLength((int) file.length());
+
+            InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+            FileCopyUtils.copy(inputStream, response.getOutputStream());
+        }
     }
 }
