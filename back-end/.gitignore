@@ -28,4 +28,4 @@
 .vscode
 
 ### folder images ###
-/src/main/java/com/swnat/generic_files/
+src/main/resources/generic_files/
