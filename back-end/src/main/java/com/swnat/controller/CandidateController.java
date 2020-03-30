@@ -64,13 +64,13 @@ public class CandidateController {
             candidate.setProfileImage(this.candidateService.uploadFile(image));
         }
 
-        if ( resume != null && candidate.getResumeUrl() != null  ) { this.candidateService.removeFile(candidate.getResumeUrl()); 
-            candidate.setResumeUrl(this.candidateService.uploadFile(resume)); }
-        else { candidate.setResumeUrl(this.candidateService.uploadFile(resume)); }
+        if (  candidate.getResumeUrl() == null && resume != null  ) { candidate.setResumeUrl(this.candidateService.uploadFile(resume)); }
+        else if ( candidate.getResumeUrl() != null  && resume != null ) { this.candidateService.removeFile(candidate.getResumeUrl());
+        candidate.setResumeUrl(this.candidateService.uploadFile(resume));}
 
-        if ( file != null && candidate.getFilesUrl() != null  ) { this.candidateService.removeFile(candidate.getFilesUrl()); 
-            candidate.setFileUrl(this.candidateService.uploadFile(file)); }
-        else { candidate.setFileUrl(this.candidateService.uploadFile(file)); }
+        if (  candidate.getFilesUrl() == null && file != null  ) { candidate.setFileUrl(this.candidateService.uploadFile(file)); }
+        else if ( candidate.getFilesUrl() != null  && file != null ) { this.candidateService.removeFile(candidate.getFilesUrl());
+        candidate.setResumeUrl(this.candidateService.uploadFile(resume));}
  
         return candidateService.update(id, candidate);
     }
