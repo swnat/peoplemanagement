@@ -9,7 +9,8 @@ For the back end project, we use Spring boot 2.0 and Flowable BPM for modeler pr
 ## Installation
 First, you need to clone the project and follow steps for installation.\
 [README Front end project](https://github.com/swnat/peoplemanagement/blob/master/front-end/README.md)\
-[README Back end project](https://github.com/swnat/peoplemanagement/blob/master/back-end/README.md)
+[README Back end project](https://github.com/swnat/peoplemanagement/blob/master/back-end/README.md)\
+[README Docker project](https://github.com/swnat/peoplemanagement/blob/master/Docker/README.md)
 
 ## Contributing
 To contribute please read the CONTRIBUTING file of each project.
