@@ -1,7 +1,5 @@
 package com.swnat.controller;
 
-import org.apache.commons.io.IOUtils;
-import org.springframework.http.MediaType;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +28,11 @@ public class UploadController {
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/home/elena/Documents/ImagenesPeopleManagement/";
+    private static final String fileUrl = File.separator + "src" + 
+            File.separator + "main" + 
+            File.separator + "resources" + 
+            File.separator + "generic_files";
+
 
     @PostMapping("/upload") //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file) {
@@ -57,10 +60,8 @@ public class UploadController {
     public void downloadFile(HttpServletRequest request, HttpServletResponse response,
     @PathVariable String nameFile) throws IOException {
         
-        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" 
-        + File.separator + "java" + File.separator + "com" + File.separator + "swnat" + File.separator 
-        + "generic_files" + File.separator + nameFile;
-
+        String path = System.getProperty("user.dir") + fileUrl + File.separator + nameFile;
+        
         File file = new File(path);
         if ( file.exists()){
 

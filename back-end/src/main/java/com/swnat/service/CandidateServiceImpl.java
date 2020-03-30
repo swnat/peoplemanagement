@@ -1,6 +1,5 @@
 package com.swnat.service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,12 +14,27 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.web.multipart.MultipartFile;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
+import java.nio.file.Files;
+
+
 @Service
 @Transactional
 public class CandidateServiceImpl extends GenericService<Candidate, Long> implements CandidateService {
     private static final String IN_PROCESS ="IN PROCESS";
     private static final String COMPLETED ="COMPLETED";
     private static final String PENDING ="PENDING";
+    private static final String fileUrl = File.separator + "src" + 
+                    File.separator + "main" + 
+                    File.separator + "resources" + 
+                    File.separator + "generic_files";
 
     private CandidateRepository candidateRepository;
 
@@ -83,6 +97,7 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         //update interview status
         update(candidateIdLong, candidate);
     }
+
     @Override
     public void updateChallengeStatus(String candidateId, String challengeStatus){
         
@@ -103,4 +118,51 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         
     }
 
+    public String uploadFile(MultipartFile file) {
+        String directory = System.getProperty("user.dir") + fileUrl;
+        Path mypath = Paths.get(directory);
+
+        if ( !Files.exists(mypath) ){
+            try {
+                Files.createDirectory(mypath);
+                System.out.println("Directory created");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Formatting the file names to be unique by adding date and time
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.from(Instant.now()));
+        //create filename from a format string
+        String name = String.format("file-%1$tY-%1$tm-%1$td-%1$tk-%1$tS-%1$tp-" + file.getOriginalFilename(), cal);
+        
+        StringBuilder builder = new StringBuilder();
+        builder.append(directory);
+        builder.append(File.separator);
+        builder.append(name);
+   
+        try {
+            byte[] filebytes;
+            filebytes = file.getBytes();
+            Path path = Paths.get(builder.toString());
+            Files.write(path, filebytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return name;
+    }    
+
+    public void removeFile(String name){
+        String directory = System.getProperty("user.dir")  + fileUrl + File.separator + name;
+        File filePath = new File(directory);
+        if ( !filePath.exists()){
+            System.out.println("Image name does not exist");
+        }
+        else{
+            filePath.delete();
+            System.out.println("Successfully deleted image server");
+        }
+    }  
 }
