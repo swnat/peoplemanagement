@@ -1,10 +1,6 @@
 package com.swnat.service;
 
-import java.util.List;
-
 import com.swnat.model.User;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.swnat.dto.MessageDTO;
 import com.swnat.dto.PaginationResponse;
