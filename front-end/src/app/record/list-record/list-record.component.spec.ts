@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { By } from '@angular/platform-browser';
 
 describe('ListRecordComponent', () => {
   let component: ListRecordComponent;
@@ -46,5 +47,12 @@ describe('ListRecordComponent', () => {
     fixture.detectChanges();
     console.log(component.list_records);
     expect(component.list_records).toEqual([]);
+  });
+
+  it('show detail', () => {
+    const fixture = TestBed.createComponent(ListRecordComponent);
+    fixture.detectChanges();
+   let labelName = fixture.debugElement.query(By.css('.form-control')).nativeElement;
+    expect(labelName.textContent.trim()).toBe("No items to display!");
   });
 });
