@@ -8,7 +8,7 @@
         <span>{{ nameButton }}</span>
         <input id="imageInput" type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
       </label>
-      <button *ngIf="activeRemove" (click)="deleteButton()" class="btn-remove spacing-button">Remove</button>
+      <button *ngIf="activeRemove" (click)="deleteButton($event)" class="btn-remove spacing-button">Remove</button>
     </div>
     <div class="col-sm-9">
       <div class="form-group mb-0 mt-3 row">
