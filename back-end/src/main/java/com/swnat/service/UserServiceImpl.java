@@ -2,23 +2,14 @@ package com.swnat.service;
 
 import com.swnat.model.User;
 
-import java.lang.annotation.Annotation;
-import java.util.Map;
-
 import com.swnat.dto.MessageDTO;
 import com.swnat.dto.PaginationResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import com.swnat.repository.UserRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import ch.qos.logback.core.status.Status;
-import io.swagger.models.Response;
 
 
 @Service
