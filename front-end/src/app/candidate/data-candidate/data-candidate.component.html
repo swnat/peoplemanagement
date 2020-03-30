@@ -89,9 +89,9 @@
       <div class="row">
         <div class="col-sm-9 offset-sm-2 devices-adaptacion">
           <input #fileResume type="file" accept=".pdf, .doc, .docx" id="resumeUrl" hidden (change)="uploadFile($event)">
-          <button id="btn-resume" type="button" class="btn custom-button" (click)="fileResume.click()">Select Resume</button>
+          <button id="btn-resume" type="button" class="custom-button" (click)="fileResume.click()">Select Resume</button>
           <span id="text-resumeUrl" class="custom-text">No file selected.</span>
-          <i *ngIf="activeResume" style="margin-left: 0.4rem;" class="fas fa-arrow-alt-circle-down fa-2x"></i>
+          <i *ngIf="activeResume" style="margin-left: 0.45rem;" class="fas fa-arrow-alt-circle-down fa-2x"></i>
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">
@@ -100,9 +100,9 @@
       <div class="row">
         <div class="col-sm-9 offset-sm-2 devices-adaptacion">
           <input #fileUrl type="file" accept=".pdf, .doc, .docx" id="fileUrl" hidden (change)="uploadFile($event)">
-          <button type="button" class="btn custom-button" (click)="fileUrl.click()">Select file</button>
+          <button type="button" class="custom-button" (click)="fileUrl.click()">Select file</button>
           <span id="text-fileUrl" class="custom-text">No file selected.</span>
-          <i *ngIf="activeFile" style="margin-left: 0.4rem;" class="fas fa-arrow-alt-circle-down fa-2x"></i>
+          <i *ngIf="activeFile" style="margin-left: 0.45rem;" class="fas fa-arrow-alt-circle-down fa-2x"></i>
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">

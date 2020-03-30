@@ -69,6 +69,7 @@ export class DataCandidateComponent implements OnInit {
     });
 
     this.imageConstruction();
+    this.editFile();
 
   }
 
@@ -202,6 +203,21 @@ export class DataCandidateComponent implements OnInit {
       textfile.innerHTML = event.target.files[0].name;
       this.listfile[2] = event.target.files[0];
       this.activeFile = true;
+    }
+  }
+
+  /*Method for loading our inputs into the candidate's edition.*/
+  editFile(){
+    if ( this.dataCandidateForm.get('resumeUrl').value ){
+      let name: string = this.dataCandidateForm.get('resumeUrl').value;
+      this.activeResume = true;
+      document.getElementById('text-resumeUrl').innerHTML = name.slice(25);
+    }
+
+    if ( this.dataCandidateForm.get('filesUrl').value ){
+      let name: string = this.dataCandidateForm.get('filesUrl').value;
+      this.activeResume = true;
+      document.getElementById('text-fileUrl').innerHTML = name.slice(25);
     }
   }
 }
