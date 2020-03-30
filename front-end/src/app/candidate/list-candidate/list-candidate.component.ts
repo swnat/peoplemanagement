@@ -24,6 +24,8 @@ export class ListCandidateComponent implements OnInit {
   filterText = '';
   sortBy = 'LAST_MODIFIED'; // default last modified
 
+  candidatesInDB = true;
+
   constructor(private candidateService: CandidateService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class ListCandidateComponent implements OnInit {
 
   public getAllCandidates(request: DataRequest): void {
     this.candidateService.getAllCandidates(request.filter, request.page, request.size, this.sortBy).subscribe(data => {
+      if (request.filter == '' && data.totalCount == 0) this.candidatesInDB = false;
       this.candidates = data;
       window.scrollTo(0, 0);
     },

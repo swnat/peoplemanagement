@@ -2,8 +2,11 @@
   .interview-btn-pm{
     float: right;
     color: white;
+    border-radius: 0.3rem;
     background-color: #73BB83;
-    width: auto;
+    width: 12rem;
+    border: 0px;
+    height: 2.5rem;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 15px;
@@ -15,6 +18,7 @@
     border: 2px solid #73BB83;
     background: #FFF;
     color: #73BB83;
+    outline: none;
   }
 
   .text-label{
@@ -29,7 +33,9 @@
   }
 
   .btn-add{
-    width: auto;
+    width: 8rem;
+    height: 35px;
+    border: 0px;
     font-size: 15px;
     background-color: #609AB4;
     border-radius: 0.5rem;
@@ -46,6 +52,7 @@
 
   .btn-add:hover, .btn-add:focus{
     border: 2px solid #A9A9A9;
+    outline: none;
   }
 
   @media screen and ( max-width: 575px){

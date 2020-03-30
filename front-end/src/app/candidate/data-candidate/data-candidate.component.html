@@ -8,7 +8,7 @@
         <span>{{ nameButton }}</span>
         <input id="imageInput" type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event)">
       </label>
-      <button *ngIf="activeRemove" (click)="deleteButton()" class="btn-remove spacing-button">Remove</button>
+      <button *ngIf="activeRemove" (click)="deleteButton($event)" class="btn-remove spacing-button">Remove</button>
     </div>
     <div class="col-sm-9">
       <div class="form-group mb-0 mt-3 row">
@@ -16,10 +16,10 @@
       </div>
       <div class="row">
         <div class="col-sm-5 offset-sm-2 devices-adaptacion">
-          <input type="text" formControlName="name" class="form-control input-field" id="inputName" placeholder="Input Name">
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.required">Name is required</span>
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100 characters</span>
+          <input type="text" formControlName="name" class="form-control input-field" id="inputName" placeholder="Name">
+          <span class="text-error" *ngIf="submitted && f.name.errors?.required">Name is required</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100 characters</span>
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">
@@ -28,10 +28,10 @@
       <div class="row">
         <div class="col-sm-5 offset-sm-2 devices-adaptacion">
           <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
-            placeholder="Input Last Name">
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
-          <span class="text-eror" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100characters</span>
+            placeholder="Last Name">
+          <span class="text-error" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100characters</span>
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">
@@ -39,7 +39,7 @@
       </div> 
       <div class="row">
         <div class="col-sm-6 offset-sm-2 devices-adaptacion">
-          <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Input Email">
+          <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Email">
         </div>
       </div> 
       <div class="from-group row mb-0" id="separator">
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="form-group row mb-0" id="separator">
-        <label for="filesUrl" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Additional Files<span class="text-optional"> - Optional</span></label>
+        <label for="filesUrl" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Additional File<span class="text-optional"> - Optional</span></label>
       </div>
       <div class="row">
         <div class="col-sm-9 offset-sm-2 devices-adaptacion">
@@ -110,32 +110,14 @@
       </div>
       <div class="row">
         <div class="col-sm-8 offset-sm-2 devices-adaptacion">
-          <textarea id="comments" class="form-control" formControlName="comments" rows="10" cols="12" placeholder="Input your comments"></textarea>
+          <textarea id="comments" class="form-control" formControlName="comments" rows="10" cols="12" placeholder="Write your comments here..."></textarea>
         </div>
       </div>
       <div class="form-group row mt-4">
         <div class="col-sm-11">
-          <button type="submit" class="btn btn-pm">Save</button>
+          <button type="submit" class="btn-pm">Save</button>
         </div>
       </div>
     </div>
   </div>
 </form>
-
-<!--
-        
-        
-        <div class="col-sm-3">
-          <input type="text" formControlName="resumeUrl" class="form-control input-field" id="inputLinkResume"
-            placeholder="https://">
-        </div> 
-        <div class="col-sm-3">
-        <input type="text" formControlName="filesUrl" class="form-control input-field" id="filesUrl"
-          placeholder="https://">
-        </div>
-      </div>
-      
-       
-
-     
--->

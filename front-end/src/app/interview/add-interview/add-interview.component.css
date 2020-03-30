@@ -37,7 +37,9 @@
   }
 
   .ok-btn-add{
-    width: auto;
+    width: 9rem;
+    height: 35px;
+    border: 0px;
     font-size: 15px;
     background-color: #609AB4;
     border-radius: 0.5rem;
@@ -49,7 +51,10 @@
 
   .ok-btn {
     float: right;
+    height: 2.5rem;
+    border: 0px;
     color: #FFF;
+    border-radius: 0.3rem;
     background-color: #73BB83;
     font-weight: 700;
     text-transform: uppercase;
@@ -62,11 +67,15 @@
     border: 2px solid #73BB83;
     background: #FFF;
     color: #73BB83;
+    outline: none;
   }
 
   .not-ok-btn {
     float: right;
+    height: 2.5rem;
+    border: 0px;
     font-size: 15px;
+    border-radius: 0.3rem;
     background-color: #B46060;
     text-transform: uppercase;
     font-weight: 700;
@@ -79,10 +88,12 @@
     border: 2px solid #B46060;
     background: #FFF;
     color: #B46060;
+    outline: none;
   }
 
   .ok-btn-add:hover, .ok-btn-add:focus {
     border: 2px solid #A9A9A9;
+    outline: none;
   }
 
   .text-label{
