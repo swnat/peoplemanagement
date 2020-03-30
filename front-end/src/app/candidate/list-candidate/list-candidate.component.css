@@ -28,11 +28,8 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
   border-color: #3498db;
 }
 
-
 .btn-outline-success:hover{
   color: white;
   background-color: #3498db;
   border-color: #3498db;
 }
-  
-  
