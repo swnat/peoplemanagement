@@ -27,23 +27,23 @@ export class BreadcrumbsComponent implements OnInit {
 
    /**
    * Recursively build breadcrumb according to activated route.
-   * @param route //
+   * @param route // specify the route
    * @param url // save the amount of url
    * @param breadcrumbs // saves the amount of labels
    */
 
   buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadCrumb[] = []): BreadCrumb[] {
-    //
+    // get the routes and labels
     let label =
       route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb :
       null;
     let path =
       route.routeConfig && route.routeConfig.data ? route.routeConfig.path : '';
-    //
+    // attributes to detect whether the route is dynamic
     const lastRoutePart = path.split('/').pop();
     const isDynamicRoute = lastRoutePart.startsWith(':');
 
-    //
+    // function that get the dynamic routes
     if (isDynamicRoute && !!route.snapshot) {
       const paramName = lastRoutePart.split(':')[1];
       path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
@@ -57,7 +57,7 @@ export class BreadcrumbsComponent implements OnInit {
       label: label,
       url: nextUrl
     };
-    //
+    // Only adding route with non-empty label
     const newBreadcrumbs = breadcrumb.label ? [...breadcrumbs, breadcrumb] : [...breadcrumbs];
     if (route.firstChild) {
       // If we are not on our current path yet,

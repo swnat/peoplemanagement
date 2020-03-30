@@ -2,10 +2,10 @@
     background-color: #e4e5e6 !important;
 }
 
+ /*disable breadcrumbs if it is the last label*/
 .last a{
     color: black;
     pointer-events: none;
-
 }
 
 ol.breadcrumb{
