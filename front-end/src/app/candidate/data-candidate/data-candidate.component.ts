@@ -115,15 +115,7 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-<<<<<<< HEAD
         this.candidateService.addCandidate(this.dataCandidateForm.value, this.listfile).subscribe(data => {
-          console.log(data);
-=======
-        this.formCandidate = new FormData();
-        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
-        this.formCandidate.append('imageProfile', this.fileUpload);
-        this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
->>>>>>> upload-image-spring-boot
           this.candidate = data;
           this.candidateSaved(data);
           
