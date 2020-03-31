@@ -1,94 +1,121 @@
-<div class="row">
-  <div class="col-md-2">
-    <div class="card mt-3" style="width: 14rem;">
-      <img [src]="imageUrl" class="card-img-top img-thumbnail" alt="Loading...">
-      <div class="card-body text-center">
-        <label class="image-upload-container btn btn-primary">
-          <span>{{ nameButton }}</span>
-          <input #imageInput type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
-        </label>
-        <button *ngIf="activeRemove" (click)="deleteButton()" class="btn btn-danger">Remove Photo</button>
+<form [formGroup]="dataCandidateForm" id="dataCandidateForm" (ngSubmit)="onSubmit()">
+  <div class="row mx-2 mt-4">
+    <div class="col-sm-2 offset-sm-1 image-devices">
+      <div class="circular--portrait">
+        <img [src]="imageUrl" alt="Loading...">
       </div>
+      <label class="btn-photo spacing-button">
+        <span>{{ nameButton }}</span>
+        <input id="imageInput" type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
+      </label>
+      <button *ngIf="activeRemove" (click)="deleteButton($event)" class="btn-remove spacing-button">Remove</button>
     </div>
-  </div>
-  <div class="col-md-9">
-    <form [formGroup]="dataCandidateForm" id="dataCandidateForm" (ngSubmit)="onSubmit()">
-      <div class="form-group row">
-        <label for="inputName" class="col-sm-2 offset-sm-1 col-form-label text-label">Name:</label>
-        <div class="col-sm-3">
+    <div class="col-sm-9">
+      <div class="form-group mb-0 mt-3 row">
+        <label for="inputName" class="col-sm-2 offset-sm-2 col-form-label text-label devices-adaptacion">Name</label>
+      </div>
+      <div class="row">
+        <div class="col-sm-5 offset-sm-2 devices-adaptacion">
           <input type="text" formControlName="name" class="form-control input-field" id="inputName" placeholder="Name">
-
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Name is required</span>
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100
-          characters</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.required">Name is required</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.pattern">Name have to be only letters</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.maxlength">Name must have less than 100 characters</span>
         </div>
-        <label for="inputDateBirth" class="col-sm-3 col-form-label text-label">Date of birth:</label>
-        <div class="col-sm-3">
-          <div class=" date-picker-width">
+      </div>
+      <div class="form-group row mb-0" id="separator">
+        <label for="inputLastName" class="col-sm-2 offset-sm-2 col-form-label text-label devices-adaptacion">Last Name</label>
+      </div>
+      <div class="row">
+        <div class="col-sm-5 offset-sm-2 devices-adaptacion">
+          <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
+            placeholder="Last Name">
+          <span class="text-error" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
+          <span class="text-error" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100characters</span>
+        </div>
+      </div>
+      <div class="form-group row mb-0" id="separator">
+          <label for="inputEmail" class="col-sm-3 offset-sm-2 text-label devices-adaptacion">Email<span class="text-optional"> - Optional</span></label>
+      </div> 
+      <div class="row">
+        <div class="col-sm-6 offset-sm-2 devices-adaptacion">
+          <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Email">
+        </div>
+      </div> 
+      <div class="from-group row mb-0" id="separator">
+        <label for="inputDateBirth" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Date of birth<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 offset-sm-2 devices-adaptacion">
+          <div class="date-picker-width">
             <ejs-datepicker #ejDatePicker id="dateOfBirth" format='yyyy-MM-dd' formControlName="dateOfBirth"
               name="dateOfBirth">
             </ejs-datepicker>
           </div>
         </div>
-        <label for="inputLastName" class="col-sm-2 offset-sm-1 col-form-label text-label">Last Name:</label>
-        <div class="col-sm-3">
-          <input type="text" formControlName="lastName" class="form-control input-field" id="inputLastName"
-            placeholder="Last Name">
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.required">Last Name is required</span>
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.pattern">Last Name have to be only letters</span>
-          <span class="text-danger" *ngIf="submitted && f.name.errors?.maxlength">Last Name must have less than 100
-            characters</span>
-        </div>
-        <label for="inputPhoneNumber" class="col-sm-3 col-form-label text-label">Phone Number:</label>
-        <div class="col-sm-3">
-          <input type="text" formControlName="phoneNumber" class="form-control input-field" id="inputPhoneNumber"
-            placeholder="Phone Number">
-        </div>
-        <label for="inputLinkResume" class="col-sm-2 offset-sm-1 col-form-label text-label">Resume:</label>
-        <div class="col-sm-3">
-          <input type="text" formControlName="resumeUrl" class="form-control input-field" id="inputLinkResume"
-            placeholder="https://">
-        </div> 
-        <label for="filesUrl" class="col-sm-3 col-form-label text-label">Additional Files:</label>
-        <div class="col-sm-3">
-        <input type="text" formControlName="filesUrl" class="form-control input-field" id="filesUrl"
-          placeholder="https://">
+      </div>
+      <div class="form-group row mb-0" id="separator">
+        <label for="inputPhoneNumber" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Phone Number<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-5 offset-sm-2 devices-adaptacion">
+          <input type="text" formControlName="phoneNumber" class="form-control input-field" id="inputPhoneNumber" placeholder="Phone Number">
         </div>
       </div>
-      <div class="form-group row">
-        <label for="inputUniversity" class="col-sm-2 offset-sm-1 col-form-label text-label">University:</label>
-        <div class="col-sm-9">
+      <div class="form-group row mb-0" id="separator">
+        <label for="inputUniversity" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">University<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2 devices-adaptacion">
           <input type="text" formControlName="university" class="form-control input-field" id="inputUniversity"
             placeholder="University">
         </div>
       </div>
-      <div class="form-group row">
-        <label for="inputEmail" class="col-sm-2 offset-sm-1 col-form-label text-label">Email:</label>
-        <div class="col-sm-9">
-          <input type="email" formControlName="email" class="form-control input-field" id="inputEmail" placeholder="Mail">
-        </div>
-      </div>  
-      <div class="form-group row">
-        <label for="decision" class="col-sm-2 offset-sm-1 col-form-label text-label">Decision:</label>
-        <div class="col-sm-9">
-          <select class="custom-select" formControlName="decision" id="decision">
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
-          </select>
+      <div class="form-group row mb-0" id="separator">
+        <label for="decision" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Decision<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2 devices-adaptacion">
+          <input type="radio" value="Approved" class="btn-radio"  id="approved" formControlName="decision"> 
+          <label for="approved" class="btn-label">Approved</label>
+            
+          <input type="radio" value="Rejected" class="btn-radio" id="rejected" formControlName="decision"> 
+          <label for="rejected" class="btn-label">Rejected</label>   
         </div>
       </div>
-      <div class="form-group row">
-        <label for="comments" class="col-sm-2 offset-sm-1 col-form-label text-label">Comments:</label>
-        <div class="col-sm-9">
-          <textarea id="comments" class="form-control" formControlName="comments"></textarea>
+      <div class="form-group row mb-0" id="separator">
+        <label for="inputLinkResume" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Resume<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-9 offset-sm-2 devices-adaptacion" id="inputLinkResume">
+          <input type="file" accept=".pdf, .doc" id="readfile1" hidden>
+          <button type="button" class="custom-button">Select Resume</button>
+          <span class="custom-text">No file selected.</span>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-pm">Save</button>
+      <div class="form-group row mb-0" id="separator">
+        <label for="filesUrl" class="col-sm-5 offset-sm-2 col-form-label text-label devices-adaptacion">Additional File<span class="text-optional"> - Optional</span></label>
+      </div>
+      <div class="row">
+        <div class="col-sm-9 offset-sm-2 devices-adaptacion" id="filesUrl">
+          <input type="file" accept=".pdf, .doc" id="readfile2" hidden>
+          <button type="button" class="custom-button">Select file</button>
+          <span class="custom-text">No file selected.</span>
         </div>
       </div>
-    </form>
+      <div class="form-group row mb-0" id="separator">
+        <label for="comments" class="col-sm-4 offset-sm-2 col-form-label text-label devices-adaptacion">Comments</label>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2 devices-adaptacion">
+          <textarea id="comments" class="form-control" formControlName="comments" rows="10" cols="12" placeholder="Write your comments here..."></textarea>
+        </div>
+      </div>
+      <div class="form-group row mt-4">
+        <div class="col-sm-11">
+          <button type="submit" class="btn-pm">Save</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</form>

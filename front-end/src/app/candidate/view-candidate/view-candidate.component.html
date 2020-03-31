@@ -1,8 +1,9 @@
 <div class="container">
-  <div class="col-12 title form-title">
-    <label>Profile</label>
+  
+  <!--FORM CANDIDATE-->
+  <div class="btn candidate-btn-pm">
+    <span>Profile</span>
   </div>
-
   <div class="candidate-form">
     <app-data-candidate [candidateId]="candidateId" (showChallenge)= 'showChallengeAccordion($event)' (showInterview)='showInterviewAccordion($event)'></app-data-candidate>
   </div>
@@ -11,16 +12,16 @@
   <a class="btn candidate-btn-pm" data-toggle="collapse" id="collapseChallengeButton" href="#collapseChallenge" role="button" aria-expanded="false"
   aria-controls="collapseChallege">Challenge</a>
   <div class="collapse show" id="collapseChallenge">
-    <div class="card card-body">
+    <div class="card card-body responsive-movil" style="font-family: 'Roboto', sans-serif;">
       <app-add-challenge [candidateId]="candidateId"></app-add-challenge>
     </div>
   </div>
+
   <!--INTERVIEW FORM-->
   <a class="btn candidate-btn-pm" data-toggle="collapse" id="collapseInterviewButton" href="#collapseInterview" role="button" aria-expanded="false"
     aria-controls="collapseInterview">Interviews</a>
-
   <div class="collapse show" id="collapseInterview">
-    <div class="card card-body">
+    <div class="card card-body" style="font-family: 'Roboto', sans-serif;">
       <app-list-interview [candidateId]="candidateId"></app-list-interview>
     </div>
   </div>

@@ -2,16 +2,6 @@
   margin-bottom: .5rem; /* overwrite because pagination has 1rem space */
 }
 
-/*.list-container{
-  background: lightgray;
-}*/
-
-#add-btn{
-  background-color: #882960;
-  border-color: #882960;
-  text-transform: uppercase;
-}
-
 #list-container-footer {
   width: 100%;
 }
@@ -28,13 +18,12 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
   border-color: #3498db;
 }
 
-
 .btn-outline-success:hover{
   color: white;
   background-color: #3498db;
   border-color: #3498db;
 }
-  
-@import "../node_modules/@syncfusion/ej2/material.css";
-  
-  
+
+#filter-input, #select-sortby {
+  width: 10rem;
+}
