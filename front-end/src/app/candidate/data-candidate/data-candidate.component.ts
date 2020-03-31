@@ -163,7 +163,7 @@ export class DataCandidateComponent implements OnInit {
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     } else {
-      
+
       this.imageUrl = '/assets/images/default.png';
       this.nameButton = buttonAdd;
     }
@@ -171,19 +171,18 @@ export class DataCandidateComponent implements OnInit {
   }
 
   /*
-  Added a keyboard event condition 
-  so that this method is not triggered when 
+  Added a keyboard event condition
+  so that this method is not triggered when
   the enter key is pressed.
-  */ 
+  */
   deleteButton(event: KeyboardEvent) {
     if (event.detail != 0){
       this.activeRemove = false;
       this.imageUrl = '/assets/images/default.png';
       this.nameButton = 'Add Photo';
-      this.imageBinary = null;
     }
   }
-  
+
   // load user profile picture
   imageConstruction(){
     if ( this.dataCandidateForm.get('profileImage').value != null ) {
