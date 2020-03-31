@@ -22,10 +22,10 @@ export class DataCandidateComponent implements OnInit {
   isNew = true;
   @Output() showChallenge = new EventEmitter();
   // Variable image
-  imageUrl = '/assets/images/default.png'
+  imageUrl = '/assets/images/default.png';
   nameButton = 'Add Photo';
   activeRemove = false;
-  activeResume = false; activeFile = false;
+  activeResume: boolean; activeFile: boolean;
   formCandidate: FormData;
   //var file
   listfile: File[] = [null, null, null];
@@ -120,6 +120,10 @@ export class DataCandidateComponent implements OnInit {
           this.candidate = data;
           this.candidateSaved(data);
           
+          //Once a candidate is registered, the option to download the file is enabled. 
+          this.activeResume = (this.candidate.resumeUrl != null) ? true : null;
+          this.activeFile = (this.candidate.filesUrl != null) ? true : null;
+          
           this.candidateId = this.candidate.id;
         }, error => {
           console.log('Error to save the candidate', error);
@@ -183,7 +187,7 @@ export class DataCandidateComponent implements OnInit {
   imageConstruction(){
     if ( this.dataCandidateForm.get('profileImage').value != null ) {
       let basePath: string = "/api/v1/uploads/";
-      this.imageUrl = environment.apiUrl + basePath + this.dataCandidateForm.get('profileImage').value;
+      this.imageUrl = environment.apiUrl + this.candidate.profileImage;
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     }
@@ -196,28 +200,36 @@ export class DataCandidateComponent implements OnInit {
       let textResume = document.getElementById('text-' + valueId);
       textResume.innerHTML = event.target.files[0].name;
       this.listfile[1] = event.target.files[0];
-      this.activeResume = true;
+      this.activeResume = false;
     }
     else if ( valueId == "fileUrl"){
       let textfile = document.getElementById('text-' + valueId);
       textfile.innerHTML = event.target.files[0].name;
       this.listfile[2] = event.target.files[0];
-      this.activeFile = true;
+      this.activeFile = false;
     }
   }
 
   /*Method for loading our inputs into the candidate's edition.*/
   editFile(){
-    if ( this.dataCandidateForm.get('resumeUrl').value ){
-      let name: string = this.dataCandidateForm.get('resumeUrl').value;
+    if ( this.candidate.resumeUrl ){
+      document.getElementById('text-resumeUrl').innerHTML = this.candidate.resumeUrl.slice(25);
       this.activeResume = true;
-      document.getElementById('text-resumeUrl').innerHTML = name.slice(25);
     }
 
-    if ( this.dataCandidateForm.get('filesUrl').value ){
-      let name: string = this.dataCandidateForm.get('filesUrl').value;
-      this.activeResume = true;
-      document.getElementById('text-fileUrl').innerHTML = name.slice(25);
+    if ( this.candidate.filesUrl ) {
+      document.getElementById('text-fileUrl').innerHTML = this.candidate.filesUrl.slice(25);
+      this.activeFile = true;
     }
+  }
+
+  linkResume(){
+    let basePath = "/api/v1/uploads/";
+    return window.open(environment.apiUrl + basePath + this.candidate.resumeUrl, "_blank");
+  }
+
+  linkFile(){
+    let basePath = "/api/v1/uploads/";
+    return window.open(environment.apiUrl + basePath + this.candidate.filesUrl, "_blank");
   }
 }
