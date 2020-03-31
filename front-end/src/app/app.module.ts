@@ -61,7 +61,7 @@ const routes: Routes = [
     SafeHtmlPipe,
     DataUserComponent,
     CardCandidateComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
     CardUserComponent,
   ],
   providers: [
