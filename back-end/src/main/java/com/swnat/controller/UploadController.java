@@ -1,18 +1,27 @@
 package com.swnat.controller;
 
+
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/v1/uploads")
@@ -20,6 +29,11 @@ public class UploadController {
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/home/elena/Documents/ImagenesPeopleManagement/";
+    private static final String fileUrl = File.separator + "src" + 
+            File.separator + "main" + 
+            File.separator + "resources" + 
+            File.separator + "generic_files";
+
 
     @PostMapping("/upload") //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file) {
@@ -43,4 +57,27 @@ public class UploadController {
         return UPLOADED_FOLDER + sdf.format(timestamp) +file.getOriginalFilename();
     }
 
+    @GetMapping("/{nameFile}")
+    public void downloadFile(HttpServletRequest request, HttpServletResponse response,
+    @PathVariable String nameFile) throws IOException {
+        
+        String path = System.getProperty("user.dir") + fileUrl + File.separator + nameFile;
+
+        File file = new File(path);
+        if ( file.exists()){
+
+            String filetype = URLConnection.guessContentTypeFromName(file.getName());
+            if ( filetype == null){
+                filetype = "application/octet-stream";
+            }
+
+            response.setContentType(filetype);
+            response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+
+            response.setContentLength((int) file.length());
+
+            InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+            FileCopyUtils.copy(inputStream, response.getOutputStream());
+        }
+    }
 }

@@ -6,7 +6,7 @@
       </div>
       <label class="btn-photo spacing-button">
         <span>{{ nameButton }}</span>
-        <input id="imageInput" type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event.target.files)">
+        <input id="imageInput" type="file" accept="image/*" onclick="this.value = null" (change)="imageLoading($event)">
       </label>
       <button *ngIf="activeRemove" (click)="deleteButton($event)" class="btn-remove spacing-button">Remove</button>
     </div>

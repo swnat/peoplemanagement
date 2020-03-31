@@ -5,7 +5,6 @@ import com.swnat.dto.MessageDTO;
 import com.swnat.dto.PaginationResponse;
 import com.swnat.service.UserService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.Response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

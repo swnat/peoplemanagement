@@ -1,49 +1,50 @@
-<div class="d-flex" id="wrapper" [ngClass]="toggled ? 'toggled' : ''">
+<div class="d-flex" id="wrapper" [ngClass]="toggled ? 'toggled-side' : ''">
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
-    <div class="sidebar-head">
-      <img src="../../../../assets/images/LOGO-1.png" width="120">
-    </div>
-    <nav class="navbar" id="items-nav">
-      <ul class="navbar-nav flex-column text-left">
-        <li class="nav-item">
-          <a class="nav-link" (click)="sidebar_hide()" [routerLink]="''" routerLinkActive="item-active"
-            [routerLinkActiveOptions]="{exact:
-            true}">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="sidebar_hide()" [routerLink]="['/candidate']"
-            routerLinkActive="item-active">CANDIDATES LIST <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </nav>
+
+      <nav class="navbar" id="items-side">
+        <a class="navbar-brand"><img src="../../../../assets/images/LOGO-1.png" width="120"></a>
+        <ul class="navbar-nav flex-column text-left">
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebar_hide()" [routerLink]="''" routerLinkActive="item-active"
+              [routerLinkActiveOptions]="{exact:
+              true}">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebar_hide()" [routerLink]="['/candidate']"
+              routerLinkActive="item-active">CANDIDATES LIST <span class="sr-only">(current)</span></a>
+          </li>
+
+        </ul>
+      </nav>
   </div>
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
 
-  <div id="page-content-wrapper">
-    <nav id="id-nav" class="navbar navbar-expand">
+  <div id="page-content-wrapper" [ngClass]="toggled ? 'toggled-page' : ''">
+    <nav id="id-navbar" class="navbar navbar-expand" [ngClass]="toggled ? 'toggled-nav' : ''">
       <a class="navbar-brand" (click)="toggle()" id="menu-toggle">
         <button class="btn">
           <i class="fas fa-bars"></i>
         </button>
       </a>
-      <div class="navbar-nav ml-auto" (clickOutside)= "toggleUserClose($event)">
-          <li class="nav-item">
-            <a class="nav-link btn p-0" (click)="toggleUserOpen()">
-              <img id="profile" src="../../../../assets/images/default.png" width="105">
-            </a>
-          </li>
-        <app-card-user *ngIf="isCardOpen" [close_link]="'isCardOpen'"></app-card-user>
-      </div>   
+     <div class="navbar-nav ml-auto" (clickOutside)= "toggleUserClose($event)">
+      <li class="nav-item">
+        <a class="nav-link btn p-0" (click)="toggleUserOpen()">
+          <img id="profile" src="../../../../assets/images/default.png" width="105">
+        </a>
+      </li>
+      <app-card-user *ngIf="isCardOpen" [close_link]="'isCardOpen'"></app-card-user>
+     </div>    
+   
     </nav>
-
+    
     <div>
       <app-breadcrumbs></app-breadcrumbs>
     </div>
     
-    <div class="container-fluid">
+    <div class= "container" id="content" [ngClass]="toggled ? 'toggled-content' : ''">
       <router-outlet></router-outlet>
     </div>
   </div>
