@@ -5,22 +5,31 @@ import { Candidate } from 'src/app/models/candidate';
 import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-data-candidate',
   templateUrl: './data-candidate.component.html',
   styleUrls: ['./data-candidate.component.css']
 })
+
 export class DataCandidateComponent implements OnInit {
   dataCandidateForm: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   @Input() candidateId: number;
   candidate: Candidate;
   isNew = true;
   @Output() showChallenge = new EventEmitter();
+  // Variable image
+  imageUrl = '/assets/images/default.png';
+  fileUpload: File = null;
+  nameButton = 'Add Photo';
+  activeRemove = false;
+  formCandidate: FormData;
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
-    private notificationService: NotificationService, private router: Router,) { }
+    private notificationService: NotificationService, private router: Router, ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -53,8 +62,12 @@ export class DataCandidateComponent implements OnInit {
       comments: candidate.comments,
       interviewStatus: candidate.interviewStatus,
       processChallengeStatus: candidate.process_challenge_status,
-      id: candidate.id
+      id: candidate.id,
+      profileImage: candidate.profileImage,
     });
+
+    this.imageConstruction();
+
   }
 
   get f() { return this.dataCandidateForm.controls; }
@@ -62,31 +75,32 @@ export class DataCandidateComponent implements OnInit {
   initializeForm() {
     this.dataCandidateForm = this.formBuilder.group({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       email: new FormControl(''),
-      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]),//only letters
+      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       phoneNumber: new FormControl(''),
-      university: new FormControl('', [Validators.maxLength(100)]),//only letters
-      dateOfBirth: new FormControl(''),      
+      university: new FormControl('', [Validators.maxLength(100)]), // only letters
+      dateOfBirth: new FormControl(''),
       resumeUrl: new FormControl('', ),
       filesUrl: new FormControl(''),
       decision: new FormControl(''),
-      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]),//only letters
+      comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]), // only letters
       interviewStatus: new FormControl('PENDING'),
-      process_challenge_status: new FormControl('PENDING')
+      process_challenge_status: new FormControl('PENDING'),
+      profileImage: null
     });
   }
 
   candidateSaved(candidateSaved: Candidate) {
     console.log('Candidate created ', candidateSaved);
     this.showChallenge.emit(true);
-    //save the candidate Id
+    // save the candidate Id
     this.candidateService.candidateSelected = candidateSaved;
     this.notificationService.showSuccess(candidateSaved.name, 'Candidate created succesfully.');
   }
 
   candidateEdit(candidateEdited: Candidate) {
-    console.log('Candidate edited ', candidateEdited);;
+    console.log('Candidate edited ', candidateEdited);
     this.showChallenge.emit(true);
     this.candidateService.candidateSelected = candidateEdited;
     this.notificationService.showSuccess(candidateEdited.name, 'Interview edited succesfully.');
@@ -99,7 +113,10 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.candidateService.addCandidate(this.dataCandidateForm.value).subscribe(data => {
+        this.formCandidate = new FormData();
+        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
+        this.formCandidate.append('imageProfile', this.fileUpload);
+        this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
 
@@ -108,18 +125,71 @@ export class DataCandidateComponent implements OnInit {
           console.log('Error to save the candidate', error);
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
-      }else{
-        this.candidateService.editCandidate(this.dataCandidateForm.value).subscribe(data => {
+      } else {
+        this.formCandidate = new FormData();
+        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
+        this.formCandidate.append('imageProfile', this.fileUpload);
+        this.formCandidate.append('active',  this.activeRemove ? "true" : "false");
+        this.candidateService.editCandidate(this.formCandidate, this.dataCandidateForm.get('id').value).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
           this.candidate = this.candidateService.getCandidateSelected();
-          
+
         }, error => {
           console.log('Error to edit the candidate', error);
           this.notificationService.showError('Occur an error when edit data of the candidate', 'Error edit Candidate');
         });
       }
+    }
+  }
+
+  // Added method for uploading candidate's profile photo
+  imageLoading(event: any) {
+    const buttonAdd = 'Add Photo';
+
+    if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
+      // Image file
+      this.fileUpload = event.target.files[0];
+
+      // Show image preview
+      let reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageUrl = event.target.result;
+      };
+
+
+      reader.readAsDataURL(this.fileUpload);
+      this.nameButton = 'Change Photo';
+      this.activeRemove = true;
+    } else {
+
+      this.imageUrl = '/assets/images/default.png';
+      this.nameButton = buttonAdd;
+    }
+
+  }
+
+  /*
+  Added a keyboard event condition
+  so that this method is not triggered when
+  the enter key is pressed.
+  */
+  deleteButton(event: KeyboardEvent) {
+    if (event.detail != 0){
+      this.activeRemove = false;
+      this.imageUrl = '/assets/images/default.png';
+      this.nameButton = 'Add Photo';
+    }
+  }
+
+  // load user profile picture
+  imageConstruction(){
+    if ( this.dataCandidateForm.get('profileImage').value != null ) {
+      let basePath: string = "/api/v1/uploads/";
+      this.imageUrl = environment.apiUrl + basePath + this.dataCandidateForm.get('profileImage').value;
+      this.nameButton = 'Change Photo';
+      this.activeRemove = true;
     }
   }
 }

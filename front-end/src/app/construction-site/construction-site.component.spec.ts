@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConstructionSiteComponent } from './construction-site.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ConstructionSiteComponent', () => {
   let component: ConstructionSiteComponent;
@@ -8,7 +9,8 @@ describe('ConstructionSiteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConstructionSiteComponent ]
+      declarations: [ ConstructionSiteComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

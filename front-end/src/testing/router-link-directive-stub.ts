@@ -6,6 +6,7 @@ export { RouterLink} from '@angular/router';
 /* tslint:disable:directive-class-suffix */
 // #docregion router-link
 @Directive({
+  // tslint:disable-next-line: directive-selector
   selector: '[routerLink]'
 })
 export class RouterLinkDirectiveStub {

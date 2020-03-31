@@ -10,6 +10,6 @@ export class Interview {
         public candidate: any,
         public taskId: string,
         public participants: string[],
-        public isFinishProcess:boolean
+        public isFinishProcess: boolean
     ) {}
 }

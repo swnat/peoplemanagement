@@ -1,0 +1,50 @@
+.card{
+    position: absolute;
+    right: 1rem;
+    top: 5.5rem;
+    z-index: 100;
+    border-radius: .5rem;
+    -webkit-box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+    -moz-box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+    box-shadow: 3px 1px 19px -4px rgba(0,0,0,0.64);
+}
+
+#profile {
+    width: 65px;
+    height: 65px;
+    border-radius: 70%;
+}
+
+#profile:hover{
+    box-shadow: 0px 0px 5px 2.9px #a6a6a6;
+}
+
+li.nav-item{
+    list-style: none;
+}
+
+a{
+    color: black !important;
+}
+
+/*Buttons*/
+.btn-sm{
+    color: #272a2e;
+    width:65px;
+    height: 28px;
+    line-height: normal;
+}
+
+.btn-outline-secondary{
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    box-sizing: border-box;
+    border-radius: 6px;
+    transition: all 0.95s ease;
+}
+
+.btn-sm:hover{
+    background:#e0dddd;
+}
+
+/**/  
+

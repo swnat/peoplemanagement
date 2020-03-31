@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prueba": "ng serve --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +27,10 @@
     "@syncfusion/ej2-angular-dropdowns": "^17.3.21",
     "@syncfusion/ej2-angular-popups": "^17.3.16",
     "core-js": "^2.5.4",
+    "husky": "^4.2.1",
+    "jwt-decode": "^2.2.0",
     "ng-bootstrap-modal": "^1.1.19",
+    "ng-click-outside": "^6.0.0",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
@@ -53,5 +57,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "ng lint pm-ui"
+    }
   }
 }

@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './add-challenge.component.html',
   styleUrls: ['./add-challenge.component.css']
 })
+
 export class AddChallengeComponent implements OnInit {
 
   @ViewChild('ejDatePicker') ejDatePicker: DatePickerComponent;
@@ -36,9 +37,8 @@ export class AddChallengeComponent implements OnInit {
   isFinish: boolean;
   clicked = false;
   taskId: string;
-  opcionChallenge: string;
   public targetElement: HTMLElement;
-  submitted: boolean = false;
+  submitted = false;
   @Input() candidateId: number;
   @Output() showInterview = new EventEmitter();
   public formObject: FormValidator;
@@ -59,15 +59,15 @@ export class AddChallengeComponent implements OnInit {
     private route: ActivatedRoute,
     private datePipe: DatePipe) { }
 
-  ngOnInit() {
+  ngOnInit() {   
     this.initializeForm();
     this.getStatusChallenge();
-    //Get the user login
+    // Get the user login
     this.userService.getUser(this.storageService.getCurrentId()).subscribe(
       data => {
         this.user = data;
       });
-      
+
     if (this.candidateId !== 0) {
       this.candidateService.getCandidate(this.candidateId).subscribe(data => {
         this.candidate = data;
@@ -95,7 +95,8 @@ export class AddChallengeComponent implements OnInit {
       statusChallenge: challenge.statusChallenge.id,
       taskId: challenge.taskId,
       candidate: challenge.candidate,
-      isfinishProcess: challenge.isfinishProcess
+      isfinishProcess: challenge.isfinishProcess,
+      statusChallengeID: challenge.statusChallenge.id
     });
 
   }
@@ -111,12 +112,13 @@ export class AddChallengeComponent implements OnInit {
       statusChallenge: new FormControl(''),
       taskId: new FormControl(),
       candidate: new FormControl(),
-      isfinishProcess: new FormControl()
+      isfinishProcess: new FormControl(),
+      statusChallengeID: new FormControl('')
     });
   }
 
   challengeSaved(challengeSaved: Challenge) {
-    console.log('Challenge saved '+ challengeSaved);
+    console.log('Challenge saved ' + challengeSaved);
     this.showInterview.emit(true);
     this.notificationService.showSuccess(this.candidate.nameCandidate, 'Challenge created succesfully.');
   }
@@ -126,14 +128,14 @@ export class AddChallengeComponent implements OnInit {
     this.showInterview.emit(true);
     this.challengeService.challengeSelected = challengeEdit;
     this.notificationService.showSuccess(this.candidate.nameCandidate, 'Challenge edited succesfully.');
-    const approval = new Approval(null, this.user.name, this.candidate.id.toString(), null);//define the user !!!
+    const approval = new Approval(null, this.user.name, this.candidate.id.toString(), null); // define the user !!!
     if (challengeEdit.statusChallenge.name === 'REVIEWED') {
       this.challengeWFService.completeProcess(approval).subscribe(
         data => {
           this.finishProcessSuccess(data);
         },
         error => {
-          this.finishProcessError(error)
+          this.finishProcessError(error);
         });
     }
   }
@@ -141,17 +143,18 @@ export class AddChallengeComponent implements OnInit {
   public onSubmit() {
     this.submitted = true;
     this.candidate = this.candidateService.getCandidateSelected();
-    //variables of sending date and expected date
-    var sentDay= new Date();
-    var expectedDay= new Date();
-    sentDay=this.challengeForm.value.dayOfSent;
-    expectedDay=this.challengeForm.value.dayOfExpected;
+    // variables of sending date and expected date
+    let sentDay = new Date();
+    let expectedDay = new Date();
+    sentDay = this.challengeForm.value.dayOfSent;
+    expectedDay = this.challengeForm.value.dayOfExpected;
 
-    console.log('Challenge candidate id nuevo',JSON.stringify(this.candidate));
+    console.log('Challenge candidate id nuevo', JSON.stringify(this.candidate));
     this.setStatusChallenge();
+    this.challengeForm.removeControl('statusChallengeID');
     this.challengeForm.controls['candidate'].setValue(this.candidate);
-    //start and end date validation
-    if(this.datePipe.transform(sentDay, 'yyyy-MM-dd')>this.datePipe.transform(expectedDay, 'yyyy-MM-dd')){
+    // start and end date validation
+    if (this.datePipe.transform(sentDay, 'yyyy-MM-dd') > this.datePipe.transform(expectedDay, 'yyyy-MM-dd')) {
       this.notificationService.showError(this.candidate.nameCandidate, 'Date sent is greater than expected date');
       return;
     }
@@ -159,14 +162,14 @@ export class AddChallengeComponent implements OnInit {
       if (this.challengeForm.invalid) {
         return;
       } else {
-        this.candidateId= this.candidate.id;
+        this.candidateId = this.candidate.id;
         this.startProcessChallenge();
       }
     } else {
-      console.log("Editar Challenge: ", this.challengeForm.value);
-      if(this.challengeForm.invalid){
+      console.log('Editar Challenge: ', this.challengeForm.value);
+      if (this.challengeForm.invalid) {
         return;
-      }else{
+      } else {
         this.startProcessEditChallenge();
       }
     }
@@ -185,7 +188,8 @@ export class AddChallengeComponent implements OnInit {
 
   finishProcessError(error) {
     console.log('Challenge process ended has error', error);
-    this.notificationService.showError(this.candidate.name + ' ' + this.candidate.lastName, 'Error occurred at the end of the challenge process');
+    this.notificationService.showError(this.candidate.name + ' ' + this.candidate.lastName,
+     'Error occurred at the end of the challenge process');
   }
 
   getStatusChallenge() {
@@ -201,8 +205,8 @@ export class AddChallengeComponent implements OnInit {
 
     this.statusChallengeList.forEach(s => {
 
-      if (s.id === this.challengeForm.get('statusChallenge').value) {
-        console.log("Guardar id:", s);
+      if (s.id === this.challengeForm.get('statusChallengeID').value) {
+        console.log('Guardar id:', s);
         this.challengeForm.controls['statusChallenge'].setValue(s);
       }
     });
@@ -220,8 +224,8 @@ export class AddChallengeComponent implements OnInit {
     this.challengeWFService.startProcess(challengeWF).subscribe(data => {
       const challengeForm = new ChallengeForm(data.comment, data.dayOfSent, data.dayOfExpected, data.statusChallenge,
         data.linkChallenge, data.taskId, data.reviewer, this.user.name, this.candidateId, Action.EDIT);
-      
-      this.challengeWFService.completeTaskWithForm(challengeForm).subscribe(()=> { 
+
+      this.challengeWFService.completeTaskWithForm(challengeForm).subscribe(() => {
         this.challengeEdit(data);
       });
 
@@ -238,7 +242,7 @@ export class AddChallengeComponent implements OnInit {
     this.challengeWFService.startProcess(challengeWF).subscribe(data => {
       const challengeForm = new ChallengeForm(data.comment, data.dayOfSent, data.dayOfExpected, data.statusChallenge,
         data.linkChallenge, data.taskId, data.reviewer, this.user.name, this.candidateId, Action.ADD);
-      console.log("Crear Challenge:", this.challengeForm.value);
+      console.log('Crear Challenge:', this.challengeForm.value);
       this.challengeWFService.completeTaskWithForm(challengeForm).subscribe();
       this.challengeSaved(data);
     }, error => {
@@ -248,15 +252,15 @@ export class AddChallengeComponent implements OnInit {
   }
 
   validateDayOfChallenge() {
-    let options: FormValidatorModel = {
+    const options: FormValidatorModel = {
       rules: {
         'dayOfSent': {
-          required: [true, "Day of the challenge sent is required"],
+          required: [true, 'Day of the challenge sent is required'],
           date: ['yyyy-MM-dd', 'Enter a valid Date'],
           maxLength: 10
         },
         'dayOfExpected': {
-          required: [true, "Day of the challenge expected is required"],
+          required: [true, 'Day of the challenge expected is required'],
           date: ['yyyy-MM-dd', 'Enter a valid Date'],
           maxLength: 10
         }
@@ -269,11 +273,12 @@ export class AddChallengeComponent implements OnInit {
     this.formObject = new FormValidator('#challengeForm', options);
   }
   // Form validation takes place when focus() event of DatePicker is triggered.
-  public onFocusOut(): void { this.formObject.validate("dayOfSent"), this.formObject.validate("dayOfExpected"); }
+  public onFocusOut(): void { this.formObject.validate('dayOfSent'), this.formObject.validate('dayOfExpected'); }
   // Custom validation takes place when value is changed.
   public onChange(args: any) {
-    if (this.ejDatePicker.value != null)
-      this.formObject.validate("dayOfSent");
-    this.formObject.validate("dayOfExpected")
+    if (this.ejDatePicker.value != null) {
+      this.formObject.validate('dayOfSent');
+    }
+    this.formObject.validate('dayOfExpected');
   }
 }

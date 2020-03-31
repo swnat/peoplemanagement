@@ -1,59 +1,136 @@
-    .user{
-        text-align: center;
-    }
+#profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+  cursor: pointer;
+}
 
-    .side-icon{
-        display: flex;
-    }
+#profile:hover{
+  box-shadow: 0px 0px 5px 3.5px #b9bcc0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-    a.nav-link.user-profile{
-        width: 200px;
-    }
+#wrapper {
+  overflow-x: hidden;
+  -webkit-transition: margin-left 0.4s ease-in-out;
+  -moz-transition: margin-left 0.4s ease-in-out;
+  -o-transition: margin-left 0.4s ease-in-out;
+  transition: margin-left 0.4s ease-in-out;
+}
 
-    a{
-        display: flex;
-        text-decoration: none;
-    }
+#id-navbar {
+  background-color: white;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 15rem;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
+}
 
-    a.nav-link.user-name{
-        right: 12px;
-        padding-right: 4px;
-    }
+#sidebar-wrapper .navbar .navbar-brand {
+  padding: 50px 60px;
+}
 
-    .navbar-expand-md .navbar-nav .nav-link {
-        padding-left: .3rem;
-    }
+#items-side {
+  padding: 0px;
+  display: block;
+}
 
-    li.nav-item.active{
-        padding-right: 7px;
-    }
+#items-side ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: white;
+  font-weight: 600;
+}
 
-    li.nav-item.active.user-profile{
-        width: 80px;
-        display: inline-flex; 
-    }
+#items-side ul li a:hover {
+  color: #00417c;
+  background: #fff;
+}
 
-    li.nav-item.active.logo-sign-out{
-        width: 80px;
-        display: inline-flex;
-    }
+.item-active {
+  color: #00417c !important;
+  background: #fff;
+}
 
-    a.nav-link.title.account{
-        width: 70px;
-    }
+#sidebar-wrapper {
+  position: fixed;
+  z-index: 1;
+  width: 15rem;
+  min-height: 100vh;
+  background: #00417c;
+}
 
-    a.nav-link.title{
-        color:white;
-    }
+#page-content-wrapper {
+  min-width: 100vw;
+  margin-left: 15rem;
+}
 
-    div#navbarsExampleDefault.navbar-collapse.collapse{
-        padding-right: 10px;
-    }
+#content {
+  padding-top: 50px;
+  padding-right: 15rem;
+}
 
-    a.title:hover, a.title:active {
-        text-decoration: none;
-    }
+.toggled-side {
+  margin-left: -15rem !important;
+}
 
-    @import "../node_modules/@syncfusion/ej2/material.css";
+.toogled-page {
+  margin-left: 0;
+}
 
-  
+.toggled-nav {
+  left: 0 !important;
+}
+
+.toggled-content{
+  padding-right: 0 !important;
+}
+
+@media (max-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  #id-navbar {
+    left: 0;
+  }
+
+  #page-content-wrapper {
+    margin-left: 0;
+  }
+
+  .toggled-side {
+    margin-left: 15rem !important;
+  }
+
+  .toogled-page {
+    margin-left: 15rem;
+  }
+
+  .toggled-nav {
+    left: 15rem !important;
+  }
+
+  /*Mobile content*/
+  #content{
+    padding-right: 0;
+  }
+}
+  /* */
+.card{
+  position: absolute;
+  right: 1rem;
+  top: 5.5rem;
+  z-index: 100;
+  border-radius: .5rem;
+  -webkit-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+  -moz-box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+  box-shadow: -2px 2px 17px 3px rgba(0,0,0,0.49);
+}
+
+

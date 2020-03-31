@@ -1,20 +1,25 @@
   .container {
     margin-top: calc(56px + 1rem);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
 
   .form-title {
-    background: #882960;
+    background: #00417c;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 28px;
   }
 
   .form-title span {
     color: white;
-    text-transform: uppercase;
+
   }
 
   .form-subtitle {
-    background: #c0bebc;
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 24px;
   }
 
   .form-subtitle span {
@@ -31,37 +36,77 @@
     padding-right: 1rem;
   }
 
-
-  .btn {
-    text-transform: uppercase;
+  .ok-btn-add{
+    width: 9rem;
+    height: 35px;
+    border: 0px;
+    font-size: 15px;
+    background-color: #609AB4;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
 
   .ok-btn {
-    color: white;
-    background-color: #882960;
+    float: right;
+    height: 2.5rem;
+    border: 0px;
+    color: #FFF;
+    border-radius: 0.3rem;
+    background-color: #73BB83;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
+  }
+
+  .ok-btn:hover, .ok-btn:focus{
+    border: 2px solid #73BB83;
+    background: #FFF;
+    color: #73BB83;
+    outline: none;
   }
 
   .not-ok-btn {
-    color: white;
-    background-color: #533848;
+    float: right;
+    height: 2.5rem;
+    border: 0px;
+    font-size: 15px;
+    border-radius: 0.3rem;
+    background-color: #B46060;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #FFF;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
   }
 
-  .ok-btn:hover {
-    color: #882960;
-    border: 1px solid #882960;
-    background-color: white;
+  .not-ok-btn:hover, .not-ok-btn:focus{
+    border: 2px solid #B46060;
+    background: #FFF;
+    color: #B46060;
+    outline: none;
   }
 
-  .not-ok-btn:hover {
-    color: #533848;
-    border: 1px solid #533848;
-    background-color: white;
+  .ok-btn-add:hover, .ok-btn-add:focus {
+    border: 2px solid #A9A9A9;
+    outline: none;
   }
 
-  #add-btn {
-    width: 100%;
+  .text-label{
+    font-weight: normal;
+    font-size: 14px;
   }
 
   #save-btn, #cancel-btn {
     width: 6rem;
+  }
+
+  @media screen and ( max-width: 575px){
+    .movil{
+      margin-top: 0.9rem;
+    }
   }

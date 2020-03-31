@@ -1,0 +1,43 @@
+.card {
+  cursor: pointer;
+  border-color: white;
+  border-radius: 10px;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 10px 5px #a6a6a6; /* please set the shadow color conveniently */
+}
+
+h5 {
+  margin-top: .4rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.card-img-top {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 4rem;
+  margin-top: 1rem;
+  margin-left: auto; margin-right: auto;
+}
+
+.card-body {
+  padding: .8rem;
+}
+
+.status span {
+  display: block;
+  text-align: center;
+  font-size: .8rem;
+}
+
+.status img {
+  display: block;
+  width: 7rem;
+  margin-left: auto; margin-right: auto;
+}
+
+.status:nth-child(2) {
+  margin-top: .8rem;
+}

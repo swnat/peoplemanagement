@@ -28,6 +28,7 @@ public class Candidate implements Serializable {
 
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
     @Column(name = "resume_url")
     private String resumeUrl;
 
@@ -54,6 +55,12 @@ public class Candidate implements Serializable {
 
     @Column(name = "process_challenge_status")
     private String process_challenge_status;
+
+    @Column(name = "profile_image")
+    private String profileImage;
+
+    @Column(name = "modified_timestamp")
+    private Date modifiedTimestamp;
 
     @Transient
     private String nameCandidate;
@@ -214,6 +221,22 @@ public class Candidate implements Serializable {
         this.challenge = challenge;
     }
 
-    
+    public String getProfileImage(){
+        return profileImage;
+    }
 
+    public void setProfileImage(String profileImage ){
+        this.profileImage = profileImage;
+    }
+
+    public Date getModifiedTimestamp() {
+        return this.modifiedTimestamp;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void setModifiedTimestamp() {
+        this.modifiedTimestamp = new Date();
+    }
 }
+

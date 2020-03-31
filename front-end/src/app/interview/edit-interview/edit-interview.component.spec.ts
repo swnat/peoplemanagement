@@ -14,7 +14,13 @@ import { By } from '@angular/platform-browser';
 describe('EditInterviewComponent', () => {
   let component: EditInterviewComponent;
   let fixture: ComponentFixture<EditInterviewComponent>;
-  let id: number = 1;
+  const id = 1;
+
+  beforeAll(() => {
+    localStorage.setItem('statusChallenge', JSON.stringify({ id: 2, name: 'SENT' }));
+    localStorage.setItem('currentUser', JSON.stringify({ id: 4, rol: 'user1' }));
+    localStorage.setItem('user', '2');
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,7 +30,7 @@ describe('EditInterviewComponent', () => {
         { path: '**', redirectTo: 'edit/' + id, pathMatch: 'full' }]
       ), ToastrModule.forRoot()],
       declarations: [EditInterviewComponent, HeaderComponent, DatePickerComponent],
-      providers: [ToastrService,]
+      providers: [ToastrService, ]
     })
       .compileComponents();
   }));
@@ -49,22 +55,20 @@ describe('EditInterviewComponent', () => {
     expect(component.interviewEditForm.valid).toBeFalsy();
   });
 
-  //should invalidate put numbers in the field comment
-  it('should invalidate put numbers in the field comment', async(() => {
-    let comment = fixture.debugElement.query(By.css('#comment')).nativeElement;
-    comment.value = '12345';
-    fixture.componentInstance.f.comment.setValue('112334');
-    fixture.componentInstance.submitted = true;
+  // * Obs.: the field comment should accept number characters
 
-    comment.dispatchEvent(new Event('textarea'));
-    fixture.debugElement.query(By.css('#add-interview')).nativeElement.click();
+  // should warning when put numbers in the field participant
+  it('should warning when put numbers in the field participant', async(() => {
+    const participant = fixture.debugElement.query(By.css('#participant')).nativeElement;
+    participant.value = '12345';
+    fixture.componentInstance.f.addParticipant.setValue('12345');
+
+    participant.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     const dom = fixture.debugElement;
-    console.info('dom' + fixture.componentInstance.f.comment);
 
-    const hint = dom.query(By.css('#only-letter-comment'));
-    console.info('foo' + hint);
+    const hint = dom.query(By.css('#participant-only-characters'));
 
-    expect(hint.nativeElement.innerText).toMatch('Comment has to be only characters');
+    expect(hint.nativeElement.innerText).toMatch('Participant has to be only characters');
   }));
 });

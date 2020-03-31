@@ -10,13 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-user.component.css']
 })
 export class ViewUserComponent implements OnInit {
-  user: User= {
-    name: "",
-    lastname: "",
-    email: "",
+  user: User = {
+    name: '',
+    lastname: '',
+    email: '',
     active: true,
-    rol: "",
-    phoneNumber: "",
+    rol: '',
+    phoneNumber: '',
     idUser: 0,
 };
   rol_name: String;
@@ -53,9 +53,9 @@ export class ViewUserComponent implements OnInit {
   }
 
   public userRole(rol: String): String {
-    if (rol == 'user1') {
+    if (rol === 'user1') {
       return 'Manager';
-    } else if (rol == 'user2') {
+    } else if (rol === 'user2') {
       return 'Admin';
     }
     return 'Colaborator';
