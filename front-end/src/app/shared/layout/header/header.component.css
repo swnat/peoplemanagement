@@ -12,39 +12,35 @@
   box-sizing: border-box;
 }
 
-#id-nav {
-  background-color: white;
-  height: 65px;
-}
-
-body {
+#wrapper {
   overflow-x: hidden;
+  -webkit-transition: margin-left 0.4s ease-in-out;
+  -moz-transition: margin-left 0.4s ease-in-out;
+  -o-transition: margin-left 0.4s ease-in-out;
+  transition: margin-left 0.4s ease-in-out;
 }
 
-#sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -15rem;
-  -webkit-transition: margin 0.25s ease-out;
-  -moz-transition: margin 0.25s ease-out;
-  -o-transition: margin 0.25s ease-out;
-  transition: margin 0.25s ease-out;
-  background: #00417c;
+#id-navbar {
+  background-color: white;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 15rem;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
 }
 
-#sidebar-wrapper .sidebar-head {
+#sidebar-wrapper .navbar .navbar-brand {
   padding: 50px 60px;
 }
 
-#sidebar-wrapper .navbar {
-  width: 15rem;
-}
-
-#items-nav {
+#items-side {
   padding: 0px;
   display: block;
 }
 
-#items-nav ul li a {
+#items-side ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
@@ -52,7 +48,7 @@ body {
   font-weight: 600;
 }
 
-#items-nav ul li a:hover {
+#items-side ul li a:hover {
   color: #00417c;
   background: #fff;
 }
@@ -62,32 +58,67 @@ body {
   background: #fff;
 }
 
-#items-van a,
-a:hover,
-a:focus {
-  transition: all 0.3;
+#sidebar-wrapper {
+  position: fixed;
+  z-index: 1;
+  width: 15rem;
+  min-height: 100vh;
+  background: #00417c;
 }
 
 #page-content-wrapper {
   min-width: 100vw;
+  margin-left: 15rem;
 }
 
-#wrapper.toggled #sidebar-wrapper {
+#content {
+  padding-top: 50px;
+  padding-right: 15rem;
+}
+
+.toggled-side {
+  margin-left: -15rem !important;
+}
+
+.toogled-page {
   margin-left: 0;
 }
 
-@media (min-width: 768px) {
+.toggled-nav {
+  left: 0 !important;
+}
+
+.toggled-content{
+  padding-right: 0 !important;
+}
+
+@media (max-width: 768px) {
   #sidebar-wrapper {
-    margin-left: 0;
+    margin-left: -15rem;
+  }
+  #id-navbar {
+    left: 0;
   }
 
   #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
+    margin-left: 0;
   }
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+  .toggled-side {
+    margin-left: 15rem !important;
+  }
+
+  .toogled-page {
+    margin-left: 15rem;
+  }
+
+  .toggled-nav {
+    left: 15rem !important;
+  }
+
+  /*Mobile content*/
+  #content{
+    padding-right: 0;
   }
 }
   /* */
