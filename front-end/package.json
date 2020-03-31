@@ -30,6 +30,7 @@
     "husky": "^4.2.1",
     "jwt-decode": "^2.2.0",
     "ng-bootstrap-modal": "^1.1.19",
+    "ng-click-outside": "^6.0.0",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

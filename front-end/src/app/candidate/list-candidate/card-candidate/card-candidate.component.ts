@@ -14,9 +14,7 @@ export class CardCandidateComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-    console.log(this.candidate);
-  }
+  ngOnInit() {}
 
   // go to candidate profile page
   onClick() {
