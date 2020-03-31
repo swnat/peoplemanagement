@@ -26,7 +26,6 @@ export class DataCandidateComponent implements OnInit {
   nameButton = 'Add Photo';
   activeRemove = false;
   activeResume: boolean; activeFile: boolean;
-  formCandidate: FormData;
   //var file
   listfile: File[] = [null, null, null];
 

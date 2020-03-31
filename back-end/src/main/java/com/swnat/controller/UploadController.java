@@ -61,7 +61,7 @@ public class UploadController {
     @PathVariable String nameFile) throws IOException {
         
         String path = System.getProperty("user.dir") + fileUrl + File.separator + nameFile;
-        
+
         File file = new File(path);
         if ( file.exists()){
 

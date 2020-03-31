@@ -117,8 +117,9 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         update(candidateIdLong, candidate);
         
     }
-
+   
     public String uploadFile(MultipartFile file) {
+
         String directory = System.getProperty("user.dir") + fileUrl;
         Path mypath = Paths.get(directory);
 
