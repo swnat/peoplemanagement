@@ -78,11 +78,9 @@ export class DataCandidateComponent implements OnInit {
   initializeForm() {
     this.dataCandidateForm = this.formBuilder.group({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
-        Validators.maxLength(100), Validators.required]), // only letters
+      name: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       email: new FormControl(''),
-      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'),
-        Validators.maxLength(100), Validators.required]), // only letters
+      lastName: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(100), Validators.required]), // only letters
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]), // only letters
       dateOfBirth: new FormControl(''),
@@ -150,7 +148,7 @@ export class DataCandidateComponent implements OnInit {
       this.fileUpload = file.item(0);
 
       // Show image preview
-      const reader = new FileReader();
+      let reader = new FileReader();
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
         this.imageBinary = event.target.result;
@@ -161,18 +159,24 @@ export class DataCandidateComponent implements OnInit {
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     } else {
-
+      
       this.imageUrl = '/assets/images/default.png';
       this.nameButton = buttonAdd;
     }
 
   }
 
-  deleteButton() {
-    this.activeRemove = false;
-    this.imageUrl = '/assets/images/default.png';
-    this.nameButton = 'Add Photo';
-    this.imageBinary = null;
+  /*
+  Added a keyboard event condition 
+  so that this method is not triggered when 
+  the enter key is pressed.
+  */ 
+  deleteButton(event: KeyboardEvent) {
+    if (event.detail != 0){
+      this.activeRemove = false;
+      this.imageUrl = '/assets/images/default.png';
+      this.nameButton = 'Add Photo';
+      this.imageBinary = null;
+    }
   }
-
 }

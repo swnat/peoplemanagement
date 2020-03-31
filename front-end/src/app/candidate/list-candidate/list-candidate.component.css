@@ -18,7 +18,6 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
   border-color: #3498db;
 }
 
-
 .btn-outline-success:hover{
   color: white;
   background-color: #3498db;
@@ -28,5 +27,3 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
 #filter-input, #select-sortby {
   width: 10rem;
 }
-
-/*@import "../node_modules/@syncfusion/ej2/material.css";*/

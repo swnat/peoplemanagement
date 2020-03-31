@@ -30,6 +30,9 @@ import { DataUserComponent } from './user/data-user/data-user.component';
 import { DatePipe } from '@angular/common';
 import {CardCandidateComponent } from './candidate/list-candidate/card-candidate/card-candidate.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { CardUserComponent } from './user/card-user/card-user.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -59,7 +62,7 @@ const routes: Routes = [
     DataUserComponent,
     CardCandidateComponent,
     BreadcrumbsComponent
-
+    CardUserComponent,
   ],
   providers: [
     NgbActiveModal,
@@ -78,6 +81,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MultiSelectModule,
     RouterModule.forRoot(routes),
+    ClickOutsideModule,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
