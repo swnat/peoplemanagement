@@ -5,6 +5,7 @@ import { Candidate } from 'src/app/models/candidate';
 import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DataCandidateComponent implements OnInit {
   fileUpload: File = null;
   nameButton = 'Add Photo';
   activeRemove = false;
-  imageBinary: string = null;
+  formCandidate: FormData;
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router, ) { }
@@ -61,15 +62,11 @@ export class DataCandidateComponent implements OnInit {
       comments: candidate.comments,
       interviewStatus: candidate.interviewStatus,
       processChallengeStatus: candidate.process_challenge_status,
-      id: candidate.id
+      id: candidate.id,
+      profileImage: candidate.profileImage,
     });
-    // load user profile picture
-    if ( candidate.profileImage != null ) {
-      this.imageUrl = candidate.profileImage;
-      this.nameButton = 'Change Photo';
-      this.activeRemove = true;
-      this.imageBinary = candidate.profileImage;
-    }
+
+    this.imageConstruction();
 
   }
 
@@ -89,7 +86,8 @@ export class DataCandidateComponent implements OnInit {
       decision: new FormControl(''),
       comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]), // only letters
       interviewStatus: new FormControl('PENDING'),
-      process_challenge_status: new FormControl('PENDING')
+      process_challenge_status: new FormControl('PENDING'),
+      profileImage: null
     });
   }
 
@@ -115,7 +113,10 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.candidateService.addCandidate(this.dataCandidateForm.value, this.imageBinary).subscribe(data => {
+        this.formCandidate = new FormData();
+        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
+        this.formCandidate.append('imageProfile', this.fileUpload);
+        this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
 
@@ -125,7 +126,11 @@ export class DataCandidateComponent implements OnInit {
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
       } else {
-        this.candidateService.editCandidate(this.dataCandidateForm.value, this.imageBinary).subscribe(data => {
+        this.formCandidate = new FormData();
+        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
+        this.formCandidate.append('imageProfile', this.fileUpload);
+        this.formCandidate.append('active',  this.activeRemove ? "true" : "false");
+        this.candidateService.editCandidate(this.formCandidate, this.dataCandidateForm.get('id').value).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
@@ -140,18 +145,17 @@ export class DataCandidateComponent implements OnInit {
   }
 
   // Added method for uploading candidate's profile photo
-  imageLoading(file: FileList) {
+  imageLoading(event: any) {
     const buttonAdd = 'Add Photo';
 
     if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
       // Image file
-      this.fileUpload = file.item(0);
+      this.fileUpload = event.target.files[0];
 
       // Show image preview
       let reader = new FileReader();
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
-        this.imageBinary = event.target.result;
       };
 
 
@@ -177,6 +181,16 @@ export class DataCandidateComponent implements OnInit {
       this.imageUrl = '/assets/images/default.png';
       this.nameButton = 'Add Photo';
       this.imageBinary = null;
+    }
+  }
+  
+  // load user profile picture
+  imageConstruction(){
+    if ( this.dataCandidateForm.get('profileImage').value != null ) {
+      let basePath: string = "/api/v1/uploads/";
+      this.imageUrl = environment.apiUrl + basePath + this.dataCandidateForm.get('profileImage').value;
+      this.nameButton = 'Change Photo';
+      this.activeRemove = true;
     }
   }
 }

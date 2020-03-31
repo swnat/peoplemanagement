@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Candidate } from 'src/app/models/candidate';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card-candidate',
@@ -46,4 +47,9 @@ export class CardCandidateComponent implements OnInit {
     return 'undefined';
   }
 
+  //build and return the url in the image.
+  get imageConstruction(): string{
+    if ( this.candidate.profileImage) { let basePath = "/api/v1/uploads/"; return environment.apiUrl + basePath + this.candidate.profileImage; }
+    else { return null }
+  }
 }

@@ -18,14 +18,12 @@ export class CandidateService {
     return this.httpClient.get<Candidate>(environment.apiUrl + this.basePath + id);
   }
 
-  addCandidate(candidate: Candidate, image: string) {
-    candidate.profileImage = image;
-    return this.httpClient.post<Candidate>(environment.apiUrl + this.basePath, candidate);
+  addCandidate(formCandidate: FormData) {
+    return this.httpClient.post<Candidate>(environment.apiUrl + this.basePath, formCandidate);
   }
 
-  editCandidate(candidate: Candidate, image: string): Observable<Candidate> {
-    candidate.profileImage = image;
-    return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidate.id, candidate);
+  editCandidate(formCandidate: FormData, candidateid: number): Observable<Candidate> {
+    return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidateid, formCandidate);
   }
 
   getAllCandidates(nameCandidate:string, page:number, itemsPerPage: number, sortBy: string): Observable<ResponseList> {
