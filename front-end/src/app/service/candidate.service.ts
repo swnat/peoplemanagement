@@ -36,7 +36,8 @@ export class CandidateService {
     params.append('fileUrl', listfile[2]);
     params.append('active', JSON.stringify(active));
     return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidate.id, params);
-
+  }
+  
   getAllCandidates(nameCandidate:string, page:number, itemsPerPage: number, sortBy: string): Observable<ResponseList> {
     let params = new HttpParams();
     if(nameCandidate) {

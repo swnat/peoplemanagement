@@ -184,7 +184,7 @@ export class DataCandidateComponent implements OnInit {
 
   // load user profile picture
   imageConstruction(){
-    if ( this.dataCandidateForm.get('profileImage').value != null ) {
+    if ( this.candidate.profileImage != null ) {
       let basePath: string = "/api/v1/uploads/";
       this.imageUrl = environment.apiUrl + this.candidate.profileImage;
       this.nameButton = 'Change Photo';
