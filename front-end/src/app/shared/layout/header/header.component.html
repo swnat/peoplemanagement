@@ -40,12 +40,15 @@
    
     </nav>
     
-    <div>
-      <app-breadcrumbs></app-breadcrumbs>
-    </div>
     
     <div class= "container" id="content" [ngClass]="toggled ? 'toggled-content' : ''">
+
+      <div> <!--Breadcrumbs compoment-->
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+
       <router-outlet></router-outlet>
+
     </div>
   </div>
   <!-- /#page-content-wrapper -->
