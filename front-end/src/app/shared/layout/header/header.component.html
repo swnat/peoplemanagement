@@ -14,6 +14,7 @@
             <a class="nav-link" (click)="sidebar_hide()" [routerLink]="['/candidate']"
               routerLinkActive="item-active">CANDIDATES LIST <span class="sr-only">(current)</span></a>
           </li>
+
         </ul>
       </nav>
   </div>
@@ -38,8 +39,16 @@
      </div>    
    
     </nav>
+    
+    
     <div class= "container" id="content" [ngClass]="toggled ? 'toggled-content' : ''">
+
+      <div> <!--Breadcrumbs compoment-->
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+
       <router-outlet></router-outlet>
+
     </div>
   </div>
   <!-- /#page-content-wrapper -->
