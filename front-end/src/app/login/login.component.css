@@ -1,33 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 .body_login{
-    background-image: url(https://images.pexels.com/photos/2867015/pexels-photo-2867015.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-    /*margin-top: -5%;  
-    comment on this style so that the background takes the whole screen*/
+    background-image: url('../../assets/images/background.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
-    /*add display flex */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
-/*new styles for login*/
-
-.login-container{
-    width: 450px;
-    height: auto;
-    border-radius: 2%;
-    box-shadow: 0px 8px 16px Opx rgba(0, 0, 0, 0.9);
-    background: linear-gradient(top, #3c3c3c 0%, #222222 100%);
-    background: -webkit-linear-gradient(top, #3c3c3c 0%, #222222 100%);
+.main-login-container{
+    height: 23rem;
+    width: 35rem;
+    background: #3c3c3c;
+    opacity: 70%;
+    border-radius: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.container-primary{
+    height: 100%;
+    width: 17rem;
+    background: #609AB4;
+    border-radius: 0px 1rem 1rem 0px;
 }
 
 section{
@@ -144,97 +143,3 @@ input[type="text"], input[type="password"]{
  span{
     margin-left: 52px;
 }
-=======
-    .body_login{
-        background-image: url("src/assets/images/background_login.jpg");
-        margin-top: -5%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        font-family: 'Numans', sans-serif;
-    }
-    .container{
-        height: 100%;
-        align-content: center;
-    }
-
-    .card{
-        height: 300px;
-        margin-top: auto;
-        margin-bottom: auto;
-        width: 400px;
-        background-color: rgba(0,0,0,0.5) !important;
-    }
-
-    .social_icon span{
-        font-size: 60px;
-        margin-left: 10px;
-        color: #FFC312;
-    }
-
-    .social_icon span:hover{
-        color: white;
-        cursor: pointer;
-    }
-
-    .card-header h3{
-        color: white;
-    }
-
-    .social_icon{
-        position: absolute;
-        right: 220pxpx;
-        top: -45px;
-    }
-
-    .input-group-prepend span{
-        width: 50px;
-        background-color: #882960;
-        color: black;
-        border:0 !important;
-    }
-
-    input:focus{
-        outline: 0 0 0 0  !important;
-        box-shadow: 0 0 0 0 !important;
-    }
-
-    .remember{
-        color: white;
-    }
-
-    .remember input
-    {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-    }
-
-    .whitecolor{
-        color: white;
-    }
-    .login_btn{
-        color: white;
-        background-color: #882960;
-        width: 100px;
-    }
-
-    .login_btn:hover{
-        color: rgb(153, 56, 129);
-        background-color: white;
-    }
-
-    .links{
-        color: white;
-    }
-
-    .links a{
-        margin-left: 4px;
-    }
-
-    .container_login{
-        height: 100%;
-        margin-top: 5%;
-        align-content: center;
-    }
