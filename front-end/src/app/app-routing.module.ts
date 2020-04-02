@@ -19,44 +19,83 @@ import { DataUserComponent } from './user/data-user/data-user.component';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'construction', component: ConstructionSiteComponent },
-  { path: '', component: HomeComponent, canActivate: [ AuthorizatedGuard ], children:
-      [
-        {
-          path: '',
-          canActivateChild: [AuthorizatedGuard],
-          children: [
-            { path: '', component: ListRecordComponent , canActivateChild: [AuthorizatedGuard]}
-          ]
-        },
-        {
-          path: 'interview',
-          canActivateChild: [AuthorizatedGuard],
-          children: [
-            { path: 'add', component: AddInterviewComponent , canActivateChild: [AuthorizatedGuard]},
-            { path: 'edit/:id', component: EditInterviewComponent , canActivateChild: [AuthorizatedGuard]}
-          ]
-        },
-        {
-          path: 'candidate',
-          canActivateChild: [AuthorizatedGuard],
-          children: [
-
-            { path: 'data', component: ViewCandidateComponent , canActivateChild: [AuthorizatedGuard]},
-            { path: 'data/:id', component: ViewCandidateComponent , canActivateChild: [AuthorizatedGuard]},
-            { path: '', component: ListCandidateComponent, canActivateChild: [AuthorizatedGuard] },
-            { path: ':id', component: ListInterviewComponent, canActivateChild: [AuthorizatedGuard]}
-          ]
-        },
-        {
-          path: 'user',
-          children: [
-            { path: 'data/:id', component: ViewUserComponent },
-            { path: 'add', component: DataUserComponent},
-            { path: 'edit/:id', component: DataUserComponent }
-          ]
-        }
-
-      ]
+  { path: '',
+    component: HomeComponent,
+    canActivate: [ AuthorizatedGuard ],
+    children: [
+      {
+        path: '',
+        canActivateChild: [AuthorizatedGuard],
+        children: [
+          { path: '',
+            component: ListRecordComponent,
+            canActivateChild: [AuthorizatedGuard]}
+        ]
+      },
+      {
+        path: '',
+        canActivateChild: [AuthorizatedGuard],
+        data: {breadcrumb: 'Home'},
+        children: [
+          {
+            path: 'candidate',
+            canActivateChild: [AuthorizatedGuard],
+            data: {breadcrumb: 'List of Candidates'},
+            children: [
+              { path: 'data', data: {breadcrumb: 'Add Candidate'},
+                component: ViewCandidateComponent,
+                canActivateChild: [AuthorizatedGuard]
+              },
+              { path: 'data',
+                canActivateChild: [AuthorizatedGuard],
+                data: {breadcrumb: 'Edit Candidate'},
+                children: [
+                  {
+                    path: ':id',
+                    component: ViewCandidateComponent,
+                    canActivateChild: [AuthorizatedGuard],
+                  },
+                ],
+              },
+              { path: '', component: ListCandidateComponent, canActivateChild: [AuthorizatedGuard] },
+              { path: ':id', component: ListInterviewComponent, canActivateChild: [AuthorizatedGuard]},
+              {
+                path: 'interview',
+                canActivateChild: [AuthorizatedGuard],
+                children: [
+                  {
+                    path: 'add',
+                    data: {breadcrumb: 'Add Interview'},
+                    component: AddInterviewComponent,
+                    canActivateChild: [AuthorizatedGuard],
+                  },
+                  {
+                    path: 'edit',
+                    canActivateChild: [AuthorizatedGuard],
+                    data: {breadcrumb: 'Edit Interview'},
+                    children: [
+                      {
+                        path: ':id',
+                        component: EditInterviewComponent,
+                        canActivateChild: [AuthorizatedGuard],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'user',
+        children: [
+          { path: 'data/:id', component: ViewUserComponent },
+          { path: 'add', component: DataUserComponent},
+          { path: 'edit/:id', component: DataUserComponent },
+        ],
+      },
+    ]
   },
   {path: 'login', component: LoginComponent, canActivate: [ NoLoginGuard ]},
   { path: '**', redirectTo: '/'}
