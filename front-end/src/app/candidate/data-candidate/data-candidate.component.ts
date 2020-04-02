@@ -27,7 +27,8 @@ export class DataCandidateComponent implements OnInit {
   activeRemove = false;
   activeResume: boolean; activeFile: boolean;
   //var file
-  listfile: File[] = [null, null, null];
+  photoUrl: File = null; resumeUrl: File = null; aditionalFileUrl: File = null;
+  
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router, ) { }
@@ -115,7 +116,7 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.candidateService.addCandidate(this.dataCandidateForm.value, this.listfile).subscribe(data => {
+        this.candidateService.addCandidate(this.dataCandidateForm.value, [this.photoUrl, this.resumeUrl, this.aditionalFileUrl]).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
           
@@ -129,7 +130,7 @@ export class DataCandidateComponent implements OnInit {
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
       } else {
-        this.candidateService.editCandidate(this.dataCandidateForm.value, this.listfile, this.activeRemove).subscribe(data => {
+        this.candidateService.editCandidate(this.dataCandidateForm.value, [this.photoUrl, this.resumeUrl, this.aditionalFileUrl], this.activeRemove).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
@@ -149,7 +150,7 @@ export class DataCandidateComponent implements OnInit {
 
     if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
       // Image file
-      this.listfile[0] = event.target.files[0];
+      this.photoUrl = event.target.files[0];
 
       // Show image preview
       let reader = new FileReader();
@@ -158,7 +159,7 @@ export class DataCandidateComponent implements OnInit {
       };
 
 
-      reader.readAsDataURL(this.listfile[0]);
+      reader.readAsDataURL(this.photoUrl);
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     } else {
@@ -198,13 +199,13 @@ export class DataCandidateComponent implements OnInit {
     if ( valueId == "resumeUrl"){
       let textResume = document.getElementById('text-' + valueId);
       textResume.innerHTML = event.target.files[0].name;
-      this.listfile[1] = event.target.files[0];
+      this.resumeUrl = event.target.files[0];
       this.activeResume = false;
     }
     else if ( valueId == "fileUrl"){
       let textfile = document.getElementById('text-' + valueId);
       textfile.innerHTML = event.target.files[0].name;
-      this.listfile[2] = event.target.files[0];
+      this.aditionalFileUrl = event.target.files[0];
       this.activeFile = false;
     }
   }
