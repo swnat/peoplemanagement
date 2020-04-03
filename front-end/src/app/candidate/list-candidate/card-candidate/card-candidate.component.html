@@ -3,14 +3,14 @@
   <h5>{{ candidateName }}</h5>
   <div class="card-body">
     <div class="status">
-      <span class="text-uppercase">{{ statusChallenge.replace('_', ' ') }}</span>
+      <span class="text-uppercase">Challenge</span>
       <img [src]="'assets/images/progress_bars/' + statusChallenge + '.png'">
-      <span>Challenge</span>
+      <span>{{ statusChallenge.replace('_', ' ') }}</span>
     </div>
     <div class="status">
-      <span class="text-uppercase">{{ statusInterview.replace('_', ' ') }}</span>
+      <span class="text-uppercase">Interviews</span>
       <img [src]="'assets/images/progress_bars/' + statusInterview + '.png'">
-      <span>Interviews</span>
+      <span>{{ statusInterview.replace('_', ' ') }}</span>
     </div>
   </div>
 </div>

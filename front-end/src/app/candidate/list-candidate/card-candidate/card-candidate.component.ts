@@ -33,23 +33,26 @@ export class CardCandidateComponent implements OnInit {
 
   get statusChallenge(): string {
     const stch = this.candidate ? this.candidate.process_challenge_status : '';
-    if (stch.match(/pending/i)) { return 'pending'; }
-    if (stch.match(/pro/i)) { return 'in_process'; }
-    if (stch.match(/completed/i)) { return 'completed'; }
+    if (stch.match(/pending/i)) { return 'Pending'; }
+    if (stch.match(/pro/i)) { return 'In_Process'; }
+    if (stch.match(/completed/i)) { return 'Completed'; }
     return 'undefined';
   }
 
   get statusInterview(): string {
     const stint = this.candidate ? this.candidate.interviewStatus : '';
-    if (stint.match(/pending/i)) { return 'pending'; }
-    if (stint.match(/pro/i)) { return 'in_process'; }
-    if (stint.match(/completed/i)) { return 'completed'; }
+    if (stint.match(/pending/i)) { return 'Pending'; }
+    if (stint.match(/pro/i)) { return 'In_Process'; }
+    if (stint.match(/completed/i)) { return 'Completed'; }
     return 'undefined';
   }
 
-  //build and return the url in the image.
-  get imageConstruction(): string{
-    if ( this.candidate.profileImage) { let basePath = "/api/v1/uploads/"; return environment.apiUrl + basePath + this.candidate.profileImage; }
-    else { return null }
+  // build and return the url in the image.
+  get imageConstruction(): string {
+    if ( this.candidate.profileImage) {
+        let basePath = "/api/v1/uploads/";
+        return environment.apiUrl + basePath + this.candidate.profileImage;
+      }
+    else { return null; }
   }
 }
