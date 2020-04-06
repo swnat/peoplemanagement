@@ -67,11 +67,11 @@ public class CandidateController {
         if (  candidate.getResumeUrl() == null && resume != null  ) { candidate.setResumeUrl(this.candidateService.uploadFile(resume)); }
         else if ( candidate.getResumeUrl() != null  && resume != null ) { this.candidateService.removeFile(candidate.getResumeUrl());
         candidate.setResumeUrl(this.candidateService.uploadFile(resume));}
-
+        
         if (  candidate.getFilesUrl() == null && file != null  ) { candidate.setFileUrl(this.candidateService.uploadFile(file)); }
         else if ( candidate.getFilesUrl() != null  && file != null ) { this.candidateService.removeFile(candidate.getFilesUrl());
-        candidate.setResumeUrl(this.candidateService.uploadFile(resume));}
- 
+        candidate.setResumeUrl(this.candidateService.uploadFile(file));}
+        
         return candidateService.update(id, candidate);
     }
 
