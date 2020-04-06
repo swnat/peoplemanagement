@@ -187,7 +187,7 @@ export class DataCandidateComponent implements OnInit {
   imageConstruction(){
     if ( this.candidate.profileImage != null ) {
       let basePath: string = "/api/v1/uploads/";
-      this.imageUrl = environment.apiUrl + this.candidate.profileImage;
+      this.imageUrl = environment.apiUrl + basePath + this.candidate.profileImage;
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     }
