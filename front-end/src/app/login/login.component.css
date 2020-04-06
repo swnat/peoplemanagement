@@ -1,33 +1,55 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans');
 
 .body_login{
     background-image: url('../../assets/images/background.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
-    font-family: 'Numans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .main-login-container{
-    height: 23rem;
-    width: 35rem;
+    height: 25rem;
+    width: 40rem;
     background: #3c3c3c;
-    opacity: 70%;
-    border-radius: 1rem;
+    opacity: 92%;
+    border-radius: 0.2rem;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .container-primary{
     height: 100%;
-    width: 17rem;
+    width: 21rem;
     background: #609AB4;
-    border-radius: 0px 1rem 1rem 0px;
+    border-radius: 0px 0.2rem 0.2rem 0px;
+    display: flex;
+    justify-content: center;
 }
+
+.image-css{
+    height: 100%;
+    width: 19rem;
+    border-radius: 0.2rem 0px 0px 0.2rem;
+}
+
+.text-title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.img-icon{
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid #000;
+}
+
+/*
 
 section{
     margin-bottom: auto;
@@ -142,4 +164,4 @@ input[type="text"], input[type="password"]{
 
  span{
     margin-left: 52px;
-}
+}*/
