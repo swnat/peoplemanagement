@@ -55,4 +55,10 @@ export class CardCandidateComponent implements OnInit {
       }
     else { return null; }
   }
+
+    // get resume CV
+    getResume() {
+      const basePath = '/api/v1/uploads/';
+      window.open(environment.apiUrl + basePath + this.candidate.resumeUrl);
+    }
 }
