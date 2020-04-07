@@ -1,5 +1,6 @@
 <div class="card">
-  <i *ngIf="this.candidate.resumeUrl" class="fas fa-file-download" (click)="getResume()"></i>
+    <i *ngIf="this.candidate.resumeUrl" class="fas fa-file-download fa-lg"
+      (click)="getResume()" style="cursor: pointer;"></i>
   <img class="card-img-top" [src]="imageConstruction || 'assets/images/default.png'" 
     (click)="onClick()" alt="candidate profile image">
   <h5>{{ candidateName }}</h5>
