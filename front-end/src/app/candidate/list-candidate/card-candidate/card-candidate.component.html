@@ -1,8 +1,23 @@
 <div class="card">
-    <i *ngIf="this.candidate.resumeUrl" class="fas fa-file-download fa-lg"
-      (click)="getResume()" style="cursor: pointer;"></i>
+
+  <div (clickOutside)="closedOption($event)">
+    <a>
+      <i class="material-icons" (click)="openOption()"
+      style="cursor: pointer;">more_vert</i>
+    </a>
+
+    <div class="card-list" *ngIf="toggle">
+
+        <a class="dropdown-item py-2" (click)="onClick()">Edit Candidate</a>
+        <a class="dropdown-item py-2" *ngIf="this.candidate.resumeUrl" (click)="getResume()">
+        Download Resume
+        </a>
+    </div>
+
+  </div>  
+ 
   <img class="card-img-top" [src]="imageConstruction || 'assets/images/default.png'" 
-    (click)="onClick()" alt="candidate profile image">
+     alt="candidate profile image">
   <h5>{{ candidateName }}</h5>
   <div class="card-body">
     <div class="status">

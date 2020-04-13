@@ -11,6 +11,7 @@ import { environment } from '../../../../environments/environment';
 export class CardCandidateComponent implements OnInit {
 
   @Input() candidate: Candidate = null;
+  toggle = false;
 
   constructor(private router: Router) { }
 
@@ -56,9 +57,19 @@ export class CardCandidateComponent implements OnInit {
     else { return null; }
   }
 
-    // get resume CV
-    getResume() {
-      const basePath = '/api/v1/uploads/';
-      window.open(environment.apiUrl + basePath + this.candidate.resumeUrl);
-    }
+  // get resume CV
+  getResume() {
+    this.toggle = false;
+    const basePath = '/api/v1/uploads/';
+    window.open(environment.apiUrl + basePath + this.candidate.resumeUrl);
+  }
+
+  closedOption(e: Event) {
+    this.toggle = false;
+  }
+
+  openOption() {
+    this.toggle = !this.toggle;
+  }
+
 }
