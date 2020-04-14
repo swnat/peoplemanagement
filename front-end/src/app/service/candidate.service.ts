@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Candidate } from '../models/candidate';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { ResponseList } from '../models/responseList';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CandidateService {
 
   constructor(private httpClient: HttpClient) {}
@@ -18,14 +19,25 @@ export class CandidateService {
     return this.httpClient.get<Candidate>(environment.apiUrl + this.basePath + id);
   }
 
-  addCandidate(formCandidate: FormData) {
-    return this.httpClient.post<Candidate>(environment.apiUrl + this.basePath, formCandidate);
+  addCandidate(candidate: Candidate, fileContent: File[]) {
+    let params = new FormData();
+    params.append('candidate', JSON.stringify(candidate));
+    params.append('imagefile', fileContent[0]);
+    params.append('resumeUrl', fileContent[1]);
+    params.append('fileUrl', fileContent[2]);
+    return this.httpClient.post<Candidate>(environment.apiUrl + this.basePath, params);
   }
 
-  editCandidate(formCandidate: FormData, candidateid: number): Observable<Candidate> {
-    return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidateid, formCandidate);
+  editCandidate(candidate: Candidate, fileContent: File[], active: boolean): Observable<Candidate> {
+    let params = new FormData();
+    params.append('candidate', JSON.stringify(candidate));
+    params.append('imagefile', fileContent[0]);
+    params.append('resumeUrl', fileContent[1]);
+    params.append('fileUrl', fileContent[2]);
+    params.append('active', JSON.stringify(active));
+    return this.httpClient.put<Candidate>(environment.apiUrl + this.basePath + candidate.id, params);
   }
-
+  
   getAllCandidates(nameCandidate:string, page:number, itemsPerPage: number, sortBy: string): Observable<ResponseList> {
     let params = new HttpParams();
     if(nameCandidate) {

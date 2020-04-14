@@ -97,6 +97,7 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         //update interview status
         update(candidateIdLong, candidate);
     }
+
     @Override
     public void updateChallengeStatus(String candidateId, String challengeStatus){
         
@@ -116,8 +117,9 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         update(candidateIdLong, candidate);
         
     }
+   
+    public String uploadFile(MultipartFile file) {
 
-    public String uploadImage(MultipartFile image) {
         String directory = System.getProperty("user.dir") + fileUrl;
         Path mypath = Paths.get(directory);
 
@@ -134,7 +136,7 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         Calendar cal = Calendar.getInstance();
         cal.setTime(Date.from(Instant.now()));
         //create filename from a format string
-        String name = String.format("file-%1$tY-%1$tm-%1$td-%1$tk-%1$tS-%1$tp-" + image.getOriginalFilename(), cal);
+        String name = String.format("file-%1$tY-%1$tm-%1$td-%1$tk-%1$tS-%1$tp-" + file.getOriginalFilename(), cal);
         
         StringBuilder builder = new StringBuilder();
         builder.append(directory);
@@ -143,7 +145,7 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
    
         try {
             byte[] filebytes;
-            filebytes = image.getBytes();
+            filebytes = file.getBytes();
             Path path = Paths.get(builder.toString());
             Files.write(path, filebytes);
         } catch (IOException e) {
@@ -153,19 +155,15 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
         return name;
     }    
 
-    public void removeImage(String urlImage){
-        String pathImage = System.getProperty("user.dir")  + fileUrl;
-        File fileImage = new File(pathImage);
-        if ( !fileImage.exists()){
+    public void removeFile(String name){
+        String directory = System.getProperty("user.dir")  + fileUrl + File.separator + name;
+        File filePath = new File(directory);
+        if ( !filePath.exists()){
             System.out.println("Image name does not exist");
         }
         else{
-            fileImage.delete();
+            filePath.delete();
             System.out.println("Successfully deleted image server");
         }
-    }
-
-    public String getPathFile(){
-        return fileUrl;
-    }
+    }  
 }
