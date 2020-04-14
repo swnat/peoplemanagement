@@ -3,11 +3,6 @@
   border-radius: 10px;
 }
 
-/*.card-img-top:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 10px 5px #a6a6a6; please set the shadow color conveniently 
-}*/
-
 h5 {
   margin-top: .4rem;
   margin-bottom: 0;
@@ -42,7 +37,7 @@ h5 {
   margin-top: .8rem;
 }
 
-/* */
+/* css download function */
 i{
   position: absolute;
   right: .5rem;
