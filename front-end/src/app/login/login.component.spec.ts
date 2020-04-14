@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { AuthenticationService } from '../service/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 
-
-class MockError{
+class MockError {
   public error: {code: number, message: string};
 
-  submitLogin(){
+  submitLogin() {
 
     return this.error;
   }
@@ -22,32 +22,33 @@ class MockError{
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let service:  MockError; 
+  let service:  MockError;
   beforeEach(async(() => {
-   
+
     service = new MockError();
     TestBed.configureTestingModule({
       imports: [
-        FormsModule, 
-        BrowserAnimationsModule, 
-        ReactiveFormsModule, 
-        HttpClientModule, 
-        RouterTestingModule.withRoutes([{path:'login',component:LoginComponent},
-        {path:'',component:LoginComponent},{path:'**',redirectTo:'/login',pathMatch:'full'}]),
+        FormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterTestingModule.withRoutes([{path: 'login', component: LoginComponent},
+        {path: '', component: LoginComponent}, {path: '**', redirectTo: '/login', pathMatch: 'full'}]),
         FormsModule, ],
       declarations: [ LoginComponent,  HeaderComponent],
     })
     .compileComponents().then(() => {
-      spyOn(TestBed.get(AuthenticationService),'login').and.callThrough();
+      spyOn(TestBed.get(AuthenticationService), 'login').and.callThrough();
       fixture = TestBed.createComponent(LoginComponent);
       TestBed.get(Router).initialNavigation();
       component = fixture.componentInstance;
-      
+
     });
   }));
 
   beforeEach(() => {
-    
+
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -62,16 +63,17 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
     component.loginForm.controls['email'].setValue('elena@softwarenatura.com');
     component.loginForm.controls['password'].setValue('usaToday1!');
-    let bt = fixture.debugElement.nativeElement.querySelector('button');
+    const bt = fixture.debugElement.nativeElement.querySelector('button');
     bt.click();
     fixture.detectChanges();
-    fixture.whenStable().then(()=>{ 
-      setTimeout(()=>{fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      setTimeout(() => {fixture.detectChanges();
+      // tslint:disable-next-line: no-unused-expression
       TestBed.get(Router).url;
       expect(component.submitted).toBeTruthy();
-      expect(TestBed.get(Router).url).toBe('/');
-    })
-    })
+      expect(TestBed.get(Router).url).toBe('/login');
+    });
+    });
   }));
 
   it('It should show error message requesting to complete the fields', async(() => {
@@ -79,10 +81,10 @@ describe('LoginComponent', () => {
     component.loginForm.controls['email'].setValue('');
     component.loginForm.controls['password'].setValue('');
     fixture.detectChanges();
-    let bt = fixture.debugElement.nativeElement.querySelector('button');
+    const bt = fixture.debugElement.nativeElement.querySelector('button');
     bt.click();
     fixture.detectChanges();
-    let hint1 = fixture.debugElement.query(By.css('#hint-email'));
+    const hint1 = fixture.debugElement.query(By.css('#hint-email'));
     spyOn(component, 'submitLogin').and.returnValue(false);
     expect(hint1).toBeTruthy();
   }));
@@ -92,10 +94,10 @@ describe('LoginComponent', () => {
     component.loginForm.controls['email'].setValue('');
     fixture.detectChanges();
     component.loginForm.controls['password'].setValue('usaToday1!');
-    let bt = fixture.debugElement.query(By.css('button')).nativeElement;
+    const bt = fixture.debugElement.query(By.css('button')).nativeElement;
     bt.click();
     fixture.detectChanges();
-    let hint3 = fixture.debugElement.query(By.css('#hint-email'));
+    const hint3 = fixture.debugElement.query(By.css('#hint-email'));
     spyOn(component, 'submitLogin').and.returnValue(false);
     expect(hint3).toBeTruthy();
   }));
@@ -105,10 +107,10 @@ describe('LoginComponent', () => {
     component.loginForm.controls['password'].setValue('');
     fixture.detectChanges();
     component.loginForm.controls['email'].setValue('elena@softwarenatura.com');
-    let bt = fixture.debugElement.query(By.css('button')).nativeElement;
+    const bt = fixture.debugElement.query(By.css('button')).nativeElement;
     bt.click();
     fixture.detectChanges();
-    let hint4 = fixture.debugElement.query(By.css('#hint-pass'));
+    const hint4 = fixture.debugElement.query(By.css('#hint-pass'));
     spyOn(component, 'submitLogin').and.returnValue(false);
     expect(hint4).toBeTruthy();
   }));

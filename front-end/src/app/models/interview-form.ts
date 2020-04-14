@@ -7,9 +7,9 @@ export class InterviewForm {
         public statusCandidate: StatusCandidate,
         public taskId: string,
         public participants: string[],
-        public userAssignee:String, 
-        public candidateId:string,
-        public action:Action){}
+        public userAssignee: String,
+        public candidateId: string,
+        public action: Action) {}
 }
 
 export enum Action {ADD, EDIT}

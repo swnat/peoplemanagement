@@ -1,10 +1,8 @@
 package com.swnat.service;
 
-import java.util.Optional;
 import java.util.Set;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,8 +22,8 @@ import com.swnat.model.Candidate;
 
 @Service
 public class RecordService {
-    private static final String INTERVIEW_PROCESS_KEY = "interview-process";
-    private static final String CHALLENGE_PROCESS_KEY = "challenge-process";
+    private final String INTERVIEW_PROCESS_KEY = "interview-process";
+    private final String CHALLENGE_PROCESS_KEY = "challenge-process";
 
     @Autowired
     private CandidateRepository candidateRepository;
@@ -46,17 +44,26 @@ public class RecordService {
         for(ProcessInstance processInstance:processList){
             RecordWFDTO recordWFDTO = new RecordWFDTO();
 
-            Long candidate_id = Long.valueOf(processInstance.getProcessVariables().get("candidate_id").toString());
+            Long candidate_id = 0L;
+            if(processInstance.getProcessVariables().get("candidate_id") != null)
+                candidate_id = Long.valueOf(processInstance.getProcessVariables().get("candidate_id").toString());
+            else 
+                continue;
             Candidate candidate =  candidateRepository.getOne(candidate_id);
             recordWFDTO.setCandidateName(candidate.getName() +" "+candidate.getLastName());
             if(processInstance.getProcessDefinitionKey().equals(this.INTERVIEW_PROCESS_KEY)){
-                recordWFDTO.setProcess(processInstance.getProcessVariables().get("type_interview").toString());
+                if(processInstance.getProcessVariables().get("type_interview") != null)
+                    recordWFDTO.setProcess(processInstance.getProcessVariables().get("type_interview").toString());
+                else
+                    recordWFDTO.setProcess("");
             } else if(processInstance.getProcessDefinitionKey().equals(this.CHALLENGE_PROCESS_KEY)){
                 recordWFDTO.setProcess("Challenge");
             }
 
-            recordWFDTO.setUserName(processInstance.getProcessVariables().get("user_assignee").toString());
-
+            if(processInstance.getProcessVariables().get("user_assignee") != null)
+                recordWFDTO.setUserName(processInstance.getProcessVariables().get("user_assignee").toString());
+            else
+                recordWFDTO.setUserName("");
             /*ADD ACTION*/
             List<Comment> commentsByType = taskService.getProcessInstanceComments(processInstance.getId(), "comment");
             if(commentsByType.size() > 0)
@@ -71,23 +78,48 @@ public class RecordService {
             /*ADD DETAILS*/
             Map<String, String> details = new HashMap<String,String>();
             if(processInstance.getProcessDefinitionKey().equals(this.INTERVIEW_PROCESS_KEY)){
-                details.put("Comment", processInstance.getProcessVariables().get("comment").toString());
-                details.put("Day of Interview", processInstance.getProcessVariables().get("dayoftheinterview").toString());
+                if(processInstance.getProcessVariables().get("comment") != null)
+                    details.put("Comment", processInstance.getProcessVariables().get("comment").toString());
+                else
+                    details.put("Comment", "");
+                if(processInstance.getProcessVariables().get("dayoftheinterview") != null)
+                    details.put("Day of Interview", processInstance.getProcessVariables().get("dayoftheinterview").toString());
+                else
+                    details.put("Day of Interview", "");
                 /*ADD PARTICIPANTS TO DETAILS*/
-                String participants = (String) processInstance.getProcessVariables().get("participants");
-                participants = participants.replace("[", "").replace("]", "");
-                details.put("Participants", participants);
+                if(processInstance.getProcessVariables().get("participants") != null){
+                    String participants = (String) processInstance.getProcessVariables().get("participants");
+                    participants = participants.replace("[", "").replace("]", "");
+                    details.put("Participants", participants);
+                }else
+                    details.put("Participants", "");
             } else if(processInstance.getProcessDefinitionKey().equals(this.CHALLENGE_PROCESS_KEY)){
-                details.put("Day Sent", processInstance.getProcessVariables().get("dayofsent").toString());
-                details.put("Day Expected", processInstance.getProcessVariables().get("dayofexpected").toString());
-                details.put("Reviewer", processInstance.getProcessVariables().get("reviewer").toString());
-                details.put("Link Challenge", processInstance.getProcessVariables().get("linkchallenge").toString());
-                details.put("Status Challenge", processInstance.getProcessVariables().get("statuschallenge").toString());
-                details.put("Comment", processInstance.getProcessVariables().get("comment").toString());
+                if(processInstance.getProcessVariables().get("dayofsent") != null)
+                    details.put("Day Sent", processInstance.getProcessVariables().get("dayofsent").toString());
+                else
+                    details.put("Day Sent", "");                    
+                if(processInstance.getProcessVariables().get("dayofexpected") != null)
+                    details.put("Day Expected", processInstance.getProcessVariables().get("dayofexpected").toString());
+                else
+                    details.put("Day Expected", "");  
+                if(processInstance.getProcessVariables().get("reviewer") != null)
+                    details.put("Reviewer", processInstance.getProcessVariables().get("reviewer").toString());
+                else
+                    details.put("Reviewer", "");                   
+                if(processInstance.getProcessVariables().get("linkchallenge") != null)
+                    details.put("Link Challenge", processInstance.getProcessVariables().get("linkchallenge").toString());
+                else
+                    details.put("Link Challenge", "");   
+                if(processInstance.getProcessVariables().get("statuschallenge") != null)
+                    details.put("Status Challenge", processInstance.getProcessVariables().get("statuschallenge").toString());
+                else
+                    details.put("Status Challenge", "");                     
+                if(processInstance.getProcessVariables().get("comment") != null)
+                    details.put("Comment", processInstance.getProcessVariables().get("comment").toString());
+                else
+                    details.put("Comment", "");     
             }
-
             recordWFDTO.setDetails(details);    
-            
             recordList.add(recordWFDTO);
         }
         PaginationResponse<RecordWFDTO> response = new PaginationResponse<>();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/models/user';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +10,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-user.component.css']
 })
 export class ViewUserComponent implements OnInit {
-  user: User;
+  user: User = {
+    name: '',
+    lastname: '',
+    email: '',
+    active: true,
+    rol: '',
+    phoneNumber: '',
+    idUser: 0,
+};
   rol_name: String;
 
   constructor(private userService: UserService,
@@ -45,9 +53,9 @@ export class ViewUserComponent implements OnInit {
   }
 
   public userRole(rol: String): String {
-    if (rol == 'user1') {
+    if (rol === 'user1') {
       return 'Manager';
-    } else if (rol == 'user2') {
+    } else if (rol === 'user2') {
       return 'Admin';
     }
     return 'Colaborator';

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { HeaderComponent } from 'src/app/shared/layout/header/header.component';
 ////// Testing Vars //////
 let activatedRoute: ActivatedRouteStub;
@@ -18,16 +18,19 @@ let page: Page;
 
 ////// Tests //////
 const firstUser: User = {
-    name: "Elena",
-    lastname: "Coronel",
-    email: "elena@softwarenatura.com",
+    name: 'Elena',
+    lastname: 'Coronel',
+    email: 'elena@softwarenatura.com',
     active: true,
-    rol: "user1",
-    phoneNumber: "+595983554227",
+    rol: 'user1',
+    phoneNumber: '',
     idUser: 4,
 };
 
 describe('ViewUserComponent', () => {
+    // localStorage variables
+    const varStorage1 = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0Iiwic2NvcGVzIjoidXNlcjEiLCJpYXQiOjE1NzY1ODUzMjEsImV4cCI6MTU4MTYzMzMyMX0';
+    const varStorage2 = '.xBqWVdg7W8rqT7dHihiUqstQq6p3bJzhPJS7N1hE5GQR3rh6UTYxbLv1F9Zbex1_Q6mEuJR579G8uoNkHEL7WQ';
     beforeEach(() => {
         activatedRoute = new ActivatedRouteStub();
     });
@@ -35,6 +38,7 @@ describe('ViewUserComponent', () => {
     beforeEach(async(() => {
 
         TestBed.configureTestingModule({
+            // tslint:disable-next-line: deprecation
             imports: [ToastrModule.forRoot(), HttpClientModule, RouterTestingModule, NgbModule.forRoot()],
             declarations: [ViewUserComponent, HeaderComponent],
             providers: [
@@ -44,7 +48,7 @@ describe('ViewUserComponent', () => {
             ]
         })
             .compileComponents();
-    })); 
+    }));
     describe('when navigate to existing user', () => {
         let expectedUser: User;
         let rol_name: String;
@@ -53,7 +57,8 @@ describe('ViewUserComponent', () => {
             expectedUser = firstUser;
             rol_name = 'Manager';
             activatedRoute.setParamMap({ id: expectedUser.idUser });
-            localStorage.setItem('currentUser', JSON.stringify({ "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0Iiwic2NvcGVzIjoidXNlcjEiLCJpYXQiOjE1NzY1ODUzMjEsImV4cCI6MTU4MTYzMzMyMX0.xBqWVdg7W8rqT7dHihiUqstQq6p3bJzhPJS7N1hE5GQR3rh6UTYxbLv1F9Zbex1_Q6mEuJR579G8uoNkHEL7WQ", "tokenType": "Bearer", "id": "4", "rol": "user1" }));
+            localStorage.setItem('currentUser', JSON.stringify({ 'accessToken': varStorage1 + varStorage2,
+             'tokenType': 'Bearer', 'id': '4', 'rol': 'user1' }));
             createComponent();
         }));
 
@@ -69,8 +74,28 @@ describe('ViewUserComponent', () => {
 });
 
 /////////// Helpers /////
+class Page {
+    get nameDisplay() { return this.query<HTMLElement>('#nameId'); }
+    get lastnameDisplay() { return this.query<HTMLElement>('#lastnameId'); }
+    get phoneNumberDisplay() { return this.query<HTMLElement>('#phoneNumberId'); }
+    get emailDisplay() { return this.query<HTMLElement>('#emailId'); }
+    get rolDisplay() { return this.query<HTMLElement>('#rolId'); }
+
+    navigateSpy: jasmine.Spy;
+
+    // tslint:disable-next-line: no-shadowed-variable
+    constructor(fixture: ComponentFixture<ViewUserComponent>) {
+        const routerSpy = <any>fixture.debugElement.injector.get(Router);
+        this.navigateSpy = routerSpy.navigate;
+    }
+
+    private query<T>(selector: string): T {
+        return fixture.nativeElement.querySelector(selector);
+    }
+
+}
 async function createComponent() {
-    
+
     fixture = TestBed.createComponent(ViewUserComponent);
 
     component = fixture.componentInstance;
@@ -82,23 +107,4 @@ async function createComponent() {
     });
 }
 
-class Page {
-    get nameDisplay() { return this.query<HTMLElement>('#nameId'); }
-    get lastnameDisplay() { return this.query<HTMLElement>('#lastnameId'); }
-    get phoneNumberDisplay() { return this.query<HTMLElement>('#phoneNumberId'); }
-    get emailDisplay() { return this.query<HTMLElement>('#emailId'); }
-    get rolDisplay() { return this.query<HTMLElement>('#rolId'); }
 
-    navigateSpy: jasmine.Spy;
-
-    constructor(fixture: ComponentFixture<ViewUserComponent>) {
-        const routerSpy = <any>fixture.debugElement.injector.get(Router);
-        this.navigateSpy = routerSpy.navigate;
-        const component = fixture.componentInstance;
-    }
-
-    private query<T>(selector: string): T {
-        return fixture.nativeElement.querySelector(selector);
-    }
-
-}

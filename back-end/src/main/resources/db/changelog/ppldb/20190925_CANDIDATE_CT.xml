@@ -18,21 +18,19 @@
             </column>
             <column name="date_of_birth" type="DATE">
             </column>            
-            <column name="resume_drive" type="VARCHAR">
+            <column name="resume_url" type="VARCHAR">
             </column>
-            <column name="resume_drive_elumen" type="VARCHAR">
+            <column name="files_url" type="VARCHAR">
             </column>
             <column name="phone_number" type="VARCHAR">
             </column>            
             <column name="email" type="VARCHAR">
-            </column>
-            <column name="age" type="INT">
             </column>            
             <column name="university" type="VARCHAR">
             </column>
-            <column name="status_elumen" type="VARCHAR">
+            <column name="decision" type="VARCHAR">
             </column>
-            <column name="comment_elumen" type="VARCHAR">
+            <column name="comments" type="VARCHAR">
             </column>                                  
             <column name="interview_status" type="VARCHAR" defaultValue="PENDING">
                 <constraints nullable="false"/>

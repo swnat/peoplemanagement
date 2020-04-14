@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,7 @@ import { AddInterviewComponent } from './interview/add-interview/add-interview.c
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from './shared/layout/header/header.component';
-import {NgbPaginationModule, NgbAlertModule, NgbActiveModal,NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule, NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
 import { EditInterviewComponent } from './interview/edit-interview/edit-interview.component';
@@ -24,6 +24,15 @@ import { AddChallengeComponent } from './challenge/add-challenge/add-challenge.c
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ConstructionSiteComponent } from './construction-site/construction-site.component';
+import { DataTableComponent } from './shared/data-table/data-table.component';
+import { SafeHtmlPipe } from './shared/safe-html-pipe/safe-html';
+import { DataUserComponent } from './user/data-user/data-user.component';
+import { DatePipe } from '@angular/common';
+import {CardCandidateComponent } from './candidate/list-candidate/card-candidate/card-candidate.component';
+import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { CardUserComponent } from './user/card-user/card-user.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -47,10 +56,17 @@ const routes: Routes = [
     DataCandidateComponent,
     AddChallengeComponent,
     LoginComponent,
-    ConstructionSiteComponent
+    ConstructionSiteComponent,
+    DataTableComponent,
+    SafeHtmlPipe,
+    DataUserComponent,
+    CardCandidateComponent,
+    BreadcrumbsComponent,
+    CardUserComponent,
   ],
   providers: [
-    NgbActiveModal 
+    NgbActiveModal,
+    DatePipe
   ],
   imports: [
     BrowserModule,
@@ -59,15 +75,17 @@ const routes: Routes = [
     DatePickerModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbPaginationModule, NgbAlertModule,NgbModule,
+    NgbPaginationModule, NgbAlertModule, NgbModule,
     DialogModule,
     ToastrModule.forRoot({closeButton: true}),
     BrowserAnimationsModule,
     MultiSelectModule,
     RouterModule.forRoot(routes),
-    
+    ClickOutsideModule,
+
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents:[]
+  entryComponents: []
 })
 export class AppModule { }

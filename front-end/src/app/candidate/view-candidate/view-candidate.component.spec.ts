@@ -7,7 +7,7 @@ import { DatePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 describe('ViewCandidateComponent', () => {
   let component: ViewCandidateComponent;
   let fixture: ComponentFixture<ViewCandidateComponent>;
@@ -19,7 +19,8 @@ describe('ViewCandidateComponent', () => {
           [{ path: 'data/:id', component: ViewCandidateComponent },
           { path: 'candidate', component: ViewCandidateComponent }]), ToastrModule.forRoot()],
       declarations: [ ViewCandidateComponent,  HeaderComponent, DatePickerComponent ],
-      providers: [ToastrService]
+      providers: [ToastrService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));

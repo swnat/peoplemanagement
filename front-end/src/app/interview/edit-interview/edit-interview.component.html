@@ -1,124 +1,114 @@
 <div class="container">
-  <app-header></app-header>
   <div class="card card-signin">
-
-    <div class="col-12 title form-title ">
-      <label class="margin-left">Candidate: &nbsp; </label>
-      <label> {{candidate?.name +' '+candidate?.lastName}}</label>
+    <div class="form-title">
+      <span>Candidate: {{candidate?.name +' '+candidate?.lastName}}</span>
     </div>
-
-    <div class=" col-12 title form-subtitle form-group">
-      <label class="margin-left">{{statusCandidate?.name}}</label> 
-    </div>
-
-    <div class="starter-template">
-      <div class="col-md-12">
-
-        <form [formGroup]="interviewEditForm" (ngSubmit)="onSubmit()">
-          <!--CALENDAR-->
-          <div class="form-group row">
-            <div class="col-md-3">
-              <label class="text margin-left">Select a day for the
-                Interview:</label>
-            </div>
-            <div class="col-md-3 date-picker-width">
-                <ejs-datepicker #ejDatePicker
-                  id="dayOfInterview"
-                  format='yyyy-MM-dd'
-                  formControlName="dayOfInterview"
-                  name="dayOfInterview"
-                  [placeholder]='placeholder'>
-              </ejs-datepicker>
-              <div *ngIf="submitted && f.dayOfInterview.invalid" class="day-int-alert">
-                  Please select a day for the interview.
-                </div>
+    <div class="form-container mt-4">
+      <form [formGroup]="interviewEditForm" (ngSubmit)="onSubmit()">
+        <!-- DATE -->
+        <div class="form-group row mb-0">
+          <div class="col-sm-4 offset-sm-2">
+            <label class="text-label">Interview Date</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 offset-sm-2">
+            <ejs-datepicker #ejDatePicker id="dayOfInterview" format='yyyy-MM-dd' formControlName="dayOfInterview"
+              name="dayOfInterview" [placeholder]="'Select a day'">
+            </ejs-datepicker>
+            <div *ngIf="submitted && f.dayOfInterview.invalid" class="text-danger">
+              Please select a day for the interview.
             </div>
           </div>
-
-          <label class="margin-left text">Interview</label>
-          <div class="form-group margin-left comment-width">
+        </div>
+        <!-- INTERVIEW -->
+        <div class="form-group row mb-0 mt-4">
+          <div class="col-sm-4 offset-sm-2">
+            <label class="text-label">Interview</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 offset-sm-2">
             <select class="custom-select" name="statusCandidate" id="statusCandidate" formControlName="statusCandidate">
               <option [ngValue]="status.id" *ngFor="let status of statusCandidateList">
                 {{status?.name}}
               </option>
             </select>
           </div>
-
-          <!--COMMENT-->
-          <div class="form-group">
-            <label class="margin-left text" for="comment">Comment</label>
-            <textarea class="form-control margin-left comment-width" id="comment" formControlName="comment" rows="3"
-              [ngClass]="{ 'is-invalid': submitted && f.comment.errors }"
-              placeholder="Write your comment here..." [maxlength]="300"></textarea>
-              <div *ngIf="submitted && f.comment.errors" class="invalid-feedback margin-left">
-                  <div *ngIf="submitted && f.comment.errors?.maxlength">
-                          Comment must have less than 300 characters
-                  </div>
-                  <div id="only-letter-comment" *ngIf="submitted && f.comment.errors?.pattern">Comment has to be only characters</div>
-              </div>
+        </div>
+        <!--COMMENT-->
+        <div class="form-group row mb-0 mt-4">
+          <div class="col-sm-3 offset-sm-2">
+            <label class="text-label" for="comment">Comment</label>
           </div>
-          <!--PARTICIPANTS-->
-          <label for="participants" class="margin-left text">Participants</label>
-
-          <div class="form-group row">
-            <div class="col-md-9">
-              <input type="text" formControlName="addParticipant" placeholder="Add Participants"
-                class="form-control margin-left" [ngClass]="{ 'is-invalid': submitted && f.participants.errors }" />
-              <div *ngIf="submitted && f.participants.errors?.required" class="invalid-feedback margin-left">
-                Please add a participant
-              </div>
-              <div *ngIf="!submitted && f.addParticipant.errors" class="invalid-feedback-custom margin-left">
-                  <div *ngIf="f.addParticipant.errors?.maxlength">
-                          Participant must have less than 90 characters
-                  </div>
-                  <div id="only-letter" *ngIf="f.addParticipant.errors?.pattern">
-                          Participant has to be only characters
-                  </div>
-            </div>              
+        </div>
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+            <textarea class="form-control" id="comment" formControlName="comment" rows="10" cols="12"
+            [ngClass]="{ 'is-invalid': submitted && f.comment.errors }" placeholder="Write your comment here..."
+            [maxlength]="300"></textarea>
+            <div *ngIf="submitted && f.comment.errors" class="invalid-feedback margin-left">
+              <div *ngIf="submitted && f.comment.errors?.maxlength">Comment must have less than 300 characters</div>
+              <div id="only-letter-comment" *ngIf="submitted && f.comment.errors?.pattern">Comment has to be only
+              characters</div>
             </div>
-            <button id="add" class="col-md-2 margin-left btn btn-pm" type="button" (click)="addParticipants()"
-              [disabled]="f.addParticipant.value == ''">
-              Add
-            </button>
           </div>
-
-          <div class="form-group margin-left comment-width">
+        </div>          
+        <!--PARTICIPANTS-->
+        <div class="form-group row mb-0 mt-4">
+          <div class="col-sm-4 offset-sm-2">
+            <label for="participants" class="text-label">Participants</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 offset-sm-2">
+            <input id="participant" type="text" formControlName="addParticipant" placeholder="Add Participants"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.participants.errors }" />
+              <div *ngIf="submitted && f.participants.errors?.required">
+                <span class="text-danger">Please add a participant</span>
+              </div>
+              <div *ngIf="!submitted && f.addParticipant.errors">
+                <span *ngIf="f.addParticipant.errors?.maxlength" class="text-danger">Participant must have less than 90 characters</span>
+                <span id="participant-only-characters" *ngIf="f.addParticipant.errors?.pattern" class="text-danger">
+                  Participant has to be only characters
+                </span>
+              </div>
+          </div>
+          <div class="col-sm-5 movil">
+            <button class="ok-btn-add" type="button" (click)="addParticipants()"
+              [disabled]="f.addParticipant.value == ''">Add Participants</button>
+          </div>
+        </div>
+        <div class="form-group row mt-4">
+          <div class="table-responsive-sm col-sm-8 offset-sm-2 mt-3">
             <table class="table table-striped custab" *ngIf="listParticipants?.length > 0 ; else elseBlock">
-              <tr>
-                <th scope="row">Participants</th>
-                <th scope="row">Accions</th>
-              </tr>
-              <tr *ngFor="let item of listParticipants; let i=index;">
-                <td>{{item}}</td>
-                <td>
-                  <div class="col-md-12 align-center">
-                      <button alt="remove" title="Remove"
-                      type="button" class="btn" (click)="removeParticipants(i)">
-                        <i style="color: black;" class="fas fa-trash-alt fa-2x"></i>
+              <thead class="text-center title-bg">
+                <tr>
+                  <th scope="col">Participant</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr *ngFor="let item of listParticipants; let i=index;">
+                  <td><span>{{item}}</span></td>
+                  <td>
+                    <button alt="remove" title="Remove" type="button" class="btn" (click)="removeParticipants(i)">
+                      <i class="fas fa-trash-alt fa-1x"></i>
                     </button>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-            
           </div>
-
-          <!--SAVE-->
-          <div class="form group row margin-left">
-            <div class="center-btn aligner-center col-md-2">
-              <button id="add-interview" type="submit" class="btn btn-pm">Save</button>
-            </div>
-
-            <div class="col-md-2">
-              <button id="cancel-interview" 
-              (click)="cancelInterview()"
-              type="button"
-              class="btn btn-cancel">Cancel</button>
-            </div>
+        </div>
+        <!-- SAVE -->
+        <div class="row">
+          <div class="col-sm-11">
+            <button id="cancel-btn" (click)="cancelInterview()" type="button" class="not-ok-btn ml-3">Cancel</button>
+            <button id="save-btn" type="submit" class="ok-btn">Save</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-
   </div>
 </div>

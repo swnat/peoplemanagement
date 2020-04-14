@@ -11,21 +11,21 @@ import { ChallengeWorkflow } from '../models/challenge-workflow';
   providedIn: 'root'
 })
 export class ChallengeWorkflowService {
-  private basePath: string = "/api/v1/challenge-workflow/"
+  private basePath = '/api/v1/challenge-workflow/';
   url: string;
   constructor(private httpClient: HttpClient) { }
   startProcess(challengeWF: ChallengeWorkflow): Observable<Challenge> {
-    this.url = environment.apiUrl+this.basePath+'start-process/';
+    this.url = environment.apiUrl + this.basePath + 'start-process/';
     return this.httpClient.post<Challenge>(this.url, challengeWF);
   }
 
-  completeProcess(approval: Approval) : Observable<boolean>{
-    this.url = environment.apiUrl+this.basePath+'complete-process/';
+  completeProcess(approval: Approval): Observable<boolean> {
+    this.url = environment.apiUrl + this.basePath + 'complete-process/';
     return this.httpClient.post<boolean>(this.url, approval);
   }
 
-  completeTaskWithForm(challengeForm: ChallengeForm) : Observable<void>{
-    this.url = environment.apiUrl+this.basePath+'complete-task-form/';
+  completeTaskWithForm(challengeForm: ChallengeForm): Observable<void> {
+    this.url = environment.apiUrl + this.basePath + 'complete-task-form/';
     return this.httpClient.post<void>(this.url, challengeForm);
   }
 }

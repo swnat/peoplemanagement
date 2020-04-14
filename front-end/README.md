@@ -7,6 +7,7 @@ Install latest version of node js
 ```bash
 sudo apt-get install nodejs
 sudo apt-get install npm
+sudo npm i jwt-decode
 ```
 
 ## Development server

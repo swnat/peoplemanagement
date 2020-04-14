@@ -10,7 +10,7 @@ import { InterviewWorkflowService } from 'src/app/service/interview-workflow.ser
 import { InterviewWorkflow } from 'src/app/models/interview-workflow';
 import { DatePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { StatusCandidateService } from 'src/app/service/status-candidate.service';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-inputs';
 import { InterviewForm, Action } from 'src/app/models/interview-form';
 import { StorageService } from 'src/app/service/storage.service';
@@ -26,14 +26,14 @@ import { User } from 'src/app/models/user';
 export class AddInterviewComponent implements OnInit {
   @ViewChild('ejDatePicker') ejDatePicker: DatePickerComponent;
   public targetElement: HTMLElement;
-  submitted: boolean = false;
+  submitted = false;
   interviewForm: FormGroup;
   candidate: Candidate;
   taskId: string;
   participants: string[];
   addParticipant: string;
   comment: string;
-  placeholder: string = 'Day of the Interview';
+  placeholder = 'Day of the Interview';
   statusCandidate: StatusCandidate;
   public formObject: FormValidator;
   candidateId: any;
@@ -41,14 +41,14 @@ export class AddInterviewComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private storageService: StorageService, 
-    private userService: UserService, 
-    private router: Router, 
-    private interviewService: InterviewService, 
+    private formBuilder: FormBuilder,
+    private storageService: StorageService,
+    private userService: UserService,
+    private router: Router,
+    private interviewService: InterviewService,
     private candidateService: CandidateService,
-    private interviewWFService: InterviewWorkflowService, 
-    private statusCandidateService: StatusCandidateService, 
+    private interviewWFService: InterviewWorkflowService,
+    private statusCandidateService: StatusCandidateService,
     private notificationService: NotificationService) { }
 
   ngOnInit() {
@@ -57,18 +57,19 @@ export class AddInterviewComponent implements OnInit {
     this.userService.getUser(this.storageService.getCurrentId()).subscribe(
       data => {
         this.user = data;
-        console.log('Candidate data',data);
+        console.log('Candidate data', data);
       });
     this.getCandidate();
     this.setStatusCandidate();
     this.validateDayOfInterview();
+    window.scrollTo(0, 0); // scroll to top
   }
 
   validateDayOfInterview() {
-    let options: FormValidatorModel = {
+    const options: FormValidatorModel = {
       rules: {
         'dayOfInterview': {
-          required: [true, "Day of the interview is required"],
+          required: [true, 'Day of the interview is required'],
           date: ['yyyy-MM-dd', 'Enter a valid Date'],
           maxLength: 10
         }
@@ -82,16 +83,17 @@ export class AddInterviewComponent implements OnInit {
   }
 
   // Form validation takes place when focus() event of DatePicker is triggered.
-  public onFocusOut(): void { this.formObject.validate("dayOfInterview"); }
+  public onFocusOut(): void { this.formObject.validate('dayOfInterview'); }
   // Custom validation takes place when value is changed.
   public onChange(args: any) {
-    if (this.ejDatePicker.value != null)
-      this.formObject.validate("dayOfInterview");
+    if (this.ejDatePicker.value != null) {
+      this.formObject.validate('dayOfInterview');
+    }
   }
 
   initializeForm() {
     this.interviewForm = this.formBuilder.group({
-      comment: new FormControl('', [Validators.maxLength(300)]),//only letters
+      comment: new FormControl('', [Validators.maxLength(300)]),
       dayOfInterview: new FormControl('', [Validators.required]),
       candidate: new FormControl(),
       taskId: new FormControl(),
@@ -106,11 +108,11 @@ export class AddInterviewComponent implements OnInit {
   getCandidate() {
     this.candidateId = localStorage.getItem('candidateId');
     this.candidateService.getCandidate(this.candidateId).subscribe(
-      data => { this.candidate = data },
+      data => { this.candidate = data; },
       error => {
         console.log('Error get Candidate', error);
         this.notificationService.showError('Occur an error when get data of the candidate', 'Error get Candidate');
-      })
+      });
   }
 
   backToList(id: number) {
@@ -129,7 +131,7 @@ export class AddInterviewComponent implements OnInit {
     const interviewWF = new InterviewWorkflow(this.user.name, this.candidateId, this.interviewForm.value, Action.ADD);
     interviewWF.interview.candidate = undefined;
     this.interviewWFService.startProcess(interviewWF).subscribe(data => {
-      const interviewForm = new InterviewForm(data.comment, data.dayOfInterview, data.statusCandidate, 
+      const interviewForm = new InterviewForm(data.comment, data.dayOfInterview, data.statusCandidate,
         data.taskId, data.participants, this.user.name, this.candidateId, Action.ADD);
 
       this.interviewWFService.completeTaskWithForm(interviewForm).subscribe();
@@ -171,7 +173,7 @@ export class AddInterviewComponent implements OnInit {
       return;
     } else {
       this.interviewForm.controls['candidate'].setValue(this.candidate);
-      //start the process and add Interview
+      // start the process and add Interview
       this.startProcessInterview();
   }}
 }

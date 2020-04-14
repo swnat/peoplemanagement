@@ -13,16 +13,10 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   private basePath = '/api/v1/auth/';
-  ngOnInit(){}
-  
+  // tslint:disable-next-line: use-life-cycle-interface
+  ngOnInit() {}
+
   login(loginObj: LoginObject): Observable<Session> {
-    return this.http.post<Session>(environment.apiUrl+this.basePath + 'login', loginObj);
+    return this.http.post<Session>(environment.apiUrl + this.basePath + 'login', loginObj);
   }
-
-  /*logout(): Observable<Boolean> {
-    return this.http.post<Boolean>(this.basePath + 'logout', {});
-  }*/
-
-
-  
 }

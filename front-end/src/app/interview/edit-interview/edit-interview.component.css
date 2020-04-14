@@ -1,169 +1,107 @@
-
-
 .container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 5%;
-  width: 100%;
-  font-family: 'Montserrat', sans-serif;
+  margin-top: calc(56px + 1rem);
+  font-family: 'Roboto', sans-serif;
 }
-#container-popup{
-  visibility: hidden;
-}
-#dialog-container {
-  display: block;
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  width: 150%;
-  /* semi-transparent black  */
-}  
 
-  /*Button icon*/
-.btn-icon{
-  width: 20px;
-  height: 20px;
-    /*box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 10px 20px 0 rgba(0,0,0,0.16);*/    
-}  
-  /* Button cancel */
-  .btn-cancel{
-    float: right;
-    color: white;
-    background-color: #533848;
-    width: 100px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 15px;
-    text-align: center;
-    
-    }
-    
-    .btn-cancel:hover{
-    color: #533848;
-    border-color: #533848;
-    border-width: 1px;
-    border-style: solid;
-    background-color: white;
-    }
-/* Button */
-.btn-pm{
-  float: right;
+.title-bg{
+  background-color:  #609AB4;
+  color: #FFF;
+ }
+
+.form-title {
+  background: #00417c;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 28px;
+}
+
+.form-title span {
   color: white;
-  background-color: #882960;
-  width: 100px;
+
+}
+
+
+.form-title {
+  padding: .5rem 1rem .5rem 1rem;
+}
+
+
+.form-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.ok-btn-add{
+  width: 9rem;
+  height: 35px;
+  border: 0px;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 15px;
+  background: #609AB4;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
+}
+
+.ok-btn {
+  float: right;
+  height: 2.5rem;
+  border: 0px;
+  border-radius: 0.3rem;
+  color: #FFF;
+  background-color: #73BB83;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 15px;
   text-align: center;
-  
-  }
-  
-  .btn-pm:hover{
-  color: #882960;
-  border-color: #882960;
-  border-width: 1px;
-  border-style: solid;
-  background-color: white;
-  }
+  box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
+}
 
-/*For the title of forms*/
-.form-title{
-  width: 100%;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  height: 40px;
-  background: #882960;
-  border-radius: 0px 0px 0px 0;
-  color: #ffffff;
-  padding-left: 0px;
-  padding-top: 5px;
-  text-transform: uppercase;
+.not-ok-btn {
+  float: right;
+  height: 2.5rem;
+  border: 0px;
+  border-radius: 0.3rem;
   font-size: 15px;
+  background-color: #B46060;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #FFF;
   text-align: center;
-  font-weight: bold;
-    
-}
-/*For the second title of forms*/
-.form-subtitle{
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  height: 40px;
-  font-weight: bold;
-  background: #c0bebc;
-  border-radius: 0px 0px 0px 0;
-  text-align: left;
-  color: #161616;
+  box-shadow: 0px 4px 4px rgba(2, 0, 40, 0.25);
 }
 
-  /*comment*/
-.comment-width {
-  width: 94%;
+.not-ok-btn:hover, .not-ok-btn:focus{
+  border: 2px solid #B46060;
+  background: #FFF;
+  color: #B46060;
+  outline: none;
 }
 
-/*day picker*/
-.date-picker-width {
-  width: 20%;
+.ok-btn:hover, .ok-btn:focus{
+  border: 2px solid #73BB83;
+  background: #FFF;
+  color: #73BB83;
+  outline: none;
 }
 
-.margin-left {
-  margin-left: 20px;
+.ok-btn-add:hover, .ok-btn-add:focus{
+  border: 2px solid #A9A9A9;
+  outline: none;
 }
 
-
-/*Day interview style*/
-.day-int-alert {
-  color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    width: 100%;
+.text-label{
+  font-weight: normal;
+  font-size: 14px;
 }
 
-  /*CALENDAR CSS*/
-  .app-top {
-      margin: 0 0 3em;
-  }
-    
-  .app-calendar {
-      margin: 0 auto;
-      max-width: 900px;
-  }
-  #control_wrapper {
-      max-width: 800px;
-      margin: 3px;
-      padding-top: 5px;
-  }
-  #header {
-      text-align:center;
-  }
-  .shadow-textarea textarea.form-control::placeholder {
-      font-weight: 300;
-  }
-  .shadow-textarea textarea.form-control {
-      padding-left: 0.8rem;
-  }
-  .page-wrapper {
-      padding-bottom: 100px;
-      height: calc(500vh - 200px); 
-      position: relative;
-      overflow: auto;
-  }
-  .container-fluid {
-      padding: 25px;
-  }
-  .card {
-      margin-bottom: 30px;   
-  }
+#save-btn, #cancel-btn {
+  width: 6rem;
+}
 
-  .text{
-    font-weight: bold;
+@media screen and ( max-width: 575px){
+  .movil{
+    margin-top: 0.9rem;
   }
-  
-  .invalid-feedback-custom {
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
-  }
+}

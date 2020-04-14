@@ -1,0 +1,16 @@
+<div class="card" (click)="onClick()">
+  <img class="card-img-top" [src]="imageConstruction || 'assets/images/default.png'" alt="candidate profile image">
+  <h5>{{ candidateName }}</h5>
+  <div class="card-body">
+    <div class="status">
+      <span class="text-uppercase">{{ statusChallenge.replace('_', ' ') }}</span>
+      <img [src]="'assets/images/progress_bars/' + statusChallenge + '.png'">
+      <span>Challenge</span>
+    </div>
+    <div class="status">
+      <span class="text-uppercase">{{ statusInterview.replace('_', ' ') }}</span>
+      <img [src]="'assets/images/progress_bars/' + statusInterview + '.png'">
+      <span>Interviews</span>
+    </div>
+  </div>
+</div>
