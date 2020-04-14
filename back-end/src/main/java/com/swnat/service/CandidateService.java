@@ -22,6 +22,6 @@ public interface CandidateService extends IGenericService<Candidate, Long> {
 
     void updateInterviewStatus(String id, String interviewStatus);
     void updateChallengeStatus(String id, String challengeStatus);
-    String uploadImage(MultipartFile image);
-    void removeImage(String urlImage);
+    String uploadFile(MultipartFile file);
+    void removeFile(String name);
 }
