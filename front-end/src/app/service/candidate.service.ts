@@ -41,4 +41,8 @@ export class CandidateService {
   getCandidateSelected() {
     return this.candidateSelected;
   }
+
+  deleteCandidate(candidateId: number ): Observable<string> {
+    return this.httpClient.delete(environment.apiUrl + this.basePath + candidateId, {responseType: 'text'});
+  }
 }
