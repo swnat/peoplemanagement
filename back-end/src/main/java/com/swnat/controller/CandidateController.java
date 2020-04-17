@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @RestController
 @RequestMapping("/api/v1/candidates")
 public class CandidateController {
@@ -45,31 +44,44 @@ public class CandidateController {
 
     @ApiOperation(value = "Create a candidate", notes = "Create a new candidate.")
     @PostMapping("/")
-    public Candidate saveCandidate(@RequestParam("candidate") String candidateForm, @RequestParam(value = "imageProfile", required = false) MultipartFile image) throws JsonParseException, JsonMappingException, IOException {
-        Candidate candidate = new ObjectMapper().readValue(candidateForm, Candidate.class);
-        if ( image != null){
-            candidate.setProfileImage(this.candidateService.uploadImage(image));
-        }
+    public Candidate saveCandidate(@RequestParam("candidate") String candidateJson, @RequestParam(value = "imagefile", required = false) MultipartFile image, 
+    @RequestParam(value = "resumeUrl", required = false) MultipartFile resume, @RequestParam(value = "fileUrl", required = false) MultipartFile file) throws JsonParseException, JsonMappingException, IOException {
+        Candidate candidate = new ObjectMapper().readValue(candidateJson, Candidate.class);
+        candidate.setProfileImage( (image != null) ? this.candidateService.uploadFile(image) : null );
+        candidate.setResumeUrl( (resume != null) ? this.candidateService.uploadFile(resume) : null );
+        candidate.setFileUrl( (file != null) ? this.candidateService.uploadFile(file) : null );
+
         return candidateService.add(candidate);
     }
 
     @ApiOperation(value = "Edit a candidate", notes = "Update data of an existing candidate.")
     @PutMapping("/{id}")
-    public Candidate updateCandidate(@RequestParam("candidate") String candidateForm, @RequestParam(value= "imageProfile", required = false) MultipartFile image, @PathVariable Long id, 
-    @RequestParam(value = "active") String active) throws JsonParseException, JsonMappingException, IOException {
-        Candidate candidate = new ObjectMapper().readValue(candidateForm, Candidate.class);
+    public Candidate updateCandidate(@RequestParam("candidate") String candidateJson, @RequestParam(value = "imagefile", required = false) MultipartFile image, 
+    @RequestParam(value = "resumeUrl", required = false) MultipartFile resume, @RequestParam(value = "fileUrl", required = false) MultipartFile file , @PathVariable Long id,
+    @RequestParam("active") String activeJson) throws IOException {
 
-        if ( image == null && candidate.getProfileImage() != null && active.equals("false") ){
-            this.candidateService.removeImage(candidate.getProfileImage());
+        Candidate candidate = new ObjectMapper().readValue(candidateJson, Candidate.class);
+        Boolean active = new ObjectMapper().readValue(activeJson, Boolean.class);
+       
+        if ( image == null && candidate.getProfileImage() != null && active == false ){
+            this.candidateService.removeFile(candidate.getProfileImage());
             candidate.setProfileImage(null);
         }
         else if ( image != null &&  candidate.getProfileImage() == null ){
-            candidate.setProfileImage(this.candidateService.uploadImage(image));
+            candidate.setProfileImage(this.candidateService.uploadFile(image));
         }
         else if ( image != null && candidate.getProfileImage() != null ) {
-           this.candidateService.removeImage(candidate.getProfileImage());
-            candidate.setProfileImage(this.candidateService.uploadImage(image));
+            this.candidateService.removeFile(candidate.getProfileImage());
+            candidate.setProfileImage(this.candidateService.uploadFile(image));
         }
+
+        if (  candidate.getResumeUrl() == null && resume != null  ) { candidate.setResumeUrl(this.candidateService.uploadFile(resume)); }
+        else if ( candidate.getResumeUrl() != null  && resume != null ) { this.candidateService.removeFile(candidate.getResumeUrl());
+        candidate.setResumeUrl(this.candidateService.uploadFile(resume));}
+        
+        if (  candidate.getFilesUrl() == null && file != null  ) { candidate.setFileUrl(this.candidateService.uploadFile(file)); }
+        else if ( candidate.getFilesUrl() != null  && file != null ) { this.candidateService.removeFile(candidate.getFilesUrl());
+        candidate.setResumeUrl(this.candidateService.uploadFile(file));}
         
         return candidateService.update(id, candidate);
     }

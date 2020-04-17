@@ -23,10 +23,12 @@ export class DataCandidateComponent implements OnInit {
   @Output() showChallenge = new EventEmitter();
   // Variable image
   imageUrl = '/assets/images/default.png';
-  fileUpload: File = null;
   nameButton = 'Add Photo';
   activeRemove = false;
-  formCandidate: FormData;
+  activeResume: boolean; activeFile: boolean;
+  //var file
+  photoUrl: File = null; resumeUrl: File = null; aditionalFileUrl: File = null;
+  
 
   constructor(private formBuilder: FormBuilder, private candidateService: CandidateService,
     private notificationService: NotificationService, private router: Router, ) { }
@@ -67,6 +69,7 @@ export class DataCandidateComponent implements OnInit {
     });
 
     this.imageConstruction();
+    this.editFile();
 
   }
 
@@ -81,13 +84,13 @@ export class DataCandidateComponent implements OnInit {
       phoneNumber: new FormControl(''),
       university: new FormControl('', [Validators.maxLength(100)]), // only letters
       dateOfBirth: new FormControl(''),
-      resumeUrl: new FormControl('', ),
+      resumeUrl: new FormControl(''),
       filesUrl: new FormControl(''),
       decision: new FormControl(''),
       comments: new FormControl('', [Validators.pattern('[/a-zA-ZáéíóúÁÉÍÓÚñÑ ]*'), Validators.maxLength(300)]), // only letters
       interviewStatus: new FormControl('PENDING'),
       process_challenge_status: new FormControl('PENDING'),
-      profileImage: null
+      profileImage: new FormControl('')
     });
   }
 
@@ -113,24 +116,21 @@ export class DataCandidateComponent implements OnInit {
       return;
     } else {
       if (this.isNew) {
-        this.formCandidate = new FormData();
-        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
-        this.formCandidate.append('imageProfile', this.fileUpload);
-        this.candidateService.addCandidate(this.formCandidate).subscribe(data => {
+        this.candidateService.addCandidate(this.dataCandidateForm.value, [this.photoUrl, this.resumeUrl, this.aditionalFileUrl]).subscribe(data => {
           this.candidate = data;
           this.candidateSaved(data);
-
+          
+          //Once a candidate is registered, the option to download the file is enabled. 
+          this.activeResume = (this.candidate.resumeUrl != null) ? true : null;
+          this.activeFile = (this.candidate.filesUrl != null) ? true : null;
+          
           this.candidateId = this.candidate.id;
         }, error => {
           console.log('Error to save the candidate', error);
           this.notificationService.showError('Occur an error when save data of the candidate', 'Error save Candidate');
         });
       } else {
-        this.formCandidate = new FormData();
-        this.formCandidate.append('candidate', JSON.stringify(this.dataCandidateForm.value));
-        this.formCandidate.append('imageProfile', this.fileUpload);
-        this.formCandidate.append('active',  this.activeRemove ? "true" : "false");
-        this.candidateService.editCandidate(this.formCandidate, this.dataCandidateForm.get('id').value).subscribe(data => {
+        this.candidateService.editCandidate(this.dataCandidateForm.value, [this.photoUrl, this.resumeUrl, this.aditionalFileUrl], this.activeRemove).subscribe(data => {
           this.candidate = data;
           this.candidateEdit(data);
           this.candidateId = this.candidate.id;
@@ -150,7 +150,7 @@ export class DataCandidateComponent implements OnInit {
 
     if ( this.nameButton === buttonAdd || this.nameButton === 'Change Photo' ) {
       // Image file
-      this.fileUpload = event.target.files[0];
+      this.photoUrl = event.target.files[0];
 
       // Show image preview
       let reader = new FileReader();
@@ -159,7 +159,7 @@ export class DataCandidateComponent implements OnInit {
       };
 
 
-      reader.readAsDataURL(this.fileUpload);
+      reader.readAsDataURL(this.photoUrl);
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     } else {
@@ -185,11 +185,51 @@ export class DataCandidateComponent implements OnInit {
 
   // load user profile picture
   imageConstruction(){
-    if ( this.dataCandidateForm.get('profileImage').value != null ) {
+    if ( this.candidate.profileImage != null ) {
       let basePath: string = "/api/v1/uploads/";
-      this.imageUrl = environment.apiUrl + basePath + this.dataCandidateForm.get('profileImage').value;
+      this.imageUrl = environment.apiUrl + basePath + this.candidate.profileImage;
       this.nameButton = 'Change Photo';
       this.activeRemove = true;
     }
+  }
+
+  uploadFile(event: any){
+    let valueId: string = event.target.id;
+    
+    if ( valueId == "resumeUrl"){
+      let textResume = document.getElementById('text-' + valueId);
+      textResume.innerHTML = event.target.files[0].name;
+      this.resumeUrl = event.target.files[0];
+      this.activeResume = false;
+    }
+    else if ( valueId == "fileUrl"){
+      let textfile = document.getElementById('text-' + valueId);
+      textfile.innerHTML = event.target.files[0].name;
+      this.aditionalFileUrl = event.target.files[0];
+      this.activeFile = false;
+    }
+  }
+
+  /*Method for loading our inputs into the candidate's edition.*/
+  editFile(){
+    if ( this.candidate.resumeUrl ){
+      document.getElementById('text-resumeUrl').innerHTML = this.candidate.resumeUrl.slice(25);
+      this.activeResume = true;
+    }
+
+    if ( this.candidate.filesUrl ) {
+      document.getElementById('text-fileUrl').innerHTML = this.candidate.filesUrl.slice(25);
+      this.activeFile = true;
+    }
+  }
+
+  linkResume(){
+    let basePath = "/api/v1/uploads/";
+    return window.open(environment.apiUrl + basePath + this.candidate.resumeUrl, "_blank");
+  }
+
+  linkFile(){
+    let basePath = "/api/v1/uploads/";
+    return window.open(environment.apiUrl + basePath + this.candidate.filesUrl, "_blank");
   }
 }
