@@ -21,7 +21,6 @@ public class ChallengeServiceImpl extends GenericService<Challenge, Long> implem
     public JpaRepository<Challenge, Long> getRepository() {
         return this.challengeRepository;
     }
-
     
     @Override
     public Challenge getOne(Long id) {
@@ -29,7 +28,4 @@ public class ChallengeServiceImpl extends GenericService<Challenge, Long> implem
         return challenge;
     }
     
-    
-    
-
 }

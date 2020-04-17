@@ -41,5 +41,4 @@ public class InterviewServiceImpl extends GenericService<Interview, Long> implem
         response.setTotalCount(searchResult.getTotalElements());
         return response;
     }
-
 }
