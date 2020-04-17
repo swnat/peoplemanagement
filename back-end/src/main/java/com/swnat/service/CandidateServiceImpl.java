@@ -164,8 +164,4 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
             System.out.println("Successfully deleted image server");
         }
     }
-
-    public String getPathFile(){
-        return fileUrl;
-    }
 }
