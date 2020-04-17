@@ -7,9 +7,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swnat.dto.PaginationResponse;
 import com.swnat.model.Candidate;
+import com.swnat.repository.ChallengeRepository;
+import com.swnat.repository.InterviewRepository;
 import com.swnat.service.CandidateService;
+
+
 import io.swagger.annotations.ApiOperation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +24,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class CandidateController {
 
     private CandidateService candidateService;
+
+    @Autowired
+    private ChallengeRepository challengeRepository;
+    
+    @Autowired
+    private InterviewRepository interviewRepository;
 
     public CandidateController(CandidateService candidateService) {
         this.candidateService = candidateService;
@@ -67,5 +78,23 @@ public class CandidateController {
     @GetMapping("/{id}")
     public Candidate getCandidate(@PathVariable Long id) {
         return candidateService.getOne(id);
+    }
+
+    @ApiOperation(value = "Delete a candidate", notes="Delete a candidate using the corresponding id ")
+    @DeleteMapping("/{id}")
+    public String removeCandidate(@PathVariable Long id){
+        String value;
+        boolean dataChallenge = challengeRepository.findByChallengeCandidateId(id);
+        boolean dataInterview = interviewRepository.findByInterViewCandidateId(id);
+
+        if ( dataChallenge || dataInterview ){
+            value = "It has associated data";
+        }
+        else{
+            candidateService.delete(id);
+            value = "No associated data";
+        }
+
+        return value;
     }
 }
