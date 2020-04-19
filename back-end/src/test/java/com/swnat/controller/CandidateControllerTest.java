@@ -58,4 +58,53 @@ public class CandidateControllerTest {
         int status = result.getResponse().getStatus();
         assertEquals("Incorrect Response Status", HttpStatus.OK.value(), status);
     }
+    
+    public void saveCandidateTest() throws Exception {
+    	
+    	 // prepare data and mock's behaviour
+        Candidate candidate = TestUtils.buildCandidateTest();
+        when(candidateService.add(any(Candidate.class))).
+        thenReturn(candidate);
+
+        String requestJson= TestUtils.jsonStringFromObject(candidate);
+
+        // execute
+         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(TestUtils.CANDIDATE_URL).
+         contentType(MediaType.APPLICATION_JSON_UTF8).
+         accept(MediaType.APPLICATION_JSON_UTF8).
+         content(requestJson)).andReturn();
+
+
+        // verify status post call
+        int status = result.getResponse().getStatus();
+        assertEquals("Incorrect Response Status", HttpStatus.OK.value(), status);
+                
+        // verify that service method was called once
+        verify(candidateService).add(any(Candidate.class));
+    }
+    
+    @Test
+    public void updateCandidateTest() throws Exception {
+    	
+   	 // prepare data and mock's behaviour
+       Candidate candidate = TestUtils.buildCandidateTest();
+       when(candidateService.add(any(Candidate.class))).
+       thenReturn(candidate);
+
+       String requestJson= TestUtils.jsonStringFromObject(candidate);
+
+       // execute
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(TestUtils.CANDIDATE_URL+"{id}", candidate.getId()).
+        contentType(MediaType.APPLICATION_JSON_UTF8).
+        accept(MediaType.APPLICATION_JSON_UTF8).
+        content(requestJson)).andReturn();
+
+
+       // verify status post call
+       int status = result.getResponse().getStatus();
+       // assertEquals("Incorrect Response Status", HttpStatus.OK.value(), status);
+   }
+   
+    
+   
 }
