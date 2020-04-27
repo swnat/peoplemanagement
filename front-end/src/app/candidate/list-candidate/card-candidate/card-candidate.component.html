@@ -1,16 +1,34 @@
-<div class="card" (click)="onClick()">
-  <img class="card-img-top" [src]="imageConstruction || 'assets/images/default.png'" alt="candidate profile image">
+<div class="card">
+
+  <div (clickOutside)="closedOption($event)">
+    <a>
+      <i class="material-icons" (click)="openOption()"
+      style="cursor: pointer;">more_vert</i>
+    </a>
+
+    <div class="card-list" *ngIf="toggle">
+
+        <a class="dropdown-item py-2" (click)="onClick()">Edit Candidate</a>
+        <a class="dropdown-item py-2" *ngIf="this.candidate.resumeUrl" (click)="getResume()">
+        Download Resume
+        </a>
+    </div>
+
+  </div>  
+ 
+  <img class="card-img-top" [src]="imageConstruction || 'assets/images/default.png'" 
+     alt="candidate profile image">
   <h5>{{ candidateName }}</h5>
   <div class="card-body">
     <div class="status">
-      <span class="text-uppercase">{{ statusChallenge.replace('_', ' ') }}</span>
+      <span class="text-uppercase">Challenge</span>
       <img [src]="'assets/images/progress_bars/' + statusChallenge + '.png'">
-      <span>Challenge</span>
+      <span>{{ statusChallenge.replace('_', ' ') }}</span>
     </div>
     <div class="status">
-      <span class="text-uppercase">{{ statusInterview.replace('_', ' ') }}</span>
+      <span class="text-uppercase">Interviews</span>
       <img [src]="'assets/images/progress_bars/' + statusInterview + '.png'">
-      <span>Interviews</span>
+      <span>{{ statusInterview.replace('_', ' ') }}</span>
     </div>
   </div>
 </div>
