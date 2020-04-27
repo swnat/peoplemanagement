@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public submitted: Boolean = false;
   public error: {code: number, message: string} = null;
+  public activateSpinner: boolean;
+  public activateLogin: boolean;
 /**
  * Constructor with the following public attributes of the component
  *
@@ -43,6 +45,10 @@ export class LoginComponent implements OnInit {
    * The form is initialized with empty values by default
    */
   ngOnInit() {
+
+    this.activateSpinner = false;
+    this.activateLogin = !this.activateSpinner;
+    
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -53,16 +59,21 @@ export class LoginComponent implements OnInit {
   /**
    * Method to make the call to the server through the authentication service
    */
-  public submitLogin(): void {
+  public submitLogin(): void {    
     this.submitted = true;
     this.error = null;
     if (this.loginForm.valid) {
+      //Spinner
+      this.activateSpinner = true;
+      this.activateLogin = !this.activateSpinner
       this.authenticationService.login(new LoginObject(this.loginForm.value)).subscribe(
         data => this.correctLogin(data),
         error => {
           console.log('Error Login', error);
           this.notificationService.showError('The username and password you entered do not match our records.',
            'Please check and try again.');
+          this.activateSpinner = false;
+          this.activateLogin = !this.activateSpinner;
         }
       );
     }
@@ -81,4 +92,5 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/candidate']);
   }
   get f() { return this.loginForm.controls; }
+
 }
