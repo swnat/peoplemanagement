@@ -1,95 +1,81 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans');
 
-    .body_login{
-        background-image: url("src/assets/images/background_login.jpg");
-        margin-top: -5%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        font-family: 'Numans', sans-serif;
-    }
-    .container{
-        height: 100%;
-        align-content: center;
-    }
+.body_login{
+    background-image: url('../../assets/images/background2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .card{
-        height: 300px;
-        margin-top: auto;
-        margin-bottom: auto;
-        width: 400px;
-        background-color: rgba(0,0,0,0.5) !important;
-    }
+.container-primary{
+    height: 25rem;
+    width: 21rem;
+    background:  #609AB4;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .social_icon span{
-        font-size: 60px;
-        margin-left: 10px;
-        color: #FFC312;
-    }
+.logo-people{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    background: #021e26;
+    border-radius: 0.5rem 0.5rem 0px 0px;
+    opacity: 95%;
+    clip-path: polygon(0 0, 100% 0%, 100% 74%, 0% 100%);
+}
 
-    .social_icon span:hover{
-        color: white;
-        cursor: pointer;
-    }
+.text-title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #609AB4;
+}
 
-    .card-header h3{
-        color: white;
-    }
+.img-icon{
+    width: 4.5rem;
+    height: 3.1rem;
+    transform: rotate(45deg);
+}
 
-    .social_icon{
-        position: absolute;
-        right: 220pxpx;
-        top: -45px;
-    }
+.input-group-prepend span{
+    background-color: #000;
+    border:0 !important;
+}
 
-    .input-group-prepend span{
-        width: 50px;
-        background-color: #882960;
-        color: black;
-        border:0 !important;
-    }
+.whitecolor{
+    color: white;
+}
 
-    input:focus{
-        outline: 0 0 0 0  !important;
-        box-shadow: 0 0 0 0 !important;
-    }
+section{
+    margin-top: 3.2rem;
+}
 
-    .remember{
-        color: white;
-    }
+.btn-submit{
+    margin-top: 1.2rem;
+    background: #000;
+    color: #FFF;
+    font-weight: bold;
+    width: 14rem;
+    height: 2.0rem;
+    border: 0px;
+    border-radius: 0.5rem;
+    margin-left: calc((100% - 14rem) / 2);
+}
 
-    .remember input
-    {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-    }
+.btn-submit:hover, .btn-submit:focus{
+    border: 1px solid #fff;
+    outline: none;
+}
 
-    .whitecolor{
-        color: white;
-    }
-    .login_btn{
-        color: white;
-        background-color: #882960;
-        width: 100px;
-    }
-
-    .login_btn:hover{
-        color: rgb(153, 56, 129);
-        background-color: white;
-    }
-
-    .links{
-        color: white;
-    }
-
-    .links a{
-        margin-left: 4px;
-    }
-
-    .container_login{
-        height: 100%;
-        margin-top: 5%;
-        align-content: center;
-    }
+.size-spinner{
+    height: 1.5rem !important;
+    width: 1.5rem !important;
+}
