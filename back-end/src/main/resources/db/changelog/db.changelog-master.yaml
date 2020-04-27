@@ -41,3 +41,5 @@ databaseChangeLog:
       file: db/changelog/ppldb/20200217_CANDIDATE_AC_IMAGE.xml
   - include:
       file: db/changelog/ppldb/20200303_CANDIDATE_AC.xml
+  - include:
+      file: db/changelog/ppldb/20200317_CANDIDATE_AC.xml

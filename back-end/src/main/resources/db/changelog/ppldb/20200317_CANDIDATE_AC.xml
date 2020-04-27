@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- This change set adds indices to efficiently sort the list 
+         of candidates -->
+    <changeSet author="interns" id="ppl_candidate_ac_004">
+
+        <!-- Index to order by last name -->
+        <createIndex schemaName="management" tableName="candidate"
+                indexName="candidate_last_name_index">
+            <column name="last_name" />
+        </createIndex>
+
+        <!-- Index to order by last modified
+             Had to use sql to specify ordering direction -->
+        <sql dbms="postgresql">
+            CREATE INDEX candidate_last_modified_index
+                ON management.candidate USING btree
+                (modified_timestamp DESC NULLS LAST)
+                TABLESPACE pg_default
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
