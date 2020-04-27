@@ -21,6 +21,18 @@ public class TestUtils {
     public static final String USER_URL = "http://localhost:8080/api/v1/user/";
 
     private static final ObjectMapper mapper = new ObjectMapper();
+    
+    public static Candidate buildCandidateTest() {
+    	Candidate candidate = new Candidate();
+    	
+    	candidate.setName("Mario");
+    	candidate.setLastName("Gonzalez");
+    	candidate.setFileUrl("additionalfile.pdf");
+    	candidate.setResumeUrl("marioCV.pdf");
+    	candidate.setProfileImage("mario.png");
+    	
+    	return candidate;
+    }
 
     public static Interview buildInterviewTest() {
         Interview interview = new Interview();
