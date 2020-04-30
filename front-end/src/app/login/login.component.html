@@ -1,38 +1,36 @@
 <div class="body_login">
-  <div class="container_login">
-    <div class="d-flex justify-content-center h-100">
-      <div class="card">
-          <div class="card-header">
-            <h3>Sign In</h3>
-          </div>
-          <div class="card-body">
-            <form [formGroup]="loginForm" id= "loginForm" (ngSubmit)="submitLogin()">
-              <div class="input-group form-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-user whitecolor"></i></span>
-                </div>
-                <input type="text" formControlName="email" class="form-control" placeholder="email" >
-                <span id= "hint-email"  class="text-danger" *ngIf="submitted && f.email.errors?.required">Email is required</span>
-
-              </div>
-              <div class="input-group form-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-key whitecolor"></i></span>
-                </div>
-                <input type="password" formControlName="password" class="form-control" placeholder="password">
-                <span id= "hint-pass" class="text-danger" *ngIf="submitted && f.password.errors?.required">Password is required</span>
-
-              </div>
-              <div class="row align-items-center remember">
-                <input type="checkbox">Remember Me
-              </div>
-              <div class="form-group">
-                <button type="submit" id="login-form"
-                  class="btn float-right login_btn">Login</button>
-              </div>
-            </form>
-          </div>
-      </div>
+  <div class="container-primary">
+    <div class="logo-people">
+      <img src="../../assets/images/logoPM.png" class="img-icon" alt="Logo people">
+      <h4 class="text-title">People Management</h4>
     </div>
+    <section>
+      <form [formGroup]="loginForm" id="loginForm" (ngSubmit)="submitLogin()">
+        <div class="input-group form-group mb-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user whitecolor text-center"></i></span>
+          </div>
+          <input type="text" formControlName="email" class="form-control" placeholder="Email">
+        </div>
+        <small id="hint-email" class="form-text text-white" *ngIf="submitted && f.email.errors?.required">Email is required</small>
+        <div class="input-group form-group mb-0 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-key whitecolor"></i></span>
+          </div>
+          <input type="password" formControlName="password" class="form-control" placeholder="Password">
+        </div>
+        <small id= "hint-pass" class="form-text text-white" *ngIf="submitted && f.password.errors?.required">Password is required</small>
+        <div class="form-group form-check mt-3 ml-2">
+          <input type="checkbox" class="form-check-input" id="check-remember">
+          <label for="check-remember" class="form-check-label text-white">Remember Me</label>
+        </div>
+        <button type="submit" id="login-form" class="btn-submit text-center">
+          <span *ngIf="activateLogin">Login</span>
+          <div *ngIf="activateSpinner" class="spinner-border size-spinner" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
+      </form>
+    </section>
   </div>
-</div>
+</div>    
