@@ -53,7 +53,6 @@ public class Interview implements Serializable{
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")
     private Candidate candidate;
 
-
     public Interview() {}
 
     public Interview(Long id, String comment, Date day_of_interview, StatusCandidate status_candidate, Candidate candidate ) {

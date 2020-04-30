@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Candidate } from 'src/app/models/candidate';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { CandidateService } from 'src/app/service/candidate.service';
+import { NotificationService } from 'src/app/shared/notification-service/notification.service';
 
 @Component({
   selector: 'app-card-candidate',
@@ -10,9 +12,13 @@ import { environment } from '../../../../environments/environment';
 })
 export class CardCandidateComponent implements OnInit {
 
-  @Input() candidate: Candidate = null;
+  @Output() updateListCandidate = new EventEmitter<boolean>();
 
-  constructor(private router: Router) { }
+  @Input() candidate: Candidate = null;
+  toggle = false;
+
+  constructor(private router: Router, private candidateService: CandidateService, 
+  private notificacionService: NotificationService) { }
 
   ngOnInit() {}
 
@@ -33,23 +39,60 @@ export class CardCandidateComponent implements OnInit {
 
   get statusChallenge(): string {
     const stch = this.candidate ? this.candidate.process_challenge_status : '';
-    if (stch.match(/pending/i)) { return 'pending'; }
-    if (stch.match(/pro/i)) { return 'in_process'; }
-    if (stch.match(/completed/i)) { return 'completed'; }
+    if (stch.match(/pending/i)) { return 'Pending'; }
+    if (stch.match(/pro/i)) { return 'In_Process'; }
+    if (stch.match(/completed/i)) { return 'Completed'; }
     return 'undefined';
   }
 
   get statusInterview(): string {
     const stint = this.candidate ? this.candidate.interviewStatus : '';
-    if (stint.match(/pending/i)) { return 'pending'; }
-    if (stint.match(/pro/i)) { return 'in_process'; }
-    if (stint.match(/completed/i)) { return 'completed'; }
+    if (stint.match(/pending/i)) { return 'Pending'; }
+    if (stint.match(/pro/i)) { return 'In_Process'; }
+    if (stint.match(/completed/i)) { return 'Completed'; }
     return 'undefined';
   }
 
-  //build and return the url in the image.
-  get imageConstruction(): string{
-    if ( this.candidate.profileImage) { let basePath = "/api/v1/uploads/"; return environment.apiUrl + basePath + this.candidate.profileImage; }
-    else { return null }
+  // build and return the url in the image.
+  get imageConstruction(): string {
+    if ( this.candidate.profileImage) {
+        let basePath = "/api/v1/uploads/";
+        return environment.apiUrl + basePath + this.candidate.profileImage;
+      }
+    else { return null; }
   }
+
+  // get resume CV
+  getResume() {
+    this.toggle = false;
+    const basePath = '/api/v1/uploads/';
+    window.open(environment.apiUrl + basePath + this.candidate.resumeUrl);
+  }
+
+  closedOption(e: Event) {
+    this.toggle = false;
+  }
+
+  openOption() {
+    this.toggle = !this.toggle;
+  }
+
+  removeCandidate(){
+    this.candidateService.deleteCandidate(this.candidate.id).subscribe( data =>{
+      console.log(data);
+      if ( data == "It has associated data" ){
+        this.notificacionService.showInfo('The candidate has data associated with either a challenge, interview or both.', 'Cannot remove the candidate');
+        //An event is issued to the parent 
+        this.updateListCandidate.emit(false);
+      }
+      else{
+        this.notificacionService.showSuccess('The candidate was correctly eliminated', 'Successfully eliminated');
+        this.updateListCandidate.emit(true);
+      }
+    }, error =>{
+        console.log(error);
+        this.notificacionService.showError('An error occurs when eliminating a candidate', 'Error in removing a candidate');
+    });
+  }
+
 }

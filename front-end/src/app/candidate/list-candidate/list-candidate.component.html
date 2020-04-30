@@ -35,7 +35,7 @@
     <div class="list-container-body">
       <div *ngIf="candidates?.content?.length > 0" class="row">
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let item of candidates?.content">
-          <app-card-candidate [candidate]="item"></app-card-candidate>
+          <app-card-candidate [candidate]="item" (updateListCandidate)="processUpdateList($event)"></app-card-candidate>
         </div>
       </div>
 

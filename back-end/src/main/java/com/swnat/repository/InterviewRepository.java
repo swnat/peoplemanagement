@@ -18,4 +18,14 @@ public interface InterviewRepository extends JpaRepository<Interview, Long> {
     @Query("select i from Interview i where documento like %:id_candidate%")
     Page<Interview> findAllByIdCandidate(@Param("id_candidate") String idNumber, Pageable pageable);
 
+    /**
+     * In the native query it is asked if the candidate has a interview and retains a value boolean 
+     * @param candidate_id
+     * @return {@link boolean }
+     */
+    
+    @Query(value = "SELECT CASE WHEN (count(*) > 0) THEN true ELSE false END FROM MANAGEMENT.INTERVIEW WHERE CANDIDATE_ID = ?1", 
+    nativeQuery = true)
+    boolean findByInterViewCandidateId(Long candidate_id);
+
 }

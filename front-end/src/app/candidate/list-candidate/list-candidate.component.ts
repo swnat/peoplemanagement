@@ -62,4 +62,10 @@ export class ListCandidateComponent implements OnInit {
     this.page = 1;
   }
 
+  processUpdateList(isUpdate: boolean){
+    if(isUpdate){
+      this.changeSortBy();
+    }
+  }
+
 }

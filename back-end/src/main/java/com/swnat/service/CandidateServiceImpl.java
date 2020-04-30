@@ -165,5 +165,5 @@ public class CandidateServiceImpl extends GenericService<Candidate, Long> implem
             filePath.delete();
             System.out.println("Successfully deleted image server");
         }
-    }  
+    }
 }
