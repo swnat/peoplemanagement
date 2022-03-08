@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <springfox.version>2.9.2</springfox.version>
-        <liquibase.version>3.6.2</liquibase.version>
+        <liquibase.version>4.8.0</liquibase.version>
         <jjwt.version>0.9.0</jjwt.version>
         <flowable.version>6.4.2</flowable.version>
     </properties>
